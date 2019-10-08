@@ -1,6 +1,13 @@
 # CS319-3F-SW
 This project is conducting as term project for CS-319 course in Bilkent University.
 
+We are group of 5  students from Computer Science Department:
+Umur Göğebakan
+Ömer Faruk Kürklü 
+Akın Parkan
+Alptekin Önder
+Elif Kasapoğlu
+
 In our project, we will implement a board game namely '7 Wonders'.
 
 This game will be implemented by using Java language.
