@@ -21,7 +21,11 @@ At the end of the third Age, the players count their victory points; the player 
 
 
 Google Docs Links:
-[Meeting Schedule](https://docs.google.com/document/d/1VJEnRQnAFjuCJ2givL2PP5Lf2wkSoLi_eQuPIs_KVcM/edit?usp=sharing "Schedule Google Doc")
+[Meeting Schedule]
+(https://docs.google.com/document/d/1VJEnRQnAFjuCJ2givL2PP5Lf2wkSoLi_eQuPIs_KVcM/edit?usp=sharing "Schedule Google Doc")
+[Iteration 1 - Project Analysis Report]
+(https://docs.google.com/document/d/1xSJrBIjiwSQDsIh1_EUPaW9Be_7apfCnrrHmhYzt-90/edit?usp=sharing)
 
 
-[References](https://www.ultraboardgames.com/7wonders/game-rules.php)
+[References]
+(https://www.ultraboardgames.com/7wonders/game-rules.php)
