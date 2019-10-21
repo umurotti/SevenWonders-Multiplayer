@@ -19,13 +19,13 @@ At the end of each Age, each player compares their military might with their two
 
 At the end of the third Age, the players count their victory points; the player with the most points wins the game.
 
+---
 
-Google Docs Links:
-[Meeting Schedule]
-(https://docs.google.com/document/d/1VJEnRQnAFjuCJ2givL2PP5Lf2wkSoLi_eQuPIs_KVcM/edit?usp=sharing "Schedule Google Doc")
-[Iteration 1 - Project Analysis Report]
-(https://docs.google.com/document/d/1xSJrBIjiwSQDsIh1_EUPaW9Be_7apfCnrrHmhYzt-90/edit?usp=sharing)
+Google Docs Links: 
+- [Meeting Schedule](https://docs.google.com/document/d/1VJEnRQnAFjuCJ2givL2PP5Lf2wkSoLi_eQuPIs_KVcM/edit?usp=sharing "Schedule Google Doc")
+- [Iteration 1 - Project Analysis Report](https://docs.google.com/document/d/1xSJrBIjiwSQDsIh1_EUPaW9Be_7apfCnrrHmhYzt-90/edit?usp=sharing "Iteration 1 Google Doc")
 
+---
 
-[References]
-(https://www.ultraboardgames.com/7wonders/game-rules.php)
+References:
+- [Game Rules](https://www.ultraboardgames.com/7wonders/game-rules.php)
