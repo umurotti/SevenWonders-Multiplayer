@@ -11,7 +11,7 @@ This game will be implemented by using Java language.
 ## 7 Wonders
 7 Wonders  is a card game which you are tasked with building up your civilization through a series of 3 ages (rounds). Your civilization is built by playing cards every round to your play area. 
 
-This game can be played by 2-7 players.
+This game can be played by 3-7 players.
 ### Objective of the game
 A game of 7 Wonders takes place over 3 Ages, each using one of the 3 card decks (first the Age I cards, then Age II, and finally Age III). These Ages are each played similarly, with each player having the opportunity to play 6 cards per Age to develop his or her city and build their Wonder.
 
