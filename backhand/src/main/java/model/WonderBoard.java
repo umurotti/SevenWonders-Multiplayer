@@ -1,6 +1,7 @@
+package model;
+
 import java.util.HashMap;
 import java.util.Objects;
-
 
 /** 
  * @author: OmerFarukKurklu

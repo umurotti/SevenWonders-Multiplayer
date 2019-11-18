@@ -1,6 +1,11 @@
+package model;
+
 import java.util.HashMap;
 import java.util.Objects;
-
+/** 
+ * @author OmerFarukKurklu
+ * @version 0.1
+*/
 public class Cost {
     private HashMap<String,Integer> cost;
 
