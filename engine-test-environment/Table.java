@@ -1,5 +1,3 @@
-package model;
-
 import java.net.Socket;
 import java.util.*;
 import java.util.concurrent.LinkedBlockingQueue;

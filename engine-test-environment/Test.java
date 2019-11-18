@@ -1,6 +1,5 @@
 import java.util.HashMap;
 
-
 /**
  * @author OmerFarukKurklu
  * @version 0.2
