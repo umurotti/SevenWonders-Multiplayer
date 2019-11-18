@@ -1,0 +1,452 @@
+[
+{"cost":{"cost":{"coin":0}},
+ "color":"brown",
+ "name":"Lumber Yard",
+ "freeBuildings":"",
+ "minPlayerNo":3,
+ "benefits":{
+     "wood":1
+  }
+},
+{"cost":{"cost":{"coin":0}},
+ "color":"brown",
+ "name":"Lumber Yard",
+ "freeBuildings":"",
+ "minPlayerNo":4,
+ "benefits":{
+     "wood":1
+  }
+},
+{"cost":{"cost":{"coin":0}},
+ "color":"brown",
+ "name":"Stone Pit",
+ "freeBuildings":"",
+ "minPlayerNo":3,
+ "benefits":{
+     "stone":1
+  }
+},
+{"cost":{"cost":{"coin":0}},
+ "color":"brown",
+ "name":"Stone Pit",
+ "freeBuildings":"",
+ "minPlayerNo":5,
+ "benefits":{
+     "stone":1
+  }
+},
+{"cost":{"cost":{"coin":0}},
+ "color":"brown",
+ "name":"clay pool",
+ "freeBuildings":"",
+ "minPlayerNo":3,
+ "benefits":{
+     "clay":1
+  }
+},
+{"cost":{"cost":{"coin":0}},
+ "color":"brown",
+ "name":"clay pool",
+ "freeBuildings":"",
+ "minPlayerNo":5,
+ "benefits":{
+     "clay":1
+  }
+},
+{"cost":{"cost":{"coin":0}},
+ "color":"brown",
+ "name":"Ore Vein",
+ "freeBuildings":"",
+ "minPlayerNo":3,
+ "benefits":{
+     "ore":1
+  }
+},
+{"cost":{"cost":{"coin":0}},
+ "color":"brown",
+ "name":"Ore Vein",
+ "freeBuildings":"",
+ "minPlayerNo":4,
+ "benefits":{
+     "ore":1
+  }
+},
+{"cost":{"cost":{"coin":0}},
+ "color":"brown",
+ "name":"Tree Farm",
+ "freeBuildings":"",
+ "minPlayerNo":6,
+ "benefits":{
+     "wood or clay":1
+  }
+},
+{"cost":{"cost":{"coin":0}},
+ "color":"brown",
+ "name":"Excavation",
+ "freeBuildings":"",
+ "minPlayerNo":4,
+ "benefits":{
+     "wood or stone":1
+  }
+},
+{"cost":{"cost":{"coin":0}},
+ "color":"brown",
+ "name":"Clay Pit",
+ "freeBuildings":"",
+ "minPlayerNo":3,
+ "benefits":{
+     "clay or ore":1
+  }
+},
+{"cost":{"cost":{"coin":0}},
+ "color":"brown",
+ "name":"Timber Yard",
+ "freeBuildings":"",
+ "minPlayerNo":3,
+ "benefits":{
+     "wood stone":1
+  }
+},
+{"cost":{"cost":{"coin":1}},
+ "color":"brown",
+ "name":"Forest Cave",
+ "freeBuildings":"",
+ "minPlayerNo":5,
+ "benefits":{
+     "wood or ore":1
+  }
+},
+{"cost":{"cost":{"coin":0}},
+ "color":"brown",
+ "name":"Mine",
+ "freeBuildings":"",
+ "minPlayerNo":6,
+ "benefits":{
+     "ore or stone":1
+  }
+},
+{"cost":{"cost":{"coin":0}},
+ "color":"grey",
+ "name":"Loom",
+ "freeBuildings":"",
+ "minPlayerNo":3,
+ "benefits":{
+     "loom":1
+  }
+},
+{"cost":{"cost":{"coin":0}},
+ "color":"grey",
+ "name":"Loom",
+ "freeBuildings":"",
+ "minPlayerNo":6,
+ "benefits":{
+     "loom":1
+  }
+},
+{"cost":{"cost":{"coin":0}},
+ "color":"grey",
+ "name":"Glassworks",
+ "freeBuildings":"",
+ "minPlayerNo":3,
+ "benefits":{
+     "glass":1
+  }
+},
+{"cost":{"cost":{"coin":0}},
+ "color":"grey",
+ "name":"Glassworks",
+ "freeBuildings":"",
+ "minPlayerNo":6,
+ "benefits":{
+     "glass":1
+  }
+},
+{"cost":{"cost":{"coin":0}},
+ "color":"grey",
+ "name":"Press",
+ "freeBuildings":"",
+ "minPlayerNo":3,
+ "benefits":{
+     "Papyrus":1
+  }
+},
+{"cost":{"cost":{"coin":0}},
+ "color":"grey",
+ "name":"Press",
+ "freeBuildings":"",
+ "minPlayerNo":6,
+ "benefits":{
+     "Papyrus":1
+  }
+},
+{"cost":{"cost":{"coin":0}},
+ "color":"blue",
+ "name":"Pawnshop",
+ "freeBuildings":"",
+ "minPlayerNo":4,
+ "benefits":{
+     "victory point":3
+  }
+},
+{"cost":{"cost":{"coin":0}},
+ "color":"blue",
+ "name":"Pawnshop",
+ "freeBuildings":"",
+ "minPlayerNo":7,
+ "benefits":{
+     "victory point":3
+  }
+},
+{"cost":{"cost":{"stone":1 }},
+ "color":"blue",
+ "name":"Baths",
+ "freeBuildings":"",
+ "minPlayerNo":7,
+ "benefits":{
+     "victory point":3
+  }
+},
+{"cost":{"cost":{"stone":1 }},
+ "color":"blue",
+ "name":"Baths",
+ "freeBuildings":"",
+ "minPlayerNo":3,
+ "benefits":{
+     "victory point":3
+  }
+},
+{"cost":{"cost":{"coin":0}},
+ "color":"blue",
+ "name":"Altar",
+ "freeBuildings":"",
+ "minPlayerNo":5,
+ "benefits":{
+     "victory point":2
+  }
+},
+{"cost":{"cost":{"coin":0}},
+ "color":"blue",
+ "name":"Altar",
+ "freeBuildings":"",
+ "minPlayerNo":3,
+ "benefits":{
+     "victory point":2
+  }
+},
+{"cost":{"cost":{"coin":0}},
+ "color":"blue",
+ "name":"Theater",
+ "freeBuildings":"",
+ "minPlayerNo":3,
+ "benefits":{
+     "victory point":2
+  }
+},
+{"cost":{"cost":{"coin":0}},
+ "color":"blue",
+ "name":"Theater",
+ "freeBuildings":"",
+ "minPlayerNo":6,
+ "benefits":{
+     "victory point":2
+  }
+},
+{"cost":{"cost":{"coin":0}},
+ "color":"yellow",
+ "name":"Tavern",
+ "freeBuildings":"",
+ "minPlayerNo":4,
+ "benefits":{
+     "coin":5
+  }
+},
+{"cost":{"cost":{"coin":0}},
+ "color":"yellow",
+ "name":"Tavern",
+ "freeBuildings":"",
+ "minPlayerNo":5,
+ "benefits":{
+     "coin":5
+  }
+},
+{"cost":{"cost":{"coin":0}},
+ "color":"yellow",
+ "name":"Tavern",
+ "freeBuildings":"",
+ "minPlayerNo":7,
+ "benefits":{
+     "coin":5
+  }
+},
+{"cost":{"cost":{"coin":0}},
+ "color":"yellow",
+ "name":"East Trading Post",
+ "freeBuildings":"",
+ "minPlayerNo":3,
+ "benefits":{
+    "coin":5
+  }
+},
+{"cost":{"cost":{"coin":0}},
+ "color":"yellow",
+ "name":"East Trading Post",
+ "freeBuildings":"",
+ "minPlayerNo":7,
+ "benefits":{
+    "coin":5
+  }
+},
+{"cost":{"cost":{"coin":0}},
+ "color":"yellow",
+ "name":"West Trading Post",
+ "freeBuildings":"",
+ "minPlayerNo":4,
+ "benefits":{
+     "coin":5
+  }
+}, 
+{"cost":{"cost":{"coin":0}},
+ "color":"yellow",
+ "name":"West Trading Post",
+ "freeBuildings":"",
+ "minPlayerNo":5,
+ "benefits":{
+     "coin":5
+  }
+},
+{"cost":{"cost":{"coin":0}},
+ "color":"yellow",
+ "name":"West Trading Post",
+ "freeBuildings":"",
+ "minPlayerNo":7,
+ "benefits":{
+     "coin":5
+  }
+},
+{"cost":{"cost":{"coin":0}},
+ "color":"yellow",
+ "name":"Market Palace",
+ "freeBuildings":"",
+ "minPlayerNo":3,
+ "benefits":{
+     "coin":5
+  }
+}, 
+{"cost":{"cost":{"coin":0}},
+ "color":"yellow",
+ "name":"Market Palace",
+ "freeBuildings":"",
+ "minPlayerNo":6,
+ "benefits":{
+     "coin":5
+  }
+},
+{"cost":{"cost":{"wood":1}},
+ "color":"red",
+ "name":"Stockade",
+ "freeBuildings":"",
+ "minPlayerNo":3,
+ "benefits":{
+     "shield":1
+  }
+},
+{"cost":{"cost":{"wood":1}},
+ "color":"red",
+ "name":"Stockade",
+ "freeBuildings":"",
+ "minPlayerNo":7,
+ "benefits":{
+     "shield":1
+  }
+}, 
+{"cost":{"cost":{"ore":1}},
+ "color":"red",
+ "name":"Barracks",
+ "freeBuildings":"",
+ "minPlayerNo":3,
+ "benefits":{
+     "shield":1
+  }
+},
+{"cost":{"cost":{"ore":1}},
+ "color":"red",
+ "name":"Barracks",
+ "freeBuildings":"",
+ "minPlayerNo":5,
+ "benefits":{
+     "shield":1
+  }
+},
+{"cost":{"cost":{"clay":1}},
+ "color":"red",
+ "name":"Guard Tower",
+ "freeBuildings":"",
+ "minPlayerNo":3,
+ "benefits":{
+     "shield":1
+  }
+},
+{"cost":{"cost":{"clay":1}},
+ "color":"red",
+ "name":"Guard Tower",
+ "freeBuildings":"",
+ "minPlayerNo":4,
+ "benefits":{
+     "shield":1
+  }
+},
+{"cost":{"cost":{"loom":1 }},
+ "color":"green",
+ "name":"Apothecary",
+ "freeBuildings":"",
+ "minPlayerNo":5,
+ "benefits":{
+     "compass":1
+  }
+},
+{"cost":{"cost":{"loom":1 }},
+ "color":"green",
+ "name":"Apothecary",
+ "freeBuildings":"",
+ "minPlayerNo":3,
+ "benefits":{
+     "compass":1
+  }
+},
+{"cost":{"cost":{"glass":1 }},
+ "color":"green",
+ "name":"Workshop",
+ "freeBuildings":"",
+ "minPlayerNo":3,
+ "benefits":{
+     "gear":1
+  }
+},
+{"cost":{"cost":{"glass":1 }},
+ "color":"green",
+ "name":"Workshop",
+ "freeBuildings":"",
+ "minPlayerNo":7,
+ "benefits":{
+     "gear":1
+  }
+},
+{"cost":{"cost":{"papyrus":1 }},
+ "color":"green",
+ "name":"Scriptorium",
+ "freeBuildings":"",
+ "minPlayerNo": 3,
+ "benefits":{
+    "tablet":1
+  }
+},
+{"cost":{"cost":{"papyrus":1 }},
+ "color":"green",
+ "name":"Scriptorium",
+ "freeBuildings":"",
+ "minPlayerNo":4,
+ "benefits":{
+     "tablet":1
+  }
+}
+]
