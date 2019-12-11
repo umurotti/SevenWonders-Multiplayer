@@ -14,38 +14,55 @@ import javax.inject.Singleton;
  *
  * @author umur
  */
+
+class ConnectionAccepter implements Runnable {
+
+    @Override
+    public void run() {
+        for (int i = 0; i < 5; i++) {
+            System.out.println("deneme " + i);
+        }//To change body of generated methods, choose Tools | Templates.
+    }
+    
+}
 public class House {
     private final String AGE_ONE = "Age1Cards";
     private final String AGE_TWO = "AGE_TWO";
     private final String AGE_THREE = "AGE_THREE";
     
-    private volatile static House obj;
+    private static House obj = null;
+    private static Long lockThis = new Long(0);
     
     private Map<String, Table> tables;
     private Map<String, Table> waitingTables;
     private Map<String, Table> inplayTables;
     private Map<String, Deck> decks;
     
-    private DeckFactory deckFactory;
+    private DeckGenerator deckFactory;
     
     private House() throws IOException {
         tables = new HashMap<>();
         waitingTables = new HashMap<>();
         inplayTables = new HashMap<>();
         decks = new HashMap<>();
-        deckFactory = new DeckFactory();
+        deckFactory = new DeckGenerator();
         
         decks.put(AGE_ONE, deckFactory.generateDeck(AGE_ONE));
 //        decks.put(AGE_TWO, deckFactory.generateDeck(AGE_TWO));
 //        decks.put(AGE_THREE, deckFactory.generateDeck(AGE_THREE));
+
+        Thread acceptor = new Thread(new ConnectionAccepter());
+        acceptor.setDaemon(true);
+        acceptor.start();
     }
     
     public static House getInstance() throws IOException 
     {
+        
         if (obj == null) 
         { 
             // To make thread safe 
-            synchronized (Singleton.class) 
+            synchronized (lockThis) 
             { 
                 // check again as multiple threads 
                 // can reach above step 
@@ -57,7 +74,7 @@ public class House {
     }
     
     public boolean createTable(String ownerID, String tableID) {
-            if(!tables.containsKey(tableID)) {
+        if(!tables.containsKey(tableID)) {
             Table table = new Table(tableID, ownerID, decks.get(AGE_ONE)/*, decks.get(AGE_TWO), decks.get(AGE_THREE)*/ );
             tables.put(tableID, table);
             waitingTables.put(tableID, table);
@@ -92,8 +109,8 @@ public class House {
         return  (HashMap<String, Table>) waitingTables;
     }
             
-            public void deneme() throws IOException {
-        DeckFactory deneme = new DeckFactory();
+    public void deneme() throws IOException {
+        DeckGenerator deneme = new DeckGenerator();
     }
     
     private String generateTableID() {

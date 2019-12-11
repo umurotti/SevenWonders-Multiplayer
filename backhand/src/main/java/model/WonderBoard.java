@@ -1,22 +1,28 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package model;
 
 import java.util.HashMap;
 import java.util.Objects;
 
-/** 
+
+/**
  * @author: OmerFarukKurklu
  * @version: 0.1
-*/
-class WonderBoard {
-    private WonderBoard leftNeighbor;
-    private WonderBoard rightNeighbor;
+ */
+public class WonderBoard {
+    private String leftNeighbor;
+    private String rightNeighbor;
     private HashMap<String,Integer> sources; // String: Name of the resource, Integer: Amount of the resource
     private Cost[] stageCosts;
     private int currentStage;
     private int diceValue;
     private String name;
     private HashMap<String, Card> builtCards; // String: Name of the Card, Card: instance of the Card
-    private Action lockedAction;
+    private CardAction lockedAction;
     private HashMap<String, Integer> leftDiscount;  // String: Name of the resource, Integer: price of the resource from left neighbor
     private HashMap<String, Integer> rightDiscount; // String: Name of the resource, Integer: price of the resource from left neighbor
     private int[] militaryTokens;
@@ -70,7 +76,66 @@ class WonderBoard {
         }};
     }
 
-    public WonderBoard(WonderBoard leftNeighbor, WonderBoard rightNeighbor, HashMap<String,Integer> sources, Cost[] stageCosts, int currentStage, int diceValue, String name, HashMap<String,Card> builtCards, Action lockedAction, HashMap<String,Integer> leftDiscount, HashMap<String,Integer> rightDiscount, int[] militaryTokens, int defeatTokens, int handNo) {
+    public WonderBoard( String name) {
+        this.name = name;
+        // militaryTokens[0]: 1st age military victories, militaryTokens[1]: 2nd, militaryTokens[2]: 3rd.
+        militaryTokens = new int[3];
+
+        // stageCosts[0]: 1st stage cost, stageCosts[1]: 2nd, stageCosts[2]: 3rd.
+        stageCosts = new Cost[3];
+        HashMap<String, Integer> toAdd = new HashMap<>();
+        toAdd.put("wood", 0);
+        Cost x = new Cost(toAdd);
+        stageCosts[0] = x;
+        
+        sources = new HashMap<String,Integer>()
+        {{
+            put("wood", 1);
+            put("stone", 3);
+            put("clay", 2);
+            put("ore", 7);
+            put("loom",0);
+            put("papyrus", 0);
+            put("glass", 1);
+            put("compass", 3);
+            put("tablet", 2);
+            put("gear", 7);
+            put("coin", 0);
+            put("shield", 0);
+            put("victoryPoint", 0);
+        }};
+        
+        builtCards  = new HashMap<String,Card>()
+        {{
+            put("altar", new Card(new Cost(new HashMap<String, Integer>()), "red", "altar", "", 3, sources));
+        }};
+
+        leftDiscount = new HashMap<String, Integer>()
+        {{
+            put("wood", 2);
+            put("stone", 2);
+            put("clay", 2);
+            put("ore", 2);
+            put("loom", 2);
+            put("papyrus", 2);
+            put("glass", 2);
+        }};
+        rightDiscount = new HashMap<String, Integer>()
+        {{
+            put("wood", 2);
+            put("stone", 2);
+            put("clay", 2);
+            put("ore", 2);
+            put("loom", 2);
+            put("papyrus", 2);
+            put("glass", 2);
+        }};
+    }
+
+    public WonderBoard(String leftNeighbor, String rightNeighbor, HashMap<String,Integer> sources,
+                       Cost[] stageCosts, int currentStage, int diceValue, String name, HashMap<String,Card> builtCards,
+                       CardAction lockedAction, HashMap<String,Integer> leftDiscount, HashMap<String,Integer> rightDiscount,
+                       int[] militaryTokens, int defeatTokens) {
         this.leftNeighbor = leftNeighbor;
         this.rightNeighbor = rightNeighbor;
         this.sources = sources;
@@ -84,22 +149,22 @@ class WonderBoard {
         this.rightDiscount = rightDiscount;
         this.militaryTokens = militaryTokens;
         this.defeatTokens = defeatTokens;
-        this.handNo = handNo;
     }
 
-    public WonderBoard getLeftNeighbor() {
+   
+    public String getLeftNeighbor() {
         return this.leftNeighbor;
     }
 
-    public void setLeftNeighbor(WonderBoard leftNeighbor) {
+    public void setLeftNeighbor(String leftNeighbor) {
         this.leftNeighbor = leftNeighbor;
     }
 
-    public WonderBoard getRightNeighbor() {
+    public String getRightNeighbor() {
         return this.rightNeighbor;
     }
 
-    public void setRightNeighbor(WonderBoard rightNeighbor) {
+    public void setRightNeighbor(String rightNeighbor) {
         this.rightNeighbor = rightNeighbor;
     }
 
@@ -151,11 +216,11 @@ class WonderBoard {
         this.builtCards = builtCards;
     }
 
-    public Action getLockedAction() {
+    public CardAction getLockedAction() {
         return this.lockedAction;
     }
 
-    public void setLockedAction(Action lockedAction) {
+    public void setLockedAction(CardAction lockedAction) {
         this.lockedAction = lockedAction;
     }
 
@@ -199,15 +264,8 @@ class WonderBoard {
         this.handNo = handNo;
     }
 
-    public WonderBoard leftNeighbor(WonderBoard leftNeighbor) {
-        this.leftNeighbor = leftNeighbor;
-        return this;
-    }
 
-    public WonderBoard rightNeighbor(WonderBoard rightNeighbor) {
-        this.rightNeighbor = rightNeighbor;
-        return this;
-    }
+
 
     public WonderBoard sources(HashMap<String,Integer> sources) {
         this.sources = sources;
@@ -239,7 +297,7 @@ class WonderBoard {
         return this;
     }
 
-    public WonderBoard lockedAction(Action lockedAction) {
+    public WonderBoard lockedAction(CardAction lockedAction) {
         this.lockedAction = lockedAction;
         return this;
     }
