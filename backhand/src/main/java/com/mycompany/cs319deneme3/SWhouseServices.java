@@ -29,7 +29,7 @@ public class SWhouseServices {
     @Produces("text/plain")
     @Path("createTableService")
     public String createTableService(@QueryParam("ownerID") String ownerID, @QueryParam("tableID") String tableID ) throws IOException {
-        if (House.getInstance().createTable(ownerID, tableID) ) {;
+        if (House.getInstance().createTable(ownerID, tableID) ) {
             return "table(tableID: " + tableID + " | ownerID: " + ownerID + " successfully created";
         } else {
             return "table with given ID already exists";
@@ -53,7 +53,7 @@ public class SWhouseServices {
 //    @Produces("text/plain")
     @Path("listWaitingTableService")
     public String listWaitingTableService( ) throws IOException {
-        if (House.getInstance().getInPlayTables() != null) {
+        if (House.getInstance().getWaitingTables() != null) {
             return parseJSON(House.getInstance().getWaitingTables());
         } else {
             return null;
@@ -62,6 +62,7 @@ public class SWhouseServices {
     
     private String parseJSON(Object toParse) throws JsonProcessingException {
         ObjectMapper mapper = new ObjectMapper();
+        System.out.println(toParse.toString());
         return mapper.writeValueAsString(toParse);
     }
 }

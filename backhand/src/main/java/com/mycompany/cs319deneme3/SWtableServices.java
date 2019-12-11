@@ -14,7 +14,9 @@ import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
+import model.CardAction;
 import model.Card;
+import model.HandContainer;
 import model.House;
 import model.WonderBoard;
 
@@ -33,7 +35,7 @@ public class SWtableServices {
     @Path("getWondersService")
     public String getWonderboardsService(@QueryParam("tableID") String tableID ) throws IOException {
         HashMap<String, WonderBoard> wonderboards = House.getInstance().getInPlayTables().get(tableID).getWonders();
-        return parseJSON(wonderboards);
+        return parseObjectToJSON(wonderboards);
     }
 //    
     @GET
@@ -41,8 +43,8 @@ public class SWtableServices {
 //    @Produces("text/plain")
     @Path("getHandsService")
     public String getHandsService(@QueryParam("tableID") String tableID ) throws IOException {
-        Card [][] hands = House.getInstance().getInPlayTables().get(tableID).getHands();
-        return parseJSON(hands);
+        HandContainer hands = House.getInstance().getInPlayTables().get(tableID).getTransfer();
+        return parseObjectToJSON(hands);
     }
 
     @GET
@@ -54,8 +56,27 @@ public class SWtableServices {
         return "başarılı";
     }
     
-    private String parseJSON(Object toParse) throws JsonProcessingException {
+    @GET
+//    @Produces("application/json")
+    @Produces("text/plain")
+    @Path("playActionService")
+    public String playActionService(@QueryParam("tableID") String tableID, @QueryParam("action") String toAct) throws IOException, Exception {
+        
+        if (House.getInstance().getInPlayTables().get(tableID).isPossible((CardAction)parseJSONToObject(toAct))) {
+            return "başarılı";
+        }else {
+            return "başarısız";
+        }
+    }
+    
+    private String parseObjectToJSON(Object toParse) throws JsonProcessingException {
         ObjectMapper mapper = new ObjectMapper();
         return mapper.writeValueAsString(toParse);
+    }
+    
+    private Object parseJSONToObject(String toParse) throws JsonProcessingException, IOException {
+        ObjectMapper mapper = new ObjectMapper();
+        Object returnObj = mapper.readValue(toParse, CardAction.class);
+        return returnObj;
     }
 }
