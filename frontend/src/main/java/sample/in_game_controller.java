@@ -82,11 +82,6 @@ public class in_game_controller implements Initializable  {
     // @FXML
     // ImageView card1;
 
-
-    PopOver dicePopOver = new PopOver();
-
-
-
     ImageView hand[] = new ImageView[7];
     ImageView myStructures[] = new ImageView[18];
     ImageView leftStructures[] = new ImageView[18];
@@ -109,12 +104,6 @@ public class in_game_controller implements Initializable  {
         popOver.setContentNode(pane);
         popOver.show((ImageView)event.getSource());
         selectedCard =((ImageView) event.getSource()).getId();
-    }
-
-    public void dice(MouseEvent event)throws Exception{
-        GridPane pane = FXMLLoader.load(getClass().getResource("/dice_popover.fxml"));
-        dicePopOver.setContentNode(pane);
-        dicePopOver.show((Button)event.getSource());
     }
 
     public void trade(MouseEvent event)throws Exception{
@@ -276,19 +265,7 @@ public class in_game_controller implements Initializable  {
         refreshStructures(a, right_structure_grid);*/
        // con.sendAction(new Action());
 
-
-        dicePopOver.setArrowLocation(PopOver.ArrowLocation.BOTTOM_CENTER);
-        dicePopOver.setAutoFix(true);
-        dicePopOver.setAutoHide(true);
-        dicePopOver.setHideOnEscape(true);
-        dicePopOver.setDetachable(true);
-
-        GridPane pane = FXMLLoader.load(getClass().getResource("/dice_popover.fxml"));
-        dicePopOver.setContentNode(pane);
-        dicePopOver.show(dice);
-
         refreshHand(handCards);
-
     }
 
     public void refreshHand(HandContainer handCards){
@@ -389,15 +366,15 @@ public class in_game_controller implements Initializable  {
         ft.play();*/
 
         TranslateTransition tt = new TranslateTransition(sec2);
-        tt.setFromX(100);
-        tt.setToX(0);
+        tt.setFromX(0);
+        tt.setToX(100);
         tt.setCycleCount(1);
         tt.setAutoReverse(true);
         tt.setNode(hand);
         tt.play();
 
 
-        /*RotateTransition rt = new RotateTransition(sec3);
+        RotateTransition rt = new RotateTransition(sec3);
         rt.setByAngle(360);
         rt.setCycleCount(1);
         rt.setAutoReverse(true);
@@ -415,7 +392,7 @@ public class in_game_controller implements Initializable  {
         st.setCycleCount(2);
         st.setAutoReverse(true);
         st.setNode(hand);
-        st.play();*/
+        st.play();
     }
 
 
