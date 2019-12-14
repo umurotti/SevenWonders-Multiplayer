@@ -366,15 +366,15 @@ public class in_game_controller implements Initializable  {
         ft.play();*/
 
         TranslateTransition tt = new TranslateTransition(sec2);
-        tt.setFromX(0);
-        tt.setToX(100);
+        tt.setFromX(100);
+        tt.setToX(0);
         tt.setCycleCount(1);
         tt.setAutoReverse(true);
         tt.setNode(hand);
         tt.play();
 
 
-        RotateTransition rt = new RotateTransition(sec3);
+        /*RotateTransition rt = new RotateTransition(sec3);
         rt.setByAngle(360);
         rt.setCycleCount(1);
         rt.setAutoReverse(true);
@@ -392,7 +392,7 @@ public class in_game_controller implements Initializable  {
         st.setCycleCount(2);
         st.setAutoReverse(true);
         st.setNode(hand);
-        st.play();
+        st.play();*/
     }
 
 
