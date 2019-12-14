@@ -943,7 +943,7 @@
                                         </GridPane>
                                     </children>
                                 </GridPane>
-                        <Button mnemonicParsing="false" text="alptekın zar" GridPane.valignment="TOP" />
+                        <Button mnemonicParsing="false" text="elif zar" GridPane.valignment="TOP" />
 
                             </children>
 
