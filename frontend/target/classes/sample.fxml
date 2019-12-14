@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<GridPane fx:id="sample_grid" alignment="center" hgap="10" prefHeight="302.0" prefWidth="504.0"  vgap="10" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.main_menu_controller">
+   <rowConstraints>
+      <RowConstraints minHeight="10.0" percentHeight="100.0" prefHeight="30.0" />
+      <RowConstraints minHeight="10.0" percentHeight="100.0" prefHeight="30.0" />
+      <RowConstraints minHeight="10.0" percentHeight="100.0" prefHeight="30.0" />
+      <RowConstraints minHeight="10.0" percentHeight="100.0" prefHeight="30.0" />
+      <RowConstraints minHeight="10.0" percentHeight="100.0" prefHeight="30.0" />
+   </rowConstraints>
+   <columnConstraints>
+      <ColumnConstraints minWidth="10.0" percentWidth="100.0" prefWidth="100.0" />
+      <ColumnConstraints minWidth="10.0" percentWidth="100.0" prefWidth="100.0" />
+      <ColumnConstraints minWidth="10.0" percentWidth="100.0" prefWidth="100.0" />
+   </columnConstraints>
+   <children>
+      <Button fx:id="play_game_button" mnemonicParsing="false" onAction="#onPressPlayGameButton"  text="PLAY GAME" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+         <font>
+            <Font name="Arial Bold" size="24.0" />
+         </font></Button>
+      <Button fx:id="settings_button" mnemonicParsing="false" onAction="#onPressSettingButton"  text="SETTINGS" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+         <font>
+            <Font name="Arial Bold" size="24.0" />
+         </font></Button>
+      <Button fx:id="how_to_play_button" mnemonicParsing="false" onAction="#onPressHowtoPlayButton"  text="HOW TO PLAY" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+         <font>
+            <Font name="Arial Bold" size="24.0" />
+         </font></Button>
+      <Button fx:id="credits_button" mnemonicParsing="false" onAction="#onPressCreditsButton"  text="CREDITS" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER">
+         <font>
+            <Font name="Arial Bold" size="24.0" />
+         </font></Button>
+      <Button fx:id="exit_button" mnemonicParsing="false" onAction="#onPressExitButton"  text="EXIT" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER">
+         <font>
+            <Font name="Arial Bold" size="24.0" />
+         </font></Button>
+   </children>
+</GridPane>
