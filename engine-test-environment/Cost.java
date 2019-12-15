@@ -5,25 +5,25 @@ import java.util.Objects;
  * @version 0.1
 */
 public class Cost {
-    private HashMap<String,Integer> cost;
+    private HashMap<String,Integer> costs;
 
     public Cost() {
     }
 
-    public Cost(HashMap<String,Integer> cost) {
-        this.cost = cost;
+    public Cost(HashMap<String,Integer> costs) {
+        this.costs = costs;
     }
 
-    public HashMap<String,Integer> getCost() {
-        return this.cost;
+    public HashMap<String,Integer> getCosts() {
+        return this.costs;
     }
 
-    public void setCost(HashMap<String,Integer> cost) {
-        this.cost = cost;
+    public void setCosts(HashMap<String,Integer> costs) {
+        this.costs = costs;
     }
 
-    public Cost cost(HashMap<String,Integer> cost) {
-        this.cost = cost;
+    public Cost costs(HashMap<String,Integer> costs) {
+        this.costs = costs;
         return this;
     }
 
@@ -35,18 +35,18 @@ public class Cost {
             return false;
         }
         Cost cost = (Cost) o;
-        return Objects.equals(cost, cost.cost);
+        return Objects.equals(this.costs, cost.costs);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hashCode(cost);
+        return Objects.hashCode(costs);
     }
 
     @Override
     public String toString() {
         return "{" +
-            " cost='" + getCost() + "'" +
+            " cost='" + getCosts() + "'" +
             "}";
     }
 }

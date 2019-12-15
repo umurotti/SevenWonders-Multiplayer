@@ -1,74 +1,149 @@
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Objects;
 
-/** 
+/**
  * @author: OmerFarukKurklu
  * @version: 0.1
-*/
+ */
 class WonderBoard {
     private WonderBoard leftNeighbor;
     private WonderBoard rightNeighbor;
-    private HashMap<String,Integer> sources; // String: Name of the resource, Integer: Amount of the resource
+    private HashMap<String, Integer> sources; // String: Name of the resource, Integer: Amount of the resource
     private Cost[] stageCosts;
     private int currentStage;
     private int diceValue;
     private String name;
     private HashMap<String, Card> builtCards; // String: Name of the Card, Card: instance of the Card
     private Action lockedAction;
-    private HashMap<String, Integer> leftDiscount;  // String: Name of the resource, Integer: price of the resource from left neighbor
-    private HashMap<String, Integer> rightDiscount; // String: Name of the resource, Integer: price of the resource from left neighbor
+    private HashMap<String, Integer> leftDiscount; // String: Name of the resource, Integer: price of the resource from
+                                                   // left neighbor
+    private HashMap<String, Integer> rightDiscount; // String: Name of the resource, Integer: price of the resource from
+                                                    // left neighbor
     private int[] militaryTokens;
     private int defeatTokens;
     private int handNo;
 
+    // Configurated WonderBoards.
+    public WonderBoard(String name, String source, Cost[] stageCosts) {
+        // militaryTokens[0]: 1st age military victories, militaryTokens[1]: 2nd,
+        // militaryTokens[2]: 3rd.
+        militaryTokens = new int[3];
+
+        // stageCosts[0]: 1st stage cost, stageCosts[1]: 2nd, stageCosts[2]: 3rd.
+        this.stageCosts = stageCosts;
+
+        this.name = name;
+
+        sources = new HashMap<String, Integer>() {
+            {
+                put("wood", 0);
+                put("stone", 0);
+                put("clay", 0);
+                put("ore", 0);
+                put("loom", 0);
+                put("papyrus", 0);
+                put("glass", 0);
+                put("compass", 0);
+                put("tablet", 0);
+                put("gear", 0);
+                put("coin", 0);
+                put("shield", 0);
+                put("victoryPoint", 0);
+            }
+        };
+
+        sources.put(source, 1); // The initial source of the Wonder Board.
+
+        builtCards = new HashMap<String, Card>();
+
+        leftDiscount = new HashMap<String, Integer>() {
+            {
+                put("wood", 2);
+                put("stone", 2);
+                put("clay", 2);
+                put("ore", 2);
+                put("loom", 2);
+                put("papyrus", 2);
+                put("glass", 2);
+            }
+        };
+        rightDiscount = new HashMap<String, Integer>() {
+            {
+                put("wood", 2);
+                put("stone", 2);
+                put("clay", 2);
+                put("ore", 2);
+                put("loom", 2);
+                put("papyrus", 2);
+                put("glass", 2);
+            }
+        };
+
+        lockedAction = null;
+        leftNeighbor = null;
+        rightNeighbor = null;
+        currentStage = 0;
+        defeatTokens = 0;
+        handNo = 0;
+        diceValue = 0;
+    }
+
     public WonderBoard() {
-        // militaryTokens[0]: 1st age military victories, militaryTokens[1]: 2nd, militaryTokens[2]: 3rd.
+        // militaryTokens[0]: 1st age military victories, militaryTokens[1]: 2nd,
+        // militaryTokens[2]: 3rd.
         militaryTokens = new int[3];
 
         // stageCosts[0]: 1st stage cost, stageCosts[1]: 2nd, stageCosts[2]: 3rd.
         stageCosts = new Cost[3];
 
-        sources = new HashMap<String,Integer>()
-        {{
-            put("wood", 0);
-            put("stone", 0);
-            put("clay", 0);
-            put("ore", 0);
-            put("loom",0);
-            put("papyrus", 0);
-            put("glass", 0);
-            put("compass", 0);
-            put("tablet", 0);
-            put("gear", 0);
-            put("coin", 0);
-            put("shield", 0);
-            put("victoryPoint", 0);
-        }};
-        builtCards = new HashMap<String,Card>();
+        sources = new HashMap<String, Integer>() {
+            {
+                put("wood", 0);
+                put("stone", 0);
+                put("clay", 0);
+                put("ore", 0);
+                put("loom", 0);
+                put("papyrus", 0);
+                put("glass", 0);
+                put("compass", 0);
+                put("tablet", 0);
+                put("gear", 0);
+                put("coin", 0);
+                put("shield", 0);
+                put("victoryPoint", 0);
+            }
+        };
+        builtCards = new HashMap<String, Card>();
 
-        leftDiscount = new HashMap<String, Integer>()
-        {{
-            put("wood", 2);
-            put("stone", 2);
-            put("clay", 2);
-            put("ore", 2);
-            put("loom", 2);
-            put("papyrus", 2);
-            put("glass", 2);
-        }};
-        rightDiscount = new HashMap<String, Integer>()
-        {{
-            put("wood", 2);
-            put("stone", 2);
-            put("clay", 2);
-            put("ore", 2);
-            put("loom", 2);
-            put("papyrus", 2);
-            put("glass", 2);
-        }};
+        leftDiscount = new HashMap<String, Integer>() {
+            {
+                put("wood", 2);
+                put("stone", 2);
+                put("clay", 2);
+                put("ore", 2);
+                put("loom", 2);
+                put("papyrus", 2);
+                put("glass", 2);
+            }
+        };
+        rightDiscount = new HashMap<String, Integer>() {
+            {
+                put("wood", 2);
+                put("stone", 2);
+                put("clay", 2);
+                put("ore", 2);
+                put("loom", 2);
+                put("papyrus", 2);
+                put("glass", 2);
+            }
+        };
     }
 
-    public WonderBoard(WonderBoard leftNeighbor, WonderBoard rightNeighbor, HashMap<String,Integer> sources, Cost[] stageCosts, int currentStage, int diceValue, String name, HashMap<String,Card> builtCards, Action lockedAction, HashMap<String,Integer> leftDiscount, HashMap<String,Integer> rightDiscount, int[] militaryTokens, int defeatTokens, int handNo) {
+    public WonderBoard(WonderBoard leftNeighbor, WonderBoard rightNeighbor, HashMap<String, Integer> sources,
+            Cost[] stageCosts, int currentStage, int diceValue, String name, HashMap<String, Card> builtCards,
+            Action lockedAction, HashMap<String, Integer> leftDiscount, HashMap<String, Integer> rightDiscount,
+            int[] militaryTokens, int defeatTokens, int handNo) {
         this.leftNeighbor = leftNeighbor;
         this.rightNeighbor = rightNeighbor;
         this.sources = sources;
@@ -101,11 +176,11 @@ class WonderBoard {
         this.rightNeighbor = rightNeighbor;
     }
 
-    public HashMap<String,Integer> getSources() {
+    public HashMap<String, Integer> getSources() {
         return this.sources;
     }
 
-    public void setSources(HashMap<String,Integer> sources) {
+    public void setSources(HashMap<String, Integer> sources) {
         this.sources = sources;
     }
 
@@ -141,11 +216,11 @@ class WonderBoard {
         this.name = name;
     }
 
-    public HashMap<String,Card> getBuiltCards() {
+    public HashMap<String, Card> getBuiltCards() {
         return this.builtCards;
     }
 
-    public void setBuiltCards(HashMap<String,Card> builtCards) {
+    public void setBuiltCards(HashMap<String, Card> builtCards) {
         this.builtCards = builtCards;
     }
 
@@ -157,19 +232,19 @@ class WonderBoard {
         this.lockedAction = lockedAction;
     }
 
-    public HashMap<String,Integer> getLeftDiscount() {
+    public HashMap<String, Integer> getLeftDiscount() {
         return this.leftDiscount;
     }
 
-    public void setLeftDiscount(HashMap<String,Integer> leftDiscount) {
+    public void setLeftDiscount(HashMap<String, Integer> leftDiscount) {
         this.leftDiscount = leftDiscount;
     }
 
-    public HashMap<String,Integer> getRightDiscount() {
+    public HashMap<String, Integer> getRightDiscount() {
         return this.rightDiscount;
     }
 
-    public void setRightDiscount(HashMap<String,Integer> rightDiscount) {
+    public void setRightDiscount(HashMap<String, Integer> rightDiscount) {
         this.rightDiscount = rightDiscount;
     }
 
@@ -207,7 +282,7 @@ class WonderBoard {
         return this;
     }
 
-    public WonderBoard sources(HashMap<String,Integer> sources) {
+    public WonderBoard sources(HashMap<String, Integer> sources) {
         this.sources = sources;
         return this;
     }
@@ -232,7 +307,7 @@ class WonderBoard {
         return this;
     }
 
-    public WonderBoard builtCards(HashMap<String,Card> builtCards) {
+    public WonderBoard builtCards(HashMap<String, Card> builtCards) {
         this.builtCards = builtCards;
         return this;
     }
@@ -242,12 +317,12 @@ class WonderBoard {
         return this;
     }
 
-    public WonderBoard leftDiscount(HashMap<String,Integer> leftDiscount) {
+    public WonderBoard leftDiscount(HashMap<String, Integer> leftDiscount) {
         this.leftDiscount = leftDiscount;
         return this;
     }
 
-    public WonderBoard rightDiscount(HashMap<String,Integer> rightDiscount) {
+    public WonderBoard rightDiscount(HashMap<String, Integer> rightDiscount) {
         this.rightDiscount = rightDiscount;
         return this;
     }
@@ -268,19 +343,88 @@ class WonderBoard {
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (o == this)
+    public boolean equals(Object obj) {
+        if (this == obj)
             return true;
-        if (!(o instanceof WonderBoard)) {
+        if (obj == null)
             return false;
-        }
-        WonderBoard wonderBoard = (WonderBoard) o;
-        return Objects.equals(leftNeighbor, wonderBoard.leftNeighbor) && Objects.equals(rightNeighbor, wonderBoard.rightNeighbor) && Objects.equals(sources, wonderBoard.sources) && Objects.equals(stageCosts, wonderBoard.stageCosts) && currentStage == wonderBoard.currentStage && diceValue == wonderBoard.diceValue && Objects.equals(name, wonderBoard.name) && Objects.equals(builtCards, wonderBoard.builtCards) && Objects.equals(lockedAction, wonderBoard.lockedAction) && Objects.equals(leftDiscount, wonderBoard.leftDiscount) && Objects.equals(rightDiscount, wonderBoard.rightDiscount) && Objects.equals(militaryTokens, wonderBoard.militaryTokens) && defeatTokens == wonderBoard.defeatTokens && handNo == wonderBoard.handNo;
+        if (getClass() != obj.getClass())
+            return false;
+        WonderBoard other = (WonderBoard) obj;
+        if (builtCards == null) {
+            if (other.builtCards != null)
+                return false;
+        } else if (!builtCards.equals(other.builtCards))
+            return false;
+        if (currentStage != other.currentStage)
+            return false;
+        if (defeatTokens != other.defeatTokens)
+            return false;
+        if (diceValue != other.diceValue)
+            return false;
+        if (handNo != other.handNo)
+            return false;
+        if (leftDiscount == null) {
+            if (other.leftDiscount != null)
+                return false;
+        } else if (!leftDiscount.equals(other.leftDiscount))
+            return false;
+        if (leftNeighbor == null) {
+            if (other.leftNeighbor != null)
+                return false;
+        } else if (!leftNeighbor.equals(other.leftNeighbor))
+            return false;
+        if (lockedAction == null) {
+            if (other.lockedAction != null)
+                return false;
+        } else if (!lockedAction.equals(other.lockedAction))
+            return false;
+        if (!Arrays.equals(militaryTokens, other.militaryTokens))
+            return false;
+        if (name == null) {
+            if (other.name != null)
+                return false;
+        } else if (!name.equals(other.name))
+            return false;
+        if (rightDiscount == null) {
+            if (other.rightDiscount != null)
+                return false;
+        } else if (!rightDiscount.equals(other.rightDiscount))
+            return false;
+        if (rightNeighbor == null) {
+            if (other.rightNeighbor != null)
+                return false;
+        } else if (!rightNeighbor.equals(other.rightNeighbor))
+            return false;
+        if (sources == null) {
+            if (other.sources != null)
+                return false;
+        } else if (!sources.equals(other.sources))
+            return false;
+        if (!Arrays.equals(stageCosts, other.stageCosts))
+            return false;
+        return true;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(leftNeighbor, rightNeighbor, sources, stageCosts, currentStage, diceValue, name, builtCards, lockedAction, leftDiscount, rightDiscount, militaryTokens, defeatTokens, handNo);
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + ((builtCards == null) ? 0 : builtCards.hashCode());
+        result = prime * result + currentStage;
+        result = prime * result + defeatTokens;
+        result = prime * result + diceValue;
+        result = prime * result + handNo;
+        result = prime * result + ((leftDiscount == null) ? 0 : leftDiscount.hashCode());
+        result = prime * result + ((leftNeighbor == null) ? 0 : leftNeighbor.hashCode());
+        result = prime * result + ((lockedAction == null) ? 0 : lockedAction.hashCode());
+        result = prime * result + Arrays.hashCode(militaryTokens);
+        result = prime * result + ((name == null) ? 0 : name.hashCode());
+        result = prime * result + ((rightDiscount == null) ? 0 : rightDiscount.hashCode());
+        result = prime * result + ((rightNeighbor == null) ? 0 : rightNeighbor.hashCode());
+        result = prime * result + ((sources == null) ? 0 : sources.hashCode());
+        result = prime * result + Arrays.hashCode(stageCosts);
+        return result;
     }
 
     @Override

@@ -1,6 +1,6 @@
 import java.util.HashMap;
 
-class TestTable{
+class TestTablev2{
 
     private Card [][] hands;
     HashMap<String, WonderBoard> wonders;
