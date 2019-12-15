@@ -39,9 +39,9 @@ public class in_game_controller implements Initializable  {
     String wonderID;
     WonderBoard sampleWonderBoard = new WonderBoard();
     @FXML
-    GridPane my_resources_grid;
+    GridPane resources_grid_0;
     @FXML
-    GridPane my_structure_grid;
+    GridPane structure_grid_0;
     Map<String,String> myStructuresBuilded = new HashMap<String,String>();
     Map<String,String> leftStructuresBuilded = new HashMap<String,String>();
     Map<String,String> rightStructuresBuilded = new HashMap<String,String>();
@@ -91,7 +91,7 @@ public class in_game_controller implements Initializable  {
     GridPane trade_sources_grid;
     int selection =0;
     HandContainer handCards;
-
+    Scene sceneOfTable;
 
     public void selectCard(MouseEvent event)throws Exception{
         PopOver popOver = new PopOver();
@@ -211,12 +211,12 @@ public class in_game_controller implements Initializable  {
         con.sendAction(toSend);
     }
 
-    public void refreshSources(HashMap<String,Integer> sources)throws Exception{
-        GridPane tempGrid= my_resources_grid;
+    public void refreshSources(HashMap<String,Integer> sources, GridPane pane)throws Exception{
+        GridPane tempGrid= pane;
         for (Node child : tempGrid.getChildren()) {
             if (child.getId() != null)
                 if(child.getId().charAt(0) == 'l'){
-                    String nameSource = child.getId().substring(5);
+                    String nameSource = child.getId().substring(4);
                     Label temp = (Label)child;
                     temp.setText(sources.get(nameSource) + "");
                 }
@@ -230,35 +230,153 @@ public class in_game_controller implements Initializable  {
     }
 
     public void refresh()throws Exception {
-
-        /*Hand = 6;
-        HashMap<String,WonderBoard> wonders= (HashMap<String, WonderBoard>) con.ConvertJson(tableID);
-
-        handCards = con.ConvertJsonHand(tableID);
-
-        WonderBoard my_wonder = wonders.get(wonderID);
-        refreshSources(my_wonder.getSources());
-        refreshStructures(my_wonder, my_structure_grid);*/
+        sceneOfTable = dice.getScene();
 
 
-      /*  WonderBoard left_wonder = wonders.get(my_wonder.getLeftNeighbor().getName());
-        refreshSources(my_wonder.getSources());
-        refreshStructures(my_wonder, left_structure_grid);
+        System.out.println("Entered refresh");
+        Hand = 6;
+        //HashMap<String,WonderBoard> wonders= (HashMap<String, WonderBoard>) con.ConvertJson(tableID);
 
-        WonderBoard right_wonder = wonders.get(my_wonder.getRightNeighbor().getName());
-        refreshSources(my_wonder.getSources());
-        refreshStructures(my_wonder, right_structure_grid);
+        //handCards = con.ConvertJsonHand(tableID);
 
-        WonderBoard left_wonder = wonders.get(my_wonder.getLeftNeighbor().getName());
-        refreshSources(my_wonder.getSources());
-        refreshStructures(my_wonder, 1_structure_grid);
+        System.out.println("Entered Test");
+        //FOR TEST PURPOSES !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!DELETE CODE BELOW
+        WonderBoard TestWonder = new WonderBoard();
+        TestWonder.setName("ahmet");
+        WonderBoard TestWonder1 = new WonderBoard();
+        TestWonder1.setName("ahmet1");
+        WonderBoard TestWonder2 = new WonderBoard();
+        TestWonder2.setName("ahmet2");
+        WonderBoard TestWonder3 = new WonderBoard();
+        TestWonder3.setName("ahmet3");
+        WonderBoard TestWonder4 = new WonderBoard();
+        TestWonder4.setName("ahmet4");
+        WonderBoard TestWonder5 = new WonderBoard();
+        TestWonder5.setName("ahmet5");
+        WonderBoard TestWonder6 = new WonderBoard();
+        TestWonder6.setName("ahmet6");
 
-        WonderBoard right_wonder = wonders.get(my_wonder.getRightNeighbor().getName());
-        refreshSources(my_wonder.getSources());
-        refreshStructures(my_wonder, 2_structure_grid);
-*/
 
 
+        Card card1 = new Card();
+        card1.setName("altar");
+        Card card2 = new Card();
+        card2.setName("altar");
+        Card card3 = new Card();
+        card3.setName("altar");
+        Card card4 = new Card();
+        card4.setName("altar");
+        HashMap<String, Card> cardsMap = new HashMap<String, Card>();
+        cardsMap.put("1", card1);
+        cardsMap.put("2", card1);
+        cardsMap.put("3", card1);
+        cardsMap.put("4", card1);
+        TestWonder.setBuiltCards(cardsMap);
+        TestWonder1.setBuiltCards(cardsMap);
+        TestWonder2.setBuiltCards(cardsMap);
+        TestWonder3.setBuiltCards(cardsMap);
+        TestWonder4.setBuiltCards(cardsMap);
+        TestWonder5.setBuiltCards(new HashMap<String, Card>());
+        TestWonder6.setBuiltCards(cardsMap);
+        HashMap<String,WonderBoard> wonders= new HashMap<String, WonderBoard>();
+        wonders.put("ahmet", TestWonder);
+        wonders.put("ahmet1", TestWonder1);
+        wonders.put("ahmet2", TestWonder2);
+        wonders.put("ahmet3", TestWonder3);
+        wonders.put("ahmet4", TestWonder4);
+        wonders.put("ahmet5", TestWonder5);
+        wonders.put("ahmet6", TestWonder6);
+        int enemyNo = 3;
+
+        WonderBoard my_wonder = wonders.get("ahmet");
+        String left_neighbour_name = "ahmet1";
+        String right_neighbour_name = "ahmet2";
+
+
+
+
+        for(Map.Entry mapElement : wonders.entrySet()){
+            String key = (String)mapElement.getKey();
+            String structure_GridName = "#structure_grid_";
+            String sourcesGridName = "#resources_grid_";
+            String wonderName = wonders.get(key).getName();
+            GridPane structure_pane;
+            GridPane sources_pane;
+            if(key.equals(my_wonder.getName())){
+                structure_GridName = structure_GridName + "0"  ;
+                sourcesGridName =  sourcesGridName + "0" ;
+            }else if(key.equals(left_neighbour_name)){
+                structure_GridName = structure_GridName + "1"  ;
+                sourcesGridName =  sourcesGridName + "1" ;
+            }else if(key.equals(right_neighbour_name)){
+                structure_GridName = structure_GridName + "2" ;
+                sourcesGridName = sourcesGridName + "2" ;
+            }else {
+                structure_GridName = structure_GridName + enemyNo ;
+                sourcesGridName = sourcesGridName + enemyNo ;
+                enemyNo++;
+            }
+            System.out.println(key  +"      "+ sourcesGridName);
+           // sources_pane = (GridPane)sceneOfTable.lookup(sourcesGridName);
+
+            sources_pane = (GridPane)sceneOfTable.lookup(sourcesGridName);
+            structure_pane = (GridPane)sceneOfTable.lookup(structure_GridName);
+            refreshSources(wonders.get(key).getSources(),sources_pane);
+            refreshStructures(wonders.get(key),structure_pane);
+        }
+
+        // burada her strucure gridi çağırılacak, refreshere gerekli gridler verilecek
+       /* refreshStructures(a, left_structure_grid);
+        refreshStructures(a, right_structure_grid);*/
+
+
+
+
+
+
+
+
+
+
+        //FOR TEST PURPOSES!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!DELETE CODE ABOVE
+        //ASIL CODE BURADA BAŞLIYOR
+
+        /*WonderBoard my_wonder = wonders.get(wonderID);
+        refreshSources(my_wonder.getSources() ,resources_grid_0);
+        refreshStructures(my_wonder, structure_grid_0);
+        String left_neighbour_name = my_wonder.getLeftNeighbor().getName();
+        String right_neighbour_name = my_wonder.getRightNeighbor().getName();
+
+        int enemyNo = 3;
+
+        //burası my wonder haric hepsini güncelliyor
+        //1 ve 2 yi ayrıca kontrol ediyor, 1 left neighbour, 2 right neighbour
+        for(Map.Entry mapElement : wonders.entrySet()){
+            String key = (String)mapElement.getKey();
+            String structure_GridName = "#structure_grid_";
+            String sourcesGridName = "#resources_grid_";
+            String wonderName = wonders.get(key).getName();
+            GridPane structure_pane;
+            GridPane sources_pane;
+            if(key.equals(wonderID){
+                structure_GridName = structure_GridName + "0"  ;
+                sourcesGridName =  sourcesGridName + "0" ;
+            }else if(key.equals(left_neighbour_name)){
+                structure_GridName = structure_GridName + "1"  ;
+                sourcesGridName =  sourcesGridName + "1" ;
+            }else if(key.equals(right_neighbour_name)){
+                structure_GridName = structure_GridName + "2" ;
+                sourcesGridName = sourcesGridName + "2" ;
+            }else {
+                structure_GridName = structure_GridName + enemyNo ;
+                sourcesGridName = sourcesGridName + enemyNo ;
+                enemyNo++;
+            }
+            sources_pane = (GridPane)sceneOfTable.lookup(sourcesGridName);
+            structure_pane = (GridPane)sceneOfTable.lookup(structure_GridName);
+            refreshSources(wonders.get(key).getSources(),sources_pane);
+            refreshStructures(wonders.get(key),structure_pane);
+        }
 
         // burada her strucure gridi çağırılacak, refreshere gerekli gridler verilecek
        /* refreshStructures(a, left_structure_grid);
@@ -303,26 +421,17 @@ public class in_game_controller implements Initializable  {
 
     public void refreshStructures(WonderBoard wonder,GridPane gridName){
         Iterator cardIterator =  wonder.getBuiltCards().entrySet().iterator();
-        System.out.println("HashMap after adding bonus marks:");
-        while (cardIterator.hasNext()) {
+        Scene sceneOfWonder = sceneOfTable;
+        int noOfImage = 0;
+        while(cardIterator.hasNext()){
+            String nameOfImageView = "#structure_" + gridName.getId().substring(15) + "_" + noOfImage; //15 çünkü structure_0 derken 11 den başlarsan 0 ı alırsın
             Map.Entry mapElement = (Map.Entry)cardIterator.next();
             Card marks = ((Card)mapElement.getValue());
-            System.out.println("r");
-            System.out.println(marks.getName());
-            for (Node child : gridName.getChildren()) {// bu kod biraz çirkin, böyle olmasının bir nedeni var, değiştirme
-                System.out.println(child.getId());
-                if(child.getId() != null)
-                    System.out.println(child.getId().substring(13) + "BUraaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
-                if(child.getId() != null && child.getId().substring(13).equals(myStructureNo + "")){
-                    ImageView tempImage = (ImageView)child;
-                    tempImage.setImage(images2.get(marks.getName()));
-                    myStructureNo++;
-                    break;
-                }
-            }
+            ImageView structureImagePlace = (ImageView) sceneOfWonder.lookup(nameOfImageView);
+            structureImagePlace.setImage(images2.get(marks.getName()));
+            noOfImage++;
 
         }
-
     }
 
     public void startPoint() throws Exception {
@@ -351,6 +460,8 @@ public class in_game_controller implements Initializable  {
         if(join_game_controller.TableID.equals(""))
             tableID=start_game_controller.TableID;
         wonderID = player_id_controller.WonderID;
+
+
     }
 
     public void handAnimation(ImageView hand){
