@@ -6,6 +6,8 @@
 package model;
 
 import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Objects;
 
 
@@ -16,8 +18,11 @@ import java.util.Objects;
 public class WonderBoard {
     private String leftNeighbor;
     private String rightNeighbor;
+    
     private HashMap<String,Integer> sources; // String: Name of the resource, Integer: Amount of the resource
     private Cost[] stageCosts;
+    private List<String> sourcesToCalculate;
+    
     private int currentStage;
     private int diceValue;
     private String name;
@@ -35,7 +40,12 @@ public class WonderBoard {
 
         // stageCosts[0]: 1st stage cost, stageCosts[1]: 2nd, stageCosts[2]: 3rd.
         stageCosts = new Cost[3];
-
+        
+        //*
+        this.sourcesToCalculate = new LinkedList<>();
+        sourcesToCalculate.add("aa");
+        //*
+        
         sources = new HashMap<String,Integer>()
         {{
             put("wood", 0);
@@ -76,17 +86,20 @@ public class WonderBoard {
         }};
     }
 
-    public WonderBoard( String name) {
+    public WonderBoard( String name, int handNo) {
         this.name = name;
         // militaryTokens[0]: 1st age military victories, militaryTokens[1]: 2nd, militaryTokens[2]: 3rd.
         militaryTokens = new int[3];
-
+        this.handNo = handNo;
+        
         // stageCosts[0]: 1st stage cost, stageCosts[1]: 2nd, stageCosts[2]: 3rd.
         stageCosts = new Cost[3];
         HashMap<String, Integer> toAdd = new HashMap<>();
         toAdd.put("wood", 0);
         Cost x = new Cost(toAdd);
         stageCosts[0] = x;
+        sourcesToCalculate = new LinkedList<>();
+        sourcesToCalculate.add("llssww");
         
         sources = new HashMap<String,Integer>()
         {{
@@ -107,7 +120,7 @@ public class WonderBoard {
         
         builtCards  = new HashMap<String,Card>()
         {{
-            put("altar", new Card(new Cost(new HashMap<String, Integer>()), "red", "altar", "", 3, sources));
+            //put("altar", new Card(new Cost(new HashMap<String, Integer>()), "red", "altar", "", 3, sources));
         }};
 
         leftDiscount = new HashMap<String, Integer>()
@@ -130,6 +143,14 @@ public class WonderBoard {
             put("papyrus", 2);
             put("glass", 2);
         }};
+    }
+
+    public List<String> getSourcesToCalculate() {
+        return sourcesToCalculate;
+    }
+
+    public void setSourcesToCalculate(List<String> sourcesToCalculate) {
+        this.sourcesToCalculate = sourcesToCalculate;
     }
 
     public WonderBoard(String leftNeighbor, String rightNeighbor, HashMap<String,Integer> sources,

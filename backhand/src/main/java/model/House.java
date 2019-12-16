@@ -5,6 +5,8 @@
  */
 package model;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
@@ -51,6 +53,20 @@ public class House {
 //        decks.put(AGE_TWO, deckFactory.generateDeck(AGE_TWO));
 //        decks.put(AGE_THREE, deckFactory.generateDeck(AGE_THREE));
 
+//        SimpleCard x = new SimpleCard(true);
+//        DiscountCard y = new DiscountCard("asdf", "", null, 0, null, "", "");
+//        CumulativeCard z = new CumulativeCard("", "", null, 0, null, "", null, 0, 0);
+        
+//        System.out.println("SimpleCard:");
+//        System.out.println(parseJSON(x));
+//        
+//        System.out.println("DiscountCard:");
+//        System.out.println(parseJSON(y));
+//        
+//        System.out.println("CumulativeCard:");
+//        System.out.println(parseJSON(z));
+        
+        
         Thread acceptor = new Thread(new ConnectionAccepter());
         acceptor.setDaemon(true);
         acceptor.start();
@@ -72,6 +88,7 @@ public class House {
         } 
         return obj; 
     }
+    
     
     public boolean createTable(String ownerID, String tableID) {
         if(!tables.containsKey(tableID)) {

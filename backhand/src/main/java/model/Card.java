@@ -1,13 +1,20 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package model;
 import java.util.List;
+import java.util.Objects;
 
-abstract class Card {
+public abstract class Card {
     private final Cost cost;
     private final String color;
     private final String name;
     private final int minNoOfPlayers;
     private final List<String> freeBuildings;
 
-    abstract boolean play(WonderBoard wb);
+    abstract void play(WonderBoard wb, String selection);
 
     public Card(String name, String color, Cost cost, int minNoOfPlayers, List<String> freeBuildings) {
         this.cost = cost;
@@ -15,6 +22,14 @@ abstract class Card {
         this.name = name;
         this.minNoOfPlayers = minNoOfPlayers;
         this.freeBuildings = freeBuildings;
+    }
+    
+    public Card() {
+        this.cost = null;
+        this.color = null;
+        this.name = null;
+        this.minNoOfPlayers = 0;
+        this.freeBuildings = null;
     }
 
     public Cost getCost() {

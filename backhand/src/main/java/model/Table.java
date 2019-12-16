@@ -140,7 +140,7 @@ public class Table {
         for(int a = 0; a< noOfPlayers;a++)
         {
       
-            wonders.put(playerIDs.get(a),new WonderBoard(playerIDs.get(a)));
+            wonders.put(playerIDs.get(a),new WonderBoard(playerIDs.get(a), a));
         }
     }
     public void pickMagicCard(String wonderID)
@@ -157,11 +157,15 @@ public class Table {
 
     public void lockAction(CardAction action){
         this.getWonders().get(action.getWonderID()).setLockedAction(action);
+        noOfActions++;
+        if(noOfActions == noOfPlayers) {
+            playTurn();
+        }
     }
     
     public boolean isPossible(CardAction action) {
         WonderBoard wb = this.getWonders().get(action.getWonderID());
-        HashMap<String, Integer> wbSources = wb.getSources();
+        List<String> wbSources = wb.getSourcesToCalculate();
         HashMap<String, Integer> leftTrade = action.getLeftTrade();
         HashMap<String, Integer> rightTrade = action.getRightTrade();
         
@@ -186,13 +190,7 @@ public class Table {
                 return false;
             }
             Cost cost = wb.getStageCosts()[wb.getCurrentStage()];
-            if(costCheck(cost, wbSources, leftTrade, rightTrade)) {
-                lockAction(action);
-                noOfActions++;
-                
-                if(noOfActions == noOfPlayers) {
-                    playTurn();
-                }
+            if(costCheck(cost, wbSources, leftTrade, rightTrade)) {                
                 return true;
             }
             else
@@ -201,54 +199,111 @@ public class Table {
         return false;
     }    
 
-    private boolean costCheck(Cost cost, HashMap<String, Integer> wbSources, HashMap<String, Integer> leftTrade, HashMap<String, Integer> rightTrade){
-        HashMap<String, Integer> costs = cost.getCost();
-        if(!(cost.getCost().keySet().containsAll(leftTrade.keySet()) ) || !(cost.getCost().keySet().containsAll(rightTrade.keySet()) ) ) {
-            return false;
-        }
-        for (String material : costs.keySet()){
-            // If the Wonder already has materials for the card, The Trades map for that material should be zero or key should not exist.
-            if ((wbSources.get(material) >= costs.get(material))) {
-                if ((leftTrade.containsKey(material) && (leftTrade.get(material) != 0)) ||
-                (rightTrade.containsKey(material) && (rightTrade.get(material) != 0))) {
-                    return false;
+    public boolean costCheck(Cost cost, List<String> wbSourcesToCalculate, HashMap<String, Integer> leftTrade, HashMap<String, Integer> rightTrade){
+//        HashMap<String, Integer> costs = cost.getCost();
+//        if(!(cost.getCost().keySet().containsAll(leftTrade.keySet()) ) || !(cost.getCost().keySet().containsAll(rightTrade.keySet()) ) ) {
+//            return false;
+//        }
+//        for (String material : costs.keySet()){
+//            // If the Wonder already has materials for the card, The Trades map for that material should be zero or key should not exist.
+//            if ((wbSources.get(material) >= costs.get(material))) {
+//                if ((leftTrade.containsKey(material) && (leftTrade.get(material) != 0)) ||
+//                (rightTrade.containsKey(material) && (rightTrade.get(material) != 0))) {
+//                    return false;
+//                }
+//            }
+//            // If the Wonder does not have enough materials, its materials plus the trade materials should equal to cost.
+//            else {
+//                if(leftTrade.containsKey(material) && rightTrade.containsKey(material)){
+//                    if (wbSources.get(material) + leftTrade.get(material) + rightTrade.get(material) != costs.get(material)){
+//                        return false;
+//                    }
+//                }
+//                else if(leftTrade.containsKey(material)){
+//                    if ((wbSources.get(material) + leftTrade.get(material)) != costs.get(material)) {
+//                        return false;
+//                    }
+//                }
+//                else if(rightTrade.containsKey(material)){
+//                    if ((wbSources.get(material) + rightTrade.get(material)) != costs.get(material)) {
+//                        return false;
+//                    }
+//                }
+//                else {
+//                    return false;
+//                }
+//            }
+//        }
+//        return true;
+        ListIterator it = wbSourcesToCalculate.listIterator();
+        String sourceToCheck;
+        
+        while (it.hasNext()) {
+            sourceToCheck = (String) it.next();
+            int sourceFoundIndex = 0;
+            
+            for (Map.Entry<String, Integer> entry : cost.getCost().entrySet()) {
+                if (entry.getValue() != 0) {
+                    String tmpToSearch = "";
+                    for (int i = 0; i < entry.getValue(); i++) {
+                        tmpToSearch += entry.getKey().charAt(0);
+                    }
+                    if (!sourceToCheck.contains(tmpToSearch)) {
+                        break;
+                    } 
                 }
+                sourceFoundIndex++;
             }
-            // If the Wonder does not have enough materials, its materials plus the trade materials should equal to cost.
-            else {
-                if(leftTrade.containsKey(material) && rightTrade.containsKey(material)){
-                    if (wbSources.get(material) + leftTrade.get(material) + rightTrade.get(material) != costs.get(material)){
-                        return false;
-                    }
-                }
-                else if(leftTrade.containsKey(material)){
-                    if ((wbSources.get(material) + leftTrade.get(material)) != costs.get(material)) {
-                        return false;
-                    }
-                }
-                else if(rightTrade.containsKey(material)){
-                    if ((wbSources.get(material) + rightTrade.get(material)) != costs.get(material)) {
-                        return false;
-                    }
-                }
-                else {
-                    return false;
-                }
-            }
+            
+            if(sourceFoundIndex == cost.getCost().entrySet().size())
+                return true;
         }
+        return false;
+    }
+    
+    
+
+    public boolean areAllTrue(boolean[] array)
+    {
+        for(boolean b : array) if(!b) return false;
         return true;
-      }
+    }
+
+//
+//    
+//    private String generateCostString(Cost cost) {
+//        String costString = "";
+//        for(Map.Entry<String, Integer> entry : cost.getCost().entrySet()) {
+//            if(entry.getValue() != 0) {
+//                for(int i = 0; i < entry.getValue();i++) {
+//                    costString += entry.getKey().charAt(0);
+//                }
+//            }
+//        }
+//        char tempArray[] = costString.toCharArray();
+//        Arrays.sort(tempArray);
+//        return new String(tempArray);
+//    }
+    
 
 
     public void playTurn()
     {
         HashMap<String, WonderBoard> wonders = this.getWonders();
-        for (String wbID : wonders.keySet()){
+        for (String wbID : wonders.keySet()) {
             this.playAction(wonders.get(wbID));
             wonders.get(wbID).setHandNo((wonders.get(wbID).getHandNo() + 1)%7);
         }
         turn++;
         noOfActions = 0;
+        if(turn < 7) {
+            Card[][] tmp = getHands();
+            Card[] tmp2 = tmp[noOfPlayers-1];
+            for(int i = noOfPlayers - 1; i > 0; i--) {
+                tmp[i] = tmp[i - 1];
+            }
+            tmp[0] = tmp2;
+        }
     }
 
     private void playAction(WonderBoard wb){
@@ -272,7 +327,9 @@ public class Table {
         if (choice == 1) {
             // Get the card from hand.
             Card card = hands[wbHandNo][cardNo];
-            card.play(wb, "");
+            //*ToTest*//
+           //SimpleCard card = (SimpleCard) hands[wbHandNo][cardNo];
+           card.play(wb, "");
         }
 
         // Build Wonder stage. For this iteration our stages only give +3 VP, 0 VP, +7 VP.

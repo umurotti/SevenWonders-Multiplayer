@@ -1,4 +1,14 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package model;
+
 import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 /**
  * @author OmerFarukKurklu
@@ -9,29 +19,46 @@ public class DiscountCard extends Card{
     private String neighbor; // Possible meanful values: 'left': left neighbor, 'right': right neighbor, 'both'(left and right), null: not initialized.
     private String discountMaterial; // Possible meanful values: 'raw': raw materials(W,S,O,C), 'man': manifactured materials(L,P,G), null: not initialized
 
-    private final Set<String> RAW_MAT;
-    private final Set<String> MAN_MAT;
+    private Set<String> RAW_MAT;
+    
+    private Set<String> MAN_MAT;
 
     public DiscountCard(String name, String color, Cost cost, int minNoOfPlayers, List<String> freeBuildings, String neighbor, String discountMaterial) {
-        super(cost, color, name, minNoOfPlayers, freeBuildings);
+        super(name, color, cost, minNoOfPlayers, freeBuildings);
         this.neighbor = neighbor;
         this.discountMaterial = discountMaterial;
 
-        this.RAW_MAT = new Set<String>() {{
+        RAW_MAT  = new HashSet<String>(){{
             add("wood");
             add("stone");
             add("ore");
             add("clay");
         }};
-        this.MAN_MAT = new Set<String>() {{
+        
+        MAN_MAT = new HashSet<String>() {{
             add("papyrus");
             add("loom");
             add("glass");
         }};
     }    
 
+    public DiscountCard() {
+            RAW_MAT  = new HashSet<String>(){{
+            add("wood");
+            add("stone");
+            add("ore");
+            add("clay");
+        }};
+        
+        MAN_MAT = new HashSet<String>() {{
+            add("papyrus");
+            add("loom");
+            add("glass");
+        }};
+    }
+
     @Override
-    public boolean play(WonderBoard wb){
+    public void play(WonderBoard wb, String selection){
         if (neighbor.equals("left")){
             HashMap<String,Integer> discountedMap = wb.getLeftDiscount();
             if (discountMaterial.equals("raw")){
@@ -41,7 +68,7 @@ public class DiscountCard extends Card{
                     }
                 }
                 wb.setLeftDiscount(discountedMap);
-                return true;
+                //return true;
             }
             else if(discountMaterial.equals("man")) {
                 for (String k : discountedMap.keySet()){
@@ -50,11 +77,11 @@ public class DiscountCard extends Card{
                     }
                 }
                 wb.setLeftDiscount(discountedMap);
-                return true;
+                //return true;
             }
         }
         else if (neighbor.equals("right")){
-            HashMap<String,Integer> discountedMap = wb.getLeftDiscount();
+            HashMap<String,Integer> discountedMap = wb.getRightDiscount();
             if (discountMaterial.equals("raw")){
                 for (String k : discountedMap.keySet()){
                     if (RAW_MAT.contains(k)){
@@ -62,7 +89,7 @@ public class DiscountCard extends Card{
                     }
                 }
                 wb.setRightDiscount(discountedMap);
-                return true;
+                //return true;
             }
             else if(discountMaterial.equals("man")) {
                 for (String k : discountedMap.keySet()){
@@ -71,7 +98,7 @@ public class DiscountCard extends Card{
                     }
                 }
                 wb.setRightDiscount(discountedMap);
-                return true;
+                //return true;
             }
         }
         else if (neighbor.equals("both")){
@@ -86,7 +113,7 @@ public class DiscountCard extends Card{
                 }
                 wb.setRightDiscount(discountedMapR);
                 wb.setLeftDiscount(discountedMapL);
-                return true;
+                //return true;
             }
             else if(discountMaterial.equals("man")) {
                 for (String k : discountedMapR.keySet()){
@@ -97,10 +124,10 @@ public class DiscountCard extends Card{
                 }
                 wb.setRightDiscount(discountedMapR);
                 wb.setLeftDiscount(discountedMapL);
-                return true;
+                //return true;
             }
         }
-        return false;
+        //return false;
     };
 
     public String getNeighbor() {
@@ -132,7 +159,7 @@ public class DiscountCard extends Card{
     @Override
     public String toString() {
         return "{" +
-            " neighbor='" + getneighbor() + "'" +
+            " neighbor='" + //getneighbor() + "'" +
             ", discountMaterial='" + getDiscountMaterial() + "'" +
             "}";
     }
@@ -167,4 +194,21 @@ public class DiscountCard extends Card{
             return false;
         return true;
     }
+
+    public Set<String> getRAW_MAT() {
+        return RAW_MAT;
+    }
+
+    public void setRAW_MAT(Set<String> RAW_MAT) {
+        this.RAW_MAT = RAW_MAT;
+    }
+
+    public Set<String> getMAN_MAT() {
+        return MAN_MAT;
+    }
+
+    public void setMAN_MAT(Set<String> MAN_MAT) {
+        this.MAN_MAT = MAN_MAT;
+    }
+    
 }

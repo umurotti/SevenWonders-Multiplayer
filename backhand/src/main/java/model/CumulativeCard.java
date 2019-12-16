@@ -1,3 +1,10 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package model;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Set;
@@ -24,80 +31,80 @@ public class CumulativeCard extends Card {
     }
 
     @Override
-    boolean play(WonderBoard wb) {
+    void play(WonderBoard wb, String selection) {
         int amount = 0;
         for (String dependency : dependencies) {
-            if (dependency.equals("stage")){
-                if (involve.equals("own")) {
-                    amount += wb.getCurrentStage();
-                }
-                else if (involve.equals("neigbor")){
-                    amount += wb.getLeftNeighbor().getCurrentStage();
-                    amount += wb.getRightNeighbor().getCurrentStage();
-                }
-                else if (involve.equals("both")){
-                    amount += wb.getCurrentStage();
-                    amount += wb.getLeftNeighbor().getCurrentStage();
-                    amount += wb.getRightNeighbor().getCurrentStage();
-                }
-            }
-            else if (dependency.equals("defeatTokens")){
-                if (involve.equals("own")) {
-                    amount += wb.getDefeatTokens();
-                }
-                else if (involve.equals("neigbor")){
-                    amount += wb.getLeftNeighbor().getDefeatTokens();
-                    amount += wb.getRightNeighbor().getDefeatTokens();
-                }
-                else if (involve.equals("both")){
-                    amount += wb.getDefeatTokens();
-                    amount += wb.getLeftNeighbor().getDefeatTokens();
-                    amount += wb.getRightNeighbor().getDefeatTokens();
-                }
-            }
-            else {
-                if (involve.equals("own")) {
-                    for (Card card : wb.getBuiltCards().values()){
-                        if (card.getColor().equals(dependency))
-                            amount++;
-                    }
-                }
-                else if (involve.equals("neigbor")){
-                    for (Card card : wb.getLeftNeighbor().getBuiltCards().values()){
-                        if (card.getColor().equals(dependency))
-                            amount++;
-                    }
-                    for (Card card : wb.getRightNeighbor().getBuiltCards().values()){
-                        if (card.getColor().equals(dependency))
-                            amount++;
-                    }
-                }
-                else if (involve.equals("both")){
-                    for (Card card : wb.getBuiltCards().values()){
-                        if (card.getColor().equals(dependency))
-                            amount++;
-                    }
-                    for (Card card : wb.getLeftNeighbor().getBuiltCards().values()){
-                        if (card.getColor().equals(dependency))
-                            amount++;
-                    }
-                    for (Card card : wb.getRightNeighbor().getBuiltCards().values()){
-                        if (card.getColor().equals(dependency))
-                            amount++;
-                    }
-                }
-            }
+//            if (dependency.equals("stage")){
+//                if (involve.equals("own")) {
+//                    amount += wb.getCurrentStage();
+//                }
+//                else if (involve.equals("neigbor")){
+//                    amount += wb.getLeftNeighbor().getCurrentStage();
+//                    amount += wb.getRightNeighbor().getCurrentStage();
+//                }
+//                else if (involve.equals("both")){
+//                    amount += wb.getCurrentStage();
+//                    amount += wb.getLeftNeighbor().getCurrentStage();
+//                    amount += wb.getRightNeighbor().getCurrentStage();
+//                }
+//            }
+//            else if (dependency.equals("defeatTokens")){
+//                if (involve.equals("own")) {
+//                    amount += wb.getDefeatTokens();
+//                }
+//                else if (involve.equals("neigbor")){
+//                    amount += wb.getLeftNeighbor().getDefeatTokens();
+//                    amount += wb.getRightNeighbor().getDefeatTokens();
+//                }
+//                else if (involve.equals("both")){
+//                    amount += wb.getDefeatTokens();
+//                    amount += wb.getLeftNeighbor().getDefeatTokens();
+//                    amount += wb.getRightNeighbor().getDefeatTokens();
+//                }
+//            }
+//            else {
+//                if (involve.equals("own")) {
+//                    for (Card card : wb.getBuiltCards().values()){
+//                        if (card.getColor().equals(dependency))
+//                            amount++;
+//                    }
+//                }
+//                else if (involve.equals("neigbor")){
+//                    for (Card card : wb.getLeftNeighbor().getBuiltCards().values()){
+//                        if (card.getColor().equals(dependency))
+//                            amount++;
+//                    }
+//                    for (Card card : wb.getRightNeighbor().getBuiltCards().values()){
+//                        if (card.getColor().equals(dependency))
+//                            amount++;
+//                    }
+//                }
+//                else if (involve.equals("both")){
+//                    for (Card card : wb.getBuiltCards().values()){
+//                        if (card.getColor().equals(dependency))
+//                            amount++;
+//                    }
+//                    for (Card card : wb.getLeftNeighbor().getBuiltCards().values()){
+//                        if (card.getColor().equals(dependency))
+//                            amount++;
+//                    }
+//                    for (Card card : wb.getRightNeighbor().getBuiltCards().values()){
+//                        if (card.getColor().equals(dependency))
+//                            amount++;
+//                    }
+//                }
+//            }
         }
         HashMap<String, Integer> sources = wb.getSources();
         if (coin != 0 && vPoint != 0) {
             sources.replace("coin", sources.get("coin") + (amount*coin));
             wb.setSources(sources);
-            return true;
+            //return true;
         }
         sources.replace("coin", sources.get("coin") + (amount*coin));
         sources.replace("victoryPoint", sources.get("victoryPoint") + (amount*vPoint));
         wb.setSources(sources);
-        return true;
+        //return true;
     }
     
 
@@ -157,6 +164,6 @@ public class CumulativeCard extends Card {
     @Override
     public String toString() {
         return "{" + " involve='" + getInvolve() + "'" + ", dependencies='" + getDependencies() + "'" + ", coin='"
-                + getCoin() + "'" + ", vPoint='" + getVPoint() + "'" + "}";
+                + getCoin() + "'" + "}";
     }
 }
