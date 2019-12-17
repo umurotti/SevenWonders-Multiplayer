@@ -69,6 +69,11 @@ class TestTable{
         HashMap<String, Integer> wbSources = wb.getSources();
         HashMap<String, Integer> leftTrade = action.getLeftTrade();
         HashMap<String, Integer> rightTrade = action.getRightTrade();
+
+        // null checking
+        if (this.getHands()[wb.getHandNo()][action.getCardNo()] == null) {
+            return false;
+        }
         
         int choice = action.getChoice();
         if (choice == 0) { // Discard is always possible

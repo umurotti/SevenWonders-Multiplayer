@@ -14,11 +14,11 @@ public class HandContainer {
     {
         container = new HashMap<>();
         if(hands != null) {
-        for(int a =0; a< noOfPlayers; a++)
-        {
-            List<Card> hold  = Arrays.asList(hands[a]);
-            container.put(names.get(a),hold);
-        }
+            for(int a =0; a< noOfPlayers; a++)
+            {
+                List<Card> hold  = Arrays.asList(hands[a]);
+                container.put(names.get(a),hold);
+            }
         }
     }
   

@@ -158,7 +158,7 @@ class Test {
         Action action3 = new Action(build,trade,trade,2,"wonderboard_1");
         Action action4 = new Action(build,trade,trade,6,"wonderboard_1");
         Action action5 = new Action(stage,trade,trade,3,"wonderboard_1");
-        Action action6 = new Action(discard,trade,trade,0,"wonderboard_1");
+//        Action action6 = new Action(discard,trade,trade,0,"wonderboard_1");
         Action action7 = new Action(discard,trade,trade,4,"wonderboard_1");
         
         System.out.println("Wonder looks like: \n" + testtable.getWonders().get("wonderboard_1"));
@@ -189,6 +189,9 @@ class Test {
 
         System.out.println("playing action5\n");
         testtable.playFor("wonderboard_1", action5);
+
+        System.out.println("playing action7\n");
+        testtable.playFor("wonderboard_1", action7);
 
         System.out.println(testtable.getWonders().get("wonderboard_1"));
         for (int i = 0; i < 7; i++){

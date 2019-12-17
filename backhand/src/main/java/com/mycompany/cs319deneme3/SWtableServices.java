@@ -63,6 +63,7 @@ public class SWtableServices {
     public String playActionService(@QueryParam("tableID") String tableID, @QueryParam("action") String toAct) throws IOException, Exception {
         
         if (House.getInstance().getInPlayTables().get(tableID).isPossible((CardAction)parseJSONToObject(toAct))) {
+            House.getInstance().getInPlayTables().get(tableID).lockAction((CardAction)parseJSONToObject(toAct));
             return "başarılı";
         }else {
             return "başarısız";
