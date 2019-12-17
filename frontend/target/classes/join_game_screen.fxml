@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<GridPane fx:id="join_game_grid" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0"  xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.join_game_controller">
+<GridPane fx:id="join_game_grid" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.join_game_controller">
   <columnConstraints>
     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
   </columnConstraints>
@@ -21,19 +21,19 @@
             <Font name="System Bold" size="24.0" />
          </font></Label>
 
-       <ListView fx:id="game_list" layoutX="0" layoutY="30" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="300" prefWidth="300.0" style="-fx-background-color: #000;" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+       <ListView fx:id="game_list" editable="true" layoutX="0" layoutY="30" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="300" prefWidth="300.0" style="-fx-background-color: #000;" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
          <GridPane.margin>
             <Insets bottom="40.0" top="40.0" />
          </GridPane.margin></ListView>
-      <Button fx:id="refresh_button" mnemonicParsing="false" onAction="#refresh_game_list" onMouseClicked="#refresh_game_list" text="refresh list" GridPane.halignment="LEFT" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+      <Button fx:id="refresh_button" mnemonicParsing="false" onAction="#refresh_game_list" text="refresh list" GridPane.halignment="LEFT" GridPane.rowIndex="2" GridPane.valignment="CENTER">
          <GridPane.margin>
             <Insets left="30.0" />
          </GridPane.margin></Button>
-       <Button fx:id="join_button" mnemonicParsing="false" onAction="#join_button_action"  text="JOIN" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+       <Button fx:id="join_button" mnemonicParsing="false" onAction="#join_button_action" text="JOIN" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
          <font>
             <Font name="Arial Bold" size="24.0" />
          </font></Button>
-       <Button fx:id="back_button" mnemonicParsing="false" onAction="#back_button_action"  text="BACK" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+       <Button fx:id="back_button" mnemonicParsing="false" onAction="#back_button_action" text="BACK" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
            <font>
                <Font name="Arial Bold" size="18.0" />
            </font></Button>

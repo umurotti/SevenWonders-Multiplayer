@@ -1,10 +1,10 @@
 package sample;
 
-import com.sun.org.apache.xml.internal.dtm.ref.sax2dtm.SAX2DTM2;
-import javafx.animation.FadeTransition;
 import javafx.animation.RotateTransition;
 import javafx.animation.ScaleTransition;
 import javafx.animation.TranslateTransition;
+import javafx.application.Platform;
+import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -14,23 +14,22 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.effect.ColorAdjust;
+import javafx.scene.effect.Effect;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.util.Duration;
-import jdk.nashorn.internal.runtime.ECMAException;
 import org.controlsfx.control.PopOver;
 
 import java.io.File;
 
 import java.io.FileInputStream;
-import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
 import java.util.*;
-import java.util.concurrent.ExecutionException;
-import sample.Action;
+import java.util.concurrent.TimeUnit;
 
 
 public class in_game_controller implements Initializable  {
@@ -59,7 +58,8 @@ public class in_game_controller implements Initializable  {
 
     @FXML
     Button dice;
-
+    @FXML
+    Button diceGame;
     @FXML
     ImageView card1;
     @FXML
@@ -92,6 +92,101 @@ public class in_game_controller implements Initializable  {
     int selection =0;
     HandContainer handCards;
     Scene sceneOfTable;
+    //dice popover attributes
+    Scene sceneOfDicePopOver;
+    @FXML
+    Button roll_dice;
+    ArrayList<String> diceGamePlayer = new ArrayList<String>();;
+
+    //socket Attributes
+    SocketThread socket;
+    Thread socketThread;
+    //methods of dice
+
+
+
+
+    public void diceGamePopOver(ActionEvent event) throws Exception{
+        final PopOver popOver = new PopOver();
+        popOver.setArrowLocation(PopOver.ArrowLocation.BOTTOM_CENTER);
+        popOver.setAutoFix(true);
+        popOver.setAutoHide(true);
+        popOver.setHideOnEscape(true);
+        popOver.setDetachable(false);
+        GridPane pane = FXMLLoader.load(getClass().getResource("/dice_popover.fxml"));
+        popOver.setContentNode(pane);
+        popOver.show(resources_grid_0, 1000, 1000);
+        //popOver.show((Button)event.getSource());
+
+        /*
+        Task<Void> task = new Task<Void>() {
+            @Override
+            protected Void call() throws Exception {
+                final PopOver popOver2 = popOver;
+                while (true) {
+                    try {
+                        Thread.sleep(1000);
+
+                        Platform.runLater(new Runnable() {
+                            public void run() {
+                                try {
+                                    Label time = (Label)popOver2.getScene().lookup("#dice_time");
+                                    if(time.getText().equals("0"))
+                                    time.setText((Integer.parseInt(time.getText()) -1) + "");
+                                } catch (Exception e) {
+                                }
+                            }
+                        });
+                    } catch (InterruptedException interrupted) {
+                        if (isCancelled()) {
+                            updateMessage("Cancelled");
+                            break;
+                        }
+                    }
+                    System.out.println("aaa");
+                }
+                return null;
+            }
+        };
+        Thread a = new Thread(task);
+        a.start();*/
+    }
+    public void playerEnteredDiceGame(String wonderName){
+        diceGamePlayer.add(wonderName);
+        dicePopOverRefresh();
+    }
+
+    public void dicePopOverRefresh(){
+        for(int i = 0; i < diceGamePlayer.size(); i++){
+            String wonderName = "TheLighthouseofAlexandria";
+            wonderName = diceGamePlayer.get(i);
+            wonderName = "#" + wonderName;
+            ImageView wonderImage = (ImageView)(roll_dice.getScene().lookup(wonderName));
+            Effect colorAdjust = new ColorAdjust();
+            wonderImage.setEffect(colorAdjust);
+        }
+        String winner = "";
+        String winnerCard = "";
+        Map<String,Integer> noOfDices = new HashMap<String, Integer>();
+        boolean diceGameEnds = false;
+        if(diceGameEnds){
+            for(Map.Entry mapElement : noOfDices.entrySet()) {
+                String key = (String) mapElement.getKey();
+                String nameOfLabel = "#L" + key;
+                Label diceNoLabel = (Label)(roll_dice.getScene().lookup(key));
+                String diceNo = noOfDices.get(key) + "";
+                diceNoLabel.setText(diceNo);
+            }
+            ImageView winnersCardImage = (ImageView)(roll_dice.getScene().lookup("#winnersCard"));
+            winnersCardImage.setImage(images2.get(winnerCard));
+        }
+    }
+
+
+    public void play_dice_game(ActionEvent event){
+        diceGamePlayer.add("TheLighthouseofAlexandria");
+        dicePopOverRefresh();
+    }
 
     public void selectCard(MouseEvent event)throws Exception{
         PopOver popOver = new PopOver();
@@ -224,8 +319,8 @@ public class in_game_controller implements Initializable  {
     }
 
     public void onPress(ActionEvent event)throws Exception{
-
         System.out.println("asdasda");
+
         refresh();
     }
 
@@ -434,6 +529,8 @@ public class in_game_controller implements Initializable  {
         }
     }
 
+
+
     public void startPoint() throws Exception {
         int i = 0;
         String workingDir = System.getProperty("user.dir");
@@ -462,6 +559,47 @@ public class in_game_controller implements Initializable  {
         wonderID = player_id_controller.WonderID;
 
 
+        /*Task<Void> task = new Task<Void>() {
+            @Override protected Void call() throws Exception {
+
+                while(true){
+                    try {
+                        Thread.sleep(5000);
+
+                        Platform.runLater(new Runnable() {
+                             public void run() {
+                                try{
+                                    refresh();
+                                }catch (Exception e){
+
+                                }
+
+                            }
+                        });
+
+
+                    } catch (InterruptedException interrupted) {
+                        if (isCancelled()) {
+                            updateMessage("Cancelled");
+                            break;
+                        }
+                    }
+
+                    System.out.println("aaa");
+
+                }
+                return null;
+            }
+
+
+        };*/
+        SocketThread socketThread = new SocketThread(this);
+        Thread newT = new Thread(socketThread);
+        newT.start();
+       /* socket = new SocketThread(this);
+        socketThread = new Thread(socket);
+        Platform.runLater(socketThread);*/
+        //socketThread.start();
     }
 
     public void handAnimation(ImageView hand){

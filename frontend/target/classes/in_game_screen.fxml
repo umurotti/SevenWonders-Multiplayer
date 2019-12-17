@@ -943,7 +943,7 @@
                                         </GridPane>
                                     </children>
                                 </GridPane>
-                        <Button mnemonicParsing="false" text="elif zar" GridPane.valignment="TOP" />
+                        <Button fx:id="diceGame" mnemonicParsing="false" onAction="#diceGamePopOver" text="elif zar" GridPane.valignment="TOP" />
 
                             </children>
 

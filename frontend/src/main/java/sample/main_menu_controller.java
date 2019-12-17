@@ -37,7 +37,8 @@ public class main_menu_controller {
     public void onPressCreditsButton(ActionEvent event) throws Exception{
 
         Scene scene1 = credits_button.getScene();
-        root = FXMLLoader.load(getClass().getResource("/credits_screen.fxml"));
+        //root = FXMLLoader.load(getClass().getResource("/credits_screen.fxml"));
+        root = FXMLLoader.load(getClass().getResource("/join_game_screen.fxml"));
         scene1.setRoot(root);
     }
     public void onPressPlayGameButton(ActionEvent event) throws Exception{
