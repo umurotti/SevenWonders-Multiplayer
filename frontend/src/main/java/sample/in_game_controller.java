@@ -1,11 +1,10 @@
 package sample;
 
 import com.sun.org.apache.xml.internal.dtm.ref.sax2dtm.SAX2DTM2;
-import javafx.animation.FadeTransition;
-import javafx.animation.RotateTransition;
-import javafx.animation.ScaleTransition;
-import javafx.animation.TranslateTransition;
+import javafx.animation.*;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -14,10 +13,18 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ProgressIndicator;
+import javafx.scene.effect.SepiaTone;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
+import javafx.scene.paint.Color;
+import javafx.scene.paint.Paint;
+import javafx.scene.shape.Arc;
+import javafx.scene.shape.ArcType;
+import javafx.scene.shape.Circle;
+import javafx.scene.shape.Path;
 import javafx.util.Duration;
 import jdk.nashorn.internal.runtime.ECMAException;
 import org.controlsfx.control.PopOver;
@@ -82,6 +89,7 @@ public class in_game_controller implements Initializable  {
     // @FXML
     // ImageView card1;
 
+
     ImageView hand[] = new ImageView[7];
     ImageView myStructures[] = new ImageView[18];
     ImageView leftStructures[] = new ImageView[18];
@@ -92,6 +100,97 @@ public class in_game_controller implements Initializable  {
     int selection =0;
     HandContainer handCards;
     Scene sceneOfTable;
+
+
+
+    @FXML
+    Label timer;
+    @FXML
+    Circle timerCircle;
+    @FXML
+    Arc timerCircleArc;
+    @FXML
+    ProgressIndicator timerProgress;
+    Integer timeSeconds;
+    Timeline timeline;
+
+
+
+    @FXML
+    GridPane my_wonder;
+    @FXML
+    Label my_wonder_name;
+    @FXML
+    ImageView my_wonder_stage_0;
+    @FXML
+    ImageView my_wonder_stage_1;
+    @FXML
+    ImageView my_wonder_stage_2;
+
+    @FXML
+    GridPane left;
+    @FXML
+    Label left_wonder_name;
+    @FXML
+    ImageView left_wonder_stage_0;
+    @FXML
+    ImageView left_wonder_stage_1;
+    @FXML
+    ImageView left_wonder_stage_2;
+
+    @FXML
+    GridPane right;
+    @FXML
+    Label right_wonder_name;
+    @FXML
+    ImageView right_wonder_stage_0;
+    @FXML
+    ImageView right_wonder_stage_1;
+    @FXML
+    ImageView right_wonder_stage_2;
+
+    @FXML
+    GridPane wonder1;
+    @FXML
+    ImageView wonder_1_stage_0;
+    @FXML
+    ImageView wonder_1_stage_1;
+    @FXML
+    ImageView wonder_1_stage_2;
+
+    @FXML
+    GridPane wonder2;
+    @FXML
+    ImageView wonder_2_stage_0;
+    @FXML
+    ImageView wonder_2_stage_1;
+    @FXML
+    ImageView wonder_2_stage_2;
+
+    @FXML
+    GridPane wonder3;
+    @FXML
+    ImageView wonder_3_stage_0;
+    @FXML
+    ImageView wonder_3_stage_1;
+    @FXML
+    ImageView wonder_3_stage_2;
+
+    @FXML
+    GridPane wonder4;
+    @FXML
+    ImageView wonder_4_stage_0;
+    @FXML
+    ImageView wonder_4_stage_1;
+    @FXML
+    ImageView wonder_4_stage_2;
+
+
+
+
+
+
+
 
     public void selectCard(MouseEvent event)throws Exception{
         PopOver popOver = new PopOver();
@@ -384,7 +483,21 @@ public class in_game_controller implements Initializable  {
        // con.sendAction(new Action());
 
         refreshHand(handCards);
+        timerHandle();
+
+        //stage 1 i yaptım diyelim
+        my_wonder_stage_0.setEffect(null);
+
+
+
+
+
+
+
+
+
     }
+
 
     public void refreshHand(HandContainer handCards){
         /*
@@ -403,10 +516,97 @@ public class in_game_controller implements Initializable  {
             }
         }*/
         for(int i = 0 ; i <7; i++){
-            hand[i].setImage(images2.get("altar"));
-            handAnimation(hand[i]);
+            hand[i].setImage(images2.get("ALTAR"));
+        }
+        handAnimation(hand);
+
+    }
+
+    public void timerHandle(){
+        if(timeline !=null){
+            timeline.stop();
         }
 
+        timeline =new Timeline();
+        timeSeconds = 0;
+        timer.setText(timeSeconds.toString());
+        timerProgress.setProgress(0);
+        timerProgress.setStyle(" -fx-progress-color: #68ba86");
+        //update
+        timeline.setCycleCount(60);
+        EventHandler eventHandler = new EventHandler() {
+            public void handle(Event event) {
+                timeSeconds++;
+                timer.setText(timeSeconds.toString());
+                double d = (double)timeSeconds/60;
+                timerProgress.setProgress(d);
+                if(timeSeconds==60){
+                    timeline.stop();
+                }
+                if(timeSeconds == 45){
+                    timerProgress.setStyle(" -fx-progress-color: #de7e2a");
+                }if(timeSeconds == 55){
+                    timerProgress.setStyle(" -fx-progress-color: #db4332");
+                }
+
+            }
+        };
+        KeyFrame keyFrame = new KeyFrame(Duration.seconds(1),eventHandler);
+        timeline.getKeyFrames().add(keyFrame);
+        timeline.playFromStart();
+    }
+
+    public void handAnimation(ImageView[] hand){
+        Duration sec2 = Duration.millis(1500);
+        Duration sec3 = Duration.millis(3000);
+
+        /*FadeTransition ft = new FadeTransition(sec3);
+        ft.setFromValue(1.0f);
+        ft.setToValue(0.3f);
+        ft.setCycleCount(2);
+        ft.setAutoReverse(true);
+        ft.setNode(hand);
+        ft.play();*/
+        
+
+
+        for(int i = 0; i<hand.length;i++){
+            TranslateTransition tt = new TranslateTransition(sec2);
+            tt.setFromX(-((205*i)+57));
+            System.out.println(card2.getLayoutX());
+            System.out.println(card1.getLayoutX());
+            System.out.println(card2.getLayoutX()-card1.getLayoutX());
+            tt.setToX(0);
+            tt.setCycleCount(1);
+            //tt.setAutoReverse(true);
+            tt.setNode(hand[i]);
+            tt.play();
+            RotateTransition rt = new RotateTransition(sec2);
+            rt.setByAngle(360);
+            rt.setCycleCount(1);
+            rt.setAutoReverse(true);
+            rt.setNode(hand[i]);
+            rt.play();
+        }
+
+
+
+
+
+
+
+        /*ScaleTransition st = new ScaleTransition(sec2);
+        //st.setFromX(1);
+        //st.setByX(2);
+        //st.setToX(2);
+        //st.setFromY(0);
+        //st.setToY(2);
+        st.setByX(2);
+        st.setByY(2);
+        st.setCycleCount(2);
+        st.setAutoReverse(true);
+        st.setNode(hand);
+        st.play();*/
     }
 
     public void choice(ActionEvent event) throws Exception{
@@ -462,49 +662,85 @@ public class in_game_controller implements Initializable  {
         wonderID = player_id_controller.WonderID;
 
 
+        //elif test
+
+        //DİYELİMKİ CURRENT BÖYLE GELDİ
+        String[] wonders = {"HALIKARNASSOS","BABYLON","GIZAH","RHODOS","OLYMPIA","ALEXANDRIA","EPHESOS"};
+        //String[] wonders = {"BABYLON","GIZAH","RHODOS","OLYMPIA","ALEXANDRIA","EPHESOS",""};
+
+
+
+
+
+        String [] wonderImages = new String[7];
+        Image[] wonderStages0 = new Image[7];
+        Image[] wonderStages1 = new Image[7];
+        Image[] wonderStages2 = new Image[7];
+        String str1,str2,str3;
+        for(int j = 0; j<7;j++){
+            wonderImages[j] = "-fx-background-image: url(\"/WONDERS/"+ wonders[j] +".jpg\")";
+            str1 = "/WONDERS/" + wonders[j] + "_STAGE1.jpg";
+            str2 = "/WONDERS/" + wonders[j] + "_STAGE2.jpg";
+            str3 = "/WONDERS/" + wonders[j] + "_STAGE3.jpg";
+            wonderStages0[j] = new Image(str1);
+            wonderStages1[j] = new Image(str2);
+            wonderStages2[j] = new Image(str3);
+        }
+
+        my_wonder.setStyle(wonderImages[0]);
+        my_wonder_name.setText(wonders[0]);
+        my_wonder_stage_0.setImage(wonderStages0[0]);
+        my_wonder_stage_1.setImage(wonderStages1[0]);
+        my_wonder_stage_2.setImage(wonderStages2[0]);
+
+        left.setStyle(wonderImages[1]);
+        left_wonder_name.setText(wonders[1]);
+        left_wonder_stage_0.setImage(wonderStages0[1]);
+        left_wonder_stage_1.setImage(wonderStages1[1]);
+        left_wonder_stage_2.setImage(wonderStages2[1]);
+
+        right.setStyle(wonderImages[2]);
+        right_wonder_name.setText(wonders[2]);
+        right_wonder_stage_0.setImage(wonderStages0[2]);
+        right_wonder_stage_1.setImage(wonderStages1[2]);
+        right_wonder_stage_2.setImage(wonderStages2[2]);
+
+        if(wonders[3].equals("")){
+            wonder1.setVisible(false);
+        }else{
+            wonder1.setStyle(wonderImages[3]);
+            wonder_1_stage_0.setImage(wonderStages0[3]);
+            wonder_1_stage_1.setImage(wonderStages1[3]);
+            wonder_1_stage_2.setImage(wonderStages2[3]);
+        }if(wonders[4].equals("")){
+            wonder2.setVisible(false);
+        }else{
+            wonder2.setStyle(wonderImages[4]);
+            wonder_2_stage_0.setImage(wonderStages0[4]);
+            wonder_2_stage_1.setImage(wonderStages1[4]);
+            wonder_2_stage_2.setImage(wonderStages2[4]);
+        }if(wonders[5].equals("")){
+            wonder3.setVisible(false);
+        }else{
+            wonder3.setStyle(wonderImages[5]);
+            wonder_3_stage_0.setImage(wonderStages0[5]);
+            wonder_3_stage_1.setImage(wonderStages1[5]);
+            wonder_3_stage_2.setImage(wonderStages2[5]);
+        }if(wonders[6].equals("")){
+            wonder4.setVisible(false);
+        }else{
+            wonder4.setStyle(wonderImages[6]);
+            wonder_4_stage_0.setImage(wonderStages0[6]);
+            wonder_4_stage_1.setImage(wonderStages1[6]);
+            wonder_4_stage_2.setImage(wonderStages2[6]);
+        }
+
+
+
     }
 
-    public void handAnimation(ImageView hand){
-        Duration sec2 = Duration.millis(2000);
-        Duration sec3 = Duration.millis(3000);
-
-        /*FadeTransition ft = new FadeTransition(sec3);
-        ft.setFromValue(1.0f);
-        ft.setToValue(0.3f);
-        ft.setCycleCount(2);
-        ft.setAutoReverse(true);
-        ft.setNode(hand);
-        ft.play();*/
-
-        TranslateTransition tt = new TranslateTransition(sec2);
-        tt.setFromX(0);
-        tt.setToX(100);
-        tt.setCycleCount(1);
-        tt.setAutoReverse(true);
-        tt.setNode(hand);
-        tt.play();
 
 
-        RotateTransition rt = new RotateTransition(sec3);
-        rt.setByAngle(360);
-        rt.setCycleCount(1);
-        rt.setAutoReverse(true);
-        rt.setNode(hand);
-        rt.play();
-
-        ScaleTransition st = new ScaleTransition(sec2);
-        //st.setFromX(1);
-        //st.setByX(2);
-        //st.setToX(2);
-        //st.setFromY(0);
-        //st.setToY(2);
-        st.setByX(2);
-        st.setByY(2);
-        st.setCycleCount(2);
-        st.setAutoReverse(true);
-        st.setNode(hand);
-        st.play();
-    }
 
 
     public void initialize(URL location, ResourceBundle resources)  {
