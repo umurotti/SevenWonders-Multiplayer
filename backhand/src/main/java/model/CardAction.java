@@ -1,5 +1,6 @@
 package model;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Objects;
 
@@ -7,7 +8,7 @@ import java.util.Objects;
  * @author AkinParkan, OmerFarukKurklu
  * @version 0.2
  */
-public class CardAction {
+public class CardAction implements Serializable {
     private int choice;
     private HashMap<String,Integer> leftTrade;
     private HashMap<String,Integer> rightTrade;
@@ -15,6 +16,7 @@ public class CardAction {
     private String wonderID;
 
     public CardAction() {
+        
     }
 
     public CardAction(int choice, HashMap<String,Integer> leftTrade, HashMap<String,Integer> rightTrade, int cardNo, String wonderID) {
