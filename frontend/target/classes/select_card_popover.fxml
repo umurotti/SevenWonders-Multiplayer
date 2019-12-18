@@ -13,8 +13,8 @@
       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
   </rowConstraints>
    <children>
-       <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="100.0" text="DISCARD" onMouseClicked="#tradeBuyPressed" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
-       <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="100.0" text="BUILD CARD" onMouseClicked="#trade" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
-       <Button accessibleHelp=".." mnemonicParsing="false" prefHeight="50.0" prefWidth="100.0" text="BUILD WONDER" onMouseClicked="#trade" textAlignment="CENTER" wrapText="true" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+       <Button fx:id="discard" mnemonicParsing="false" onMouseClicked="#choice" prefHeight="50.0" prefWidth="100.0" text="DISCARD" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+       <Button fx:id="build_card" mnemonicParsing="false" onMouseClicked="#choice" prefHeight="50.0" prefWidth="100.0" text="BUILD CARD" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+       <Button fx:id="build_wonder" accessibleHelp=".." mnemonicParsing="false" onMouseClicked="#choice" prefHeight="50.0" prefWidth="100.0" text="BUILD WONDER" textAlignment="CENTER" wrapText="true" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
    </children>
 </GridPane>

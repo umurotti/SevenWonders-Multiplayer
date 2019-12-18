@@ -33,6 +33,7 @@ public class player_id_controller {
 
         Scene scene1 = play_game_button.getScene();
         WonderID = wonderID.getText();
+        Main.wonderID = WonderID;
         root = FXMLLoader.load(getClass().getResource("/play_game_screen.fxml"));
         scene1.setRoot(root);
     }
