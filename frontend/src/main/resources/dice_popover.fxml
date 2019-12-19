@@ -6,10 +6,10 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.in_game_controller">
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.in_game_controller">
   <columnConstraints>
-      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="60.0" prefWidth="100.0" />
-    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="40.0" prefWidth="100.0" />
+      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="70.0" prefWidth="100.0" />
+    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="30.0" prefWidth="100.0" />
   </columnConstraints>
   <rowConstraints>
     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -17,77 +17,165 @@
    <children>
       <GridPane>
         <columnConstraints>
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="70.0" prefWidth="100.0" />
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="15.0" prefWidth="100.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="15.0" prefWidth="100.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="15.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="40.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="40.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="10.0" prefWidth="100.0" />
         </columnConstraints>
         <rowConstraints>
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" percentHeight="16.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" percentHeight="14.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" percentHeight="14.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" percentHeight="14.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" percentHeight="14.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints percentHeight="14.0" />
+            <RowConstraints percentHeight="15.0" />
+            <RowConstraints />
         </rowConstraints>
          <children>
-            <ImageView fx:id="TheTempleofArtemisinEphesus" fitHeight="98.0" fitWidth="243.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="TheTempleofArtemisinEphesus" fitHeight="93.0" fitWidth="175.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+               <effect>
+                  <ColorAdjust saturation="-1.0" />
+               </effect>
                <image>
-                  <Image url="@Wonders/httpcloud3steamusercontentcomugc428232947403156190C8584B8453A54E64C1035BD836178F4942CE1DA1.jpg" />
+                  <Image url="@WONDERS/EPHESOS.jpg" />
+               </image></ImageView>
+            <ImageView fx:id="TheHangingGardensofBabylon" fitHeight="93.0" fitWidth="175.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+               <image>
+                  <Image url="@WONDERS/BABYLON.jpg" />
                </image>
                <effect>
                   <ColorAdjust saturation="-1.0" />
                </effect></ImageView>
-            <ImageView fx:id="TheHangingGardensofBabylon" fitHeight="102.0" fitWidth="227.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="1">
-               <image>
-                  <Image url="@Wonders/httpcloud3steamusercontentcomugc428232947403156190C8584B8453A54E64C1035BD836178F4942CE1DA1.jpg" />
-               </image>
-               <effect>
-                  <ColorAdjust saturation="-1.0" />
-               </effect></ImageView>
-             <ImageView fx:id="TheLighthouseofAlexandria" fitHeight="102.0" fitWidth="227.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="2">
+             <ImageView fx:id="TheLighthouseofAlexandria" fitHeight="93.0" fitWidth="175.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
                  <image>
-                     <Image url="@Wonders/httpcloud3steamusercontentcomugc428232947403156190C8584B8453A54E64C1035BD836178F4942CE1DA1.jpg" />
+                     <Image url="@WONDERS/ALEXANDRIA.jpg" />
                  </image>
                <effect>
                   <ColorAdjust saturation="-1.0" />
                </effect></ImageView>
-             <ImageView fx:id="TheColossusofRhodes" fitHeight="102.0" fitWidth="227.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="3">
+             <ImageView fx:id="TheColossusofRhodes" fitHeight="93.0" fitWidth="175.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
              <image>
-                 <Image url="@Wonders/httpcloud3steamusercontentcomugc428232947403156190C8584B8453A54E64C1035BD836178F4942CE1DA1.jpg" />
+                 <Image url="@WONDERS/RHODOS.jpg" />
              </image>
                <effect>
                   <ColorAdjust saturation="-1.0" />
                </effect></ImageView>
-             <ImageView fx:id="ThePyramidsofGiza" fitHeight="102.0" fitWidth="227.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="4">
+             <ImageView fx:id="ThePyramidsofGiza" fitHeight="93.0" fitWidth="175.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER">
                  <image>
-                     <Image url="@Wonders/httpcloud3steamusercontentcomugc428232947403156190C8584B8453A54E64C1035BD836178F4942CE1DA1.jpg" />
+                     <Image url="@WONDERS/GIZAH.jpg" />
                  </image>
                <effect>
                   <ColorAdjust saturation="-1.0" />
                </effect></ImageView>
-             <ImageView fx:id="TheMausoleumofHalicarnassus" fitHeight="102.0" fitWidth="227.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="5">
+             <ImageView fx:id="TheMausoleumofHalicarnassus" fitHeight="93.0" fitWidth="175.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER">
                  <image>
-                     <Image url="@Wonders/httpcloud3steamusercontentcomugc428232947403156190C8584B8453A54E64C1035BD836178F4942CE1DA1.jpg" />
+                     <Image url="@WONDERS/HALIKARNASSOS.jpg" />
                  </image>
                <effect>
                   <ColorAdjust saturation="-1.0" />
                </effect></ImageView>
-             <ImageView fx:id="TheStatueofZeusinOlympia" fitHeight="102.0" fitWidth="227.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="6">
+             <ImageView fx:id="TheStatueofZeusinOlympia" fitHeight="93.0" fitWidth="175.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="6" GridPane.valignment="CENTER">
                  <image>
-                     <Image url="@Wonders/httpcloud3steamusercontentcomugc428232947403156190C8584B8453A54E64C1035BD836178F4942CE1DA1.jpg" />
+                     <Image url="@WONDERS/OLYMPIA.jpg" />
                  </image>
                <effect>
                   <ColorAdjust saturation="-1.0" />
                </effect></ImageView>
-             <Label fx:id="LTheTempleofArtemisinEphesus" prefHeight="32.0" prefWidth="46.0" text="Label" GridPane.columnIndex="2" />
-             <Label fx:id="LTheHangingGardensofBabylon" prefHeight="32.0" prefWidth="46.0" text="Label" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-             <Label fx:id="LTheLighthouseofAlexandria" prefHeight="32.0" prefWidth="46.0" text="Label" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-             <Label fx:id="LTheColossusofRhodes" prefHeight="32.0" prefWidth="46.0" text="Label" GridPane.columnIndex="2" GridPane.rowIndex="3" />
-             <Label fx:id="LThePyramidsofGiza" prefHeight="32.0" prefWidth="46.0" text="Label" GridPane.columnIndex="2" GridPane.rowIndex="4" />
-             <Label fx:id="LTheMausoleumofHalicarnassus" prefHeight="32.0" prefWidth="46.0" text="Label" GridPane.columnIndex="2" GridPane.rowIndex="5" />
-             <Label fx:id="TheStatueofZeusinOlympia" prefHeight="32.0" prefWidth="46.0" text="Label" GridPane.columnIndex="2" GridPane.rowIndex="6" />
+             <Label fx:id="LTheTempleofArtemisinEphesus" minHeight="-Infinity" minWidth="-Infinity" text="The Temple of Artemis in Ephesus" textAlignment="CENTER" GridPane.columnIndex="0" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+               <font>
+                  <Font name="Times New Roman" size="18.0" />
+               </font></Label>
+             <Label fx:id="LTheHangingGardensofBabylon" minHeight="-Infinity" minWidth="-Infinity" text="The Hanging Gardens of Babylon" GridPane.columnIndex="0" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+               <font>
+                  <Font name="Times New Roman" size="18.0" />
+               </font></Label>
+             <Label fx:id="LTheLighthouseofAlexandria" text="The Lighthouse of Alexandria" GridPane.columnIndex="0" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+               <font>
+                  <Font name="Times New Roman" size="18.0" />
+               </font></Label>
+             <Label fx:id="LTheColossusofRhodes" text="The Colossus of Rhodes" GridPane.columnIndex="0" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+               <font>
+                  <Font name="Times New Roman" size="18.0" />
+               </font></Label>
+             <Label fx:id="LThePyramidsofGiza" text="The Pyramids of Gizah" GridPane.columnIndex="0" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER">
+               <font>
+                  <Font name="Times New Roman" size="18.0" />
+               </font></Label>
+             <Label fx:id="LTheMausoleumofHalicarnassus" text="The Mausoleum of Halicarnassus" GridPane.columnIndex="0" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER">
+               <font>
+                  <Font name="Times New Roman" size="18.0" />
+               </font></Label>
+             <Label fx:id="LTheStatueofZeusinOlympia" minHeight="-Infinity" minWidth="-Infinity" text="The Statue of Zeus in Olympia" GridPane.columnIndex="0" GridPane.halignment="CENTER" GridPane.rowIndex="6" GridPane.valignment="CENTER">
+               <font>
+                  <Font name="Times New Roman" size="18.0" />
+               </font></Label>
+             <Label text="Label" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="0" GridPane.valignment="CENTER">
+               <font>
+                  <Font name="Times New Roman" size="18.0" />
+               </font></Label>
+             <Label text="Label" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                 <font>
+                     <Font name="Times New Roman" size="18.0" />
+                 </font></Label>
+             <Label text="Label" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                 <font>
+                     <Font name="Times New Roman" size="18.0" />
+                 </font></Label>
+             <Label text="Label" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+                 <font>
+                     <Font name="Times New Roman" size="18.0" />
+                 </font></Label>
+             <Label text="Label" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER">
+                 <font>
+                     <Font name="Times New Roman" size="18.0" />
+                 </font></Label>
+             <Label text="Label" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER">
+                 <font>
+                     <Font name="Times New Roman" size="18.0" />
+                 </font></Label>
+             <Label text="Label" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="6" GridPane.valignment="CENTER">
+                 <font>
+                     <Font name="Times New Roman" size="18.0" />
+                 </font></Label>
+
+
+            <ImageView fitHeight="70.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="0" GridPane.valignment="CENTER">
+               <image>
+                  <Image url="@winner.jpg" />
+               </image>
+            </ImageView>
+             <ImageView fitHeight="70.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                 <image>
+                     <Image url="@winner.jpg" />
+                 </image>
+             </ImageView>
+             <ImageView fitHeight="70.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                 <image>
+                     <Image url="@winner.jpg" />
+                 </image>
+             </ImageView>
+             <ImageView fitHeight="70.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+                 <image>
+                     <Image url="@winner.jpg" />
+                 </image>
+             </ImageView>
+             <ImageView fitHeight="70.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="4" GridPane.valignment="CENTER">
+                 <image>
+                     <Image url="@winner.jpg" />
+                 </image>
+             </ImageView>
+             <ImageView fitHeight="70.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="5" GridPane.valignment="CENTER">
+                 <image>
+                     <Image url="@winner.jpg" />
+                 </image>
+             </ImageView>
+             <ImageView fitHeight="70.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="6" GridPane.valignment="CENTER">
+                 <image>
+                     <Image url="@winner.jpg" />
+                 </image>
+             </ImageView>
+           
             
 
 
@@ -98,14 +186,19 @@
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
         </columnConstraints>
         <rowConstraints>
-          <RowConstraints minHeight="10.0" percentHeight="20.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" percentHeight="20.0" prefHeight="30.0" vgrow="SOMETIMES" />
-          <RowConstraints minHeight="10.0" percentHeight="80.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" percentHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" percentHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" percentHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" percentHeight="50.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Button fx:id="roll_dice" mnemonicParsing="false" onAction="#play_dice_game" text="ROLL DICE" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
-            <ImageView fx:id="winnerCard" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
-            <Label fx:id="dice_time" prefHeight="91.0" prefWidth="236.0" text="5" GridPane.rowIndex="1">
+             <ImageView fitHeight="150.0" fitWidth="300.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.rowIndex="0" GridPane.valignment="CENTER">
+               <image>
+                  <Image url="@dice.jpg" />
+               </image></ImageView>
+            <Button fx:id="roll_dice" mnemonicParsing="false" onAction="#play_dice_game" text="ROLL DICE" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+            <ImageView fx:id="winnerCard" fitHeight="210.0" fitWidth="135.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
+            <Label fx:id="dice_time" text="5" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
                <font>
                   <Font size="67.0" />
                </font>

@@ -22,33 +22,32 @@ public class main_menu_controller {
     @FXML
     Parent root;
     public void onPressExitButton(ActionEvent event) throws Exception{
-
-
+        SoundManager.play(SoundManager.MUSIC.BUTTON_CLICK);
         Platform.exit();
     }
 
     public void onPressHowtoPlayButton(ActionEvent event) throws Exception{
-
+        SoundManager.play(SoundManager.MUSIC.BUTTON_CLICK);
         Scene scene1 = how_to_play_button.getScene();
         //root = FXMLLoader.load(getClass().getResource("/how_to_play_screen.fxml"));
         root = FXMLLoader.load(getClass().getResource("/in_game_screen.fxml"));
         scene1.setRoot(root);
     }
     public void onPressCreditsButton(ActionEvent event) throws Exception{
-
+        SoundManager.play(SoundManager.MUSIC.BUTTON_CLICK);
         Scene scene1 = credits_button.getScene();
         //root = FXMLLoader.load(getClass().getResource("/credits_screen.fxml"));
         root = FXMLLoader.load(getClass().getResource("/join_game_screen.fxml"));
         scene1.setRoot(root);
     }
     public void onPressPlayGameButton(ActionEvent event) throws Exception{
-
+        SoundManager.play(SoundManager.MUSIC.BUTTON_CLICK);
         Scene scene1 = play_game_button.getScene();
         root = FXMLLoader.load(getClass().getResource("/player_id_screen.fxml"));
         scene1.setRoot(root);
     }
     public void onPressSettingButton(ActionEvent event) throws Exception{
-
+        SoundManager.play(SoundManager.MUSIC.BUTTON_CLICK);
         Scene scene1 = settings_button.getScene();
         root = FXMLLoader.load(getClass().getResource("/settings_screen.fxml"));
         scene1.setRoot(root);

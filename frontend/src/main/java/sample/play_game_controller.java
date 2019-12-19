@@ -27,6 +27,7 @@ public class play_game_controller {
 
     //private Scene secondScene;
     public void onPressCreateButton(ActionEvent event) throws Exception{
+        SoundManager.play(SoundManager.MUSIC.BUTTON_CLICK);
         Scene scene1 = create_new_game_button.getScene();
         root = FXMLLoader.load(getClass().getResource("/start_game_screen.fxml"));
         scene1.setRoot(root);
@@ -34,13 +35,13 @@ public class play_game_controller {
        // connection.sendRequest();
     }
     public void onPressJoinButton(ActionEvent event) throws Exception{
-
+        SoundManager.play(SoundManager.MUSIC.BUTTON_CLICK);
         Scene scene1 = join_game_button.getScene();
         root = FXMLLoader.load(getClass().getResource("/join_game_screen.fxml"));
         scene1.setRoot(root);
     }
     public void onPressBackButton(ActionEvent event) throws Exception{
-
+        SoundManager.play(SoundManager.MUSIC.BUTTON_CLICK);
         Scene scene1 = back_button.getScene();
         root = FXMLLoader.load(getClass().getResource("/sample.fxml"));
         scene1.setRoot(root);

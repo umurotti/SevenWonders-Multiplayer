@@ -25,6 +25,7 @@ public class start_game_controller {
     // private Scene secondScene;
     ServerConnection con = new ServerConnection();
     public void onPressCreateGame(ActionEvent event) throws Exception{
+        SoundManager.play(SoundManager.MUSIC.BUTTON_CLICK);
         con.sendRequestCreate(player_id_controller.WonderID, tableID.getText());
         Scene scene1 = create_game_button.getScene();
         TableID = tableID.getText();
@@ -33,7 +34,7 @@ public class start_game_controller {
     }
 
     public void onPressBackButton(ActionEvent event) throws Exception{
-
+        SoundManager.play(SoundManager.MUSIC.BUTTON_CLICK);
         Scene scene1 = back_button.getScene();
         root = FXMLLoader.load(getClass().getResource("/play_game_screen.fxml"));
         scene1.setRoot(root);

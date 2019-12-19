@@ -43,6 +43,7 @@ public class setting_controller   {
 
     @FXML
     private void darkTheme(ActionEvent event) throws Exception{
+        SoundManager.play(SoundManager.MUSIC.BUTTON_CLICK);
         String workingDir = System.getProperty("user.dir");
         workingDir += "/src/main/resources/css/dark_theme.css";
         File darkcss = new File(workingDir);
@@ -53,6 +54,7 @@ public class setting_controller   {
 
     @FXML
     private void lightTheme(ActionEvent event) throws Exception{
+        SoundManager.play(SoundManager.MUSIC.BUTTON_CLICK);
         String workingDir = System.getProperty("user.dir");
         workingDir += "/src/main/resources/css/light_theme.css";
         File lightcss = new File(workingDir);

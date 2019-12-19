@@ -23,14 +23,14 @@ public class player_id_controller {
 
     ServerConnection con = new ServerConnection();
     public void onPressBackButton(ActionEvent event) throws Exception{
-
+        SoundManager.play(SoundManager.MUSIC.BUTTON_CLICK);
         Scene scene1 = back_button.getScene();
         root = FXMLLoader.load(getClass().getResource("/sample.fxml"));
         scene1.setRoot(root);
     }
 
     public void onPressPlayButton(ActionEvent event) throws Exception{
-
+        SoundManager.play(SoundManager.MUSIC.BUTTON_CLICK);
         Scene scene1 = play_game_button.getScene();
         WonderID = wonderID.getText();
         root = FXMLLoader.load(getClass().getResource("/play_game_screen.fxml"));

@@ -16,10 +16,10 @@ public class SocketThread extends Task<Void> {
     }
 
     boolean socketThreadOpen= true;
-   /* public void run() {
-        try{
+   public void run() {
+        /*try{
             while(socketThreadOpen){
-                TimeUnit.MILLISECONDS.sleep(1000);
+                TimeUnit.MILLISECONDS.sleep(5000);
                 System.out.println("aaa");
                 game_controller.refresh();
                 socketThreadOpen = true;
@@ -27,9 +27,9 @@ public class SocketThread extends Task<Void> {
             }
         }catch(Exception e){
 
-        }
+        }*/
 
-    }*/
+    }
     public void closeThread(){
         socketThreadOpen = false;
     }
@@ -44,16 +44,17 @@ public class SocketThread extends Task<Void> {
 
                 Platform.runLater(new Runnable() {
                     public void run() {
-                        try{
+                       /* try{
                             if(count == 0)
-                              game_controller.refresh();
+                                game_controller.diceGamePopOver(new ActionEvent());
                             else if(count == 1)
-                             game_controller.diceGamePopOver(new ActionEvent());
+                                game_controller.playerEnteredDiceGame("TheColossusofRhodes");
                             else if (count == 2)
-                            game_controller.playerEnteredDiceGame("TheColossusofRhodes");
+                                game_controller.refresh();
+
                         }catch (Exception e){
 
-                        }
+                        }*/
 
                     }
                 });
@@ -70,9 +71,11 @@ public class SocketThread extends Task<Void> {
                 System.out.println("stopped");
             }*/
             System.out.println("aaa");
-            if(temp1 == 1)
+            if(temp1 == 2)
+                temp1 = 3;
+            else if(temp1 == 1)
                 temp1 = 2;
-            if(temp1 == 0)
+            else if(temp1 == 0)
                 temp1 = 1;
 
         }

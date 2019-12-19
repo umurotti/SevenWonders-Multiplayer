@@ -82,17 +82,15 @@
     -fx-background-size: cover;
 }
 #my_wonder_grid{
-    -fx-background-image: url("/backgrounds/main_background.jpg");
-    -fx-background-size: cover;
+    -fx-background-color: #DECDBE ;
 }
 #enemies_grid{
-    -fx-background-image: url("/backgrounds/main_background.jpg");
-    -fx-background-size: cover;
+    -fx-background-color: #DECDBE ;
 }
 
 
 .button {
-    -fx-background-radius: 0px 100px;
+    -fx-background-radius: 50px 50px;
     -fx-background-clip: padding-box;
     -fx-background-color: #ffe1d1;
 }

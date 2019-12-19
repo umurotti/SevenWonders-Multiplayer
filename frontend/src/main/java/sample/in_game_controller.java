@@ -18,21 +18,20 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.effect.ColorAdjust;
-import javafx.scene.effect.Effect;
+import javafx.scene.control.TitledPane;
+import javafx.scene.effect.*;
 import javafx.scene.control.ProgressIndicator;
-import javafx.scene.effect.SepiaTone;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.RowConstraints;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
-import javafx.scene.shape.Arc;
-import javafx.scene.shape.ArcType;
-import javafx.scene.shape.Circle;
-import javafx.scene.shape.Path;
+import javafx.scene.shape.*;
+import javafx.scene.text.Font;
 import javafx.util.Duration;
+import javafx.util.Pair;
 import org.controlsfx.control.PopOver;
 
 import java.io.File;
@@ -117,18 +116,59 @@ public class in_game_controller implements Initializable  {
     //methods of dice
 
 
+    @FXML
+    Label dice_time;
 
+    @FXML
+    public void onPressEnemies(MouseEvent event) throws Exception{
+        SoundManager.play(SoundManager.MUSIC.ENEMIES);
+    }
+
+    @FXML
+    public void onPressMyWonder(MouseEvent event) throws Exception{
+        SoundManager.play(SoundManager.MUSIC.MY_WONDER);
+    }
+
+
+
+
+    Timeline diceTimeLine;
+    Integer diceTime;
 
     public void diceGamePopOver(ActionEvent event) throws Exception{
-        final PopOver popOver = new PopOver();
+        /*final PopOver popOver = new PopOver();
         popOver.setArrowLocation(PopOver.ArrowLocation.BOTTOM_CENTER);
         popOver.setAutoFix(true);
         popOver.setAutoHide(true);
         popOver.setHideOnEscape(true);
         popOver.setDetachable(false);
-        GridPane pane = FXMLLoader.load(getClass().getResource("/dice_popover.fxml"));
+        final GridPane pane = FXMLLoader.load(getClass().getResource("/dice_popover.fxml"));
         popOver.setContentNode(pane);
         popOver.show(resources_grid_0, 1000, 1000);
+
+
+            if(timeline!=null){
+                timeline.stop();
+            }
+            diceTimeLine = new Timeline();
+            diceTime = 5;
+            ((Label)pane.lookup("#dice_time")).setText(diceTime.toString());
+            //dice_time.setText(diceTime.toString());
+            //update
+            diceTimeLine.setCycleCount(5);
+            EventHandler eventHandler2 = new EventHandler() {
+                public void handle(Event event) {
+                    diceTime--;
+                    ((Label)pane.lookup("#dice_time")).setText(diceTime.toString());
+                    if(diceTime==0){
+                        diceTimeLine.stop();
+                    }
+                }
+            };
+            KeyFrame keyFrame = new KeyFrame(Duration.seconds(1),eventHandler2);
+            diceTimeLine.getKeyFrames().add(keyFrame);
+            diceTimeLine.playFromStart();
+
         //popOver.show((Button)event.getSource());
 
         /*
@@ -162,12 +202,88 @@ public class in_game_controller implements Initializable  {
             }
         };
         Thread a = new Thread(task);
-        a.start();*/
+        a.start();
+        //test scoreboard
+        HashMap<String,Integer> scores =new HashMap<String, Integer>();
+        scores.put("TheTempleofArtemisinEphesus",30);
+        scores.put("TheHangingGardensofBabylon",27);
+        scores.put("TheLighthouseofAlexandria",43);
+        //scores.put("TheColossusofRhodes",34);
+        scores.put("ThePyramidsofGiza",30);
+       // scores.put("TheMausoleumofHalicarnassus",44);
+        scores.put("TheStatueofZeusinOlympia",37);
+        getScoreBoard(scores);
+
+
+        */
+        //BURAYA KADAR
+
+        //testAgeOver
+        /*HashMap<String,Integer>militaryTokens = new HashMap<String, Integer>();
+        HashMap<String,Integer>defeatTokens = new HashMap<String, Integer>();
+        //HashMap<String, Pair<Integer,Integer>> = new
+        militaryTokens.put("TheTempleofArtemisinEphesus",1);
+        militaryTokens.put("TheHangingGardensofBabylon",2);
+        militaryTokens.put("TheLighthouseofAlexandria",1);
+        militaryTokens.put("TheColossusofRhodes",0);
+        militaryTokens.put("ThePyramidsofGiza",1);
+        militaryTokens.put("TheMausoleumofHalicarnassus",2);
+        militaryTokens.put("TheStatueofZeusinOlympia",1);
+        defeatTokens.put("TheTempleofArtemisinEphesus",1);
+        defeatTokens.put("TheHangingGardensofBabylon",0);
+        defeatTokens.put("TheLighthouseofAlexandria",1);
+        defeatTokens.put("TheColossusofRhodes",2);
+        defeatTokens.put("ThePyramidsofGiza",1);
+        defeatTokens.put("TheMausoleumofHalicarnassus",0);
+        defeatTokens.put("TheStatueofZeusinOlympia",1);*/
+        WonderBoard wb = new WonderBoard();
+        wb.setName("TheTempleofArtemisinEphesus");
+        WonderBoard wb2 = new WonderBoard();
+        wb2.setName("TheHangingGardensofBabylon");
+        WonderBoard wb3 = new WonderBoard();
+        wb3.setName("TheColossusofRhodes");
+        WonderBoard wb4 = new WonderBoard();
+        wb4.setName("ThePyramidsofGiza");
+        WonderBoard wb5 = new WonderBoard();
+        wb5.setName("TheLighthouseofAlexandria");
+        WonderBoard wb6 = new WonderBoard();
+        wb6.setName("TheMausoleumofHalicarnassus");
+        WonderBoard wb7 = new WonderBoard();
+        wb7.setName("TheStatueofZeusinOlympia");
+        wb.setLeftNeighbor(wb2);
+        wb2.setLeftNeighbor(wb3);
+        wb3.setLeftNeighbor(wb);
+        //wb3.setLeftNeighbor(wb4);
+        wb4.setLeftNeighbor(wb5);
+        //wb5.setLeftNeighbor(wb6);
+        wb6.setLeftNeighbor(wb7);
+        wb7.setLeftNeighbor(wb);
+
+        wb.getSources().put("shield",7);
+        wb2.getSources().put("shield",9);
+        wb3.getSources().put("shield",6);
+        wb4.getSources().put("shield",8);
+        wb5.getSources().put("shield",3);
+        wb6.getSources().put("shield",2);
+        wb7.getSources().put("shield",11);
+        wonderBoards.put(wb.getName(),wb);
+        wonderBoards.put(wb2.getName(),wb2);
+        wonderBoards.put(wb3.getName(),wb3);
+        //wonderBoards.put(wb4.getName(),wb4);
+        //wonderBoards.put(wb5.getName(),wb5);
+        //wonderBoards.put(wb6.getName(),wb6);
+        //wonderBoards.put(wb7.getName(),wb7);
+
+        ageOver(1);
+
+
     }
     public void playerEnteredDiceGame(String wonderName){
         diceGamePlayer.add(wonderName);
         dicePopOverRefresh();
+
     }
+
 
     public void dicePopOverRefresh(){
         for(int i = 0; i < diceGamePlayer.size(); i++){
@@ -193,6 +309,8 @@ public class in_game_controller implements Initializable  {
             ImageView winnersCardImage = (ImageView)(roll_dice.getScene().lookup("#winnersCard"));
             winnersCardImage.setImage(images2.get(winnerCard));
         }
+
+        
     }
 
 
@@ -213,6 +331,8 @@ public class in_game_controller implements Initializable  {
     ProgressIndicator timerProgress;
     Integer timeSeconds;
     Timeline timeline;
+
+    Integer timeseconds;
 
 
 
@@ -429,7 +549,7 @@ public class in_game_controller implements Initializable  {
     }
 
     public void refresh()throws Exception {
-        sceneOfTable = dice.getScene();
+        sceneOfTable = my_wonder.getScene();
 
 
         System.out.println("Entered refresh");
@@ -587,15 +707,6 @@ public class in_game_controller implements Initializable  {
 
         //stage 1 i yaptım diyelim
         my_wonder_stage_0.setEffect(null);
-
-
-
-
-
-
-
-
-
     }
 
 
@@ -736,6 +847,141 @@ public class in_game_controller implements Initializable  {
 
 
 
+    public void ageOver(int ageNo) throws Exception{
+
+        final PopOver popOver = new PopOver();
+        popOver.setArrowLocation(PopOver.ArrowLocation.BOTTOM_CENTER);
+        popOver.setAutoFix(true);
+        popOver.setAutoHide(true);
+        popOver.setHideOnEscape(true);
+        popOver.setDetachable(false);
+        GridPane pane = FXMLLoader.load(getClass().getResource("/age_over.fxml"));
+        popOver.setContentNode(pane);
+
+
+        int i = 0;
+        String str1;
+        String militaryImagePath = "/militarytoken"+ageNo+".png";
+        Image militaryImage = new Image(militaryImagePath);
+        Image defeatImage = new Image("/defeattoken.png");
+
+        for(String wonderName: wonderBoards.keySet()){
+
+            ((Label)pane.lookup("#vs" +i)).setText("VS");
+            ((Label)pane.lookup("#ageLabel")).setText("END OF THE AGE" + ageNo);
+
+
+                str1 = "#w1_" + i + "_image";
+                String url = "/WONDERS/" + wonderName +".jpg";
+                Image image = new Image(url);
+                ((ImageView)pane.lookup(str1)).setImage(image);
+
+
+                str1 = "#w2_" + i + "_image";
+                url = "/WONDERS/" + wonderBoards.get(wonderName).getLeftNeighbor().getName() +".jpg";
+                ((ImageView)pane.lookup(str1)).setImage(new Image(url));
+
+                if(wonderBoards.get(wonderName).getSources().get("shield")<wonderBoards.get(wonderBoards.get(wonderName).getLeftNeighbor().getName()).getSources().get("shield")){
+                    str1 = "#w1_" + i + "_token";
+                    ((ImageView)pane.lookup(str1)).setImage(defeatImage);
+                    str1 = "#w2_" + i + "_token";
+                    ((ImageView)pane.lookup(str1)).setImage(militaryImage);
+
+                }else{
+                    str1 = "#w1_" + i + "_token";
+                    ((ImageView)pane.lookup(str1)).setImage(militaryImage);
+                    str1 = "#w2_" + i + "_token";
+                    ((ImageView)pane.lookup(str1)).setImage(defeatImage);
+
+                }
+
+            i++;
+        }
+        for(int j = i--;j<7;j++){
+            ((GridPane)pane.lookup("#g" + j)).setPrefHeight(0);
+            ((GridPane)pane.lookup("#g" + j)).setVisible(false);
+
+        }
+        popOver.show(resources_grid_0);
+
+        /*final PopOver popOver = new PopOver();
+        popOver.setArrowLocation(PopOver.ArrowLocation.BOTTOM_CENTER);
+        popOver.setAutoFix(true);
+        popOver.setAutoHide(true);
+        popOver.setHideOnEscape(true);
+        popOver.setDetachable(false);
+        GridPane pane = FXMLLoader.load(getClass().getResource("/age_over.fxml"));
+        popOver.setContentNode(pane);
+
+        String militaryImagePath = "/militarytoken"+ageNo+".png";
+        Image militaryImage = new Image(militaryImagePath);
+        Image defeatImage = new Image("/defeattoken.png");
+        for(String wonderName : militaryTokens.keySet()){
+            int militaryTokenCount = militaryTokens.get(wonderName);
+            if(militaryTokenCount>0){
+                ((ImageView)pane.lookup("#n1_"+wonderName)).setImage(militaryImage);
+                if(militaryTokenCount>1){
+                    ((ImageView)pane.lookup("#n2_"+wonderName)).setImage(militaryImage);
+                }
+            }
+
+            int defeatTokenCount = defeatTokens.get(wonderName);
+            if(defeatTokenCount==2) {
+                ((ImageView) pane.lookup("#n1_" + wonderName)).setImage(defeatImage);
+                ((ImageView) pane.lookup("#n2_" + wonderName)).setImage(defeatImage);
+            }
+            else if(defeatTokenCount==1){
+                ((ImageView) pane.lookup("#n2_" + wonderName)).setImage(defeatImage);
+            }
+        }
+
+        popOver.show(resources_grid_0);*/
+    }
+    @FXML
+    GridPane scores_grid;
+    public void getScoreBoard(HashMap<String,Integer> scores) throws Exception{
+        final PopOver popOver = new PopOver();
+        popOver.setArrowLocation(PopOver.ArrowLocation.BOTTOM_CENTER);
+        popOver.setAutoFix(true);
+        popOver.setAutoHide(true);
+        popOver.setHideOnEscape(true);
+        popOver.setDetachable(false);
+        GridPane pane = FXMLLoader.load(getClass().getResource("/score_popover.fxml"));
+        popOver.setContentNode(pane);
+        String winner = "";
+        int winscore = 0;
+
+        for(String wonderName : scores.keySet()){
+            System.out.println(scores.get(wonderName));
+            System.out.println(pane.lookup("#SCOREBOARD").getId()) ;
+            if(scores.get(wonderName)>winscore){
+                winscore = scores.get(wonderName);
+                winner = wonderName;
+            }
+
+            DropShadow ds = new DropShadow();
+            Label wonderlabel = (Label) pane.lookup("#L" + wonderName);
+            wonderlabel.setEffect(ds);
+            System.out.println(GridPane.getRowIndex(wonderlabel));
+            //scores_grid.getRowConstraints().get(GridPane.getRowIndex(wonderlabel)).setPercentHeight(-1);
+            ((Label)pane.lookup("#s_" + wonderName)).setText(scores.get(wonderName).toString());
+            pane.lookup("#" + wonderName).setEffect(null);
+        }
+
+        pane.lookup("#L" + winner).setStyle("-fx-text-fill: radial-gradient(radius 100%, green, #33ce2d,green);  -fx-font-weight: bold;-fx-font-size: 20;");
+        pane.lookup("#s_" + winner).setStyle("-fx-text-fill: radial-gradient(radius 100%, green, #33ce2d,green);  -fx-font-weight: bold;");
+        //pane.lookup("#L" + winner).setEffect(null);
+
+        pane.lookup("#w_" + winner).setVisible(true);
+
+        popOver.show(resources_grid_0);
+
+
+
+    }
+
+
+
     public void startPoint() throws Exception {
         int i = 0;
         String workingDir = System.getProperty("user.dir");
@@ -805,7 +1051,7 @@ public class in_game_controller implements Initializable  {
         socketThread = new Thread(socket);
         Platform.runLater(socketThread);*/
         //socketThread.start();
-    }
+
         //elif test
 
         //DİYELİMKİ CURRENT BÖYLE GELDİ
@@ -816,7 +1062,7 @@ public class in_game_controller implements Initializable  {
 
 
 
-        String [] wonderImages = new String[7];
+       /* String [] wonderImages = new String[7];
         Image[] wonderStages0 = new Image[7];
         Image[] wonderStages1 = new Image[7];
         Image[] wonderStages2 = new Image[7];
@@ -878,6 +1124,8 @@ public class in_game_controller implements Initializable  {
             wonder_4_stage_1.setImage(wonderStages1[6]);
             wonder_4_stage_2.setImage(wonderStages2[6]);
         }
+
+        */
 
 
 
