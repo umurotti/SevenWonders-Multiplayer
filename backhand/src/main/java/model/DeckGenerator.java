@@ -33,8 +33,8 @@ import java.util.ListIterator;
  * @author umur
  */
 public class DeckGenerator {
-    private final String DECK_PATH = "/home/umur/Desktop/";
-//    private final String DECK_PATH = "/home/ec2-user/";
+//    private final String DECK_PATH = "/home/umur/Desktop/";
+    private final String DECK_PATH = "/home/ec2-user/";
     private final String DECK_EXTENSION = ".json";
     private final String CARD_NAME_ATTRIBUTE = "name";
     private final String CARD_TYPE_SIMPLE = "SimpleCard";

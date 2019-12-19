@@ -5,9 +5,11 @@
  */
 package model;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.ListIterator;
 import java.util.Set;
 
 /**
@@ -58,8 +60,11 @@ public class DiscountCard extends Card{
     }
 
     @Override
-    public void play(WonderBoard wb, String selection){
-        if (neighbor.equals("left")){
+    public void play(WonderBoard wb, String selection, HashMap<String, WonderBoard> wonderboards){
+        if(selection.equals("0")) {
+            addThreeCoins(wb);
+        } else {
+            if (neighbor.equals("left")){
             HashMap<String,Integer> discountedMap = wb.getLeftDiscount();
             if (discountMaterial.equals("raw")){
                 for (String k : discountedMap.keySet()){
@@ -128,8 +133,29 @@ public class DiscountCard extends Card{
             }
         }
         //return false;
+        }
+        
     };
 
+    private void addThreeCoins(WonderBoard wb) {
+        List<String> sourcesToCalculate = wb.getSourcesToCalculate();
+        ListIterator it = wb.getSourcesToCalculate().listIterator();
+        while (it.hasNext()) {
+            String next = (String) it.next();
+            next = addSource("coin", 3, next);
+            it.set(next);
+        }
+    }
+    
+    private String addSource(String sourceType, int amount, String sourceToAdd) {
+        for(int i = 0; i < amount; i++) {
+            sourceToAdd += sourceType.charAt(0);
+        }
+        char tempArray[] = sourceToAdd.toCharArray();
+        Arrays.sort(tempArray);
+        return new String(tempArray);
+    }
+    
     public String getNeighbor() {
         return this.neighbor;
     }
