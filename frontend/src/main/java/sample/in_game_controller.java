@@ -272,14 +272,14 @@ public class in_game_controller implements Initializable  {
         wb6.setName("TheMausoleumofHalicarnassus");
         WonderBoard wb7 = new WonderBoard();
         wb7.setName("TheStatueofZeusinOlympia");
-        wb.setLeftNeighbor(wb2);
-        wb2.setLeftNeighbor(wb3);
-        wb3.setLeftNeighbor(wb);
+        wb.setLeftNeighbor(wb2.getName());
+        wb2.setLeftNeighbor(wb3.getName());
+        wb3.setLeftNeighbor(wb.getName());
         //wb3.setLeftNeighbor(wb4);
-        wb4.setLeftNeighbor(wb5);
+        wb4.setLeftNeighbor(wb5.getName());
         //wb5.setLeftNeighbor(wb6);
-        wb6.setLeftNeighbor(wb7);
-        wb7.setLeftNeighbor(wb);
+        wb6.setLeftNeighbor(wb7.getName());
+        wb7.setLeftNeighbor(wb.getName());
 
         wb.getSources().put("shield",7);
         wb2.getSources().put("shield",9);
@@ -432,21 +432,22 @@ public class in_game_controller implements Initializable  {
     //card popover definition
     PopOver popOverCard;
     public void selectCard(MouseEvent event)throws Exception{
-        /*PopOver popOver = new PopOver();
+        PopOver popOver = new PopOver();
         popOver.setArrowLocation(PopOver.ArrowLocation.BOTTOM_CENTER);
         popOver.setAutoFix(true);
         popOver.setAutoHide(true);
         popOver.setHideOnEscape(true);
         popOver.setDetachable(false);
-        GridPane pane = FXMLLoader.load(getClass().getResource("/select_card_popover.fxml"));*/
-       /* popOver.setContentNode(pane);
+        GridPane pane = FXMLLoader.load(getClass().getResource("/select_card_popover.fxml"));
+       popOver.setContentNode(pane);
         popOver.show((ImageView)event.getSource());
         selectedCard =((ImageView) event.getSource()).getId();
-        popOver.setContentNode(pane);*/
+        popOver.setContentNode(pane);
 
+        /*
         popOverCard.show((ImageView)event.getSource());
         selectedCard =((ImageView) event.getSource()).getId();
-        System.out.println(selectedCard + " ppppppppppppppppppppppppppppppppppppp");
+        System.out.println(selectedCard + " ppppppppppppppppppppppppppppppppppppp");*/
     }
 
     public void trade(MouseEvent event)throws Exception{
@@ -467,7 +468,7 @@ public class in_game_controller implements Initializable  {
     }
 
     public void buildCardClicked(MouseEvent event) throws Exception{
-        boolean trade = false;
+        boolean trade = true;
        // Map<String,Integer> source = wonderBoards.get(Main.wonderID).getSources();
         System.out.println(Main.wonderID);
         List<Card> hand = ServerConnection.cardss.getContainer().get(Main.wonderID);
@@ -492,9 +493,11 @@ public class in_game_controller implements Initializable  {
         }
     }
 
-    public void tradeClicked(MouseEvent event){
+    public void tradeClicked(MouseEvent event)throws Exception{
+        trade(event);
         Button temp = (Button)event.getSource();
         Label coinLabel = (Label)temp.getScene().lookup("#t_coin");
+        System.out.println(coinLabel.getText());
         if(coinLabel.getText().equals("0")) //////////
             //   coinLabel.setText(mySources.get("coin"));
             coinLabel.setText("5");
@@ -555,11 +558,11 @@ public class in_game_controller implements Initializable  {
             }
         }
 
-        CardAction toSend = new CardAction(selection,leftTradeMap,rightTradeMap,  hand.indexOf(selectedCard),wonderID);
-        con.sendAction(toSend, tableID);
+        CardAction toSend = new CardAction(selection,leftTradeMap,rightTradeMap,  hand.indexOf(selectedCard),Main.wonderID);
+        con.sendAction(toSend, Main.tableID);
     }
 
-    public void refreshSources(HashMap<String,Integer> sources, GridPane pane/*, HashMap<String,Boolean> ORsources*/)throws Exception{
+    public void refreshSources(HashMap<String,Integer> sources, GridPane pane, HashMap<String,Boolean> ORsources)throws Exception{
         GridPane tempGrid= pane;
         //refreshing normal sources
         for (Node child : tempGrid.getChildren()) {
@@ -571,7 +574,7 @@ public class in_game_controller implements Initializable  {
                 }
         }
         //refreshing OR sources
-        /*
+
         for( Map.Entry mapElement : ORsources.entrySet() ){
                 String key = (String) mapElement.getKey();
                 String nameOfImageView = "#s" + pane.getId().substring(15) + key;
@@ -581,13 +584,14 @@ public class in_game_controller implements Initializable  {
                 }else{
                     orSourceImageView.setVisible(false);
                 }
-        }*/
+        }
     }
 
     public void onPress(ActionEvent event)throws Exception{
         System.out.println("asdasda");
         HashMap<String,WonderBoard> wonders = (HashMap<String, WonderBoard>) con.ConvertJson(Main.tableID);
         wonderBoards = wonders;
+        System.out.println("refresh çağırılıyor");
         refresh();
     }
 
@@ -796,7 +800,7 @@ public class in_game_controller implements Initializable  {
 
 
         WonderBoard my_wonder = wonderBoards.get(wonderID);
-        refreshSources(my_wonder.getSources() ,resources_grid_0);
+        //refreshSources(my_wonder.getSources() ,resources_grid_0);
         refreshStructures(my_wonder, structure_grid_0);
         String left_neighbour_name = my_wonder.getLeftNeighbor();
         String right_neighbour_name = my_wonder.getRightNeighbor();
@@ -828,7 +832,8 @@ public class in_game_controller implements Initializable  {
             }
             sources_pane = (GridPane)sceneOfTable.lookup(sourcesGridName);
             structure_pane = (GridPane)sceneOfTable.lookup(structure_GridName);
-            refreshSources(wonderBoards.get(key).getSources(),sources_pane);
+            HashMap<String,Boolean> oring = wonderBoards.get(wonderName).getOrSources();
+            refreshSources(wonderBoards.get(key).getSources(),sources_pane,oring);
             refreshStructures(wonderBoards.get(key),structure_pane);
         }
 
@@ -1024,10 +1029,10 @@ public class in_game_controller implements Initializable  {
 
 
                 str1 = "#w2_" + i + "_image";
-                url = "/WONDERS/" + wonderBoards.get(wonderName).getLeftNeighbor().getName() +".jpg";
+                url = "/WONDERS/" + wonderBoards.get(wonderName).getLeftNeighbor() +".jpg";
                 ((ImageView)pane.lookup(str1)).setImage(new Image(url));
 
-                if(wonderBoards.get(wonderName).getSources().get("shield")<wonderBoards.get(wonderBoards.get(wonderName).getLeftNeighbor().getName()).getSources().get("shield")){
+                if(wonderBoards.get(wonderName).getSources().get("shield")<wonderBoards.get(wonderBoards.get(wonderName).getLeftNeighbor()).getSources().get("shield")){
                     str1 = "#w1_" + i + "_token";
                     ((ImageView)pane.lookup(str1)).setImage(defeatImage);
                     str1 = "#w2_" + i + "_token";
@@ -1211,14 +1216,20 @@ public class in_game_controller implements Initializable  {
         //elif test
 
         //DİYELİMKİ CURRENT BÖYLE GELDİ başarılı
-        String[] wonders = {"HALIKARNASSOS","BABYLON","GIZAH","RHODOS","OLYMPIA","ALEXANDRIA","EPHESOS"};
+        String[] wonders = {"TheStatueofZeusinOlympia",
+                "TheMausoleumofHalicarnassus",
+                "ThePyramidsofGiza",
+                "TheColossusofRhodes",
+                "TheLighthouseofAlexandria",
+                "TheHangingGardensofBabylon",
+                "TheTempleofArtemisinEphesus"};
         //String[] wonders = {"BABYLON","GIZAH","RHODOS","OLYMPIA","ALEXANDRIA","EPHESOS",""};
 
 
 
 
 
-       /* String [] wonderImages = new String[7];
+        String [] wonderImages = new String[7];
         Image[] wonderStages0 = new Image[7];
         Image[] wonderStages1 = new Image[7];
         Image[] wonderStages2 = new Image[7];
@@ -1285,7 +1296,7 @@ public class in_game_controller implements Initializable  {
             wonder_4_stage_2.setImage(wonderStages2[6]);
         }
 
-        */
+
         popOverCard = new PopOver();
         popOverCard.setArrowLocation(PopOver.ArrowLocation.BOTTOM_CENTER);
         popOverCard.setAutoFix(true);

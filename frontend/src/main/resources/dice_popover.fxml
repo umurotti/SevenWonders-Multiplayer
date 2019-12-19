@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.in_game_controller">
+
 <GridPane cache="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.in_game_controller">
   <columnConstraints>
       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="70.0" prefWidth="100.0" />
@@ -39,46 +39,46 @@
                   <ColorAdjust saturation="-1.0" />
                </effect>
                <image>
-                  <Image url="@WONDERS/EPHESOS.jpg" />
+                  <Image url="@WONDERS/TheTempleofArtemisinEphesus.jpg" />
                </image></ImageView>
             <ImageView fx:id="TheHangingGardensofBabylon" fitHeight="93.0" fitWidth="175.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                <image>
-                  <Image url="@WONDERS/BABYLON.jpg" />
+                  <Image url="@WONDERS/TheHangingGardensofBabylon.jpg" />
                </image>
                <effect>
                   <ColorAdjust saturation="-1.0" />
                </effect></ImageView>
              <ImageView fx:id="TheLighthouseofAlexandria" fitHeight="93.0" fitWidth="175.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
                  <image>
-                     <Image url="@WONDERS/ALEXANDRIA.jpg" />
+                     <Image url="@WONDERS/TheLighthouseofAlexandria.jpg" />
                  </image>
                <effect>
                   <ColorAdjust saturation="-1.0" />
                </effect></ImageView>
              <ImageView fx:id="TheColossusofRhodes" fitHeight="93.0" fitWidth="175.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
              <image>
-                 <Image url="@WONDERS/RHODOS.jpg" />
+                 <Image url="@WONDERS/TheColossusofRhodes.jpg" />
              </image>
                <effect>
                   <ColorAdjust saturation="-1.0" />
                </effect></ImageView>
              <ImageView fx:id="ThePyramidsofGiza" fitHeight="93.0" fitWidth="175.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER">
                  <image>
-                     <Image url="@WONDERS/GIZAH.jpg" />
+                     <Image url="@WONDERS/ThePyramidsofGiza.jpg" />
                  </image>
                <effect>
                   <ColorAdjust saturation="-1.0" />
                </effect></ImageView>
              <ImageView fx:id="TheMausoleumofHalicarnassus" fitHeight="93.0" fitWidth="175.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER">
                  <image>
-                     <Image url="@WONDERS/HALIKARNASSOS.jpg" />
+                     <Image url="@WONDERS/TheMausoleumofHalicarnassus.jpg" />
                  </image>
                <effect>
                   <ColorAdjust saturation="-1.0" />
                </effect></ImageView>
              <ImageView fx:id="TheStatueofZeusinOlympia" fitHeight="93.0" fitWidth="175.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="6" GridPane.valignment="CENTER">
                  <image>
-                     <Image url="@WONDERS/OLYMPIA.jpg" />
+                     <Image url="@WONDERS/TheStatueofZeusinOlympia.jpg" />
                  </image>
                <effect>
                   <ColorAdjust saturation="-1.0" />
