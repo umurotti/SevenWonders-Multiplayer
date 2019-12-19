@@ -70,7 +70,7 @@ public class in_game_controller implements Initializable  {
     Map<String,String> myStructuresBuilded = new HashMap<String,String>();
     Map<String,String> leftStructuresBuilded = new HashMap<String,String>();
     Map<String,String> rightStructuresBuilded = new HashMap<String,String>();
-    Map<String,String> mySources = new HashMap<String, String>();
+    static Map<String,Integer> mySources = new HashMap<String, Integer>();
     static String selectedCard ;
     int Hand;
     int myStructureNo = 0;
@@ -118,7 +118,7 @@ public class in_game_controller implements Initializable  {
     GridPane trade_sources_grid;
     static int selection =0;
     HandContainer handCards = new HandContainer();
-    Scene sceneOfTable;
+    static Scene sceneOfTable;
     //dice popover attributes
     Scene sceneOfDicePopOver;
     @FXML
@@ -139,6 +139,8 @@ public class in_game_controller implements Initializable  {
     //methods of dice
 
 
+    @FXML
+    Button tradeBuy;
     public void diceGamePopOver(ActionEvent event) throws Exception{
         final PopOver popOver = new PopOver();
         popOver.setArrowLocation(PopOver.ArrowLocation.BOTTOM_CENTER);
@@ -313,7 +315,7 @@ public class in_game_controller implements Initializable  {
     }
 
     public void buildCardClicked(MouseEvent event) throws Exception{
-        boolean trade = false;
+        boolean trade = true;
        // Map<String,Integer> source = wonderBoards.get(Main.wonderID).getSources();
         System.out.println(Main.wonderID);
         List<Card> hand = ServerConnection.cardss.getContainer().get(Main.wonderID);
@@ -334,16 +336,17 @@ public class in_game_controller implements Initializable  {
             System.out.println(toSend);
             con.sendAction(toSend,Main.tableID);
         }else{
+            trade(event);
             tradeClicked(event);
         }
     }
 
-    public void tradeClicked(MouseEvent event){
+    public void tradeClicked(MouseEvent event) throws Exception{
         Button temp = (Button)event.getSource();
-        Label coinLabel = (Label)temp.getScene().lookup("#t_coin");
+        Label coinLabel = (Label)tradeBuy.getScene().lookup("#t_coin");
         if(coinLabel.getText().equals("0")) //////////
-            //   coinLabel.setText(mySources.get("coin"));
-            coinLabel.setText("5");
+               coinLabel.setText(""+ mySources.get("coin"));
+            //coinLabel.setText("5");
         Scene tempScene= trade_sources_grid.getScene();
         String labelName = "#";
         if(temp.getId().substring(0,4).equals("ltbp") && Integer.parseInt(coinLabel.getText()) > 1){
@@ -401,8 +404,8 @@ public class in_game_controller implements Initializable  {
             }
         }
 
-        CardAction toSend = new CardAction(selection,leftTradeMap,rightTradeMap,  hand.indexOf(selectedCard),wonderID);
-        con.sendAction(toSend, tableID);
+        CardAction toSend = new CardAction(selection,leftTradeMap,rightTradeMap,  Integer.parseInt(selectedCard.substring(4)),Main.wonderID);
+        con.sendAction(toSend, Main.tableID);
     }
 
     public void refreshSources(HashMap<String,Integer> sources, GridPane pane/*, HashMap<String,Boolean> ORsources*/)throws Exception{
@@ -641,6 +644,7 @@ public class in_game_controller implements Initializable  {
 
 
         WonderBoard my_wonder = wonderBoards.get(wonderID);
+        mySources= my_wonder.getSources();
         refreshSources(my_wonder.getSources() ,resources_grid_0);
         refreshStructures(my_wonder, structure_grid_0);
         String left_neighbour_name = my_wonder.getLeftNeighbor();
@@ -826,6 +830,7 @@ public class in_game_controller implements Initializable  {
             System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAA" + gridName.getId().substring(15));
         int noOfImage = 0;
         while(cardIterator.hasNext()){
+            System.out.println("LLLLLLLLLLLLLLLLLLLLLLLLLLLL" + gridName.getId().substring(15));
             String nameOfImageView = "#structure_" + gridName.getId().substring(15) + "_" + noOfImage; //15 çünkü structure_0 derken 11 den başlarsan 0 ı alırsın
             Map.Entry mapElement = (Map.Entry)cardIterator.next();
             Card marks = ((Card)mapElement.getValue());
