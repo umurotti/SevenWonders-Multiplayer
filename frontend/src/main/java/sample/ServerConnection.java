@@ -1,33 +1,27 @@
 package sample;
-import java.io.*;
-import java.net.HttpURLConnection;
-import java.net.URI;
-import java.net.URL;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.sun.deploy.net.HttpResponse;
-import com.sun.org.apache.bcel.internal.generic.JsrInstruction;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.entity.ContentType;
-import org.apache.http.entity.StringEntity;
-import org.apache.http.impl.client.CloseableHttpClient;
-import org.apache.http.impl.client.HttpClientBuilder;
-import org.json.*;
-//import sun.java2d.opengl.WGLSurfaceData;
-import sun.misc.IOUtils;
-import sun.net.www.http.HttpClient;
+import org.json.JSONObject;
 
-import sample.CardAction;
-import javax.net.ssl.HttpsURLConnection;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URI;
+import java.net.URL;
+import java.util.HashMap;
+import java.util.Map;
+
+//import sun.java2d.opengl.WGLSurfaceData;
+import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
-import java.util.*;
-import java.util.concurrent.ExecutionException;
+
+
 
 public class ServerConnection {
   //  String url = "http://139.179.103.144:8080/cs319deneme3/7wonders/SWhouseServices/createTableService?tableID=";
-
+        static HandContainer cardss;
     public JSONObject getWonder(String tableId)throws Exception{
         // url = "http://139.179.103.144:8080/cs319deneme3/7wonders/SWhouseServices/startTableService?tableID=";
         String url = "http://ec2-54-93-112-68.eu-central-1.compute.amazonaws.com:8080/cs319deneme3-1.0-SNAPSHOT/7wonders/SWtableServices/getWondersService?tableID=";
@@ -97,24 +91,15 @@ public class ServerConnection {
     public void sendRequestChoice(String actionJson,String tableID)throws Exception{
         //String url = "http://139.179.103.144:8080/cs319deneme3/7wonders/SWtableServices/playActionService?tableID=";
 
-
         String url ="http://ec2-54-93-112-68.eu-central-1.compute.amazonaws.com:8080/cs319deneme3-1.0-SNAPSHOT/7wonders/SWtableServices/playActionService?tableID=";
-        url = url + Main.tableID ;
+        url = url + Main.tableID  + "&action=";
     //    url = url +  actionJson;
         //url ye parametre ekleme, çalışmıyor UTF8 formatına çevirmeye çalıştım
-        URI oldUri = new URI(url);
-        actionJson = "action=" + actionJson;
-         String newQuery = oldUri.getQuery();
-        if (newQuery == null) {
-            newQuery = actionJson;
-        } else {
-            newQuery += "&" + actionJson;
-        }
 
-        URI newUri = new URI(oldUri.getScheme(), oldUri.getAuthority(),
-                oldUri.getPath(), newQuery, oldUri.getFragment());
-        //URL obj = new URL(newUri.toURL());
-        URL obj =newUri.toURL();
+        url = url +URLEncoder.encode(actionJson, "UTF-8");
+
+
+        URL obj = new URL(url);
 
         HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 
@@ -264,7 +249,7 @@ public class ServerConnection {
         mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
         String info = hold.toString();
         //List<Card> cards = mapper.readValue(info, new TypeReference<List<Card>>() { });
-        HandContainer cardss = mapper.readValue(info, HandContainer.class);
+         cardss = mapper.readValue(info, HandContainer.class);
         return cardss;
     }
     public void sendAction(CardAction action, String tableID) throws Exception{

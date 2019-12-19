@@ -33,7 +33,7 @@ public class Main extends Application {
         File lightcss = new File(workingDir2);
         Main.scene.getStylesheets().add(lightcss.toURI().toURL().toExternalForm());
         primaryStage.setScene(scene);
-        primaryStage.setFullScreen(true);
+        primaryStage.setFullScreen(false);
         primaryStage.show();
         main_menu_controller controller = new main_menu_controller();
 
