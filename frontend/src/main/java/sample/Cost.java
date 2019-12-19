@@ -3,19 +3,25 @@ package sample;
 import java.util.HashMap;
 
 public class Cost {
-    HashMap<String, String> cost;
+    private HashMap<String,Integer> cost;
 
-    Cost(){
-
-    }
-    Cost(HashMap<String,String> cost){
-        this.cost = cost;
-    }
-    public void setCost(HashMap<String, String> cost) {
+    public Cost(HashMap<String, Integer> cost) {
         this.cost = cost;
     }
 
-    public HashMap<String, String> getCost() {
+    public Cost() {
+    }
+
+    public HashMap<String, Integer> getCost() {
         return cost;
+    }
+
+    public void setCost(HashMap<String, Integer> cost) {
+        this.cost = cost;
+    }
+
+    @Override
+    public String toString() {
+        return "Cost{" + "cost=" + cost + '}';
     }
 }

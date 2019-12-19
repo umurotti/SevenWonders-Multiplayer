@@ -18,35 +18,45 @@ import java.util.Map;
  */
 public class SimpleCard extends Card {
 
-    private boolean isConvertible;
+    private boolean isOr;
     private HashMap<String, Integer> benefits;
     
-    public SimpleCard(Cost cost, String color, String name, List<String> freeBuildings, int minNoOfPlayer, HashMap<String, Integer> benefits , boolean isConvertible) {
+    public SimpleCard(Cost cost, String color, String name, List<String> freeBuildings, int minNoOfPlayer, HashMap<String, Integer> benefits , boolean isOr) {
         super(name, color, cost, minNoOfPlayer, freeBuildings);
         this.benefits = benefits;
-        this.isConvertible = isConvertible;
+        this.isOr = isOr;
     }
     
-    public SimpleCard(boolean isConvertible) {
+    public SimpleCard(boolean isOr) {
         super();
-        this.isConvertible = isConvertible;
+        this.isOr = isOr;
     }
     
     @Override
-    public void play(WonderBoard wb, String selection) {
+    public void play(WonderBoard wb, String selection, HashMap<String, WonderBoard> wonderboards) {
         //applyCost(wb);
-        addAllSources(wb);
+        if(selection.equals("0")) {
+            addThreeCoins(wb);
+        } else {
+            addAllSources(wb);
+        }
     }
-    
-    private void applyCost(WonderBoard wb) {
-        
+
+    private void addThreeCoins(WonderBoard wb) {
+        List<String> sourcesToCalculate = wb.getSourcesToCalculate();
+        ListIterator it = wb.getSourcesToCalculate().listIterator();
+        while (it.hasNext()) {
+            String next = (String) it.next();
+            next = addSource("coin", 3, next);
+            it.set(next);
+        }
     }
     
     private void addAllSources(WonderBoard wb) {
         List<String> sourcesToCalculate = wb.getSourcesToCalculate();
         ListIterator it = wb.getSourcesToCalculate().listIterator();
         
-        if(!isConvertible) {
+        if(!isOr) {
             while(it.hasNext()) {
                 String next = (String) it.next();
                 for(Map.Entry<String, Integer> entry : getBenefits().entrySet()) {
@@ -56,6 +66,7 @@ public class SimpleCard extends Card {
                 }
                 it.set(next);
             }
+            addToNormalSource(wb);
         } else {
             List<String> toAdd = new LinkedList<>();
             while(it.hasNext()) {
@@ -67,10 +78,35 @@ public class SimpleCard extends Card {
                 }
             }
             wb.setSourcesToCalculate(toAdd);
+            addToOrSource(wb);
         }
     }
 
+    private void addToNormalSource(WonderBoard wb) {
+        for (Map.Entry<String, Integer> entry : getBenefits().entrySet()) {
+            if (entry.getValue() != 0) {
+                wb.getSources().put(entry.getKey(), wb.getSources().get(entry.getKey()) + entry.getValue());
+            }
+        }
+    }
     
+    private void addToOrSource(WonderBoard wb) {
+        List<String> orSources = new LinkedList<>();
+        for (Map.Entry<String, Integer> entry : getBenefits().entrySet()) {
+            if (entry.getValue() != 0) {
+                orSources.add(entry.getKey());
+            }
+        }
+        
+        ListIterator it = orSources.listIterator();
+        String toAdd = (String) it.next();
+        while(it.hasNext()) {
+            toAdd += "OR" + it.next();
+        }
+        
+        wb.getOrSources().put(toAdd, Boolean.TRUE);
+    }
+        
     private String addSource(String sourceType, int amount, String sourceToAdd) {
         for(int i = 0; i < amount; i++) {
             sourceToAdd += sourceType.charAt(0);
@@ -80,13 +116,15 @@ public class SimpleCard extends Card {
         return new String(tempArray);
     }
     
-    public boolean isIsConvertible() {
-        return isConvertible;
+    public boolean isIsOr() {
+        return isOr;
     }
 
-    public void setIsConvertible(boolean isConvertible) {
-        this.isConvertible = isConvertible;
+    public void setIsOr(boolean isOr) {
+        this.isOr = isOr;
     }
+    
+    
 
     public HashMap<String, Integer> getBenefits() {
         return benefits;

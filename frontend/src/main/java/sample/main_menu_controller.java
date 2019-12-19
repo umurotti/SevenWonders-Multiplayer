@@ -4,11 +4,16 @@ import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Accordion;
 import javafx.scene.control.Button;
+import javafx.scene.layout.GridPane;
 
 public class main_menu_controller {
+    @FXML
+    GridPane sample_grid;
     @FXML
     private Button exit_button;
     @FXML
@@ -28,10 +33,17 @@ public class main_menu_controller {
 
     public void onPressHowtoPlayButton(ActionEvent event) throws Exception{
         SoundManager.play(SoundManager.MUSIC.BUTTON_CLICK);
+/*
         Scene scene1 = how_to_play_button.getScene();
         //root = FXMLLoader.load(getClass().getResource("/how_to_play_screen.fxml"));
         root = FXMLLoader.load(getClass().getResource("/in_game_screen.fxml"));
+        scene1.setRoot(root);*/
+        Scene scene1 = how_to_play_button.getScene();
+        root =(Parent) Main.map.get("home");
         scene1.setRoot(root);
+        SocketThread socketThread = new SocketThread((in_game_controller) Main.map.get("controller"));
+        Thread newT = new Thread(socketThread);
+        newT.start();
     }
     public void onPressCreditsButton(ActionEvent event) throws Exception{
         SoundManager.play(SoundManager.MUSIC.BUTTON_CLICK);

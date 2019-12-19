@@ -35,10 +35,10 @@ public class JaxRsActivator extends Application {
         BeanConfig beanConfig = new BeanConfig();
         beanConfig.setVersion("1.0.0");
         beanConfig.setSchemes(new String[]{"http"});
-        beanConfig.setHost(props.getProperty("host", "ebedek:8080"));
-//        beanConfig.setHost("ec2-54-93-112-68.eu-central-1.compute.amazonaws.com:8080");
-        beanConfig.setBasePath("/cs319deneme3/7wonders");
-//        beanConfig.setBasePath("/cs319deneme3-1.0-SNAPSHOT/7wonders");
+        //beanConfig.setHost(props.getProperty("host", "ebedek:8080"));
+        beanConfig.setHost("ec2-54-93-112-68.eu-central-1.compute.amazonaws.com:8080");
+//        beanConfig.setBasePath("/cs319deneme3/7wonders");
+        beanConfig.setBasePath("/cs319deneme3-1.0-SNAPSHOT/7wonders");
 //        beanConfig.setBasePath("7wonders");
         beanConfig.setResourcePackage(SWhouseServices.class.getPackage().getName());
         beanConfig.setTitle("Domain services RESTful API");

@@ -29,6 +29,10 @@ public class start_game_controller {
         con.sendRequestCreate(player_id_controller.WonderID, tableID.getText());
         Scene scene1 = create_game_button.getScene();
         TableID = tableID.getText();
+        Main.tableID = TableID;
+        con.sendRequestCreate(player_id_controller.WonderID, TableID);
+        Scene scene1 = create_game_button.getScene();
+
         root = FXMLLoader.load(getClass().getResource("/creator_wait_screen.fxml"));
         scene1.setRoot(root);
     }

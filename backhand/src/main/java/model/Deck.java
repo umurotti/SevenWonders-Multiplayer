@@ -22,14 +22,14 @@ public class Deck {
         int noOfCards = 0;
         for(int a = 0; a < listOfCard.size();a++)
         {
-            if(listOfCard.get(a).getMinNoOfPlayers()<= noOfPlayers)
+            if(listOfCard.get(a).getMinPlayerNo()<= noOfPlayers)
                 noOfCards++;
         }
         Card[] cards = new Card[noOfCards];
         int count = 0;
         for(int a = 0; a<listOfCard.size(); a++)
         {
-            if(listOfCard.get(a).getMinNoOfPlayers()<= noOfPlayers)
+            if(listOfCard.get(a).getMinPlayerNo()<= noOfPlayers)
                 cards[count++] = listOfCard.get(a);
         }
         return cards;
