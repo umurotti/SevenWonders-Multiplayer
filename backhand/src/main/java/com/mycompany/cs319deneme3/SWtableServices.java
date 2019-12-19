@@ -24,25 +24,25 @@ import model.WonderBoard;
  *
  * @author umur
  */
-
-    @Api("SW tableServices")
-    @Path("SWtableServices")
+@Api("SW tableServices")
+@Path("SWtableServices")
 public class SWtableServices {
-        
+
     @GET
     @Produces("application/json")
 //    @Produces("text/plain")
     @Path("getWondersService")
-    public String getWonderboardsService(@QueryParam("tableID") String tableID ) throws IOException {
+    public String getWonderboardsService(@QueryParam("tableID") String tableID) throws IOException {
         HashMap<String, WonderBoard> wonderboards = House.getInstance().getInPlayTables().get(tableID).getWonders();
         return parseObjectToJSON(wonderboards);
     }
 //    
+
     @GET
     @Produces("application/json")
 //    @Produces("text/plain")
     @Path("getHandsService")
-    public String getHandsService(@QueryParam("tableID") String tableID ) throws IOException {
+    public String getHandsService(@QueryParam("tableID") String tableID) throws IOException {
         HandContainer hands = House.getInstance().getInPlayTables().get(tableID).getTransfer();
         return parseObjectToJSON(hands);
     }
@@ -55,26 +55,44 @@ public class SWtableServices {
         House.getInstance().getWaitingTables().get(tableID).playerJoined(playerID, null);
         return "başarılı";
     }
-    
+
     @GET
 //    @Produces("application/json")
     @Produces("text/plain")
     @Path("playActionService")
     public String playActionService(@QueryParam("tableID") String tableID, @QueryParam("action") String toAct) throws IOException, Exception {
-        
-        if (House.getInstance().getInPlayTables().get(tableID).isPossible((CardAction)parseJSONToObject(toAct))) {
-            House.getInstance().getInPlayTables().get(tableID).lockAction((CardAction)parseJSONToObject(toAct));
+
+        if (House.getInstance().getInPlayTables().get(tableID).isPossible((CardAction) parseJSONToObject(toAct))) {
+            House.getInstance().getInPlayTables().get(tableID).lockAction((CardAction) parseJSONToObject(toAct));
             return "başarılı";
-        }else {
+        } else {
             return "başarısız";
         }
     }
+
+    @GET
+    @Produces("text/plain")
+    @Path("getMilitaryPointsService")
+    public String getMilitaryPointsService(@QueryParam("tableID") String tableID) throws IOException, Exception {
+        HashMap<String, Integer> tmp = House.getInstance().getInPlayTables().get(tableID).getMilitaryPointsTransfer();
+        return parseObjectToJSON(tmp);
+
+    }
     
+    @GET
+    @Produces("text/plain")
+    @Path("getScoresService")
+    public String getScoresService(@QueryParam("tableID") String tableID) throws IOException, Exception {
+        HashMap<String, Integer> tmp = House.getInstance().getInPlayTables().get(tableID).getScoreboard().getTotalScores();
+        return parseObjectToJSON(tmp);
+
+    }
+
     private String parseObjectToJSON(Object toParse) throws JsonProcessingException {
         ObjectMapper mapper = new ObjectMapper();
         return mapper.writeValueAsString(toParse);
     }
-    
+
     private Object parseJSONToObject(String toParse) throws JsonProcessingException, IOException {
         ObjectMapper mapper = new ObjectMapper();
         Object returnObj = mapper.readValue(toParse, CardAction.class);
