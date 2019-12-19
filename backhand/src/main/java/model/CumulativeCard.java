@@ -14,8 +14,8 @@ import java.util.function.IntBinaryOperator;
  * @author OmerFarukKurklu
  * @version 0.1
  */
-
 public class CumulativeCard extends Card {
+
     private final String involve; // 'own', 'neighbor', 'both'
     private final Set<String> dependencies; // 'brown', 'red', 'yellow', 'green', 'gray', 'blue', 'stage', 'purple', 'defeatTokens'
     private final int coin;
@@ -31,82 +31,98 @@ public class CumulativeCard extends Card {
     }
 
     @Override
-    void play(WonderBoard wb, String selection) {
+    void play(WonderBoard wb, String selection, HashMap<String, WonderBoard> wonderboards) {
         int amount = 0;
         for (String dependency : dependencies) {
-//            if (dependency.equals("stage")){
-//                if (involve.equals("own")) {
-//                    amount += wb.getCurrentStage();
-//                }
-//                else if (involve.equals("neigbor")){
-//                    amount += wb.getLeftNeighbor().getCurrentStage();
+            if (dependency.equals("stage")) {
+                if (involve.equals("own")) {
+                    amount += wb.getCurrentStage();
+                } else if (involve.equals("neigbor")) {
+                    //amount += wb.getLeftNeighbor().getCurrentStage();
+                    amount += getLeftNeighbor(wb, wonderboards).getCurrentStage();
+
 //                    amount += wb.getRightNeighbor().getCurrentStage();
-//                }
-//                else if (involve.equals("both")){
-//                    amount += wb.getCurrentStage();
-//                    amount += wb.getLeftNeighbor().getCurrentStage();
+                    amount += getRightNeighbor(wb, wonderboards).getCurrentStage();
+                } else if (involve.equals("both")) {
+                    amount += wb.getCurrentStage();
+                    //amount += wb.getLeftNeighbor().getCurrentStage();
+                    amount += getLeftNeighbor(wb, wonderboards).getCurrentStage();
 //                    amount += wb.getRightNeighbor().getCurrentStage();
-//                }
-//            }
-//            else if (dependency.equals("defeatTokens")){
-//                if (involve.equals("own")) {
-//                    amount += wb.getDefeatTokens();
-//                }
-//                else if (involve.equals("neigbor")){
-//                    amount += wb.getLeftNeighbor().getDefeatTokens();
+                    amount += getRightNeighbor(wb, wonderboards).getCurrentStage();
+                }
+            } else if (dependency.equals("defeatTokens")) {
+                if (involve.equals("own")) {
+                    amount += wb.getDefeatTokens();
+                } else if (involve.equals("neigbor")) {
+                    //amount += wb.getLeftNeighbor().getDefeatTokens();
+                    amount += getLeftNeighbor(wb, wonderboards).getDefeatTokens();
+
 //                    amount += wb.getRightNeighbor().getDefeatTokens();
-//                }
-//                else if (involve.equals("both")){
-//                    amount += wb.getDefeatTokens();
-//                    amount += wb.getLeftNeighbor().getDefeatTokens();
+                    amount += getRightNeighbor(wb, wonderboards).getDefeatTokens();
+                } else if (involve.equals("both")) {
+                    amount += wb.getDefeatTokens();
+                    //amount += wb.getLeftNeighbor().getDefeatTokens();
+                    amount += getLeftNeighbor(wb, wonderboards).getDefeatTokens();
+
 //                    amount += wb.getRightNeighbor().getDefeatTokens();
-//                }
-//            }
-//            else {
-//                if (involve.equals("own")) {
-//                    for (Card card : wb.getBuiltCards().values()){
-//                        if (card.getColor().equals(dependency))
-//                            amount++;
-//                    }
-//                }
-//                else if (involve.equals("neigbor")){
-//                    for (Card card : wb.getLeftNeighbor().getBuiltCards().values()){
-//                        if (card.getColor().equals(dependency))
-//                            amount++;
-//                    }
-//                    for (Card card : wb.getRightNeighbor().getBuiltCards().values()){
-//                        if (card.getColor().equals(dependency))
-//                            amount++;
-//                    }
-//                }
-//                else if (involve.equals("both")){
-//                    for (Card card : wb.getBuiltCards().values()){
-//                        if (card.getColor().equals(dependency))
-//                            amount++;
-//                    }
-//                    for (Card card : wb.getLeftNeighbor().getBuiltCards().values()){
-//                        if (card.getColor().equals(dependency))
-//                            amount++;
-//                    }
-//                    for (Card card : wb.getRightNeighbor().getBuiltCards().values()){
-//                        if (card.getColor().equals(dependency))
-//                            amount++;
-//                    }
-//                }
-//            }
+                    amount += getRightNeighbor(wb, wonderboards).getDefeatTokens();
+                }
+            } else {
+                if (involve.equals("own")) {
+                    for (Card card : wb.getBuiltCards().values()) {
+                        if (card.getColor().equals(dependency)) {
+                            amount++;
+                        }
+                    }
+                } else if (involve.equals("neigbor")) {
+                    for (Card card : getLeftNeighbor(wb, wonderboards).getBuiltCards().values()) {
+                        if (card.getColor().equals(dependency)) {
+                            amount++;
+                        }
+                    }
+                    for (Card card : getRightNeighbor(wb, wonderboards).getBuiltCards().values()) {
+                        if (card.getColor().equals(dependency)) {
+                            amount++;
+                        }
+                    }
+                } else if (involve.equals("both")) {
+                    for (Card card : wb.getBuiltCards().values()) {
+                        if (card.getColor().equals(dependency)) {
+                            amount++;
+                        }
+                    }
+                    for (Card card : getLeftNeighbor(wb, wonderboards).getBuiltCards().values()) {
+                        if (card.getColor().equals(dependency)) {
+                            amount++;
+                        }
+                    }
+                    for (Card card : getRightNeighbor(wb, wonderboards).getBuiltCards().values()) {
+                        if (card.getColor().equals(dependency)) {
+                            amount++;
+                        }
+                    }
+                }
+            }
         }
         HashMap<String, Integer> sources = wb.getSources();
         if (coin != 0 && vPoint != 0) {
-            sources.replace("coin", sources.get("coin") + (amount*coin));
+            sources.replace("coin", sources.get("coin") + (amount * coin));
             wb.setSources(sources);
             //return true;
         }
-        sources.replace("coin", sources.get("coin") + (amount*coin));
-        sources.replace("victoryPoint", sources.get("victoryPoint") + (amount*vPoint));
+        sources.replace("coin", sources.get("coin") + (amount * coin));
+        sources.replace("victoryPoint", sources.get("victoryPoint") + (amount * vPoint));
         wb.setSources(sources);
         //return true;
     }
-    
+
+    private WonderBoard getLeftNeighbor(WonderBoard wb, HashMap<String, WonderBoard> wonderboards) {
+        return wonderboards.get(wb.getLeftNeighbor());
+    }
+
+    private WonderBoard getRightNeighbor(WonderBoard wb, HashMap<String, WonderBoard> wonderboards) {
+        return wonderboards.get(wb.getRightNeighbor());
+    }
 
     public String getInvolve() {
         return involve;
@@ -137,27 +153,36 @@ public class CumulativeCard extends Card {
 
     @Override
     public boolean equals(Object obj) {
-        if (this == obj)
+        if (this == obj) {
             return true;
-        if (!super.equals(obj))
+        }
+        if (!super.equals(obj)) {
             return false;
-        if (getClass() != obj.getClass())
+        }
+        if (getClass() != obj.getClass()) {
             return false;
+        }
         CumulativeCard other = (CumulativeCard) obj;
-        if (coin != other.coin)
+        if (coin != other.coin) {
             return false;
+        }
         if (dependencies == null) {
-            if (other.dependencies != null)
+            if (other.dependencies != null) {
                 return false;
-        } else if (!dependencies.equals(other.dependencies))
+            }
+        } else if (!dependencies.equals(other.dependencies)) {
             return false;
+        }
         if (involve == null) {
-            if (other.involve != null)
+            if (other.involve != null) {
                 return false;
-        } else if (!involve.equals(other.involve))
+            }
+        } else if (!involve.equals(other.involve)) {
             return false;
-        if (vPoint != other.vPoint)
+        }
+        if (vPoint != other.vPoint) {
             return false;
+        }
         return true;
     }
 

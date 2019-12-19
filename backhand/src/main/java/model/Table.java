@@ -26,7 +26,7 @@ public class Table {
     private List<WonderBoard> diceRollers;
     private String diceRollWinner;
     private Card diceRollCard;
-    //private ScoreBoard scoreboard
+    private ScoreBoard scoreboard;
     private LinkedBlockingQueue<Event> eventQueue;
     private Map<String, Socket> playerChannel;
     private HashMap<String, WonderBoard> wonders;
@@ -51,7 +51,7 @@ public class Table {
         this.age1Deck = age1Deck;
         wonders = new HashMap<>();
         trans = new HandContainer();
-        
+        scoreboard = new ScoreBoard(wonders);
 //        this.age2Deck = age2Deck;
 //        this.age3Deck = age3Deck;
 
@@ -142,6 +142,7 @@ public class Table {
       
             wonders.put(playerIDs.get(a),new WonderBoard(playerIDs.get(a), a));
         }
+        
     }
     public void pickMagicCard(String wonderID)
     {}
@@ -155,7 +156,7 @@ public class Table {
     public void playAge()
     {}
 
-    public void lockAction(CardAction action){
+    public void lockAction(CardAction action) throws Exception{
         this.getWonders().get(action.getWonderID()).setLockedAction(action);
         noOfActions++;
         if(noOfActions == noOfPlayers) {
@@ -190,7 +191,66 @@ public class Table {
                 return false;
             }
             Cost cost = wb.getStageCosts()[wb.getCurrentStage()];
-            if(costCheck(cost, wbSources, leftTrade, rightTrade)) {                
+            
+            ListIterator it = wbSources.listIterator();
+            List<String> copy = new LinkedList<>();
+            while(it.hasNext()) {
+                copy.add((String) it.next());
+            }
+            
+            //
+            
+            HashMap<String, Integer> leftDiscount = wb.getLeftDiscount();
+            HashMap<String, Integer> rightDiscount = wb.getRightDiscount();
+            int requiredCoin = 0;
+            
+            
+            if (leftTrade != null) {
+                ListIterator iter = null;
+                for (Map.Entry<String, Integer> entry : leftTrade.entrySet()) {
+                    iter = copy.listIterator();
+                    requiredCoin += entry.getValue() * leftDiscount.get(entry.getKey());
+                    
+                    if (entry.getValue() != 0) {
+                        while (iter.hasNext()) {
+                            String tmp = (String) iter.next();
+                            for(int i = 0; i < entry.getValue();i++) {
+                                tmp += entry.getKey().charAt(0);
+                            }
+                            
+                            char tempArray[] = tmp.toCharArray();
+                            Arrays.sort(tempArray);
+                            it.set(new String(tempArray));
+                        }
+                    }
+                }
+            }
+            
+            if (rightTrade != null) {
+                ListIterator iter = null;
+                for (Map.Entry<String, Integer> entry : rightTrade.entrySet()) {
+                    iter = copy.listIterator();
+                    requiredCoin += entry.getValue() * rightDiscount.get(entry.getKey());
+                    
+                    if (entry.getValue() != 0) {
+                        while (iter.hasNext()) {
+                            String tmp = (String) iter.next();
+                            for(int i = 0; i < entry.getValue();i++) {
+                                tmp += entry.getKey().charAt(0);
+                            }
+                            
+                            char tempArray[] = tmp.toCharArray();
+                            Arrays.sort(tempArray);
+                            it.set(new String(tempArray));
+                        }
+                    }
+                }
+            }
+            
+            if(requiredCoin > wb.getSources().get("coin"))
+                return false;
+            //
+            if(costCheck(cost, copy, leftTrade, rightTrade)) {                
                 return true;
             }
             else
@@ -287,12 +347,12 @@ public class Table {
     
 
 
-    public void playTurn()
+    public void playTurn() throws Exception
     {
         HashMap<String, WonderBoard> wonders = this.getWonders();
         for (String wbID : wonders.keySet()) {
             this.playAction(wonders.get(wbID));
-            wonders.get(wbID).setHandNo((wonders.get(wbID).getHandNo() + 1)%7);
+            //wonders.get(wbID).setHandNo((wonders.get(wbID).getHandNo() + 1)%noOfPlayers);
         }
         turn++;
         noOfActions = 0;
@@ -303,9 +363,72 @@ public class Table {
                 tmp[i] = tmp[i - 1];
             }
             tmp[0] = tmp2;
+        } else {
+            turn = 0;
+            //calculate military tokens
+            for(Map.Entry<String, WonderBoard> entry : wonders.entrySet()) {
+                WonderBoard middle = entry.getValue();
+                WonderBoard right = wonders.get(middle.getRightNeighbor());
+                WonderBoard left = wonders.get(middle.getLeftNeighbor());
+                
+                if(age== 1) {
+                    if(middle.getSources().get("zshield") > left.getSources().get("zshield")) {
+                        middle.setMilitaryTokens(middle.getMilitaryTokens() + 1);
+                    } else if (middle.getSources().get("zshield") == left.getSources().get("zshield")){
+                    } else {
+                        middle.setMilitaryTokens(middle.getMilitaryTokens() - 1);
+                    }
+                    
+                    if(middle.getSources().get("zshield") > right.getSources().get("zshield")) {
+                        middle.setMilitaryTokens(middle.getMilitaryTokens() + 1);
+                    } else if (middle.getSources().get("zshield") == right.getSources().get("zshield")){
+                    } else {
+                        middle.setMilitaryTokens(middle.getMilitaryTokens() - 1);
+                    }
+                } else if (age == 2) {
+                    if(middle.getSources().get("zshield") > left.getSources().get("zshield")) {
+                        middle.setMilitaryTokens(middle.getMilitaryTokens() + 3);
+                    } else if (middle.getSources().get("zshield") == left.getSources().get("zshield")){
+                    } else {
+                        middle.setMilitaryTokens(middle.getMilitaryTokens() - 1);
+                    }
+                    
+                    if(middle.getSources().get("zshield") > right.getSources().get("zshield")) {
+                        middle.setMilitaryTokens(middle.getMilitaryTokens() + 3);
+                    } else if (middle.getSources().get("zshield") == right.getSources().get("zshield")){
+                    } else {
+                        middle.setMilitaryTokens(middle.getMilitaryTokens() - 1);
+                    }
+                } else if (age == 3) {
+                    if(middle.getSources().get("zshield") > left.getSources().get("zshield")) {
+                        middle.setMilitaryTokens(middle.getMilitaryTokens() + 5);
+                    } else if (middle.getSources().get("zshield") == left.getSources().get("zshield")){
+                    } else {
+                        middle.setMilitaryTokens(middle.getMilitaryTokens() - 1);
+                    }
+                    
+                    if(middle.getSources().get("zshield") > right.getSources().get("zshield")) {
+                        middle.setMilitaryTokens(middle.getMilitaryTokens() + 5);
+                    } else if (middle.getSources().get("zshield") == right.getSources().get("zshield")){
+                    } else {
+                        middle.setMilitaryTokens(middle.getMilitaryTokens() - 1);
+                    }
+                } else {
+                    throw new Exception("End Age Error");
+                    
+                }
+                    
+            }
+            
+            if(age == 3) {
+                scoreboard.calculateScores();
+            } else {
+                age++;
+            }
         }
     }
-
+    
+    
     private void playAction(WonderBoard wb){
         CardAction action = wb.getLockedAction();
         int choice = action.getChoice();
@@ -314,6 +437,8 @@ public class Table {
         Card [][] hands = this.getHands();
         int wbHandNo = wb.getHandNo();
         int cardNo = action.getCardNo();
+        
+        
 
         // Discard
         if (choice == 0) {
@@ -321,6 +446,8 @@ public class Table {
             HashMap<String, Integer> wbSources = wb.getSources();
             wbSources.put("coin", wbSources.get("coin") + 3);
             wb.setSources(wbSources);
+            Card card = hands[wbHandNo][cardNo];
+            card.play(wb, "0", wonders);
         }
 
         // Build Card
@@ -328,8 +455,34 @@ public class Table {
             // Get the card from hand.
             Card card = hands[wbHandNo][cardNo];
             //*ToTest*//
+            int requiredCoins = 0;
+            if (action.getLeftTrade() != null) {
+                for (Map.Entry<String, Integer> entry : action.getLeftTrade().entrySet()) {
+                    
+                        requiredCoins += action.getLeftTrade().get(entry.getKey()) * wb.getLeftDiscount().get(entry.getKey());
+                    
+                }
+            }
+            
+            if (action.getRightTrade() != null) {
+                for (Map.Entry<String, Integer> entry : action.getRightTrade().entrySet()) {
+                    
+                        requiredCoins += action.getRightTrade().get(entry.getKey()) * wb.getRightDiscount().get(entry.getKey());
+                    
+                }
+            }
+            
+            ListIterator it = wb.getSourcesToCalculate().listIterator();
+            while(it.hasNext()) {
+                String tmp = (String) it.next();
+                for(int i = 0; i < requiredCoins; i++) {
+                    tmp = tmp.replaceFirst("c", "");
+                }
+                it.set(tmp);
+            }
+            wb.getSources().put("coin", wb.getSources().get("coin") - requiredCoins);
            //SimpleCard card = (SimpleCard) hands[wbHandNo][cardNo];
-           card.play(wb, "");
+           card.play(wb, "", wonders);
         }
 
         // Build Wonder stage. For this iteration our stages only give +3 VP, 0 VP, +7 VP.
@@ -361,6 +514,11 @@ public class Table {
         this.hand = hand;
     }
 
+    public ScoreBoard getScoreboard() {
+        return scoreboard;
+    }
+    
+    
     
     public HashMap<String, WonderBoard> getWonders() {
         return wonders; 
@@ -368,5 +526,13 @@ public class Table {
     public HandContainer getTransfer() {
         trans = new HandContainer(hand,noOfPlayers,playerIDs);
         return trans;
+    }
+    
+    public HashMap<String,Integer> getMilitaryPointsTransfer() {
+        HashMap<String, Integer> result = new HashMap<>();
+        for(Map.Entry<String, WonderBoard> entry : wonders.entrySet()) {
+            result.put(entry.getKey(),entry.getValue().getMilitaryTokens());
+        }
+        return result;
     }
 }
