@@ -16,6 +16,20 @@ public class SocketThread extends Task<Void> {
     }
 
     boolean socketThreadOpen= true;
+   public void run() {
+        /*try{
+            while(socketThreadOpen){
+                TimeUnit.MILLISECONDS.sleep(5000);
+                System.out.println("aaa");
+                game_controller.refresh();
+                socketThreadOpen = true;
+
+            }
+        }catch(Exception e){
+
+        }*/
+
+    }
     public void closeThread(){
         socketThreadOpen = false;
     }
@@ -38,6 +52,18 @@ public class SocketThread extends Task<Void> {
                 if(gate)
                 Platform.runLater(new Runnable() {
                     public void run() {
+                       /* try{
+                            if(count == 0)
+                                game_controller.diceGamePopOver(new ActionEvent());
+                            else if(count == 1)
+                                game_controller.playerEnteredDiceGame("TheColossusofRhodes");
+                            else if (count == 2)
+                                game_controller.refresh();
+
+                        }catch (Exception e){
+
+                        }*/
+
                         try{
                             System.out.println("ddddd");
                             if(count == 0){
@@ -71,6 +97,12 @@ public class SocketThread extends Task<Void> {
                 temp = false;
                 System.out.println("stopped");
             }*/
+            System.out.println("aaa");
+            if(temp1 == 2)
+                temp1 = 3;
+            else if(temp1 == 1)
+                temp1 = 2;
+            else if(temp1 == 0)
             System.out.println(temp1);
             if(temp1 == 1 &&gate)
                 temp1 = 2;

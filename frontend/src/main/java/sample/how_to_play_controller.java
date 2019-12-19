@@ -26,7 +26,7 @@ public class how_to_play_controller  {
     ServerConnection con = new ServerConnection();
     private Scene secondScene;
     public void onPressButton1(ActionEvent event) throws Exception{
-
+        SoundManager.play(SoundManager.MUSIC.BUTTON_CLICK);
         Scene scene1 = back_button.getScene();
         root = FXMLLoader.load(getClass().getResource("/sample.fxml"));
         scene1.setRoot(root);

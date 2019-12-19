@@ -1,0 +1,554 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.in_game_controller">
+  <columnConstraints>
+      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="100.0" prefWidth="100.0" />
+  </columnConstraints>
+  <rowConstraints>
+    <RowConstraints minHeight="10.0" percentHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+      <RowConstraints percentHeight="80.0" />
+      <RowConstraints minHeight="10.0" percentHeight="10.0" prefHeight="30.0" />
+  </rowConstraints>
+   <children>
+       <Label fx:id="SCOREBOARD" text="SCORE BOARD" GridPane.columnIndex="0" GridPane.halignment="CENTER" GridPane.rowIndex="0" GridPane.valignment="CENTER">
+           <font>
+               <Font name="Times New Roman" size="36.0" />
+           </font>
+       </Label>
+      <GridPane fx:id="scores_grid" GridPane.rowIndex="1">
+        <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="40.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="30.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="15.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="15.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+            <RowConstraints fx:id="r_TheTempleofArtemisinEphesus" minHeight="10.0" percentHeight="0.0" vgrow="SOMETIMES" />
+            <RowConstraints fx:id="r_TheHangingGardensofBabylon" minHeight="10.0" percentHeight="0" vgrow="SOMETIMES" />
+            <RowConstraints fx:id="r_TheLighthouseofAlexandria" minHeight="10.0" percentHeight="0" vgrow="SOMETIMES" />
+            <RowConstraints fx:id="r_TheColossusofRhodes" minHeight="10.0" percentHeight="0" vgrow="SOMETIMES" />
+            <RowConstraints fx:id="r_ThePyramidsofGiza" minHeight="10.0" percentHeight="0" />
+            <RowConstraints fx:id="r_TheMausoleumofHalicarnassus" percentHeight="0" />
+            <RowConstraints fx:id="r_TheStatueofZeusinOlympia" percentHeight="0" />
+            <RowConstraints />
+        </rowConstraints>
+         <children>
+            <ImageView fx:id="TheTempleofArtemisinEphesus" fitHeight="93.0" fitWidth="175.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+               <image>
+                  <Image url="@WONDERS/EPHESOS.jpg" />
+               </image>
+               <effect>
+                  <ColorAdjust saturation="-1.0" />
+               </effect>
+            </ImageView>
+            <ImageView fx:id="TheHangingGardensofBabylon" fitHeight="93.0" fitWidth="175.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+               <image>
+                  <Image url="@WONDERS/BABYLON.jpg" />
+               </image>
+                <effect>
+                    <ColorAdjust saturation="-1.0" />
+                </effect>
+            </ImageView>
+             <ImageView fx:id="TheLighthouseofAlexandria" fitHeight="93.0" fitWidth="175.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                 <image>
+                     <Image url="@WONDERS/ALEXANDRIA.jpg" />
+                 </image>
+                 <effect>
+                     <ColorAdjust saturation="-1.0" />
+                 </effect>
+            </ImageView>
+             <ImageView fx:id="TheColossusofRhodes" fitHeight="93.0" fitWidth="175.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+             <image>
+                 <Image url="@WONDERS/RHODOS.jpg" />
+             </image>
+                 <effect>
+                     <ColorAdjust saturation="-1.0" />
+                 </effect>
+            </ImageView>
+             <ImageView fx:id="ThePyramidsofGiza" fitHeight="93.0" fitWidth="175.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER">
+                 <image>
+                     <Image url="@WONDERS/GIZAH.jpg" />
+                 </image>
+                 <effect>
+                     <ColorAdjust saturation="-1.0" />
+                 </effect>
+            </ImageView>
+             <ImageView fx:id="TheMausoleumofHalicarnassus" fitHeight="93.0" fitWidth="175.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER">
+                 <image>
+                     <Image url="@WONDERS/HALIKARNASSOS.jpg" />
+                 </image>
+                 <effect>
+                     <ColorAdjust saturation="-1.0" />
+                 </effect>
+            </ImageView>
+             <ImageView fx:id="TheStatueofZeusinOlympia" fitHeight="93.0" fitWidth="175.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="6" GridPane.valignment="CENTER">
+                 <image>
+                     <Image url="@WONDERS/OLYMPIA.jpg" />
+                 </image>
+                 <effect>
+                     <ColorAdjust saturation="-1.0" />
+                 </effect>
+            </ImageView>
+             <Label fx:id="LTheTempleofArtemisinEphesus" minHeight="-Infinity" minWidth="-Infinity" prefWidth="150.0" text="The Temple of Artemis in Ephesus" textAlignment="CENTER" wrapText="true" GridPane.columnIndex="0" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+               <font>
+                  <Font name="Times New Roman" size="18.0" />
+               </font>
+               <textFill>
+                  <RadialGradient centerX="0.5056022408963585" centerY="0.5" focusDistance="-0.047337278106508895" radius="0.5">
+                     <stops>
+                        <Stop>
+                           <color>
+                              <Color red="0.8289473652839661" green="0.12664473056793213" blue="0.12664473056793213" />
+                           </color>
+                        </Stop>
+                        <Stop offset="0.007312614259597806">
+                           <color>
+                              <Color red="0.8289473652839661" green="0.12664473056793213" blue="0.12664473056793213" />
+                           </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                           <color>
+                              <Color red="0.15789473056793213" green="0.00657894741743803" blue="0.00657894741743803" />
+                           </color>
+                        </Stop>
+                     </stops>
+                  </RadialGradient>
+               </textFill>
+               <effect>
+                  <DropShadow>
+                     <input>
+                        <GaussianBlur />
+                     </input></DropShadow>
+               </effect>
+            </Label>
+             <Label fx:id="LTheHangingGardensofBabylon" minHeight="-Infinity" minWidth="-Infinity" prefWidth="150.0" text="The Hanging Gardens of Babylon" textAlignment="CENTER" wrapText="true" GridPane.columnIndex="0" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+               <font>
+                  <Font name="Times New Roman" size="18.0" />
+               </font>
+                 <textFill>
+                     <RadialGradient centerX="0.5056022408963585" centerY="0.5" focusDistance="-0.047337278106508895" radius="0.5">
+                         <stops>
+                             <Stop>
+                                 <color>
+                                     <Color red="0.8289473652839661" green="0.12664473056793213" blue="0.12664473056793213" />
+                                 </color>
+                             </Stop>
+                             <Stop offset="0.007312614259597806">
+                                 <color>
+                                     <Color red="0.8289473652839661" green="0.12664473056793213" blue="0.12664473056793213" />
+                                 </color>
+                             </Stop>
+                             <Stop offset="1.0">
+                                 <color>
+                                     <Color red="0.15789473056793213" green="0.00657894741743803" blue="0.00657894741743803" />
+                                 </color>
+                             </Stop>
+                         </stops>
+                     </RadialGradient>
+                 </textFill>
+                 <effect>
+                     <DropShadow>
+                     <input>
+                        <GaussianBlur />
+                     </input></DropShadow>
+                 </effect>
+            </Label>
+             <Label fx:id="LTheLighthouseofAlexandria" prefWidth="150.0" text="The Lighthouse of Alexandria" textAlignment="CENTER" wrapText="true" GridPane.columnIndex="0" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+               <font>
+                  <Font name="Times New Roman" size="18.0" />
+               </font>
+                 <textFill>
+                     <RadialGradient centerX="0.5056022408963585" centerY="0.5" focusDistance="-0.047337278106508895" radius="0.5">
+                         <stops>
+                             <Stop>
+                                 <color>
+                                     <Color red="0.8289473652839661" green="0.12664473056793213" blue="0.12664473056793213" />
+                                 </color>
+                             </Stop>
+                             <Stop offset="0.007312614259597806">
+                                 <color>
+                                     <Color red="0.8289473652839661" green="0.12664473056793213" blue="0.12664473056793213" />
+                                 </color>
+                             </Stop>
+                             <Stop offset="1.0">
+                                 <color>
+                                     <Color red="0.15789473056793213" green="0.00657894741743803" blue="0.00657894741743803" />
+                                 </color>
+                             </Stop>
+                         </stops>
+                     </RadialGradient>
+                 </textFill>
+                 <effect>
+                     <DropShadow>
+                     <input>
+                        <GaussianBlur />
+                     </input></DropShadow>
+                 </effect>
+
+             </Label>
+             <Label fx:id="LTheColossusofRhodes" prefWidth="150.0" text="The Colossus of Rhodes" textAlignment="CENTER" wrapText="true" GridPane.columnIndex="0" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+               <font>
+                  <Font name="Times New Roman" size="18.0" />
+               </font>
+                 <textFill>
+                     <RadialGradient centerX="0.5056022408963585" centerY="0.5" focusDistance="-0.047337278106508895" radius="0.5">
+                         <stops>
+                             <Stop>
+                                 <color>
+                                     <Color red="0.8289473652839661" green="0.12664473056793213" blue="0.12664473056793213" />
+                                 </color>
+                             </Stop>
+                             <Stop offset="0.007312614259597806">
+                                 <color>
+                                     <Color red="0.8289473652839661" green="0.12664473056793213" blue="0.12664473056793213" />
+                                 </color>
+                             </Stop>
+                             <Stop offset="1.0">
+                                 <color>
+                                     <Color red="0.15789473056793213" green="0.00657894741743803" blue="0.00657894741743803" />
+                                 </color>
+                             </Stop>
+                         </stops>
+                     </RadialGradient>
+                 </textFill>
+                 <effect>
+                     <DropShadow>
+                     <input>
+                        <GaussianBlur />
+                     </input></DropShadow>
+                 </effect>
+
+             </Label>
+             <Label fx:id="LThePyramidsofGiza" prefWidth="150.0" text="The Pyramids of Gizah" textAlignment="CENTER" wrapText="true" GridPane.columnIndex="0" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER">
+               <font>
+                  <Font name="Times New Roman" size="18.0" />
+               </font>
+                 <textFill>
+                     <RadialGradient centerX="0.5056022408963585" centerY="0.5" focusDistance="-0.047337278106508895" radius="0.5">
+                         <stops>
+                             <Stop>
+                                 <color>
+                                     <Color red="0.8289473652839661" green="0.12664473056793213" blue="0.12664473056793213" />
+                                 </color>
+                             </Stop>
+                             <Stop offset="0.007312614259597806">
+                                 <color>
+                                     <Color red="0.8289473652839661" green="0.12664473056793213" blue="0.12664473056793213" />
+                                 </color>
+                             </Stop>
+                             <Stop offset="1.0">
+                                 <color>
+                                     <Color red="0.15789473056793213" green="0.00657894741743803" blue="0.00657894741743803" />
+                                 </color>
+                             </Stop>
+                         </stops>
+                     </RadialGradient>
+                 </textFill>
+                 <effect>
+                     <DropShadow>
+                     <input>
+                        <GaussianBlur />
+                     </input></DropShadow>
+                 </effect>
+
+             </Label>
+             <Label fx:id="LTheMausoleumofHalicarnassus" prefWidth="150.0" text="The Mausoleum of Halicarnassus" textAlignment="CENTER" wrapText="true" GridPane.columnIndex="0" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER">
+               <font>
+                  <Font name="Times New Roman" size="18.0" />
+               </font>
+                 <textFill>
+                     <RadialGradient centerX="0.5056022408963585" centerY="0.5" focusDistance="-0.047337278106508895" radius="0.5">
+                         <stops>
+                             <Stop>
+                                 <color>
+                                     <Color red="0.8289473652839661" green="0.12664473056793213" blue="0.12664473056793213" />
+                                 </color>
+                             </Stop>
+                             <Stop offset="0.007312614259597806">
+                                 <color>
+                                     <Color red="0.8289473652839661" green="0.12664473056793213" blue="0.12664473056793213" />
+                                 </color>
+                             </Stop>
+                             <Stop offset="1.0">
+                                 <color>
+                                     <Color red="0.15789473056793213" green="0.00657894741743803" blue="0.00657894741743803" />
+                                 </color>
+                             </Stop>
+                         </stops>
+                     </RadialGradient>
+                 </textFill>
+                 <effect>
+                     <DropShadow>
+                     <input>
+                        <GaussianBlur />
+                     </input></DropShadow>
+                 </effect>
+
+             </Label>
+             <Label fx:id="LTheStatueofZeusinOlympia" minHeight="-Infinity" minWidth="-Infinity" prefWidth="150.0" text="The Statue of Zeus in Olympia" textAlignment="CENTER" wrapText="true" GridPane.columnIndex="0" GridPane.halignment="CENTER" GridPane.rowIndex="6" GridPane.valignment="CENTER">
+               <font>
+                  <Font name="Times New Roman" size="18.0" />
+               </font>
+                 <textFill>
+                     <RadialGradient centerX="0.5056022408963585" centerY="0.5" focusDistance="-0.047337278106508895" radius="0.5">
+                         <stops>
+                             <Stop>
+                                 <color>
+                                     <Color red="0.8289473652839661" green="0.12664473056793213" blue="0.12664473056793213" />
+                                 </color>
+                             </Stop>
+                             <Stop offset="0.007312614259597806">
+                                 <color>
+                                     <Color red="0.8289473652839661" green="0.12664473056793213" blue="0.12664473056793213" />
+                                 </color>
+                             </Stop>
+                             <Stop offset="1.0">
+                                 <color>
+                                     <Color red="0.15789473056793213" green="0.00657894741743803" blue="0.00657894741743803" />
+                                 </color>
+                             </Stop>
+                         </stops>
+                     </RadialGradient>
+                 </textFill>
+                 <effect>
+                     <DropShadow>
+                     <input>
+                        <GaussianBlur />
+                     </input></DropShadow>
+                 </effect>
+
+             </Label>
+             <Label fx:id="s_TheTempleofArtemisinEphesus" text="43" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="0" GridPane.valignment="CENTER">
+               <font>
+                  <Font name="Times New Roman" size="25.0" />
+               </font>
+                 <textFill>
+                     <RadialGradient centerX="0.5056022408963585" centerY="0.5" focusDistance="-0.047337278106508895" radius="0.5">
+                         <stops>
+                             <Stop>
+                                 <color>
+                                     <Color red="0.8289473652839661" green="0.12664473056793213" blue="0.12664473056793213" />
+                                 </color>
+                             </Stop>
+                             <Stop offset="0.007312614259597806">
+                                 <color>
+                                     <Color red="0.8289473652839661" green="0.12664473056793213" blue="0.12664473056793213" />
+                                 </color>
+                             </Stop>
+                             <Stop offset="1.0">
+                                 <color>
+                                     <Color red="0.15789473056793213" green="0.00657894741743803" blue="0.00657894741743803" />
+                                 </color>
+                             </Stop>
+                         </stops>
+                     </RadialGradient>
+                 </textFill>
+            </Label>
+             <Label fx:id="s_TheHangingGardensofBabylon" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                 <font>
+                     <Font name="Times New Roman" size="25.0" />
+                 </font>
+                 <textFill>
+                     <RadialGradient centerX="0.5056022408963585" centerY="0.5" focusDistance="-0.047337278106508895" radius="0.5">
+                         <stops>
+                             <Stop>
+                                 <color>
+                                     <Color red="0.8289473652839661" green="0.12664473056793213" blue="0.12664473056793213" />
+                                 </color>
+                             </Stop>
+                             <Stop offset="0.007312614259597806">
+                                 <color>
+                                     <Color red="0.8289473652839661" green="0.12664473056793213" blue="0.12664473056793213" />
+                                 </color>
+                             </Stop>
+                             <Stop offset="1.0">
+                                 <color>
+                                     <Color red="0.15789473056793213" green="0.00657894741743803" blue="0.00657894741743803" />
+                                 </color>
+                             </Stop>
+                         </stops>
+                     </RadialGradient>
+                 </textFill>
+            </Label>
+             <Label fx:id="s_TheLighthouseofAlexandria" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                 <font>
+                     <Font name="Times New Roman" size="25.0" />
+                 </font>
+                 <textFill>
+                     <RadialGradient centerX="0.5056022408963585" centerY="0.5" focusDistance="-0.047337278106508895" radius="0.5">
+                         <stops>
+                             <Stop>
+                                 <color>
+                                     <Color red="0.8289473652839661" green="0.12664473056793213" blue="0.12664473056793213" />
+                                 </color>
+                             </Stop>
+                             <Stop offset="0.007312614259597806">
+                                 <color>
+                                     <Color red="0.8289473652839661" green="0.12664473056793213" blue="0.12664473056793213" />
+                                 </color>
+                             </Stop>
+                             <Stop offset="1.0">
+                                 <color>
+                                     <Color red="0.15789473056793213" green="0.00657894741743803" blue="0.00657894741743803" />
+                                 </color>
+                             </Stop>
+                         </stops>
+                     </RadialGradient>
+                 </textFill>
+            </Label>
+             <Label fx:id="s_TheColossusofRhodes" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+                 <font>
+                     <Font name="Times New Roman" size="25.0" />
+                 </font>
+                 <textFill>
+                     <RadialGradient centerX="0.5056022408963585" centerY="0.5" focusDistance="-0.047337278106508895" radius="0.5">
+                         <stops>
+                             <Stop>
+                                 <color>
+                                     <Color red="0.8289473652839661" green="0.12664473056793213" blue="0.12664473056793213" />
+                                 </color>
+                             </Stop>
+                             <Stop offset="0.007312614259597806">
+                                 <color>
+                                     <Color red="0.8289473652839661" green="0.12664473056793213" blue="0.12664473056793213" />
+                                 </color>
+                             </Stop>
+                             <Stop offset="1.0">
+                                 <color>
+                                     <Color red="0.15789473056793213" green="0.00657894741743803" blue="0.00657894741743803" />
+                                 </color>
+                             </Stop>
+                         </stops>
+                     </RadialGradient>
+                 </textFill>
+            </Label>
+             <Label fx:id="s_ThePyramidsofGiza" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER">
+                 <font>
+                     <Font name="Times New Roman" size="25.0" />
+                 </font>
+                 <textFill>
+                     <RadialGradient centerX="0.5056022408963585" centerY="0.5" focusDistance="-0.047337278106508895" radius="0.5">
+                         <stops>
+                             <Stop>
+                                 <color>
+                                     <Color red="0.8289473652839661" green="0.12664473056793213" blue="0.12664473056793213" />
+                                 </color>
+                             </Stop>
+                             <Stop offset="0.007312614259597806">
+                                 <color>
+                                     <Color red="0.8289473652839661" green="0.12664473056793213" blue="0.12664473056793213" />
+                                 </color>
+                             </Stop>
+                             <Stop offset="1.0">
+                                 <color>
+                                     <Color red="0.15789473056793213" green="0.00657894741743803" blue="0.00657894741743803" />
+                                 </color>
+                             </Stop>
+                         </stops>
+                     </RadialGradient>
+                 </textFill>
+            </Label>
+             <Label fx:id="s_TheMausoleumofHalicarnassus" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER">
+                 <font>
+                     <Font name="Times New Roman" size="25.0" />
+                 </font>
+                 <textFill>
+                     <RadialGradient centerX="0.5056022408963585" centerY="0.5" focusDistance="-0.047337278106508895" radius="0.5">
+                         <stops>
+                             <Stop>
+                                 <color>
+                                     <Color red="0.8289473652839661" green="0.12664473056793213" blue="0.12664473056793213" />
+                                 </color>
+                             </Stop>
+                             <Stop offset="0.007312614259597806">
+                                 <color>
+                                     <Color red="0.8289473652839661" green="0.12664473056793213" blue="0.12664473056793213" />
+                                 </color>
+                             </Stop>
+                             <Stop offset="1.0">
+                                 <color>
+                                     <Color red="0.15789473056793213" green="0.00657894741743803" blue="0.00657894741743803" />
+                                 </color>
+                             </Stop>
+                         </stops>
+                     </RadialGradient>
+                 </textFill>
+            </Label>
+             <Label fx:id="s_TheStatueofZeusinOlympia" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="6" GridPane.valignment="CENTER">
+                 <font>
+                     <Font name="Times New Roman" size="25.0" />
+                 </font>
+                 <textFill>
+                     <RadialGradient centerX="0.5056022408963585" centerY="0.5" focusDistance="-0.047337278106508895" radius="0.5">
+                         <stops>
+                             <Stop>
+                                 <color>
+                                     <Color red="0.8289473652839661" green="0.12664473056793213" blue="0.12664473056793213" />
+                                 </color>
+                             </Stop>
+                             <Stop offset="0.007312614259597806">
+                                 <color>
+                                     <Color red="0.8289473652839661" green="0.12664473056793213" blue="0.12664473056793213" />
+                                 </color>
+                             </Stop>
+                             <Stop offset="1.0">
+                                 <color>
+                                     <Color red="0.15789473056793213" green="0.00657894741743803" blue="0.00657894741743803" />
+                                 </color>
+                             </Stop>
+                         </stops>
+                     </RadialGradient>
+                 </textFill>
+            </Label>
+             
+            <ImageView fx:id="w_TheTempleofArtemisinEphesus" fitHeight="70.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true" visible="false" GridPane.columnIndex="3" GridPane.rowIndex="0" GridPane.valignment="CENTER">
+               <image>
+                  <Image url="@winner.jpg" />
+               </image>
+            </ImageView>
+             <ImageView fx:id="w_TheHangingGardensofBabylon" fitHeight="70.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true" visible="false" GridPane.columnIndex="3" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                 <image>
+                     <Image url="@winner.jpg" />
+                 </image>
+             </ImageView>
+             <ImageView fx:id="w_TheLighthouseofAlexandria" fitHeight="70.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true" visible="false" GridPane.columnIndex="3" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                 <image>
+                     <Image url="@winner.jpg" />
+                 </image>
+             </ImageView>
+             <ImageView fx:id="w_TheColossusofRhodes" fitHeight="70.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true" visible="false" GridPane.columnIndex="3" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+                 <image>
+                     <Image url="@winner.jpg" />
+                 </image>
+             </ImageView>
+             <ImageView fx:id="w_ThePyramidsofGiza" fitHeight="70.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true" visible="false" GridPane.columnIndex="3" GridPane.rowIndex="4" GridPane.valignment="CENTER">
+                 <image>
+                     <Image url="@winner.jpg" />
+                 </image>
+             </ImageView>
+             <ImageView fx:id="w_TheMausoleumofHalicarnassus" fitHeight="70.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true" visible="false" GridPane.columnIndex="3" GridPane.rowIndex="5" GridPane.valignment="CENTER">
+                 <image>
+                     <Image url="@winner.jpg" />
+                 </image>
+             </ImageView>
+             <ImageView fx:id="w_TheStatueofZeusinOlympia" fitHeight="70.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true" visible="false" GridPane.columnIndex="3" GridPane.rowIndex="6" GridPane.valignment="CENTER">
+                 <image>
+                     <Image url="@winner.jpg" />
+                 </image>
+             </ImageView>
+           
+            
+
+
+         </children>
+      </GridPane>
+      <Button mnemonicParsing="false" text="MAIN MENU" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+   </children>
+</GridPane>

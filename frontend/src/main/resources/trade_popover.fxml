@@ -387,6 +387,7 @@
           </children>
       </GridPane>
       <Button fx:id="tradeBuy" mnemonicParsing="false" onMouseClicked="#tradeBuyPressed" style="-fx-background-radius: 50%; -fx-background-color: #123456;" text="BUY" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+      <Button mnemonicParsing="false" style="-fx-background-radius: 50%; -fx-background-color: #123456;" text="BUY"  onMouseClicked="#tradeBuyPressed" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
          <font>
             <Font name="Arial Bold" size="18.0" />
          </font>

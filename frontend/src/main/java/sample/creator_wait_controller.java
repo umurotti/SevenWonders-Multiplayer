@@ -21,12 +21,15 @@ public class creator_wait_controller {
     // private Scene secondScene;
 
     public void onPressStartGame(ActionEvent event) throws Exception{
+        SoundManager.play(SoundManager.MUSIC.BUTTON_CLICK);
+        con.sendRequestCreate(player_id_controller.WonderID, player_id_controller.WonderID);
+        Scene scene1 = start_game_button.getScene();
         con.sendRequestStartTable(start_game_controller.TableID);
         /*Scene scene1 = start_game_button.getScene();
         root = FXMLLoader.load(getClass().getResource("/in_game_screen.fxml"));
         scene1.setRoot(root);*/
 
-        Scene scene1 = start_game_button.getScene();
+
         root =(Parent) Main.map.get("home");
         scene1.setRoot(root);
     }
