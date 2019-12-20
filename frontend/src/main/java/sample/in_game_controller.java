@@ -147,7 +147,16 @@ public class in_game_controller implements Initializable  {
     public void onPressMyWonder(MouseEvent event) throws Exception{
         SoundManager.play(SoundManager.MUSIC.MY_WONDER);
     }
-    //methods of dice
+
+    @FXML
+    Parent root;
+    @FXML
+    public void mainMenuButton(MouseEvent event) throws Exception{
+
+        /*Scene scene1 = roll_dice.getScene();
+        root = FXMLLoader.load(getClass().getResource("/play_game_screen.fxml"));
+        scene1.setRoot(root);*/
+    }
 
 
     @FXML
@@ -278,10 +287,9 @@ public class in_game_controller implements Initializable  {
         wb7.setName("TheStatueofZeusinOlympia");
         wb.setLeftNeighbor(wb2.getName());
         wb2.setLeftNeighbor(wb3.getName());
-        wb3.setLeftNeighbor(wb.getName());
-        //wb3.setLeftNeighbor(wb4);
+        wb3.setLeftNeighbor(wb4.getName());
         wb4.setLeftNeighbor(wb5.getName());
-        //wb5.setLeftNeighbor(wb6);
+        wb5.setLeftNeighbor(wb6.getName());
         wb6.setLeftNeighbor(wb7.getName());
         wb7.setLeftNeighbor(wb.getName());
 
@@ -292,15 +300,32 @@ public class in_game_controller implements Initializable  {
         wb5.getSources().put("shield",3);
         wb6.getSources().put("shield",2);
         wb7.getSources().put("shield",11);
-        wonderBoards.put(wb.getName(),wb);
+
+
+
+        /*wonderBoards.put(wb.getName(),wb);
         wonderBoards.put(wb2.getName(),wb2);
         wonderBoards.put(wb3.getName(),wb3);
-        //wonderBoards.put(wb4.getName(),wb4);
-        //wonderBoards.put(wb5.getName(),wb5);
-        //wonderBoards.put(wb6.getName(),wb6);
-        //wonderBoards.put(wb7.getName(),wb7);
+        wonderBoards.put(wb4.getName(),wb4);
+        wonderBoards.put(wb5.getName(),wb5);
+        wonderBoards.put(wb6.getName(),wb6);
+        wonderBoards.put(wb7.getName(),wb7);
 
-        ageOver(1);
+        ageOver(1);*/
+
+        HashMap<String,Integer> scores = new HashMap<String, Integer>();
+        scores.put("TheTempleofArtemisinEphesus",20);
+
+        scores.put("TheHangingGardensofBabylon",16);
+        scores.put("TheColossusofRhodes",13);
+        scores.put("ThePyramidsofGiza",17);
+
+        scores.put("TheLighthouseofAlexandria",19);
+
+        scores.put("TheMausoleumofHalicarnassus",25);
+
+        scores.put("TheStatueofZeusinOlympia",18);
+     getScoreBoard(scores);
 
 
     }
@@ -458,29 +483,47 @@ public class in_game_controller implements Initializable  {
     public void trade(MouseEvent event)throws Exception{
         PopOver popOver = new PopOver();
         popOver.setArrowLocation(PopOver.ArrowLocation.BOTTOM_CENTER);
-        popOver.setHideOnEscape(false);
         popOver.setAutoFix(true);
         popOver.setAutoHide(true);
         popOver.setHideOnEscape(true);
-        popOver.setDetachable(true);
-
+        popOver.setDetachable(false);
         GridPane pane = (GridPane) Main.map.get("trade_popover");
         popOver.setContentNode(pane);
-        popOver.show((Button)event.getSource(),1100,1200);
 
-       /*Button buton = (Button)event.getSource();
-        Scene tempScene = buton.getScene();
-        Button temp = (Button) tempScene.lookup("#dice");
-        popOver2.show(diceGame);*/
+        ((Label)pane.lookup("#Llt_wood")).setText("0");
+        ((Label)pane.lookup("#Llt_stone")).setText("0");
+        ((Label)pane.lookup("#Llt_clay")).setText("0");
+        ((Label)pane.lookup("#Llt_ore")).setText("0");
+        ((Label)pane.lookup("#Llt_papyrus")).setText("0");
+        ((Label)pane.lookup("#Llt_loom")).setText("0");
+        ((Label)pane.lookup("#Llt_glass")).setText("0");
+        ((Label)pane.lookup("#Lrt_wood")).setText("0");
+        ((Label)pane.lookup("#Lrt_stone")).setText("0");
+        ((Label)pane.lookup("#Lrt_clay")).setText("0");
+        ((Label)pane.lookup("#Lrt_ore")).setText("0");
+        ((Label)pane.lookup("#Lrt_papyrus")).setText("0");
+        ((Label)pane.lookup("#Lrt_loom")).setText("0");
+        ((Label)pane.lookup("#Lrt_glass")).setText("0");
+
+
+        //BU TEST
+        ((Label)pane.lookup("#t_coin")).setText("5");
+
+        //BU DOĞRUSU
+        //((Label)pane.lookup("#t_coin")).setText(wonderBoards.get(Main.wonderID).getSources().get("coin").toString());
+        popOver.show((Button)event.getSource(),50,50);
+
+
 
     }
 
+
     public void buildCardClicked(MouseEvent event) throws Exception{
         boolean trade = true;
-       // Map<String,Integer> source = wonderBoards.get(Main.wonderID).getSources();
-        System.out.println(Main.wonderID);
+        // Map<String,Integer> source = wonderBoards.get(Main.wonderID).getSources();
+        /*System.out.println(Main.wonderID);
         List<Card> hand = ServerConnection.cardss.getContainer().get(Main.wonderID);
-        System.out.println("OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO  " + selectedCard);
+        System.out.println("OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO  " + selectedCard);*/
 
 
         /*for(Map.Entry<String,Integer> entry : chosen.getCost().getCost().entrySet()){
@@ -607,8 +650,8 @@ public class in_game_controller implements Initializable  {
 
     public void refresh()throws Exception {
 
-        HashMap<String,Integer> militaryPoint = con.getMilitaryPoint();
-        System.out.println(militaryPoint.toString());
+        //HashMap<String,Integer> militaryPoint = con.getMilitaryPoint();
+        //System.out.println(militaryPoint.toString());
 
         sceneOfTable = my_wonder.getScene();
         tableID = Main.tableID;
@@ -1120,36 +1163,37 @@ public class in_game_controller implements Initializable  {
         popOver.setDetachable(false);
         GridPane pane = FXMLLoader.load(getClass().getResource("/score_popover.fxml"));
         popOver.setContentNode(pane);
-        String winner = "";
-        int winscore = 0;
 
-        for(String wonderName : scores.keySet()){
-            System.out.println(scores.get(wonderName));
-            System.out.println(pane.lookup("#SCOREBOARD").getId()) ;
-            if(scores.get(wonderName)>winscore){
-                winscore = scores.get(wonderName);
-                winner = wonderName;
+        ArrayList<Map.Entry<String,Integer>> sorted = new ArrayList<Map.Entry<String, Integer>>(scores.entrySet());
+        Collections.sort(sorted, new Comparator<Map.Entry<String, Integer>>() {
+            public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
+                return (o2.getValue()).compareTo(o1.getValue());
             }
-
-            DropShadow ds = new DropShadow();
-            Label wonderlabel = (Label) pane.lookup("#L" + wonderName);
-            wonderlabel.setEffect(ds);
-            System.out.println(GridPane.getRowIndex(wonderlabel));
-            //scores_grid.getRowConstraints().get(GridPane.getRowIndex(wonderlabel)).setPercentHeight(-1);
-            ((Label)pane.lookup("#s_" + wonderName)).setText(scores.get(wonderName).toString());
-            pane.lookup("#" + wonderName).setEffect(null);
+        });
+        for(int i = 0; i<sorted.size();i++){
+            String wonder = sorted.get(i).getKey();
+            if(wonder.equals("TheColossusofRhodes")){
+                ((Label) pane.lookup("#"+i+"Label")).setText("THE COLOSSUS OF RHODES");
+            }else if(wonder.equals("TheHangingGardensofBabylon")){
+                ((Label) pane.lookup("#"+i+"Label")).setText("THE HANGING GARDENS OF BABYLON");
+            }else if(wonder.equals("TheLighthouseofAlexandria")){
+                ((Label) pane.lookup("#"+i+"Label")).setText("THE LIGHTHOUSE OF ALEXANDRIA");
+            }else if(wonder.equals("TheMausoleumofHalicarnassus")){
+                ((Label) pane.lookup("#"+i+"Label")).setText("THE MAUSOLEUM OF HALICARNASSUS");
+            }else if(wonder.equals("ThePyramidsofGiza")){
+                ((Label) pane.lookup("#"+i+"Label")).setText("THE PYRAMIDS OF GIZA");
+            }else if(wonder.equals("TheStatueofZeusinOlympia")){
+                ((Label) pane.lookup("#"+i+"Label")).setText("THE STATUE OF ZEUS IN OLYMPIA");
+            }else if(wonder.equals("TheTempleofArtemisinEphesus")){
+                ((Label) pane.lookup("#"+i+"Label")).setText("THE TEMPLE OF ARTEMIS IN EPHESUS");
+            }
+            String imageUrl = "/WONDERS/"+sorted.get(i).getKey() +".jpg";
+            ((ImageView) pane.lookup("#"+i+"image")).setImage(new Image(imageUrl));
+            pane.lookup("#"+i+"image").setVisible(true);
+            ((Label) pane.lookup("#s_"+i)).setText(sorted.get(i).getValue().toString());
+            System.out.println(sorted.get(i));
         }
-
-        pane.lookup("#L" + winner).setStyle("-fx-text-fill: radial-gradient(radius 100%, green, #33ce2d,green);  -fx-font-weight: bold;-fx-font-size: 20;");
-        pane.lookup("#s_" + winner).setStyle("-fx-text-fill: radial-gradient(radius 100%, green, #33ce2d,green);  -fx-font-weight: bold;");
-        //pane.lookup("#L" + winner).setEffect(null);
-
-        pane.lookup("#w_" + winner).setVisible(true);
-
         popOver.show(resources_grid_0);
-
-
-
     }
 
 

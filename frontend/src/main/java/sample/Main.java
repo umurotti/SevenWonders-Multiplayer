@@ -52,10 +52,10 @@ public class Main extends Application {
             map.put("controller",temp);
             loaded = (GridPane)FXMLLoader.load(getClass().getResource("/dice_popover.fxml"));
             map.put("dicePopOver",loaded);
-        loaded = (GridPane)FXMLLoader.load(getClass().getResource("/select_card_popover.fxml"));
-        map.put("select_card_popover",loaded);
-        loaded = (GridPane)FXMLLoader.load(getClass().getResource("/trade_popover.fxml"));
-        map.put("trade_popover",loaded);
+            loaded = (GridPane)FXMLLoader.load(getClass().getResource("/select_card_popover.fxml"));
+            map.put("select_card_popover",loaded);
+            loaded = (GridPane)FXMLLoader.load(getClass().getResource("/trade_popover.fxml"));
+            map.put("trade_popover",loaded);
 
     }
 
