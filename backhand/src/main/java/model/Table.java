@@ -180,8 +180,10 @@ public class Table {
             if (builtCards.containsKey(card.getName())){ // If the card is already built, return false.
                 return false;
             }
-            if (builtCards.containsKey(card.getFreeBuildings())) { // If the free building exist in the Wonder, return true.
-                return true;
+            for (String freebuilding : card.getFreeBuildings()){
+                if (builtCards.containsKey(freebuilding)) { // If the free building exist in the Wonder, return true.
+                    return true;
+                }
             }
             Cost cost = card.getCost();
             return costCheck(cost, wbSources, leftTrade, rightTrade);
