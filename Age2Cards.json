@@ -1,0 +1,557 @@
+
+[
+{"cost":{"cost":{"coin":1}},
+ "color":"brown",
+ "name":"Sawmill",
+ "freeBuildings":"",
+ "minPlayerNo":3,
+ "isConvertible":false,
+ "benefits":{
+     "wood":2
+  }
+},
+{"cost":{"cost":{"coin":1}},
+ "color":"brown",
+ "name":"Sawmill",
+ "freeBuildings":"",
+ "minPlayerNo":4,
+ "isConvertible":false,
+ "benefits":{
+     "wood":2
+  }
+},
+{"cost":{"cost":{"coin":1}},
+ "color":"brown",
+ "name":"Quarry",
+ "freeBuildings":"",
+ "minPlayerNo":3,
+ "isConvertible":false,
+ "benefits":{
+     "stone":2
+  }
+},
+{"cost":{"cost":{"coin":1}},
+ "color":"brown",
+ "name":"Quarry",
+ "freeBuildings":"",
+ "minPlayerNo":4,
+ "isConvertible":false,
+ "benefits":{
+     "stone":2
+  }
+},
+{"cost":{"cost":{"coin":1}},
+ "color":"brown",
+ "name":"Brickyard",
+ "freeBuildings":"",
+ "minPlayerNo":3,
+ "isConvertible":false,
+ "benefits":{
+     "clay":2
+  }
+},
+{"cost":{"cost":{"coin":1}},
+ "color":"brown",
+ "name":"Brickyard",
+ "freeBuildings":"",
+ "minPlayerNo":4,
+ "isConvertible":false,
+ "benefits":{
+     "clay":2
+  }
+},
+{"cost":{"cost":{"coin":1}},
+ "color":"brown",
+ "name":"Foundry",
+ "freeBuildings":"",
+ "minPlayerNo":3,
+ "isConvertible":false,
+ "benefits":{
+     "ore":2
+  }
+},
+{"cost":{"cost":{"coin":1}},
+ "color":"brown",
+ "name":"Foundry",
+ "freeBuildings":"",
+ "minPlayerNo":4,
+ "isConvertible":false,
+ "benefits":{
+     "ore":2
+  }
+},
+{"cost":{"cost":{"coin":0}},
+ "color":"grey",
+ "name":"Loom",
+ "freeBuildings":"",
+ "minPlayerNo":3,
+ "isConvertible":false,
+ "benefits":{
+     "loom":1
+  }
+},
+{"cost":{"cost":{"coin":0}},
+ "color":"grey",
+ "name":"Loom",
+ "freeBuildings":"",
+ "minPlayerNo":5,
+ "isConvertible":false,
+ "benefits":{
+     "loom":1
+  }
+},
+{"cost":{"cost":{"coin":0}},
+ "color":"grey",
+ "name":"Glassworks",
+ "freeBuildings":"",
+ "minPlayerNo":3,
+ "isConvertible":false,
+ "benefits":{
+     "glass":1
+  }
+},
+{"cost":{"cost":{"coin":0}},
+ "color":"grey",
+ "name":"Glassworks",
+ "freeBuildings":"",
+ "minPlayerNo":5,
+ "isConvertible":false,
+ "benefits":{
+     "glass":1
+  }
+},
+{"cost":{"cost":{"coin":0}},
+ "color":"grey",
+ "name":"Press",
+ "freeBuildings":"",
+ "minPlayerNo":3,
+ "isConvertible":false,
+ "benefits":{
+     "papyrus":1
+  }
+},
+{"cost":{"cost":{"coin":0}},
+ "color":"grey",
+ "name":"Press",
+ "freeBuildings":"",
+ "minPlayerNo":5,
+ "isConvertible":false,
+ "benefits":{
+     "papyrus":1
+  }
+},
+{"cost":{"cost":{"stone":3}},
+ "color":"blue",
+ "name":"Aqueduct",
+ "freeBuildings":"",
+ "minPlayerNo":3,
+ "isConvertible":false,
+ "benefits":{
+     "victory point":5
+  }
+},
+{"cost":{"cost":{"stone":3}},
+ "color":"blue",
+ "name":"Aqueduct",
+ "freeBuildings":"",
+ "minPlayerNo":7,
+ "isConvertible":false,
+ "benefits":{
+     "victory point":5
+  }
+},
+{"cost":{"cost":{
+    "wood":1,
+    "clay":1,
+    "glass":1
+}},
+ "color":"blue",
+ "name":"Temple",
+ "freeBuildings":"",
+ "minPlayerNo":3,
+ "isConvertible":false,
+ "benefits":{
+     "victory point":3
+  }
+},
+{"cost":{"cost":{
+    "wood":1,
+    "clay":1,
+    "glass":1
+}},
+ "color":"blue",
+ "name":"Temple",
+ "freeBuildings":"",
+ "minPlayerNo":6,
+ "isConvertible":false,
+ "benefits":{
+     "victory point":3
+  }
+},
+{"cost":{"cost":{
+    "wood":1,
+    "ore":2
+}},
+ "color":"blue",
+ "name":"Statue",
+ "freeBuildings":"",
+ "minPlayerNo":3,
+ "isConvertible":false,
+ "benefits":{
+     "victory point":4
+  }
+},
+{"cost":{"cost":{
+    "wood":1,
+    "ore":2
+}},
+ "color":"blue",
+ "name":"Statue",
+ "freeBuildings":"",
+ "minPlayerNo":7,
+ "isConvertible":false,
+ "benefits":{
+     "victory point":4
+  }
+},
+{"cost":{"cost":{
+    "loom":1,
+    "clay":2
+}},
+ "color":"blue",
+ "name":"Courthouse",
+ "freeBuildings":"",
+ "minPlayerNo":3,
+ "isConvertible":false,
+ "benefits":{
+     "victory point":4
+  }
+},
+{"cost":{"cost":{
+    "loom":1,
+    "clay":2
+}},
+ "color":"blue",
+ "name":"Courthouse",
+ "freeBuildings":"",
+ "minPlayerNo":5,
+ "isConvertible":false,
+ "benefits":{
+     "victory point":4
+  }
+},
+{"cost":{"cost":{"clay":2}},
+ "color":"yellow",
+ "name":"Forum",
+ "freeBuildings":"",
+ "minPlayerNo":3,
+ "isConvertible":true,
+ "benefits":{
+     "loom":1,
+     "glass":1,
+     "papyrus":1
+  }
+},
+{"cost":{"cost":{"clay":2}},
+ "color":"yellow",
+ "name":"Forum",
+ "freeBuildings":"",
+ "minPlayerNo":6,
+ "isConvertible":true,
+ "benefits":{
+     "loom":1,
+     "glass":1,
+     "papyrus":1
+  }
+},
+{"cost":{"cost":{"clay":2}},
+ "color":"yellow",
+ "name":"Forum",
+ "freeBuildings":"",
+ "minPlayerNo":7,
+ "isConvertible":true,
+ "benefits":{
+     "loom":1,
+     "glass":1,
+     "papyrus":1
+  }
+},
+{"cost":{"cost":{"wood":2}},
+ "color":"yellow",
+ "name":"Carvansary",
+ "freeBuildings":"",
+ "minPlayerNo":3,
+ "isConvertible":true,
+ "benefits":{
+     "clay":1,
+     "stone":1,
+     "ore":1,
+     "wood":1
+  }
+},
+{"cost":{"cost":{"wood":2}},
+ "color":"yellow",
+ "name":"Carvansary",
+ "freeBuildings":"",
+ "minPlayerNo":5,
+ "isConvertible":true,
+ "benefits":{
+     "clay":1,
+     "stone":1,
+     "ore":1,
+     "wood":1
+  }
+},
+{"cost":{"cost":{"wood":2}},
+ "color":"yellow",
+ "name":"Carvansary",
+ "freeBuildings":"",
+ "minPlayerNo":6,
+ "isConvertible":true,
+ "benefits":{
+     "clay":1,
+     "stone":1,
+     "ore":1,
+     "wood":1
+  }
+},
+
+{"cost":{"cost":{"stone":3}},
+ "color":"red",
+ "name":"Walls",
+ "freeBuildings":"",
+ "minPlayerNo":3,
+ "isConvertible":false,
+ "benefits":{
+     "sheild":2
+  }
+}, 
+{"cost":{"cost":{"stone":3}},
+ "color":"red",
+ "name":"Walls",
+ "freeBuildings":"",
+ "minPlayerNo":7,
+ "isConvertible":false,
+ "benefits":{
+     "sheild":2
+  }
+}, 
+{"cost":{"cost":
+         {"ore":2,
+          "wood":1}},
+ "color":"red",
+ "name":"Training Ground",
+ "freeBuildings":"",
+ "minPlayerNo":4,
+ "isConvertible":false,
+ "benefits":{
+     "sheild":2
+  }
+}, 
+    {"cost":{"cost":
+         {"ore":2,
+          "wood":1}},
+ "color":"red",
+ "name":"Training Ground",
+ "freeBuildings":"",
+ "minPlayerNo":6,
+ "isConvertible":false,
+ "benefits":{
+     "sheild":2
+  }
+}, 
+{"cost":{"cost":
+         {"ore":2,
+          "wood":1}},
+ "color":"red",
+ "name":"Training Ground",
+ "freeBuildings":"",
+ "minPlayerNo":7,
+ "isConvertible":false,
+ "benefits":{
+     "sheild":2
+  }
+}, 
+{"cost":{"cost":
+         {"ore":1,
+          "clay":1,
+          "wood":1}},
+ "color":"red",
+ "name":"Stables",
+ "freeBuildings":"",
+ "minPlayerNo":3,
+ "isConvertible":false,
+ "benefits":{
+     "sheild":2
+  }
+}, 
+{"cost":{"cost":
+         {"ore":1,
+          "clay":1,
+          "wood":1}},
+ "color":"red",
+ "name":"Stables",
+ "freeBuildings":"",
+ "minPlayerNo":5,
+ "isConvertible":false,
+ "benefits":{
+     "sheild":2
+  }
+}, 
+{"cost":{"cost":
+         {"ore":1,
+          "wood":2}},
+ "color":"red",
+ "name":"Archery Range",
+ "freeBuildings":"",
+ "minPlayerNo":3,
+ "isConvertible":false,
+ "benefits":{
+     "sheild":2
+  }
+}, 
+{"cost":{"cost":
+         {"ore":1,
+          "wood":2}},
+ "color":"red",
+ "name":"Archery Range",
+ "freeBuildings":"",
+ "minPlayerNo":6,
+ "isConvertible":false,
+ "benefits":{
+     "sheild":2
+  }
+},
+{"cost":{"cost":
+         {"ore":2,
+          "glass":1}},
+ "color":"green",
+ "name":"Dispensary",
+ "freeBuildings":"",
+ "minPlayerNo":3,
+ "isConvertible":false,
+ "benefits":{
+     "compass":1
+  }
+},
+{"cost":{"cost":
+         {"ore":2,
+          "glass":1}},
+ "color":"green",
+ "name":"Dispensary",
+ "freeBuildings":"",
+ "minPlayerNo":4,
+ "isConvertible":false,
+ "benefits":{
+     "compass":1
+  }
+},  
+{"cost":{"cost":
+         {"clay":2,
+          "papyrus":1}},
+ "color":"green",
+ "name":"Laboratory",
+ "freeBuildings":"",
+ "minPlayerNo":3,
+ "isConvertible":false,
+ "benefits":{
+     "gear":1
+  }
+},
+{"cost":{"cost":
+         {"clay":2,
+          "papyrus":1}},
+ "color":"green",
+ "name":"Laboratory",
+ "freeBuildings":"",
+ "minPlayerNo":5,
+ "isConvertible":false,
+ "benefits":{
+     "gear":1
+  }
+},
+{"cost":{"cost":
+         {"stone":2,
+          "loom":1}},
+ "color":"green",
+ "name":"Library",
+ "freeBuildings":"",
+ "minPlayerNo":3,
+ "isConvertible":false,
+ "benefits":{
+     "tablet":1
+  }
+},
+{"cost":{"cost":
+         {"stone":2,
+          "loom":1}},
+ "color":"green",
+ "name":"Library",
+ "freeBuildings":"",
+ "minPlayerNo":6,
+ "isConvertible":false,
+ "benefits":{
+     "tablet":1
+  }
+},
+{"cost":{"cost":
+         {"wood":1,
+          "papyrus":1}},
+ "color":"green",
+ "name":"School",
+ "freeBuildings":"",
+ "minPlayerNo":3,
+ "isConvertible":false,
+ "benefits":{
+     "tablet":1
+  }
+},
+{"cost":{"cost":
+         {"wood":1,
+          "papyrus":1}},
+ "color":"green",
+ "name":"School",
+ "freeBuildings":"",
+ "minPlayerNo":7,
+ "isConvertible":false,
+ "benefits":{
+     "tablet":1
+  }
+},
+{"cost":{"cost":{"coin":0}},
+ "color":"yellow",
+ "name":"Vineyard",
+ "minNoOfPlayers":3,
+ "freeBuildings":null,
+ "involve":"both",
+ "dependencies":["brown"],
+ "coin":1,
+ "vPoint":0},
+{"cost":{"cost":{"coin":0}},
+ "color":"yellow",
+ "name":"Vineyard",
+ "minNoOfPlayers":6,
+ "freeBuildings":null,
+ "involve":"both",
+ "dependencies":["brown"],
+ "coin":1,
+ "vPoint":0},
+{"cost":{"cost":{"coin":0}},
+ "color":"yellow",
+ "name":"Bazar",
+ "minNoOfPlayers":4,
+ "freeBuildings":null,
+ "involve":"both",
+ "dependencies":["grey"],
+ "coin":2,
+ "vPoint":0},
+{"cost":{"cost":{"coin":0}},
+ "color":"yellow",
+ "name":"Bazar",
+ "minNoOfPlayers":7,
+ "freeBuildings":null,
+ "involve":"both",
+ "dependencies":["grey"],
+ "coin":2,
+ "vPoint":0}
+]

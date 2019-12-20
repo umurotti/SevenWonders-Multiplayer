@@ -35,11 +35,11 @@ public class WonderBoard {
     private int militaryTokens;
     private int defeatTokens;
     private int handNo;
-
+    private String wonderName;
     public WonderBoard() {
         // militaryTokens[0]: 1st age military victories, militaryTokens[1]: 2nd, militaryTokens[2]: 3rd.
         militaryTokens = 0;
-
+        wonderName ="";
         // stageCosts[0]: 1st stage cost, stageCosts[1]: 2nd, stageCosts[2]: 3rd.
         stageCosts = new Cost[3];
         
@@ -101,12 +101,12 @@ public class WonderBoard {
         }};
     }
 
-    public WonderBoard( String name, int handNo) {
+    public WonderBoard( String name, int handNo, String wonderName) {
         this.name = name;
         // militaryTokens[0]: 1st age military victories, militaryTokens[1]: 2nd, militaryTokens[2]: 3rd.
         militaryTokens = 0;
         this.handNo = handNo;
-        
+        wonderName = wonderName;
         // stageCosts[0]: 1st stage cost, stageCosts[1]: 2nd, stageCosts[2]: 3rd.
         stageCosts = new Cost[3];
         HashMap<String, Integer> toAdd = new HashMap<>();
@@ -400,6 +400,14 @@ public class WonderBoard {
     @Override
     public int hashCode() {
         return Objects.hash(leftNeighbor, rightNeighbor, sources, stageCosts, currentStage, diceValue, name, builtCards, lockedAction, leftDiscount, rightDiscount, militaryTokens, defeatTokens, handNo);
+    }
+
+    public String getWonderName() {
+        return wonderName;
+    }
+
+    public void setWonderName(String wonderName) {
+        this.wonderName = wonderName;
     }
 
     @Override
