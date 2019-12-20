@@ -18,6 +18,7 @@ public class Table {
     private int turn;
     private int noOfActions; // how many people played in that turn
     private Deck age1Deck;
+    private ArrayList<String> wonderNames;
 //    private Deck age2Deck;+
 //    private Deck age3Deck;+
     //private Deck magicCardDeck;+
@@ -42,6 +43,23 @@ public class Table {
 
 
     public Table(String tableID, String owner, Deck age1Deck/*, Deck age2Deck, Deck age3Deck*/) {
+        wonderNames = new ArrayList<>();
+        wonderNames.add("TheTempleofArtemisinEphesus");
+        wonderNames.add("TheStatueofZeusinOlympia");
+        wonderNames.add("ThePyramidsofGiza");
+        wonderNames.add("TheMausoleumofHalicarnassus");
+        wonderNames.add("TheLighthouseofAlexandria");
+        wonderNames.add("TheHangingGardensofBabylon");
+        wonderNames.add("TheColossusofRhodes");
+                //TheTempleofArtemisinEphesus
+        //TheStatueofZeusinOlympia
+        //ThePyramidsofGiza
+        //TheMausoleumofHalicarnassus
+        //TheLighthouseofAlexandria
+        //TheHangingGardensofBabylon
+        //TheColossusofRhodes
+
+
         this.tableID = tableID;
         this.noOfPlayers = 1;
         this.owner = owner;
@@ -140,7 +158,8 @@ public class Table {
         for(int a = 0; a< noOfPlayers;a++)
         {
       
-            wonders.put(playerIDs.get(a),new WonderBoard(playerIDs.get(a), a));
+            wonders.put(playerIDs.get(a),new WonderBoard(playerIDs.get(a), a,wonderNames.get(a)));
+
         }
         
     }
@@ -180,10 +199,8 @@ public class Table {
             if (builtCards.containsKey(card.getName())){ // If the card is already built, return false.
                 return false;
             }
-            for (String freebuilding : card.getFreeBuildings()){
-                if (builtCards.containsKey(freebuilding)) { // If the free building exist in the Wonder, return true.
-                    return true;
-                }
+            if (builtCards.containsKey(card.getFreeBuildings())) { // If the free building exist in the Wonder, return true.
+                return true;
             }
             Cost cost = card.getCost();
             return costCheck(cost, wbSources, leftTrade, rightTrade);
