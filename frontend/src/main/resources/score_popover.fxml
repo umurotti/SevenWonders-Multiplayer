@@ -42,7 +42,7 @@
          <children>
             <ImageView fx:id="TheTempleofArtemisinEphesus" fitHeight="93.0" fitWidth="175.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                <image>
-                  <Image url="@WONDERS/EPHESOS.jpg" />
+                  <Image url="@Wonders/TheTempleofArtemisinEphesus.jpg" />
                </image>
                <effect>
                   <ColorAdjust saturation="-1.0" />
@@ -50,7 +50,7 @@
             </ImageView>
             <ImageView fx:id="TheHangingGardensofBabylon" fitHeight="93.0" fitWidth="175.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                <image>
-                  <Image url="@WONDERS/BABYLON.jpg" />
+                  <Image url="@Wonders/TheHangingGardensofBabylon.jpg" />
                </image>
                 <effect>
                     <ColorAdjust saturation="-1.0" />
@@ -58,7 +58,7 @@
             </ImageView>
              <ImageView fx:id="TheLighthouseofAlexandria" fitHeight="93.0" fitWidth="175.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
                  <image>
-                     <Image url="@WONDERS/ALEXANDRIA.jpg" />
+                     <Image url="@Wonders/TheLighthouseofAlexandria.jpg" />
                  </image>
                  <effect>
                      <ColorAdjust saturation="-1.0" />
@@ -66,7 +66,7 @@
             </ImageView>
              <ImageView fx:id="TheColossusofRhodes" fitHeight="93.0" fitWidth="175.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
              <image>
-                 <Image url="@WONDERS/RHODOS.jpg" />
+                 <Image url="@Wonders/TheColossusofRhodes.jpg" />
              </image>
                  <effect>
                      <ColorAdjust saturation="-1.0" />
@@ -74,7 +74,7 @@
             </ImageView>
              <ImageView fx:id="ThePyramidsofGiza" fitHeight="93.0" fitWidth="175.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER">
                  <image>
-                     <Image url="@WONDERS/GIZAH.jpg" />
+                     <Image url="@Wonders/ThePyramidsofGiza.jpg" />
                  </image>
                  <effect>
                      <ColorAdjust saturation="-1.0" />
@@ -82,7 +82,7 @@
             </ImageView>
              <ImageView fx:id="TheMausoleumofHalicarnassus" fitHeight="93.0" fitWidth="175.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER">
                  <image>
-                     <Image url="@WONDERS/HALIKARNASSOS.jpg" />
+                     <Image url="@Wonders/TheMausoleumofHalicarnassus.jpg" />
                  </image>
                  <effect>
                      <ColorAdjust saturation="-1.0" />
@@ -90,7 +90,7 @@
             </ImageView>
              <ImageView fx:id="TheStatueofZeusinOlympia" fitHeight="93.0" fitWidth="175.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="6" GridPane.valignment="CENTER">
                  <image>
-                     <Image url="@WONDERS/OLYMPIA.jpg" />
+                     <Image url="@Wonders/TheStatueofZeusinOlympia.jpg" />
                  </image>
                  <effect>
                      <ColorAdjust saturation="-1.0" />

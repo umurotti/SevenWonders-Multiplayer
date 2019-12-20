@@ -116,7 +116,7 @@ public class in_game_controller implements Initializable  {
     @FXML
     GridPane trade_sources_grid;
     static int selection =0;
-    HandContainer handCards = new HandContainer();
+    static HandContainer handCards = new HandContainer();
     static Scene sceneOfTable;
     //dice popover attributes
     Scene sceneOfDicePopOver;
@@ -133,7 +133,7 @@ public class in_game_controller implements Initializable  {
     Image[] wonderStages2 ;
     Image[] wonderStages0;
     Image[] wonderStages1;
-    String [] wonderImages;
+    String [] wonderImages = new String[7];
 
     @FXML
     Label dice_time;
@@ -432,7 +432,7 @@ public class in_game_controller implements Initializable  {
 
 
     //card popover definition
-    PopOver popOverCard;
+    static PopOver popOverCard;
     public void selectCard(MouseEvent event)throws Exception{
         PopOver popOver = new PopOver();
         popOver.setArrowLocation(PopOver.ArrowLocation.BOTTOM_CENTER);
@@ -440,18 +440,19 @@ public class in_game_controller implements Initializable  {
         popOver.setAutoHide(true);
         popOver.setHideOnEscape(true);
         popOver.setDetachable(false);
-        GridPane pane = FXMLLoader.load(getClass().getResource("/select_card_popover.fxml"));
+        GridPane pane = (GridPane)Main.map.get("select_card_popover");
        popOver.setContentNode(pane);
         popOver.show((ImageView)event.getSource());
         selectedCard =((ImageView) event.getSource()).getId();
         popOver.setContentNode(pane);
 
-        /*
-        popOverCard.show((ImageView)event.getSource());
+
+        /*popOverCard.show((ImageView)event.getSource());
         selectedCard =((ImageView) event.getSource()).getId();
         System.out.println(selectedCard + " ppppppppppppppppppppppppppppppppppppp");*/
     }
 
+    static PopOver popOver2;
     public void trade(MouseEvent event)throws Exception{
         PopOver popOver = new PopOver();
         popOver.setArrowLocation(PopOver.ArrowLocation.BOTTOM_CENTER);
@@ -460,13 +461,15 @@ public class in_game_controller implements Initializable  {
         popOver.setHideOnEscape(true);
         popOver.setDetachable(true);
 
-        GridPane pane = FXMLLoader.load(getClass().getResource("/trade_popover.fxml"));
+        GridPane pane = (GridPane) Main.map.get("trade_popover");
         popOver.setContentNode(pane);
         popOver.show((Button)event.getSource(),1100,1200);
-       /* Button buton = (Button)event.getSource();
+
+       /*Button buton = (Button)event.getSource();
         Scene tempScene = buton.getScene();
         Button temp = (Button) tempScene.lookup("#dice");
-        popOver.show(temp);*/
+        popOver2.show(diceGame);*/
+
     }
 
     public void buildCardClicked(MouseEvent event) throws Exception{
@@ -492,24 +495,23 @@ public class in_game_controller implements Initializable  {
             con.sendAction(toSend,Main.tableID);
         }else{
             trade(event);
-            tradeClicked(event);
+
         }
     }
+    //Trade attiributes
+    @FXML
+    Label t_coin;
 
-    public void tradeClicked(MouseEvent event) throws Exception{
-        Button temp = (Button)event.getSource();
-        Label coinLabel = (Label)tradeBuy.getScene().lookup("#t_coin");
     public void tradeClicked(MouseEvent event)throws Exception{
-        trade(event);
         Button temp = (Button)event.getSource();
-        Label coinLabel = (Label)temp.getScene().lookup("#t_coin");
+        Label coinLabel = (Label) tradeBuy.getScene().lookup("#t_coin");
         System.out.println(coinLabel.getText());
         if(coinLabel.getText().equals("0")) //////////
                coinLabel.setText(""+ mySources.get("coin"));
-            //coinLabel.setText("5");
         Scene tempScene= trade_sources_grid.getScene();
         String labelName = "#";
         if(temp.getId().substring(0,4).equals("ltbp") && Integer.parseInt(coinLabel.getText()) > 1){
+            System.out.println(Integer.parseInt(t_coin.getText())+ "asdas");
             labelName += "Llt_" + temp.getId().substring(5);
             Label tb = (Label) tempScene.lookup(labelName);
             tb.setText( Integer.parseInt(tb.getText()) + 1 + "");
@@ -539,23 +541,22 @@ public class in_game_controller implements Initializable  {
         System.out.println(labelName);
 
     }
+
+    @FXML
+    GridPane trade_sources_grid2;
     public void tradeBuyPressed(MouseEvent event) throws Exception{
         HashMap<String,Integer> leftTradeMap = new HashMap<String, Integer>();
         HashMap<String,Integer> rightTradeMap = new HashMap<String, Integer>();
         List<Card> hand = handCards.getContainer().get(Main.wonderID);
-        if(selection == 2 || selection == 3){
+        if(selection == 1 || selection == 2){
             for (Node child : trade_sources_grid.getChildren()) {// bu kod biraz çirkin, böyle olmasının bir nedeni var, değiştirme
-                if(child.getId() != null)
-                    System.out.println(child.getId().substring(0,2) + "BUraaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
                 if(child.getId() != null && child.getId().substring(0,2).equals("Ll")){
                     Label temp = (Label)child;
                     String sourceValue = temp.getText();
                     leftTradeMap.put( child.getId().substring(4), Integer.parseInt(sourceValue));
                 }
             }
-            for (Node child : trade_sources_grid.getChildren()) {// bu kod biraz çirkin, böyle olmasının bir nedeni var, değiştirme
-                if(child.getId() != null)
-                    System.out.println(child.getId().substring(0,2) + "BUraaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+            for (Node child : trade_sources_grid2.getChildren()) {// bu kod biraz çirkin, böyle olmasının bir nedeni var, değiştirme
                 if(child.getId() != null && child.getId().substring(0,2).equals("Lr")){
                     Label temp = (Label)child;
                     String sourceValue = temp.getText();
@@ -602,6 +603,10 @@ public class in_game_controller implements Initializable  {
     }
 
     public void refresh()throws Exception {
+
+        HashMap<String,Integer> militaryPoint = con.getMilitaryPoint();
+        System.out.println(militaryPoint.toString());
+
         sceneOfTable = my_wonder.getScene();
         tableID = Main.tableID;
         wonderID = Main.wonderID;
@@ -714,20 +719,24 @@ public class in_game_controller implements Initializable  {
        /* refreshStructures(a, left_structure_grid);
         refreshStructures(a, right_structure_grid);*/
 
+
+       //bura commentten çıkacak, çıkacakkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk
+        /*
         int temp = 3;
         String[] wonders2 = new String[7];
         for(Map.Entry mapElement : wonderBoards.entrySet()){
             String key = (String)mapElement.getKey();
-            if(Main.wonderID.equals(wonderBoards.get(key))){
-                wonders2[0] = key;
+            System.out.println(key);
+            if(Main.wonderID.equals(wonderBoards.get(key).getName())){
+                wonders2[0] = wonderBoards.get(key).getName();
             }else
-            if(Main.wonderID.equals(wonderBoards.get(key).getLeftNeighbor())){
-                wonders2[1] = key;
+            if(wonderBoards.get(key).getName().equals(wonderBoards.get(Main.wonderID).getLeftNeighbor())){
+                wonders2[1] = wonderBoards.get(key).getName();
             }else
-            if(Main.wonderID.equals(wonderBoards.get(key).getRightNeighbor())){
-                wonders2[2] = key;
+            if(wonderBoards.get(key).getName().equals(wonderBoards.get(Main.wonderID).getRightNeighbor())){
+                wonders2[2] = wonderBoards.get(key).getName();
             }else{
-                wonders2[temp] = key;
+                wonders2[temp] = wonderBoards.get(key).getName();
                 temp++;
             }
 
@@ -740,11 +749,13 @@ public class in_game_controller implements Initializable  {
         //ASIL CODE BURADA BAŞLIYOR
 
         //BURAYA WONDER RESIMLERININ İLK AÇILDIGINDA GÜNCELLENECEĞİ KODU KOYUYORUM.
-       /* for(int j = 0; j<7;j++){
+        for(int j = 0; j<7;j++){
             wonderImages[j] = "-fx-background-image: url(\"/WONDERS/"+ wonders2[j] +".jpg\")";
             String str1 = "/WONDERS/" + wonders2[j] + "_STAGE1.jpg";
             String str2 = "/WONDERS/" + wonders2[j] + "_STAGE2.jpg";
             String str3 = "/WONDERS/" + wonders2[j] + "_STAGE3.jpg";
+            System.out.println(str3 + "nnnnnnnnnnnnnnnnnnnnnnnnnnnn");
+            System.out.println(wonders2[j] + "nnnnnnnnnnnnnnnnnnnnnnnnnnnn");
             wonderStages0[j] = new Image(str1);
             wonderStages1[j] = new Image(str2);
             wonderStages2[j] = new Image(str3);
@@ -799,15 +810,15 @@ public class in_game_controller implements Initializable  {
         }
 
 
-
 */
+
 
 
 
 
         WonderBoard my_wonder = wonderBoards.get(wonderID);
         mySources= my_wonder.getSources();
-        refreshSources(my_wonder.getSources() ,resources_grid_0);
+        //refreshSources(my_wonder.getSources() ,resources_grid_0);
         //refreshSources(my_wonder.getSources() ,resources_grid_0);
         refreshStructures(my_wonder, structure_grid_0);
         String left_neighbour_name = my_wonder.getLeftNeighbor();
@@ -854,8 +865,6 @@ public class in_game_controller implements Initializable  {
 
         //stage 1 i yaptım diyelim
         my_wonder_stage_0.setEffect(null);
-
-
 
     }
 
@@ -1210,9 +1219,9 @@ public class in_game_controller implements Initializable  {
 
 
         };*/
-        SocketThread socketThread = new SocketThread(this);
+      /*  SocketThread socketThread = new SocketThread(this);
         Thread newT = new Thread(socketThread);
-        newT.start();
+        newT.start();*/
        /* socket = new SocketThread(this);
         socketThread = new Thread(socket);
         Platform.runLater(socketThread);*/
@@ -1315,8 +1324,14 @@ public class in_game_controller implements Initializable  {
         GridPane pane = FXMLLoader.load(getClass().getResource("/select_card_popover.fxml"));
         popOverCard.setContentNode(pane);
 
-
-
+        popOver2 = new PopOver();
+        popOver2.setArrowLocation(PopOver.ArrowLocation.BOTTOM_CENTER);
+        popOver2.setAutoFix(true);
+        popOver2.setAutoHide(true);
+        popOver2.setHideOnEscape(true);
+        popOver2.setDetachable(false);
+        GridPane pane2 = FXMLLoader.load(getClass().getResource("/trade_popover.fxml"));
+        popOver2.setContentNode(pane2);
        /* SocketThread socketThread = new SocketThread(this);
         Thread newT = new Thread(socketThread);
         newT.start();*/
