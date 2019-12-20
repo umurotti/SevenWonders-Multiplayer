@@ -156,17 +156,17 @@ public class in_game_controller implements Initializable  {
     Integer diceTime;
 
     public void diceGamePopOver(ActionEvent event) throws Exception{
-        /*final PopOver popOver = new PopOver();
+        final PopOver popOver = new PopOver();
         popOver.setArrowLocation(PopOver.ArrowLocation.BOTTOM_CENTER);
         popOver.setAutoFix(true);
-        popOver.setAutoHide(true);
-        popOver.setHideOnEscape(true);
+        popOver.setAutoHide(false);
+        popOver.setHideOnEscape(false);
         popOver.setDetachable(false);
-        final GridPane pane = FXMLLoader.load(getClass().getResource("/dice_popover.fxml"));
-        popOver.setDetachable(true);
-        GridPane pane =(GridPane)Main.map.get("dicePopOver");
+        //inal GridPane pane = FXMLLoader.load(getClass().getResource("/dice_popover.fxml"));
+        final GridPane pane = (GridPane)Main.map.get("dicePopOver");
         popOver.setContentNode(pane);
         popOver.show(resources_grid_0, 1000, 1000);
+
 
 
             if(timeline!=null){
@@ -184,6 +184,8 @@ public class in_game_controller implements Initializable  {
                     ((Label)pane.lookup("#dice_time")).setText(diceTime.toString());
                     if(diceTime==0){
                         diceTimeLine.stop();
+                        popOver.hide();
+
                     }
                 }
             };
@@ -453,6 +455,7 @@ public class in_game_controller implements Initializable  {
     public void trade(MouseEvent event)throws Exception{
         PopOver popOver = new PopOver();
         popOver.setArrowLocation(PopOver.ArrowLocation.BOTTOM_CENTER);
+        popOver.setHideOnEscape(false);
         popOver.setAutoFix(true);
         popOver.setAutoHide(true);
         popOver.setHideOnEscape(true);
