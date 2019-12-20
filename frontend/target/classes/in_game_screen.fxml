@@ -295,7 +295,7 @@
                                                  <image>
                                                      <Image url="@Resources/or8.png" />
                                                  </image></ImageView>
-                                             <ImageView fx:id="s1clayORstoneORoreORwood" fitHeight="21.0" fitWidth="60.0" layoutX="14.0" layoutY="-75.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                                             <ImageView fx:id="s1undecided" fitHeight="21.0" fitWidth="60.0" layoutX="14.0" layoutY="-75.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
                                                  <image>
                                                      <Image url="@Resources/or9.png" />
                                                  </image></ImageView>
@@ -633,7 +633,7 @@
                                                  <image>
                                                      <Image url="@Resources/or8.png" />
                                                  </image></ImageView>
-                                             <ImageView fx:id="s2clayORstoneORoreORwood" fitHeight="21.0" fitWidth="60.0" layoutX="14.0" layoutY="-75.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                                             <ImageView fx:id="s2undecided" fitHeight="21.0" fitWidth="60.0" layoutX="14.0" layoutY="-75.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
                                                  <image>
                                                      <Image url="@Resources/or9.png" />
                                                  </image></ImageView>
@@ -1034,7 +1034,7 @@
                                              <image>
                                                 <Image url="@Resources/or8.png" />
                                              </image></ImageView>
-                                             <ImageView fx:id="s0clayORstoneORoreORwood" fitHeight="21.0" fitWidth="60.0" layoutX="14.0" layoutY="-75.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                                             <ImageView fx:id="s0undecided" fitHeight="21.0" fitWidth="60.0" layoutX="14.0" layoutY="-75.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
                                              <image>
                                                 <Image url="@Resources/or9.png" />
                                              </image></ImageView>
@@ -1531,7 +1531,7 @@
                                            <image>
                                                <Image url="@Resources/or8.png" />
                                            </image></ImageView>
-                                       <ImageView fx:id="s3clayORstoneORoreORwood" fitHeight="21.0" fitWidth="60.0" layoutX="14.0" layoutY="-75.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                                       <ImageView fx:id="s3undecided" fitHeight="21.0" fitWidth="60.0" layoutX="14.0" layoutY="-75.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
                                            <image>
                                                <Image url="@Resources/or9.png" />
                                            </image></ImageView>
@@ -1862,7 +1862,7 @@
                                            <image>
                                                <Image url="@Resources/or8.png" />
                                            </image></ImageView>
-                                       <ImageView fx:id="s4clayORstoneORoreORwood" fitHeight="21.0" fitWidth="60.0" layoutX="14.0" layoutY="-75.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                                       <ImageView fx:id="s4undecided" fitHeight="21.0" fitWidth="60.0" layoutX="14.0" layoutY="-75.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
                                            <image>
                                                <Image url="@Resources/or9.png" />
                                            </image></ImageView>
@@ -2193,7 +2193,7 @@
                                            <image>
                                                <Image url="@Resources/or8.png" />
                                            </image></ImageView>
-                                       <ImageView fx:id="s5clayORstoneORoreORwood" fitHeight="21.0" fitWidth="60.0" layoutX="14.0" layoutY="-75.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                                       <ImageView fx:id="s5undecided" fitHeight="21.0" fitWidth="60.0" layoutX="14.0" layoutY="-75.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
                                            <image>
                                                <Image url="@Resources/or9.png" />
                                            </image></ImageView>
@@ -2524,7 +2524,7 @@
                                            <image>
                                                <Image url="@Resources/or8.png" />
                                            </image></ImageView>
-                                       <ImageView fx:id="s6clayORstoneORoreORwood" fitHeight="21.0" fitWidth="60.0" layoutX="14.0" layoutY="-75.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                                       <ImageView fx:id="s6undecided" fitHeight="21.0" fitWidth="60.0" layoutX="14.0" layoutY="-75.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
                                            <image>
                                                <Image url="@Resources/or9.png" />
                                            </image></ImageView>

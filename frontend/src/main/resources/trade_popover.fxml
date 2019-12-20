@@ -193,7 +193,7 @@
 
 
              <Label text="RIGHT WONDER" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
-             <GridPane GridPane.columnIndex="1" GridPane.rowIndex="1">
+             <GridPane fx:id="trade_sources_grid2" GridPane.columnIndex="1" GridPane.rowIndex="1">
                  <columnConstraints>
                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="30.0" prefWidth="100.0" />
                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="30.0" prefWidth="100.0" />
@@ -386,7 +386,7 @@
                </padding></Label>
           </children>
       </GridPane>
-      <Button mnemonicParsing="false" style="-fx-background-radius: 50%; -fx-background-color: #123456;" text="BUY"  onMouseClicked="#tradeBuyPressed" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+      <Button fx:id="tradeBuy" mnemonicParsing="false" onMouseClicked="#tradeBuyPressed" style="-fx-background-radius: 50%; -fx-background-color: #123456;" text="BUY" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
          <font>
             <Font name="Arial Bold" size="18.0" />
          </font>
