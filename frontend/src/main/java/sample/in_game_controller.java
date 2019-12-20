@@ -533,6 +533,7 @@ public class in_game_controller implements Initializable  {
             System.out.println(Main.wonderID);
             System.out.println(toSend);
             con.sendAction(toSend,Main.tableID);
+
         }else{
             trade(event);
 
@@ -543,7 +544,7 @@ public class in_game_controller implements Initializable  {
         System.out.println(wonderBoards.get(Main.wonderID).getSourcesToCalculate());
         ListIterator it = wonderBoards.get(Main.wonderID).getSourcesToCalculate().listIterator();
         String sourceToCheck;
-/*
+
         while (it.hasNext()) {
             sourceToCheck = (String) it.next();
             int sourceFoundIndex = 0;
@@ -562,7 +563,7 @@ public class in_game_controller implements Initializable  {
 
             if(sourceFoundIndex == cost.getCost().entrySet().size())
                 return true;
-        }*/
+        }
         return false;
     }
 
@@ -793,22 +794,22 @@ public class in_game_controller implements Initializable  {
 
 
        //bura commentten çıkacak, çıkacakkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk
-        /*
+/*
         int temp = 3;
         String[] wonders2 = new String[7];
         for(Map.Entry mapElement : wonderBoards.entrySet()){
             String key = (String)mapElement.getKey();
             System.out.println(key);
-            if(Main.wonderID.equals(wonderBoards.get(key).getName())){
+            if(Main.wonderID.equals(wonderBoards.get(key).getWonderName())){
                 wonders2[0] = wonderBoards.get(key).getName();
             }else
-            if(wonderBoards.get(key).getName().equals(wonderBoards.get(Main.wonderID).getLeftNeighbor())){
-                wonders2[1] = wonderBoards.get(key).getName();
+            if(wonderBoards.get(key).getWonderName().equals(wonderBoards.get(wonderBoards.get(Main.wonderID).getLeftNeighbor()).getWonderName())){
+                wonders2[1] = wonderBoards.get(key).getWonderName();
             }else
-            if(wonderBoards.get(key).getName().equals(wonderBoards.get(Main.wonderID).getRightNeighbor())){
-                wonders2[2] = wonderBoards.get(key).getName();
+            if(wonderBoards.get(key).getWonderName().equals(wonderBoards.get(wonderBoards.get(Main.wonderID).getRightNeighbor()).getWonderName())){
+                wonders2[2] = wonderBoards.get(key).getWonderName();
             }else{
-                wonders2[temp] = wonderBoards.get(key).getName();
+                wonders2[temp] = wonderBoards.get(key).getWonderName();
                 temp++;
             }
 
@@ -940,9 +941,9 @@ public class in_game_controller implements Initializable  {
 
     }
 
-
-    public void refreshHand(HandContainer handCards){
-
+    static boolean roundEnds = false;
+    public void refreshHand(HandContainer handCards)throws Exception{
+        int round = 0;
         Map<String,List<Card>> temp= handCards.getContainer();
         for(int i = 0; i < 7; i++){
             hand[i].setVisible(true);
@@ -952,7 +953,6 @@ public class in_game_controller implements Initializable  {
                 leeen = leeen.substring(0,leeen.indexOf(" "))+  leeen.substring(leeen.indexOf(" " ) +1);
                 if(leeen.indexOf(" ")>0)
                     leeen = leeen.substring(0,leeen.indexOf(" "))+  leeen.substring(leeen.indexOf(" " ) +1);
-
 
                 if(leeen.indexOf("i")>0){
                     leeen = leeen.substring(0,leeen.indexOf("i"))+ "I"+   leeen.substring(leeen.indexOf("i" ) +1);
@@ -965,11 +965,19 @@ public class in_game_controller implements Initializable  {
 
                 hand[i].setImage(images2.get(leeen));
                 //handAnimation(hand[i]);
+                round++;
             }else{
                 System.out.println("laaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
                 hand[i].setVisible(false);
                 hand[i].setDisable(false);
             }
+            /**/
+
+        }
+        if(round == 1){
+            ageOver(1);
+
+
         }
        /* for(int i = 0 ; i <7; i++){
             hand[i].setImage(images2.get("ALTAR"));
@@ -1120,13 +1128,13 @@ public class in_game_controller implements Initializable  {
 
 
                 str1 = "#w1_" + i + "_image";
-                String url = "/WONDERS/" + wonderName +".jpg";
+                String url = "/WONDERS/" + wonderBoards.get(wonderName).getWonderName() +".jpg";
                 Image image = new Image(url);
                 ((ImageView)pane.lookup(str1)).setImage(image);
 
 
                 str1 = "#w2_" + i + "_image";
-                url = "/WONDERS/" + wonderBoards.get(wonderName).getLeftNeighbor() +".jpg";
+                url = "/WONDERS/" + wonderBoards.get(wonderBoards.get(wonderName).getLeftNeighbor()).getWonderName() +".jpg";
                 ((ImageView)pane.lookup(str1)).setImage(new Image(url));
 
                 if(wonderBoards.get(wonderName).getSources().get("shield")<wonderBoards.get(wonderBoards.get(wonderName).getLeftNeighbor()).getSources().get("shield")){
