@@ -1,7 +1,11 @@
 package sample;
 
 import com.sun.security.ntlm.Server;
+import javafx.animation.FadeTransition;
+import javafx.animation.RotateTransition;
+import javafx.animation.TranslateTransition;
 import javafx.application.Application;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -10,10 +14,12 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
+
 
 public class Main extends Application {
 
@@ -23,9 +29,13 @@ public class Main extends Application {
     public static String wonderID;
      static Map<String, Object> map = new HashMap<String,Object>();
 
+
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("/sample.fxml"));
+
+
+
+        Parent root = FXMLLoader.load(getClass().getResource("/welcome_screen.fxml"));
         primaryStage.setTitle("Hello World");
         scene = new Scene(root,1920,1080);
         String workingDir = System.getProperty("user.dir");
@@ -35,7 +45,9 @@ public class Main extends Application {
         primaryStage.setScene(scene);
         primaryStage.setFullScreen(false);
         primaryStage.show();
-        main_menu_controller controller = new main_menu_controller();
+
+
+
 
         /*workingDir += "/src/main/resources/background_music.wav";
         Media musicFile = new Media(workingDir);

@@ -543,7 +543,7 @@ public class in_game_controller implements Initializable  {
         System.out.println(wonderBoards.get(Main.wonderID).getSourcesToCalculate());
         ListIterator it = wonderBoards.get(Main.wonderID).getSourcesToCalculate().listIterator();
         String sourceToCheck;
-/*
+
         while (it.hasNext()) {
             sourceToCheck = (String) it.next();
             int sourceFoundIndex = 0;
@@ -562,7 +562,7 @@ public class in_game_controller implements Initializable  {
 
             if(sourceFoundIndex == cost.getCost().entrySet().size())
                 return true;
-        }*/
+        }
         return false;
     }
 

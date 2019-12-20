@@ -1,5 +1,8 @@
 package sample;
 
+import javafx.animation.FadeTransition;
+import javafx.animation.RotateTransition;
+import javafx.animation.TranslateTransition;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -26,6 +29,28 @@ public class main_menu_controller {
     private Button settings_button;
     @FXML
     Parent root;
+
+   /* @FXML
+    javafx.scene.image.ImageView image_logo;
+    public void welcome() throws Exception{
+        javafx.util.Duration sec2 = javafx.util.Duration.millis(1500);
+        FadeTransition ft = new FadeTransition(sec2);
+        ft.setFromValue(1.0f);
+        ft.setToValue(0.3f);
+        ft.setCycleCount(4);
+        ft.setAutoReverse(true);
+        ft.setNode(image_logo);
+        ft.play();
+
+        if(ft.getCycleCount() == 3){
+            Scene scene1 = image_logo.getScene();
+            root = FXMLLoader.load(getClass().getResource("/sample.fxml"));
+            scene1.setRoot(root);
+        }
+    }*/
+
+
+
     public void onPressExitButton(ActionEvent event) throws Exception{
         SoundManager.play(SoundManager.MUSIC.BUTTON_CLICK);
         Platform.exit();
