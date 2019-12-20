@@ -13,7 +13,7 @@ public class wait_contoller {
     Button wait_refresh;
     public void refreshPressed()throws Exception{
         Scene scene1 = wait_refresh.getScene();
-        root = FXMLLoader.load(getClass().getResource("/in_game_screen.fxml"));
+        root = (Parent)Main.map.get("home");
         scene1.setRoot(root);
     }
 }

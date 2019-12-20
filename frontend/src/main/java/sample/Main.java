@@ -56,7 +56,6 @@ public class Main extends Application {
         map.put("select_card_popover",loaded);
         loaded = (GridPane)FXMLLoader.load(getClass().getResource("/trade_popover.fxml"));
         map.put("trade_popover",loaded);
-
     }
 
 

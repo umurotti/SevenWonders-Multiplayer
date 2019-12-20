@@ -56,7 +56,7 @@
                             <Font name="Arial Bold" size="13.0" />
                         </font></Button>
 
-                    <Button fx:id="ltbp_clay" mnemonicParsing="false" onMouseClicked="#tradeClicked" prefHeight="27.0" prefWidth="30.0" style="-fx-border-radius: 50%; -fx-background-radius: 50%; -fx-background-color: #8cb4f5; -fx-border-color: #597096; -fx-border-width: 2;" text="+" textFill="#3023bf" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                    <Button fx:id="ltbp_aclay" mnemonicParsing="false" onMouseClicked="#tradeClicked" prefHeight="27.0" prefWidth="30.0" style="-fx-border-radius: 50%; -fx-background-radius: 50%; -fx-background-color: #8cb4f5; -fx-border-color: #597096; -fx-border-width: 2;" text="+" textFill="#3023bf" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
                         <font>
                             <Font name="Arial Bold" size="13.0" />
                         </font></Button>
@@ -94,7 +94,7 @@
                             <Font name="Arial Bold" size="13.0" />
                         </font></Button>
 
-                    <Button fx:id="ltbm_clay" mnemonicParsing="false" onMouseClicked="#tradeClicked" prefHeight="27.0" prefWidth="30.0" style="-fx-border-radius: 50%; -fx-background-radius: 50%; -fx-background-color: #8cb4f5; -fx-border-color: #597096; -fx-border-width: 2;" text="-" textFill="#3023bf" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                    <Button fx:id="ltbm_aclay" mnemonicParsing="false" onMouseClicked="#tradeClicked" prefHeight="27.0" prefWidth="30.0" style="-fx-border-radius: 50%; -fx-background-radius: 50%; -fx-background-color: #8cb4f5; -fx-border-color: #597096; -fx-border-width: 2;" text="-" textFill="#3023bf" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
                         <font>
                             <Font name="Arial Bold" size="13.0" />
                         </font></Button>
@@ -158,7 +158,7 @@
                         <Font name="Arial Bold" size="14.0" />
                      </font></Label>
 
-                    <Label fx:id="Llt_clay" text="0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                    <Label fx:id="Llt_aclay" text="0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
                         <font>
                             <Font name="Arial Bold" size="14.0" />
                         </font></Label>
@@ -220,7 +220,7 @@
                              <Font name="Arial Bold" size="13.0" />
                          </font></Button>
 
-                     <Button fx:id="rtbp_clay" mnemonicParsing="false" onMouseClicked="#tradeClicked" prefHeight="27.0" prefWidth="30.0" style="-fx-border-radius: 50%; -fx-background-radius: 50%; -fx-background-color: #8cb4f5; -fx-border-color: #597096; -fx-border-width: 2;" text="+" textFill="#3023bf" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                     <Button fx:id="rtbp_aclay" mnemonicParsing="false" onMouseClicked="#tradeClicked" prefHeight="27.0" prefWidth="30.0" style="-fx-border-radius: 50%; -fx-background-radius: 50%; -fx-background-color: #8cb4f5; -fx-border-color: #597096; -fx-border-width: 2;" text="+" textFill="#3023bf" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
                          <font>
                              <Font name="Arial Bold" size="13.0" />
                          </font></Button>
@@ -258,7 +258,7 @@
                              <Font name="Arial Bold" size="13.0" />
                          </font></Button>
 
-                     <Button fx:id="rtbm_clay" mnemonicParsing="false" onMouseClicked="#tradeClicked" prefHeight="27.0" prefWidth="30.0" style="-fx-border-radius: 50%; -fx-background-radius: 50%; -fx-background-color: #8cb4f5; -fx-border-color: #597096; -fx-border-width: 2;" text="-" textFill="#3023bf" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                     <Button fx:id="rtbm_aclay" mnemonicParsing="false" onMouseClicked="#tradeClicked" prefHeight="27.0" prefWidth="30.0" style="-fx-border-radius: 50%; -fx-background-radius: 50%; -fx-background-color: #8cb4f5; -fx-border-color: #597096; -fx-border-width: 2;" text="-" textFill="#3023bf" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
                          <font>
                              <Font name="Arial Bold" size="13.0" />
                          </font></Button>
@@ -322,7 +322,7 @@
                              <Font name="Arial Bold" size="14.0" />
                          </font></Label>
 
-                     <Label fx:id="Lrt_clay" text="0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                     <Label fx:id="Lrt_aclay" text="0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
                          <font>
                              <Font name="Arial Bold" size="14.0" />
                          </font></Label>

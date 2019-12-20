@@ -112,7 +112,7 @@ public class in_game_controller implements Initializable  {
     ImageView myStructures[] = new ImageView[18];
     ImageView leftStructures[] = new ImageView[18];
     ImageView rightStructures[] = new ImageView[18];
-    Map<String,WonderBoard> wonderBoards ;
+    static Map<String,WonderBoard> wonderBoards ;
     @FXML
     GridPane trade_sources_grid;
     static int selection =0;
@@ -465,10 +465,6 @@ public class in_game_controller implements Initializable  {
         popOver.setContentNode(pane);
         popOver.show((Button)event.getSource(),1100,1200);
 
-       /*Button buton = (Button)event.getSource();
-        Scene tempScene = buton.getScene();
-        Button temp = (Button) tempScene.lookup("#dice");
-        popOver2.show(diceGame);*/
 
     }
 
@@ -477,17 +473,10 @@ public class in_game_controller implements Initializable  {
        // Map<String,Integer> source = wonderBoards.get(Main.wonderID).getSources();
         System.out.println(Main.wonderID);
         List<Card> hand = ServerConnection.cardss.getContainer().get(Main.wonderID);
-        System.out.println("OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO  " + selectedCard);
+        int index = Integer.parseInt(selectedCard.substring(4));
+        trade = isPossible(hand.get(index).getCost());
 
-
-        /*for(Map.Entry<String,Integer> entry : chosen.getCost().getCost().entrySet()){
-            if(source.get(entry.getKey()) < (entry.getValue()) ){
-                trade = true;
-                break;
-            }
-        } //BURASI BÖYLE ÇÜNKÜ HENÜZ TRADE VE WONDER ALMA YOK*/
-
-        if(!trade){
+        if(trade){
             System.out.println("Action will be sended"); //hand.indexOf(selectedCard)
             CardAction toSend = new CardAction(this.selection,null,null, Integer.parseInt(selectedCard.substring(4)),Main.wonderID);
             System.out.println(Main.wonderID);
@@ -498,6 +487,36 @@ public class in_game_controller implements Initializable  {
 
         }
     }
+    private boolean isPossible(Cost cost){
+        System.out.println(wonderBoards.get(Main.wonderID));
+        System.out.println(wonderBoards.get(Main.wonderID).getSourcesToCalculate());
+        ListIterator it = wonderBoards.get(Main.wonderID).getSourcesToCalculate().listIterator();
+        String sourceToCheck;
+/*
+        while (it.hasNext()) {
+            sourceToCheck = (String) it.next();
+            int sourceFoundIndex = 0;
+            for (Map.Entry<String, Integer> entry : cost.getCost().entrySet()) {
+                if (entry.getValue() != 0) {
+                    String tmpToSearch = "";
+                    for (int i = 0; i < entry.getValue(); i++) {
+                        tmpToSearch += entry.getKey().charAt(0);
+                    }
+                    if (!sourceToCheck.contains(tmpToSearch)) {
+                        break;
+                    }
+                }
+                sourceFoundIndex++;
+            }
+
+            if(sourceFoundIndex == cost.getCost().entrySet().size())
+                return true;
+        }*/
+        return false;
+    }
+
+
+
     //Trade attiributes
     @FXML
     Label t_coin;
@@ -581,17 +600,19 @@ public class in_game_controller implements Initializable  {
                 }
         }
         //refreshing OR sources
-
+        // burayayanlış geliyor, eğer or lu birşey oynarsan yanlış geliyor
+       /*
         for( Map.Entry mapElement : ORsources.entrySet() ){
                 String key = (String) mapElement.getKey();
                 String nameOfImageView = "#s" + pane.getId().substring(15) + key;
                 ImageView orSourceImageView = (ImageView)sceneOfTable.lookup(nameOfImageView);
+                System.out.println(nameOfImageView + "burrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr");
                 if(ORsources.get(key)){
                     orSourceImageView.setVisible(true);
                 }else{
                     orSourceImageView.setVisible(false);
                 }
-        }
+        }*/
     }
 
     public void onPress(ActionEvent event)throws Exception{
@@ -878,10 +899,13 @@ public class in_game_controller implements Initializable  {
                 String leeen = temp.get(wonderID).get(i).getName();
                 if(leeen.indexOf(" ")>0)
                 leeen = leeen.substring(0,leeen.indexOf(" "))+  leeen.substring(leeen.indexOf(" " ) +1);
+                if(leeen.indexOf(" ")>0)
+                    leeen = leeen.substring(0,leeen.indexOf(" "))+  leeen.substring(leeen.indexOf(" " ) +1);
+
+
                 if(leeen.indexOf("i")>0){
                     leeen = leeen.substring(0,leeen.indexOf("i"))+ "I"+   leeen.substring(leeen.indexOf("i" ) +1);
                 }
-
                 if(leeen.indexOf("i")>0)
                     leeen = leeen.substring(0,leeen.indexOf("i"))+ "I"+  leeen.substring(leeen.indexOf("i" ) +1);
                 if(leeen.indexOf("i")>0)
@@ -890,6 +914,10 @@ public class in_game_controller implements Initializable  {
 
                 hand[i].setImage(images2.get(leeen));
                 //handAnimation(hand[i]);
+            }else{
+                System.out.println("laaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+                hand[i].setVisible(false);
+                hand[i].setDisable(false);
             }
         }
        /* for(int i = 0 ; i <7; i++){

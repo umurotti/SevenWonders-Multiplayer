@@ -230,6 +230,76 @@ public class ServerConnection {
         System.out.println(response.toString());
     }
 
+    public HashMap<String,Integer> getMilitaryPoint()throws Exception{
+
+        String url = "http://ec2-54-93-112-68.eu-central-1.compute.amazonaws.com:8080/cs319deneme3-1.0-SNAPSHOT/7wonders/SWtableServices/getMilitaryPointsService?tableID=";
+        url = url + Main.tableID;
+        URL obj = new URL(url);
+        HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+        // optional default is GET
+        con.setRequestMethod("GET");
+        //add request header
+        con.setRequestProperty("alptekin", "123123");
+        int responseCode = con.getResponseCode();
+        System.out.println("\nSending 'GET' request to URL : " + url);
+        System.out.println("Response Code : " + responseCode);
+        BufferedReader in = new BufferedReader(
+                new InputStreamReader(con.getInputStream()));
+        String inputLine;
+        StringBuffer response = new StringBuffer();
+        while ((inputLine = in.readLine()) != null) {
+            System.out.println(inputLine);
+            response.append(inputLine);
+        }
+        in.close();
+        System.out.println(response.toString());
+
+        JSONObject myResponse = new JSONObject(response.toString() );
+        HashMap<String,Integer> mapToSend = new HashMap<String, Integer>();
+        Map<String, Object> a = myResponse.toMap();
+        for (Map.Entry<String, Object> entry : a.entrySet()) {
+            if(entry.getValue() instanceof String){
+                mapToSend.put(entry.getKey(), (Integer) entry.getValue());
+            }
+        }
+        return mapToSend;
+
+    }
+
+    public HashMap<String,String> getTableList() throws Exception{
+        String url = "http://ec2-54-93-112-68.eu-central-1.compute.amazonaws.com:8080/cs319deneme3-1.0-SNAPSHOT/7wonders/SWhouseServices/listWaitingTableService";
+        url = url + Main.tableID;
+        URL obj = new URL(url);
+        HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+        // optional default is GET
+        con.setRequestMethod("GET");
+        //add request header
+        con.setRequestProperty("alptekin", "123123");
+        int responseCode = con.getResponseCode();
+        System.out.println("\nSending 'GET' request to URL : " + url);
+        System.out.println("Response Code : " + responseCode);
+        BufferedReader in = new BufferedReader(
+                new InputStreamReader(con.getInputStream()));
+        String inputLine;
+        StringBuffer response = new StringBuffer();
+        while ((inputLine = in.readLine()) != null) {
+            System.out.println(inputLine);
+            response.append(inputLine);
+        }
+        in.close();
+        System.out.println(response.toString());
+
+        JSONObject myResponse = new JSONObject(response.toString() );
+        HashMap<String,String> mapToSend = new HashMap<String, String>();
+        Map<String, Object> a = myResponse.toMap();
+        for (Map.Entry<String, Object> entry : a.entrySet()) {
+            if(entry.getValue() instanceof String){
+                mapToSend.put(entry.getKey(), (String) entry.getValue());
+            }
+        }
+        return mapToSend;
+    }
+
     public Object ConvertJson(String table)throws Exception
     {
         JSONObject hold = getWonder(table);
