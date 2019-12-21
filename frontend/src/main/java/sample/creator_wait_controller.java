@@ -7,6 +7,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 
+import java.util.HashMap;
+
 public class creator_wait_controller {
 
     @FXML
@@ -28,9 +30,10 @@ public class creator_wait_controller {
         /*Scene scene1 = start_game_button.getScene();
         root = FXMLLoader.load(getClass().getResource("/in_game_screen.fxml"));
         scene1.setRoot(root);*/
-
-
+        in_game_controller in_game_controller= (in_game_controller) Main.map.get("controller");
+        HashMap<String,WonderBoard> wonderboard=  (HashMap<String, WonderBoard>) con.ConvertJson(Main.tableID);
         root =(Parent) Main.map.get("home");
         scene1.setRoot(root);
+        in_game_controller.beginRefresh(wonderboard);
     }
 }
