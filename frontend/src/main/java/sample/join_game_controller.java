@@ -47,9 +47,8 @@ public class join_game_controller implements Initializable  {
         observableList = game_list.getSelectionModel().getSelectedItems();
         selectedGame = observableList.get(0);*/
 
-       selectedGame = join_id.getText();
+        selectedGame = join_id.getText();
         con.sendRequestJoin(selectedGame,player_id_controller.WonderID);
-       // TableID =  join_id.getText() ;
         TableID = selectedGame;
         Main.tableID = TableID;
         Scene scene1 = join_button.getScene();

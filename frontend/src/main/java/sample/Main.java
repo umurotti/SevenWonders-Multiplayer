@@ -56,18 +56,22 @@ public class Main extends Application {
         mediaPlayer.play();*/
 
         Object loaded ;
+        loaded = (GridPane)FXMLLoader.load(getClass().getResource("/dice_popover.fxml"));
+        map.put("dicePopOver",loaded);
+        loaded = (GridPane)FXMLLoader.load(getClass().getResource("/select_card_popover.fxml"));
+        map.put("select_card_popover",loaded);
+        loaded = (GridPane)FXMLLoader.load(getClass().getResource("/trade_popover.fxml"));
+        map.put("trade_popover",loaded);
+        loaded = (GridPane)FXMLLoader.load(getClass().getResource("/age_over.fxml"));
+        map.put("age_over",loaded);
+
             //loaded = (Parent)FXMLLoader.load(getClass().getResource("/in_game_screen.fxml"));
              FXMLLoader a = new FXMLLoader(getClass().getResource("/in_game_screen.fxml"));
              loaded = (Parent)a.load();
             in_game_controller temp = a.getController();
             map.put("home", loaded);
             map.put("controller",temp);
-            loaded = (GridPane)FXMLLoader.load(getClass().getResource("/dice_popover.fxml"));
-            map.put("dicePopOver",loaded);
-            loaded = (GridPane)FXMLLoader.load(getClass().getResource("/select_card_popover.fxml"));
-            map.put("select_card_popover",loaded);
-            loaded = (GridPane)FXMLLoader.load(getClass().getResource("/trade_popover.fxml"));
-            map.put("trade_popover",loaded);
+
 
     }
 
