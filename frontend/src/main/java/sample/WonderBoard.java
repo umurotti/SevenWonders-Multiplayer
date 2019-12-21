@@ -136,11 +136,11 @@ public class WonderBoard {
 
         orSources = new HashMap<String, Boolean>()
         {{
-            put("woodORclay", Boolean.FALSE);
-            put("stoneORclay", Boolean.FALSE);
+            put("clayORwood", Boolean.FALSE);
+            put("clayORstone", Boolean.FALSE);
             put("clayORore", Boolean.FALSE);
             put("stoneORwood", Boolean.FALSE);
-            put("woodORore", Boolean.FALSE);
+            put("oreORwood", Boolean.FALSE);
             put("oreORstone", Boolean.FALSE);
             put("loomORglassORpapyrus", Boolean.FALSE);
             put("clayORstoneORoreORwood", Boolean.FALSE);

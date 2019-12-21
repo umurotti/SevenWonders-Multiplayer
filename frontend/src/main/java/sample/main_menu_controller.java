@@ -4,6 +4,7 @@ import javafx.animation.FadeTransition;
 import javafx.animation.RotateTransition;
 import javafx.animation.TranslateTransition;
 import javafx.application.Platform;
+import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -13,6 +14,9 @@ import javafx.scene.Scene;
 import javafx.scene.control.Accordion;
 import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
+import javafx.stage.Stage;
+
+import java.io.IOException;
 
 public class main_menu_controller {
     @FXML
@@ -51,6 +55,9 @@ public class main_menu_controller {
 
 
 
+
+
+
     public void onPressExitButton(ActionEvent event) throws Exception{
         SoundManager.play(SoundManager.MUSIC.BUTTON_CLICK);
         Platform.exit();
@@ -78,10 +85,13 @@ public class main_menu_controller {
         scene1.setRoot(root);
     }
     public void onPressPlayGameButton(ActionEvent event) throws Exception{
+
+
         SoundManager.play(SoundManager.MUSIC.BUTTON_CLICK);
         Scene scene1 = play_game_button.getScene();
         root = FXMLLoader.load(getClass().getResource("/player_id_screen.fxml"));
         scene1.setRoot(root);
+
     }
     public void onPressSettingButton(ActionEvent event) throws Exception{
         SoundManager.play(SoundManager.MUSIC.BUTTON_CLICK);

@@ -1,5 +1,6 @@
 package sample;
 
+import com.fasterxml.jackson.databind.deser.std.MapEntryDeserializer;
 import javafx.animation.RotateTransition;
 import javafx.animation.ScaleTransition;
 import javafx.animation.TranslateTransition;
@@ -520,6 +521,7 @@ public class in_game_controller implements Initializable  {
         System.out.println(Main.wonderID);
         List<Card> hand = ServerConnection.cardss.getContainer().get(Main.wonderID);
         int index = Integer.parseInt(selectedCard.substring(4));
+
         trade = isPossible(hand.get(index).getCost());
         System.out.println("OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO  " + selectedCard);
 
@@ -563,8 +565,6 @@ public class in_game_controller implements Initializable  {
         return false;
     }
 
-
-
     //Trade attiributes
     @FXML
     Label t_coin;
@@ -573,22 +573,32 @@ public class in_game_controller implements Initializable  {
         Button temp = (Button)event.getSource();
         Label coinLabel = (Label) tradeBuy.getScene().lookup("#t_coin");
         System.out.println(coinLabel.getText());
+        int threshHold = 1;
+        HashMap<String, Integer> leftDiscount = wonderBoards.get(Main.wonderID).getLeftDiscount();
+        HashMap<String, Integer> rightDiscount = wonderBoards.get(Main.wonderID).getRightDiscount();
+        if(temp.getId().substring(0,1).equals("l")){
+            threshHold = leftDiscount.get(temp.getId().substring(5)) - 1 ;//burda discount varsa 1 yerine 0 oluyor böylece threshold 0 ken 0 ı
+        }else if(temp.getId().substring(0,1).equals("r")){           //üstünde para olunca basabilecen tuşa
+            threshHold = rightDiscount.get(temp.getId().substring(5)) - 1; //burdada aynı şekilde
+        }
+
+
         if(coinLabel.getText().equals("0")) //////////
                coinLabel.setText(""+ mySources.get("coin"));
         Scene tempScene= trade_sources_grid.getScene();
         String labelName = "#";
-        if(temp.getId().substring(0,4).equals("ltbp") && Integer.parseInt(coinLabel.getText()) > 1){
+        if(temp.getId().substring(0,4).equals("ltbp") && Integer.parseInt(coinLabel.getText()) > threshHold){
             System.out.println(Integer.parseInt(t_coin.getText())+ "asdas");
             labelName += "Llt_" + temp.getId().substring(5);
             Label tb = (Label) tempScene.lookup(labelName);
             tb.setText( Integer.parseInt(tb.getText()) + 1 + "");
-            coinLabel.setText(Integer.parseInt(coinLabel.getText()) - 2 + "");
+            coinLabel.setText((Integer.parseInt(coinLabel.getText()) - (threshHold+1)) + "");
         }else if (temp.getId().substring(0,4).equals("ltbm") ){
             labelName += "Llt_" + temp.getId().substring(5);
             Label tb = (Label) tempScene.lookup(labelName);
             if(!tb.getText().equals("0")){
                 tb.setText( Integer.parseInt(tb.getText()) - 1 + "");
-                coinLabel.setText(Integer.parseInt(coinLabel.getText()) + 2 + "");
+                coinLabel.setText((Integer.parseInt(coinLabel.getText()) + (threshHold+1)) + "");
             }
 
         }else if(temp.getId().substring(0,4).equals("rtbm") ){
@@ -596,14 +606,14 @@ public class in_game_controller implements Initializable  {
             Label tb = (Label) tempScene.lookup(labelName);
             if(!tb.getText().equals("0")){
                 tb.setText( Integer.parseInt(tb.getText()) - 1 + "");
-                coinLabel.setText(Integer.parseInt(coinLabel.getText()) + 2 + "");
+                coinLabel.setText((Integer.parseInt(coinLabel.getText()) + (threshHold+1)) + "");
             }
 
-        }else if(temp.getId().substring(0,4).equals("rtbp") && Integer.parseInt(coinLabel.getText()) > 1){
+        }else if(temp.getId().substring(0,4).equals("rtbp") && Integer.parseInt(coinLabel.getText()) > threshHold){
             labelName += "Lrt_" + temp.getId().substring(5);
             Label tb = (Label) tempScene.lookup(labelName);
             tb.setText( Integer.parseInt(tb.getText()) + 1 + "");
-            coinLabel.setText(Integer.parseInt(coinLabel.getText()) - 2 + "");
+            coinLabel.setText((Integer.parseInt(coinLabel.getText()) - (threshHold+1)) + "");
         }
         System.out.println(labelName);
 
@@ -650,7 +660,7 @@ public class in_game_controller implements Initializable  {
         //refreshing OR sources
         // burayayanlış geliyor, eğer or lu birşey oynarsan yanlış geliyor
 
-        for( Map.Entry mapElement : ORsources.entrySet() ){
+        /*for( Map.Entry mapElement : ORsources.entrySet() ){
                 String key = (String) mapElement.getKey();
                 String nameOfImageView = "#s" + pane2.getId().substring(15,16) + key;
                 ImageView orSourceImageView = (ImageView)sceneOfTable.lookup(nameOfImageView);
@@ -660,6 +670,32 @@ public class in_game_controller implements Initializable  {
                 }else{
                     orSourceImageView.setVisible(false);
                 }
+        }*/
+
+        //this code refreshes disounts,  refreshdiscount
+        HashMap<String, Integer> leftDiscount = wonderBoards.get(Main.wonderID).getLeftDiscount();
+        HashMap<String, Integer> rightDiscount = wonderBoards.get(Main.wonderID).getRightDiscount();
+        String discountImageView = "";
+      /*  for(Map.Entry entry: leftDiscount.entrySet()){
+            discountImageView = "dl";
+            discountImageView = discountImageView + (String)entry.getKey();
+            ImageView discountImage = (ImageView)sceneOfTable.lookup("#" + discountImageView);
+            if(leftDiscount.get((String)entry.getKey()) != 2){
+                discountImage.setVisible(true);
+            }else{
+                discountImage.setVisible(false);
+            }
+        }*/
+        for(Map.Entry entry: rightDiscount.entrySet()){
+            discountImageView = "dr";
+            discountImageView = discountImageView + (String)entry.getKey();
+            ImageView discountImage = (ImageView)dice.getScene().lookup("#" + discountImageView);
+            System.out.println(discountImageView + "kKKKKKKKKKKKKKKKKKKKKKKKKKK");
+            if(rightDiscount.get((String)entry.getKey()) != 2){
+                discountImage.setVisible(true);
+            }else{
+                discountImage.setVisible(false);
+            }
         }
     }
 
@@ -1119,7 +1155,22 @@ public class in_game_controller implements Initializable  {
             Map.Entry mapElement = (Map.Entry)cardIterator.next();
             Card marks = ((Card)mapElement.getValue());
             ImageView structureImagePlace = (ImageView) sceneOfWonder.lookup(nameOfImageView);
-            structureImagePlace.setImage(images2.get(marks.getName()));
+            String leeen = marks.getName();
+
+            if(leeen.indexOf(" ")>0)
+                leeen = leeen.substring(0,leeen.indexOf(" "))+  leeen.substring(leeen.indexOf(" " ) +1);
+            if(leeen.indexOf(" ")>0)
+                leeen = leeen.substring(0,leeen.indexOf(" "))+  leeen.substring(leeen.indexOf(" " ) +1);
+
+            if(leeen.indexOf("i")>0){
+                leeen = leeen.substring(0,leeen.indexOf("i"))+ "I"+   leeen.substring(leeen.indexOf("i" ) +1);
+            }
+            if(leeen.indexOf("i")>0)
+                leeen = leeen.substring(0,leeen.indexOf("i"))+ "I"+  leeen.substring(leeen.indexOf("i" ) +1);
+            if(leeen.indexOf("i")>0)
+                leeen = leeen.substring(0,leeen.indexOf("i"))+ "I"+   leeen.substring(leeen.indexOf("i" ) +1);
+            leeen = leeen.toUpperCase();
+            structureImagePlace.setImage(images2.get(leeen));
             noOfImage++;
 
         }
