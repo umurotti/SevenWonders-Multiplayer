@@ -519,18 +519,32 @@ public class in_game_controller implements Initializable  {
         boolean trade = true;
         // Map<String,Integer> source = wonderBoards.get(Main.wonderID).getSources();
         System.out.println(Main.wonderID);
-        List<Card> hand = ServerConnection.cardss.getContainer().get(Main.wonderID);
+        List<Card> hand2 = ServerConnection.cardss.getContainer().get(Main.wonderID);
         int index = Integer.parseInt(selectedCard.substring(4));
-
-        trade = isPossible(hand.get(index).getCost());
-        System.out.println("OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO  " + selectedCard);
+        trade = isPossible(hand2.get(index).getCost());
+        System.out.println("OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO " + selectedCard);
 
         if(trade){
             System.out.println("Action will be sended"); //hand.indexOf(selectedCard)
             CardAction toSend = new CardAction(this.selection,null,null, Integer.parseInt(selectedCard.substring(4)),Main.wonderID);
             System.out.println(Main.wonderID);
             System.out.println(toSend);
-            con.sendAction(toSend,Main.tableID);
+            String isSuccess = con.sendAction(toSend,Main.tableID);
+            if(isSuccess.equals("başarılı")){
+                DropShadow selectEffect = new DropShadow();
+                selectEffect.setHeight(40.0);
+                selectEffect.setWidth(40.0);
+                selectEffect.setSpread(0.5);
+                selectEffect.setColor(Color.BLUE);
+                for(int i = 0; i<7;i++){
+                    ((Accordion)Main.map.get("home")).getScene().lookup("#card" + i).setEffect(null);
+                }
+                ((Accordion)Main.map.get("home")).getScene().lookup("#" + selectedCard).setEffect(selectEffect);
+                /*int cardIndex = Integer.parseInt(selectedCard.charAt(4) + "");
+                System.out.println(hand[cardIndex]);
+
+                hand[cardIndex].setEffect(selectEffect);*/
+            }
 
         }else{
             trade(event);
@@ -1003,10 +1017,12 @@ public class in_game_controller implements Initializable  {
 
     static boolean roundEnds = false;
     public void refreshHand(HandContainer handCards)throws Exception{
+        ArrayList<String> temphand = new ArrayList<String>();
         int round = 0;
         Map<String,List<Card>> temp= handCards.getContainer();
         for(int i = 0; i < 7; i++){
-            hand[i].setVisible(true);
+            //hand[i].setEffect(null);
+            //hand[i].setVisible(true);
             if(temp.get(Main.wonderID).get(i)!=null){
                 String leeen = temp.get(wonderID).get(i).getName();
                 if(leeen.indexOf(" ")>0)
@@ -1023,13 +1039,14 @@ public class in_game_controller implements Initializable  {
                     leeen = leeen.substring(0,leeen.indexOf("i"))+ "I"+   leeen.substring(leeen.indexOf("i" ) +1);
                 leeen = leeen.toUpperCase();
 
-                hand[i].setImage(images2.get(leeen));
+                temphand.add(leeen);
+                //hand[i].setImage(images2.get(leeen));
                 //handAnimation(hand[i]);
                 round++;
             }else{
                 System.out.println("laaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
-                hand[i].setVisible(false);
-                hand[i].setDisable(false);
+                //hand[i].setVisible(false);
+                //hand[i].setDisable(false);
             }
             /**/
 
@@ -1039,9 +1056,35 @@ public class in_game_controller implements Initializable  {
 
 
         }
+
+        for(int i = 0; i<temphand.size(); i++){
+            hand[i].setEffect(null);
+            hand[i].setVisible(true);
+            hand[i].setImage(images2.get(temphand.get(i)));
+        }
+        for(int i = temphand.size(); i<7;i++){
+            hand[i].setEffect(null);
+            hand[i].setVisible(false);
+            //hand[i].setDisable(false);
+
+        }
        /* for(int i = 0 ; i <7; i++){
             hand[i].setImage(images2.get("ALTAR"));
         }*/
+       /*int a = 0;
+       for(int i = 0; i<7;i++){
+           hand[i].setEffect(null);
+           hand[i].setVisible(true);
+           if(temphand[i] != null) {
+
+               hand[a] = temphand[i];
+               a++;
+           }
+       }
+       for(int k = a; k<7;k++){
+           hand[k].setVisible(false);
+           hand[k].setDisable(false);
+       }*/
         handAnimation(hand);
 
     }

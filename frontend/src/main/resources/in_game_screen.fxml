@@ -772,7 +772,14 @@
                                     </viewport>
                                     <GridPane.margin>
                                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                                    </GridPane.margin></ImageView>
+                                    </GridPane.margin>
+                           <effect>
+                              <DropShadow height="30.0" radius="18.2725" spread="0.51" width="45.09">
+                                 <color>
+                                    <Color red="0.15442252159118652" green="0.7618177533149719" blue="0.8552631735801697" />
+                                 </color>
+                              </DropShadow>
+                           </effect></ImageView>
                                 <ImageView fx:id="card1" fitHeight="224.0" fitWidth="144.0" onMouseClicked="#selectCard" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                                     <image>
                                         <Image url="@brown_card.png" />

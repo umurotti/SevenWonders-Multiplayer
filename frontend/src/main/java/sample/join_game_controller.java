@@ -17,12 +17,15 @@ import javafx.scene.input.MouseEvent;
 
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.ResourceBundle;
 import java.util.concurrent.TimeUnit;
 
 public class join_game_controller implements Initializable  {
     static String TableID = "";
+
+
 
     @FXML
     ListView game_list;
@@ -42,12 +45,13 @@ public class join_game_controller implements Initializable  {
     int noOfGames = 0;
     ServerConnection con = new ServerConnection();
     public void join_button_action(ActionEvent event) throws Exception{
-        String selectedGame = "";
-       /* ObservableList<String> observableList;
-        observableList = game_list.getSelectionModel().getSelectedItems();
-        selectedGame = observableList.get(0);*/
 
-        selectedGame = join_id.getText();
+        String selectedGame;
+        ObservableList<String> observableList;
+        observableList = game_list.getSelectionModel().getSelectedItems();
+        selectedGame = observableList.get(0);
+
+        //selectedGame = join_id.getText();
         con.sendRequestJoin(selectedGame,player_id_controller.WonderID);
         TableID = selectedGame;
         Main.tableID = TableID;
@@ -64,58 +68,24 @@ public class join_game_controller implements Initializable  {
     }
 
     public void refresh_game_list(ActionEvent event)throws Exception{
-        String gameid = "game";
-        //SOME SERVER CONNECTİON METHOD
-        ArrayList<String> games = new ArrayList<String>();
-        games.add("AganınYeri");
-        games.add("DovmeciKazımınYeri");
-        games.add("Findugun yeri");
-        games.add("Kurtlar Sofrası");
-        games.add("AganınYeri");
-        games.add("DovmeciKazımınYeri");
-        games.add("Findugun yeri");
-        games.add("Kurtlar Sofrası");
-        games.add("AganınYeri");
-        games.add("DovmeciKazımınYeri");
-        games.add("Findugun yeri");
-        games.add("Kurtlar Sofrası");
-        games.add("AganınYeri");
-        games.add("DovmeciKazımınYeri");
-        games.add("Findugun yeri");
-        games.add("Kurtlar Sofrası");
-        games.add("AganınYeri");
-        games.add("DovmeciKazımınYeri");
-        games.add("Findugun yeri");
-        games.add("Kurtlar Sofrası");
-        Iterator i = games.iterator();
-        int index = 0;
-        System.out.println("The ArrayList elements are:");
-        game_list.getItems().remove(0,noOfGames);
-        while (i.hasNext()) {
-            game_list.getItems().add(index,i.next());
-            index++;
-            TimeUnit.MILLISECONDS.sleep(100);
+        HashMap<String,Integer> waitTables = con.getTableList();
+        game_list.getItems().clear();
+        for(String tableID : waitTables.keySet()){
+            System.out.println("elif" + tableID);
+            game_list.getItems().add(tableID);
         }
-        noOfGames = games.size();
 
     }
-
-    public void setTableID(String ID){
-        ID = TableID;
-    }
-
-    public void initialize(URL location, ResourceBundle resources) {
+    public void initialize(URL location, ResourceBundle resources){
         //SOME SERVER CONNECTİON METHOD
-        ArrayList<String> games = new ArrayList<String>();
-        games.add("AganınYeri");
-        games.add("DovmeciKazımınYeri");
-        games.add("Findugun yeri");
-        Iterator i = games.iterator();
-        noOfGames = games.size();
-        int index = 0;
-        while (i.hasNext()) {
-            game_list.getItems().add(i.next());
-            index++;
+        try{
+            HashMap<String,Integer> waitTables = con.getTableList();
+            for(String tableID : waitTables.keySet()){
+                game_list.getItems().add(tableID);
+            }
+
+        }catch (Exception e){
         }
+
     }
 }

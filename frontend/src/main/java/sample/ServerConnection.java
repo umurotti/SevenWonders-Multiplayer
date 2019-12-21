@@ -88,7 +88,7 @@ public class ServerConnection {
 
 
 
-    public void sendRequestChoice(String actionJson,String tableID)throws Exception{
+    public String sendRequestChoice(String actionJson,String tableID)throws Exception{
         String url = "http://192.168.1.32:8080/cs319deneme3/7wonders/SWtableServices/playActionService?tableID=";
 
         //String url ="http://ec2-54-93-112-68.eu-central-1.compute.amazonaws.com:8080/cs319deneme3-1.0-SNAPSHOT/7wonders/SWtableServices/playActionService?tableID=";
@@ -120,13 +120,14 @@ public class ServerConnection {
         }
         in.close();
         //print in String
-        System.out.println(response.toString());
+        System.out.println("elif kart sendrequestchoice" + response.toString());
+        return response.toString();
 
        }
 
     public void sendRequest(String actionJson) throws  Exception{
-        //String url = "https://webhook.site/c4ba9839-4fad-491d-a68b-6236d16ef878";
-        String url = "http://ec2-54-93-112-68.eu-central-1.compute.amazonaws.com:8080/cs319deneme3-1.0-SNAPSHOT/7wonders/SWhouseServices/createTableService?";
+        String url = "https://webhook.site/c4ba9839-4fad-491d-a68b-6236d16ef878";
+        //String url = "http://ec2-54-93-112-68.eu-central-1.compute.amazonaws.com:8080/cs319deneme3-1.0-SNAPSHOT/7wonders/SWhouseServices/createTableService?";
 
 
 
@@ -154,7 +155,7 @@ public class ServerConnection {
 
     }
     public void sendRequestCreate(String ownerID, String tableID) throws Exception{
-       String url = "http://192.168.1.32:8080/cs319deneme3/7wonders/SWhouseServices/createTableService?ownerID=";
+        String url = "http://192.168.1.32:8080/cs319deneme3/7wonders/SWhouseServices/createTableService?ownerID=";
        //String url = "http://ec2-54-93-112-68.eu-central-1.compute.amazonaws.com:8080/cs319deneme3-1.0-SNAPSHOT/7wonders/SWhouseServices/createTableService?ownerID=";
 
         url += ownerID + "&tableID=";
@@ -269,7 +270,6 @@ public class ServerConnection {
     public HashMap<String,Integer> getTableList() throws Exception{
         String url = "http://192.168.1.32:8080/cs319deneme3/7wonders/SWhouseServices/listWaitingTableService";
         //String url = "http://ec2-54-93-112-68.eu-central-1.compute.amazonaws.com:8080/cs319deneme3-1.0-SNAPSHOT/7wonders/SWhouseServices/listWaitingTableService";
-        url = url + Main.tableID;
         URL obj = new URL(url);
         HttpURLConnection con = (HttpURLConnection) obj.openConnection();
         // optional default is GET
@@ -293,11 +293,15 @@ public class ServerConnection {
         JSONObject myResponse = new JSONObject(response.toString() );
         HashMap<String,Integer> mapToSend = new HashMap<String, Integer>();
         Map<String, Object> a = myResponse.toMap();
+        System.out.println("a");
+        System.out.println(a);
         for (Map.Entry<String, Object> entry : a.entrySet()) {
             if(entry.getValue() instanceof Integer){
                 mapToSend.put(entry.getKey(), (Integer) entry.getValue());
             }
         }
+        System.out.println("eliftable");
+        System.out.println(mapToSend);
         return mapToSend;
     }
 
@@ -324,7 +328,7 @@ public class ServerConnection {
          cardss = mapper.readValue(info, HandContainer.class);
         return cardss;
     }
-    public void sendAction(CardAction action, String tableID) throws Exception{
+    public String sendAction(CardAction action, String tableID) throws Exception{
         //Action actionToConvert = action;
     /*    Map<String,Integer> leftTrade = new HashMap<String, Integer>();
         leftTrade.put("Wood", 1);
@@ -336,6 +340,9 @@ public class ServerConnection {
         ObjectMapper mapper= new ObjectMapper();
         String actionJson = mapper.writeValueAsString(action);
         System.out.println(actionJson );
-        sendRequestChoice(actionJson, tableID);
+        String response = sendRequestChoice(actionJson, tableID);
+        System.out.println("response send action" + response);
+        return response;
+
     }
 }
