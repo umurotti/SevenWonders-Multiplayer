@@ -6,6 +6,7 @@
 package model;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -98,13 +99,14 @@ public class SimpleCard extends Card {
             }
         }
         
+        Collections.sort(orSources);
         ListIterator it = orSources.listIterator();
         String toAdd = (String) it.next();
         while(it.hasNext()) {
             toAdd += "OR" + it.next();
         }
         
-        wb.getOrSources().put(toAdd, Boolean.TRUE);
+        wb.getOrSources().replace(toAdd, Boolean.TRUE);
     }
         
     private String addSource(String sourceType, int amount, String sourceToAdd) {
