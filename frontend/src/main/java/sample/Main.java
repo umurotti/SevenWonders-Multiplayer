@@ -35,7 +35,9 @@ public class Main extends Application {
 
 
 
-        Parent root = FXMLLoader.load(getClass().getResource("/welcome_screen.fxml"));
+        //Parent root = FXMLLoader.load(getClass().getResource("/welcome_screen.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/sample.fxml"));
+
         primaryStage.setTitle("Hello World");
         scene = new Scene(root,1920,1080);
         String workingDir = System.getProperty("user.dir");
