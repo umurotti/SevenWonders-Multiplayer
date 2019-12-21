@@ -9,12 +9,15 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.swagger.annotations.Api;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import model.House;
+import model.Table;
 
 /**
  *
@@ -54,7 +57,11 @@ public class SWhouseServices {
     @Path("listWaitingTableService")
     public String listWaitingTableService( ) throws IOException {
         if (House.getInstance().getWaitingTables() != null) {
-            return parseJSON(House.getInstance().getWaitingTables());
+            HashMap<String, Integer> result = new HashMap<>();
+            for(Map.Entry<String, Table> entry : House.getInstance().getWaitingTables().entrySet()) {
+                result.put(entry.getValue().getTableID(), entry.getValue().getNoOfPlayers());
+            }
+            return parseJSON(result);
         } else {
             return null;
         }
