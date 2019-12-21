@@ -12,6 +12,9 @@ import java.util.*;
 import java.util.concurrent.LinkedBlockingQueue;
 //@Author:Akin_Parkan
 public class Table {
+
+    private final int DICE_ENTRY_PRICE = 3;
+
     private String tableID;
     private int noOfPlayers;
     private int age;
@@ -150,8 +153,31 @@ public class Table {
         }
         
     }
-    public void rollDice()
-    {}
+    public void rollDice(List<WonderBoard> diceRollers){
+        int highest = -1;
+        List<WonderBoard> sameRolls = new ArrayList<WonderBoard>();
+        for (WonderBoard wb : this.diceRollers){
+            int roll = (int)(Math.random()*7) + (int)(Math.random()*7);
+            wb.setDiceValue(roll);
+            if (roll > highest) {
+                highest = roll;
+                sameRolls.clear();
+                sameRolls.add(wb);
+            }
+            if (roll == highest) {
+                sameRolls.add(wb);
+            }
+        }
+        if (sameRolls.size() >1) {
+            this.rollDice(sameRolls);
+        }
+        else {
+            this.pickMagicCard(sameRolls.get(0));
+            this.diceRollWinner = sameRolls.get(0).getName();
+            //TODO notifyPlayers();
+        }
+    }
+    
     public void addWonder()
     {
         //assign players to wonders
@@ -163,15 +189,29 @@ public class Table {
         }
         
     }
-    public void pickMagicCard(String wonderID)
-    {}
+    public void pickMagicCard(WonderBoard wb){
+
+    }
     public void changeHand()
     {}
 
-    public void diceRollRequest(String wonderID)
-    {}
-    public void notifyPlayers()
-    {}
+    public boolean diceRollRequest(String wonderID){
+        if (diceRollers.contains(this.wonders.get(wonderID))){
+            return false;
+        }
+        WonderBoard wb = this.wonders.get(wonderID);
+        HashMap<String, Integer> sources = wb.getSources();
+        if (sources.get("coin") < this.DICE_ENTRY_PRICE){
+            return false;
+        }
+        sources.replace("coin",(wb.getSources().get("coin") - this.DICE_ENTRY_PRICE));
+        wb.setSources(sources);
+        this.diceRollers.add(this.wonders.get(wonderID));
+        return true;
+    }
+
+    public void notifyPlayers(){}
+
     public void playAge()
     {}
 
