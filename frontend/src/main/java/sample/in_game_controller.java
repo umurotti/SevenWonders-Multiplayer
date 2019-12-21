@@ -1334,18 +1334,20 @@ public class in_game_controller implements Initializable  {
 
 
 
+        //elif test
+        /*ArrayList<String> wonderImages = new ArrayList<String>();
+        for(String wonderName : wonderBoards.keySet()){
+            wonderImages.add(wonderBoards.get(wonderName).getName());
+        }
 
-        String [] wonderImages = new String[7];
+        String[] images = new String[7];
         Image[] wonderStages0 = new Image[7];
         Image[] wonderStages1 = new Image[7];
         Image[] wonderStages2 = new Image[7];
-        wonderImages = new String[7];
-        wonderStages0 = new Image[7];
-        wonderStages1 = new Image[7];
-        wonderStages2 = new Image[7];
+
         String str1,str2,str3;
         for(int j = 0; j<7;j++){
-            wonderImages[j] = "-fx-background-image: url(\"/WONDERS/"+ wonders[j] +".jpg\")";
+            images[j] = "-fx-background-image: url(\"/WONDERS/"+ wonderImages.get(j) +".jpg\")";
             str1 = "/WONDERS/" + wonders[j] + "_STAGE1.jpg";
             str2 = "/WONDERS/" + wonders[j] + "_STAGE2.jpg";
             str3 = "/WONDERS/" + wonders[j] + "_STAGE3.jpg";
@@ -1353,6 +1355,21 @@ public class in_game_controller implements Initializable  {
             wonderStages1[j] = new Image(str2);
             wonderStages2[j] = new Image(str3);
         }
+
+
+
+
+
+
+        String str = "\"-fx-background-image: url( \" /WONDERS/" + Main.wonderID + ".jpg";
+        my_wonder.setStyle(str);
+        for(int k = 0; k<wonderImages.size();k++){
+
+        }
+
+
+
+
 
         my_wonder.setStyle(wonderImages[0]);
         my_wonder_name.setText(wonders[0]);
