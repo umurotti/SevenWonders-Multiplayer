@@ -93,7 +93,7 @@ public class House {
     
     public boolean createTable(String ownerID, String tableID) {
         if(!tables.containsKey(tableID)) {
-            Table table = new Table(tableID, ownerID, decks.get(AGE_ONE), decks.get(AGE_TWO)/*, decks.get(AGE_THREE)*/, decks.get(MAGIC_CARD) );
+            Table table = new Table(tableID, ownerID, decks.get(AGE_ONE), decks.get(AGE_TWO), decks.get(AGE_THREE), decks.get(MAGIC_CARD) );
             tables.put(tableID, table);
             waitingTables.put(tableID, table);
             return true;

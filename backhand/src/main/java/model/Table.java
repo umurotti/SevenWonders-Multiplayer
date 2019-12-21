@@ -22,7 +22,7 @@ public class Table {
     private Deck age1Deck;
     private HashMap<String, Boolean> isActionLocked = new HashMap<>();
     private Deck age2Deck;
-//    private Deck age3Deck;
+    private Deck age3Deck;
     private Deck magicCardDeck;
     private ArrayList<String> wonderNames;
     private List<Card> discardedCards;
@@ -41,12 +41,12 @@ public class Table {
     private TableNotifier notifier;
     Card[] playable1;
     Card[] playable2;
-//    Card[] playable3;
+    Card[] playable3;
     Card[] magicCards;
     //private DeckFactory deckFactory;
     //private TableNotifier notifier
 
-    public Table(String tableID, String owner, Deck age1Deck, Deck age2Deck /*, Deck age3Deck*/, Deck magicCardDeck) {
+    public Table(String tableID, String owner, Deck age1Deck, Deck age2Deck , Deck age3Deck, Deck magicCardDeck) {
         wonderNames = new ArrayList<>();
         wonderNames.add("TheTempleofArtemisinEphesus");
         wonderNames.add("TheStatueofZeusinOlympia");
@@ -71,7 +71,7 @@ public class Table {
         this.age1Deck = age1Deck;
         this.age2Deck = age2Deck;
         this.magicCardDeck = magicCardDeck;
-//        this.age3Deck = age3Deck;
+        this.age3Deck = age3Deck;
 
         //hand initialize edilecek
     }
@@ -99,8 +99,8 @@ public class Table {
         playable2 = decks[1].prepareCards(noOfPlayers);
         magicCards = new Card[MAGIC_CARD_NUMBER];
         //magicCards = magicCardDeck.prepareCards(noOfPlayers);
-//        playable3 = new Card[noOfPlayer *7];
-//        playable3 = decks[2].prepareCards(noOfPlayers);
+        playable3 = new Card[noOfPlayer *7];
+        playable3 = decks[2].prepareCards(noOfPlayers);
     }
 
     public void startTable() {
@@ -122,19 +122,19 @@ public class Table {
         Deck[] decks = new Deck[3];
         decks[0] = this.age1Deck;
         decks[1] = this.age2Deck;
-//        decks[2] = this.age3Deck;
+        decks[2] = this.age3Deck;
         init(noOfPlayers, decks);
         hand = new Card[noOfPlayers][7];
         //continue to hand distrib
         List<Card> shuffle1 = Arrays.asList(playable1);
         List<Card> shuffle2 = Arrays.asList(playable2);
-//        List<Card> shuffle3 = Arrays.asList(playable3);
+        List<Card> shuffle3 = Arrays.asList(playable3);
         List<Card> shuffleMagic = Arrays.asList(magicCards);
         
         Collections.shuffle(shuffle1);
         shuffle1.toArray(playable1);
         shuffle2.toArray(playable2);
-//        shuffle3.toArray(playable3);
+        shuffle3.toArray(playable3);
         shuffleMagic.toArray(magicCards);
         int count = -1;
         int hold = 0;
@@ -250,22 +250,22 @@ public class Table {
                 }
             }
             if (age == 3) {
-//                int count = -1;
-//                int hold = 0;
-//                for (int a = 0; a < noOfPlayers * 7; a++) {
-//                    if (a % 7 == 0 || hold == 7) {
-//                        count++;
-//                        hold = 0;
-//                    }
-//                    hand[count][hold++] = playable3[a];
-//                }
-//            }
+                int count = -1;
+                int hold = 0;
+                for (int a = 0; a < noOfPlayers * 7; a++) {
+                    if (a % 7 == 0 || hold == 7) {
+                        count++;
+                        hold = 0;
+                    }
+                    hand[count][hold++] = playable3[a];
+                }
+              }
             }
             //change deck
 
             eventQueue.offer(Event.AGE_OVER);
         }
-    }
+
 
     public void lockAction(CardAction action) throws Exception {
         this.getWonders().get(action.getWonderID()).setLockedAction(action);
