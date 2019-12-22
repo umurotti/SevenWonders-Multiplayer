@@ -61,6 +61,8 @@ public class Main extends Application {
         map.put("trade_popover",loaded);
         loaded = (GridPane)FXMLLoader.load(getClass().getResource("/age_over.fxml"));
         map.put("age_over",loaded);
+        loaded = (GridPane)FXMLLoader.load(getClass().getResource("/card_zoom.fxml"));
+        map.put("zoom",loaded);
 
         //loaded = (Parent)FXMLLoader.load(getClass().getResource("/in_game_screen.fxml"));
         FXMLLoader a = new FXMLLoader(getClass().getResource("/in_game_screen.fxml"));

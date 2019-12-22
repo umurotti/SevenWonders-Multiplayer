@@ -140,97 +140,97 @@
                                                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                                     </rowConstraints>
                                                     <children>
-                                                        <ImageView fx:id="structure_1_0" fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                                                        <ImageView fx:id="structure_1_0" fitHeight="20.0" fitWidth="20.0" onMouseClicked="#zoomBottomStructure" pickOnBounds="true" preserveRatio="true" visible="false" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                                                             <image>
                                                                 <Image url="@brown_card.png" />
                                                             </image>
                                                         </ImageView>
-                                                        <ImageView fx:id="structure_1_1" fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                                                        <ImageView fx:id="structure_1_1" fitHeight="20.0" fitWidth="20.0" onMouseClicked="#zoomBottomStructure" pickOnBounds="true" preserveRatio="true" visible="false" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                                                             <image>
                                                                 <Image url="@brown_card.png" />
                                                             </image>
                                                         </ImageView>
-                                                        <ImageView fx:id="structure_1_2" fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                                                        <ImageView fx:id="structure_1_2" fitHeight="20.0" fitWidth="20.0" onMouseClicked="#zoomBottomStructure" pickOnBounds="true" preserveRatio="true" visible="false" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                                                             <image>
                                                                 <Image url="@brown_card.png" />
                                                             </image>
                                                         </ImageView>
-                                                        <ImageView fx:id="structure_1_3" fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                                                        <ImageView fx:id="structure_1_3" fitHeight="20.0" fitWidth="20.0" onMouseClicked="#zoomBottomStructure" pickOnBounds="true" preserveRatio="true" visible="false" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                                                             <image>
                                                                 <Image url="@brown_card.png" />
                                                             </image>
                                                         </ImageView>
-                                                        <ImageView fx:id="left_structure_4" fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
-                                                            <image>
-                                                                <Image url="@brown_card.png" />
-                                                            </image>
-                                                        </ImageView>
-
-                                                        <ImageView fx:id="left_structure_5" fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                                                        <ImageView fx:id="left_structure_4" fitHeight="20.0" fitWidth="20.0" onMouseClicked="#zoomBottomStructure" pickOnBounds="true" preserveRatio="true" visible="false" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                                                             <image>
                                                                 <Image url="@brown_card.png" />
                                                             </image>
                                                         </ImageView>
 
-                                                        <ImageView fx:id="left_structure_6" fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
-                                                            <image>
-                                                                <Image url="@brown_card.png" />
-                                                            </image>
-                                                        </ImageView>
-                                                        <ImageView fx:id="left_structure_7" fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
-                                                            <image>
-                                                                <Image url="@brown_card.png" />
-                                                            </image>
-                                                        </ImageView>
-                                                        <ImageView fx:id="left_structure_8" fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
-                                                            <image>
-                                                                <Image url="@brown_card.png" />
-                                                            </image>
-                                                        </ImageView>
-                                                        <ImageView fx:id="left_structure_9" fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
-                                                            <image>
-                                                                <Image url="@brown_card.png" />
-                                                            </image>
-                                                        </ImageView>
-                                                        <ImageView fx:id="left_structure_10" fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                                                        <ImageView fx:id="left_structure_5" fitHeight="20.0" fitWidth="20.0" onMouseClicked="#zoomBottomStructure" pickOnBounds="true" preserveRatio="true" visible="false" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                                                             <image>
                                                                 <Image url="@brown_card.png" />
                                                             </image>
                                                         </ImageView>
 
-                                                        <ImageView fx:id="left_structure_11" fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                                                        <ImageView fx:id="left_structure_6" fitHeight="20.0" fitWidth="20.0" onMouseClicked="#zoomBottomStructure" pickOnBounds="true" preserveRatio="true" visible="false" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                                                            <image>
+                                                                <Image url="@brown_card.png" />
+                                                            </image>
+                                                        </ImageView>
+                                                        <ImageView fx:id="left_structure_7" fitHeight="20.0" fitWidth="20.0" onMouseClicked="#zoomBottomStructure" pickOnBounds="true" preserveRatio="true" visible="false" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                                                            <image>
+                                                                <Image url="@brown_card.png" />
+                                                            </image>
+                                                        </ImageView>
+                                                        <ImageView fx:id="left_structure_8" fitHeight="20.0" fitWidth="20.0" onMouseClicked="#zoomBottomStructure" pickOnBounds="true" preserveRatio="true" visible="false" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                                                            <image>
+                                                                <Image url="@brown_card.png" />
+                                                            </image>
+                                                        </ImageView>
+                                                        <ImageView fx:id="left_structure_9" fitHeight="20.0" fitWidth="20.0" onMouseClicked="#zoomBottomStructure" pickOnBounds="true" preserveRatio="true" visible="false" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                                                            <image>
+                                                                <Image url="@brown_card.png" />
+                                                            </image>
+                                                        </ImageView>
+                                                        <ImageView fx:id="left_structure_10" fitHeight="20.0" fitWidth="20.0" onMouseClicked="#zoomBottomStructure" pickOnBounds="true" preserveRatio="true" visible="false" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                                                             <image>
                                                                 <Image url="@brown_card.png" />
                                                             </image>
                                                         </ImageView>
 
-                                                        <ImageView fx:id="left_structure_12" fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
-                                                            <image>
-                                                                <Image url="@brown_card.png" />
-                                                            </image>
-                                                        </ImageView>
-                                                        <ImageView fx:id="left_structure_13" fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
-                                                            <image>
-                                                                <Image url="@brown_card.png" />
-                                                            </image>
-                                                        </ImageView>
-                                                        <ImageView fx:id="left_structure_14" fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
-                                                            <image>
-                                                                <Image url="@brown_card.png" />
-                                                            </image>
-                                                        </ImageView>
-                                                        <ImageView fx:id="left_structure_15" fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
-                                                            <image>
-                                                                <Image url="@brown_card.png" />
-                                                            </image>
-                                                        </ImageView>
-                                                        <ImageView fx:id="left_structure_16" fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                                                        <ImageView fx:id="left_structure_11" fitHeight="20.0" fitWidth="20.0" onMouseClicked="#zoomBottomStructure" pickOnBounds="true" preserveRatio="true" visible="false" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                                                             <image>
                                                                 <Image url="@brown_card.png" />
                                                             </image>
                                                         </ImageView>
 
-                                                        <ImageView fx:id="left_structure_17" fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                                                        <ImageView fx:id="left_structure_12" fitHeight="20.0" fitWidth="20.0" onMouseClicked="#zoomBottomStructure" pickOnBounds="true" preserveRatio="true" visible="false" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                                                            <image>
+                                                                <Image url="@brown_card.png" />
+                                                            </image>
+                                                        </ImageView>
+                                                        <ImageView fx:id="left_structure_13" fitHeight="20.0" fitWidth="20.0" onMouseClicked="#zoomBottomStructure" pickOnBounds="true" preserveRatio="true" visible="false" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                                                            <image>
+                                                                <Image url="@brown_card.png" />
+                                                            </image>
+                                                        </ImageView>
+                                                        <ImageView fx:id="left_structure_14" fitHeight="20.0" fitWidth="20.0" onMouseClicked="#zoomBottomStructure" pickOnBounds="true" preserveRatio="true" visible="false" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                                                            <image>
+                                                                <Image url="@brown_card.png" />
+                                                            </image>
+                                                        </ImageView>
+                                                        <ImageView fx:id="left_structure_15" fitHeight="20.0" fitWidth="20.0" onMouseClicked="#zoomBottomStructure" pickOnBounds="true" preserveRatio="true" visible="false" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                                                            <image>
+                                                                <Image url="@brown_card.png" />
+                                                            </image>
+                                                        </ImageView>
+                                                        <ImageView fx:id="left_structure_16" fitHeight="20.0" fitWidth="20.0" onMouseClicked="#zoomBottomStructure" pickOnBounds="true" preserveRatio="true" visible="false" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                                                            <image>
+                                                                <Image url="@brown_card.png" />
+                                                            </image>
+                                                        </ImageView>
+
+                                                        <ImageView fx:id="left_structure_17" fitHeight="20.0" fitWidth="20.0" onMouseClicked="#zoomBottomStructure" pickOnBounds="true" preserveRatio="true" visible="false" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
                                                             <image>
                                                                 <Image url="@brown_card.png" />
                                                             </image>
@@ -478,97 +478,97 @@
                                                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                                     </rowConstraints>
                                                     <children>
-                                                        <ImageView fx:id="structure_2_0" fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                                                        <ImageView fx:id="structure_2_0" fitHeight="20.0" fitWidth="20.0" onMouseClicked="#zoomBottomStructure" pickOnBounds="true" preserveRatio="true" visible="false" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                                                             <image>
                                                                 <Image url="@brown_card.png" />
                                                             </image>
                                                         </ImageView>
-                                                        <ImageView fx:id="structure_2_1" fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                                                        <ImageView fx:id="structure_2_1" fitHeight="20.0" fitWidth="20.0" onMouseClicked="#zoomBottomStructure" pickOnBounds="true" preserveRatio="true" visible="false" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                                                             <image>
                                                                 <Image url="@brown_card.png" />
                                                             </image>
                                                         </ImageView>
-                                                        <ImageView fx:id="structure_2_2" fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                                                        <ImageView fx:id="structure_2_2" fitHeight="20.0" fitWidth="20.0" onMouseClicked="#zoomBottomStructure" pickOnBounds="true" preserveRatio="true" visible="false" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                                                             <image>
                                                                 <Image url="@brown_card.png" />
                                                             </image>
                                                         </ImageView>
-                                                        <ImageView fx:id="structure_2_3" fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                                                        <ImageView fx:id="structure_2_3" fitHeight="20.0" fitWidth="20.0" onMouseClicked="#zoomBottomStructure" pickOnBounds="true" preserveRatio="true" visible="false" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                                                             <image>
                                                                 <Image url="@brown_card.png" />
                                                             </image>
                                                         </ImageView>
-                                                        <ImageView fx:id="right_structure_4" fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
-                                                            <image>
-                                                                <Image url="@brown_card.png" />
-                                                            </image>
-                                                        </ImageView>
-
-                                                        <ImageView fx:id="right_structure_5" fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                                                        <ImageView fx:id="right_structure_4" fitHeight="20.0" fitWidth="20.0" onMouseClicked="#zoomBottomStructure" pickOnBounds="true" preserveRatio="true" visible="false" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                                                             <image>
                                                                 <Image url="@brown_card.png" />
                                                             </image>
                                                         </ImageView>
 
-                                                        <ImageView fx:id="right_structure_6" fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
-                                                            <image>
-                                                                <Image url="@brown_card.png" />
-                                                            </image>
-                                                        </ImageView>
-                                                        <ImageView fx:id="right_structure_7" fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
-                                                            <image>
-                                                                <Image url="@brown_card.png" />
-                                                            </image>
-                                                        </ImageView>
-                                                        <ImageView fx:id="right_structure_8" fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
-                                                            <image>
-                                                                <Image url="@brown_card.png" />
-                                                            </image>
-                                                        </ImageView>
-                                                        <ImageView fx:id="right_structure_9" fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
-                                                            <image>
-                                                                <Image url="@brown_card.png" />
-                                                            </image>
-                                                        </ImageView>
-                                                        <ImageView fx:id="right_structure_10" fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                                                        <ImageView fx:id="right_structure_5" fitHeight="20.0" fitWidth="20.0" onMouseClicked="#zoomBottomStructure" pickOnBounds="true" preserveRatio="true" visible="false" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                                                             <image>
                                                                 <Image url="@brown_card.png" />
                                                             </image>
                                                         </ImageView>
 
-                                                        <ImageView fx:id="right_structure_11" fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                                                        <ImageView fx:id="right_structure_6" fitHeight="20.0" fitWidth="20.0" onMouseClicked="#zoomBottomStructure" pickOnBounds="true" preserveRatio="true" visible="false" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                                                            <image>
+                                                                <Image url="@brown_card.png" />
+                                                            </image>
+                                                        </ImageView>
+                                                        <ImageView fx:id="right_structure_7" fitHeight="20.0" fitWidth="20.0" onMouseClicked="#zoomBottomStructure" pickOnBounds="true" preserveRatio="true" visible="false" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                                                            <image>
+                                                                <Image url="@brown_card.png" />
+                                                            </image>
+                                                        </ImageView>
+                                                        <ImageView fx:id="right_structure_8" fitHeight="20.0" fitWidth="20.0" onMouseClicked="#zoomBottomStructure" pickOnBounds="true" preserveRatio="true" visible="false" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                                                            <image>
+                                                                <Image url="@brown_card.png" />
+                                                            </image>
+                                                        </ImageView>
+                                                        <ImageView fx:id="right_structure_9" fitHeight="20.0" fitWidth="20.0" onMouseClicked="#zoomBottomStructure" pickOnBounds="true" preserveRatio="true" visible="false" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                                                            <image>
+                                                                <Image url="@brown_card.png" />
+                                                            </image>
+                                                        </ImageView>
+                                                        <ImageView fx:id="right_structure_10" fitHeight="20.0" fitWidth="20.0" onMouseClicked="#zoomBottomStructure" pickOnBounds="true" preserveRatio="true" visible="false" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                                                             <image>
                                                                 <Image url="@brown_card.png" />
                                                             </image>
                                                         </ImageView>
 
-                                                        <ImageView fx:id="right_structure_12" fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
-                                                            <image>
-                                                                <Image url="@brown_card.png" />
-                                                            </image>
-                                                        </ImageView>
-                                                        <ImageView fx:id="right_structure_13" fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
-                                                            <image>
-                                                                <Image url="@brown_card.png" />
-                                                            </image>
-                                                        </ImageView>
-                                                        <ImageView fx:id="right_structure_14" fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
-                                                            <image>
-                                                                <Image url="@brown_card.png" />
-                                                            </image>
-                                                        </ImageView>
-                                                        <ImageView fx:id="right_structure_15" fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
-                                                            <image>
-                                                                <Image url="@brown_card.png" />
-                                                            </image>
-                                                        </ImageView>
-                                                        <ImageView fx:id="right_structure_16" fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                                                        <ImageView fx:id="right_structure_11" fitHeight="20.0" fitWidth="20.0" onMouseClicked="#zoomBottomStructure" pickOnBounds="true" preserveRatio="true" visible="false" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                                                             <image>
                                                                 <Image url="@brown_card.png" />
                                                             </image>
                                                         </ImageView>
 
-                                                        <ImageView fx:id="right_structure_17" fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                                                        <ImageView fx:id="right_structure_12" fitHeight="20.0" fitWidth="20.0" onMouseClicked="#zoomBottomStructure" pickOnBounds="true" preserveRatio="true" visible="false" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                                                            <image>
+                                                                <Image url="@brown_card.png" />
+                                                            </image>
+                                                        </ImageView>
+                                                        <ImageView fx:id="right_structure_13" fitHeight="20.0" fitWidth="20.0" onMouseClicked="#zoomBottomStructure" pickOnBounds="true" preserveRatio="true" visible="false" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                                                            <image>
+                                                                <Image url="@brown_card.png" />
+                                                            </image>
+                                                        </ImageView>
+                                                        <ImageView fx:id="right_structure_14" fitHeight="20.0" fitWidth="20.0" onMouseClicked="#zoomBottomStructure" pickOnBounds="true" preserveRatio="true" visible="false" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                                                            <image>
+                                                                <Image url="@brown_card.png" />
+                                                            </image>
+                                                        </ImageView>
+                                                        <ImageView fx:id="right_structure_15" fitHeight="20.0" fitWidth="20.0" onMouseClicked="#zoomBottomStructure" pickOnBounds="true" preserveRatio="true" visible="false" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                                                            <image>
+                                                                <Image url="@brown_card.png" />
+                                                            </image>
+                                                        </ImageView>
+                                                        <ImageView fx:id="right_structure_16" fitHeight="20.0" fitWidth="20.0" onMouseClicked="#zoomBottomStructure" pickOnBounds="true" preserveRatio="true" visible="false" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                                                            <image>
+                                                                <Image url="@brown_card.png" />
+                                                            </image>
+                                                        </ImageView>
+
+                                                        <ImageView fx:id="right_structure_17" fitHeight="20.0" fitWidth="20.0" onMouseClicked="#zoomBottomStructure" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
                                                             <image>
                                                                 <Image url="@brown_card.png" />
                                                             </image>
@@ -866,109 +866,109 @@
                                                 <Insets bottom="40.0" left="5.0" right="5.0" top="40.0" />
                                             </GridPane.margin>
                                             <children>
-                                                <ImageView fx:id="structure_0_0" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                                                <ImageView fx:id="structure_0_0" fitHeight="40.0" fitWidth="40.0" onMouseClicked="#zoomTopStructure" pickOnBounds="true" preserveRatio="true" visible="false" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                                                     <image>
                                                         <Image url="@brown_card.png" />
                                                     </image>
                                                 </ImageView>
 
-                                                <ImageView fx:id="structure_0_1" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                                                <ImageView fx:id="structure_0_1" fitHeight="40.0" fitWidth="40.0" onMouseClicked="#zoomTopStructure" pickOnBounds="true" preserveRatio="true" visible="false" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                                                     <image>
                                                         <Image url="@brown_card.png" />
                                                     </image>
                                                 </ImageView>
 
-                                                <ImageView fx:id="structure_0_2" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                                                <ImageView fx:id="structure_0_2" fitHeight="40.0" fitWidth="40.0" onMouseClicked="#zoomTopStructure" pickOnBounds="true" preserveRatio="true" visible="false" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                                                     <image>
                                                         <Image url="@brown_card.png" />
                                                     </image>
                                                 </ImageView>
 
-                                                <ImageView fx:id="structure_0_3" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                                                <ImageView fx:id="structure_0_3" fitHeight="40.0" fitWidth="40.0" onMouseClicked="#zoomTopStructure" pickOnBounds="true" preserveRatio="true" visible="false" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                                                     <image>
                                                         <Image url="@brown_card.png" />
                                                     </image>
                                                 </ImageView>
 
-                                                <ImageView fx:id="structure_0_4" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                                                <ImageView fx:id="structure_0_4" fitHeight="40.0" fitWidth="40.0" onMouseClicked="#zoomTopStructure" pickOnBounds="true" preserveRatio="true" visible="false" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                                                     <image>
                                                         <Image url="@brown_card.png" />
                                                     </image>
                                                 </ImageView>
 
-                                                <ImageView fx:id="structure_0_5" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                                                <ImageView fx:id="structure_0_5" fitHeight="40.0" fitWidth="40.0" onMouseClicked="#zoomTopStructure" pickOnBounds="true" preserveRatio="true" visible="false" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                                                     <image>
                                                         <Image url="@brown_card.png" />
                                                     </image>
                                                 </ImageView>
 
-                                                <ImageView fx:id="structure_0_6" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="0" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                                                <ImageView fx:id="structure_0_6" fitHeight="40.0" fitWidth="40.0" onMouseClicked="#zoomTopStructure" pickOnBounds="true" preserveRatio="true" visible="false" GridPane.columnIndex="0" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                                                     <image>
                                                         <Image url="@brown_card.png" />
                                                     </image>
                                                 </ImageView>
 
-                                                <ImageView fx:id="structure_0_7" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                                                <ImageView fx:id="structure_0_7" fitHeight="40.0" fitWidth="40.0" onMouseClicked="#zoomTopStructure" pickOnBounds="true" preserveRatio="true" visible="false" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                                                     <image>
                                                         <Image url="@brown_card.png" />
                                                     </image>
                                                 </ImageView>
 
-                                                <ImageView fx:id="structure_0_8" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                                                <ImageView fx:id="structure_0_8" fitHeight="40.0" fitWidth="40.0" onMouseClicked="#zoomTopStructure" pickOnBounds="true" preserveRatio="true" visible="false" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                                                     <image>
                                                         <Image url="@brown_card.png" />
                                                     </image>
                                                 </ImageView>
 
-                                                <ImageView fx:id="structure_0_9" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                                                <ImageView fx:id="structure_0_9" fitHeight="40.0" fitWidth="40.0" onMouseClicked="#zoomTopStructure" pickOnBounds="true" preserveRatio="true" visible="false" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                                                     <image>
                                                         <Image url="@brown_card.png" />
                                                     </image>
                                                 </ImageView>
 
-                                                <ImageView fx:id="structure_0_10" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                                                <ImageView fx:id="structure_0_10" fitHeight="40.0" fitWidth="40.0" onMouseClicked="#zoomTopStructure" pickOnBounds="true" preserveRatio="true" visible="false" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                                                     <image>
                                                         <Image url="@brown_card.png" />
                                                     </image>
                                                 </ImageView>
 
-                                                <ImageView fx:id="structure_0_11" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                                                <ImageView fx:id="structure_0_11" fitHeight="40.0" fitWidth="40.0" onMouseClicked="#zoomTopStructure" pickOnBounds="true" preserveRatio="true" visible="false" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                                                     <image>
                                                         <Image url="@brown_card.png" />
                                                     </image>
                                                 </ImageView>
 
-                                                <ImageView fx:id="structure_0_12" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="0" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                                                <ImageView fx:id="structure_0_12" fitHeight="40.0" fitWidth="40.0" onMouseClicked="#zoomTopStructure" pickOnBounds="true" preserveRatio="true" visible="false" GridPane.columnIndex="0" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
                                                     <image>
                                                         <Image url="@brown_card.png" />
                                                     </image>
                                                 </ImageView>
 
-                                                <ImageView fx:id="structure_0_13" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                                                <ImageView fx:id="structure_0_13" fitHeight="40.0" fitWidth="40.0" onMouseClicked="#zoomTopStructure" pickOnBounds="true" preserveRatio="true" visible="false" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
                                                     <image>
                                                         <Image url="@brown_card.png" />
                                                     </image>
                                                 </ImageView>
 
-                                                <ImageView fx:id="structure_0_14" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                                                <ImageView fx:id="structure_0_14" fitHeight="40.0" fitWidth="40.0" onMouseClicked="#zoomTopStructure" pickOnBounds="true" preserveRatio="true" visible="false" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
                                                     <image>
                                                         <Image url="@brown_card.png" />
                                                     </image>
                                                 </ImageView>
 
-                                                <ImageView fx:id="structure_0_15" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                                                <ImageView fx:id="structure_0_15" fitHeight="40.0" fitWidth="40.0" onMouseClicked="#zoomTopStructure" pickOnBounds="true" preserveRatio="true" visible="false" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
                                                     <image>
                                                         <Image url="@brown_card.png" />
                                                     </image>
                                                 </ImageView>
 
-                                                <ImageView fx:id="structure_0_16" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                                                <ImageView fx:id="structure_0_16" fitHeight="40.0" fitWidth="40.0" onMouseClicked="#zoomTopStructure" pickOnBounds="true" preserveRatio="true" visible="false" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
                                                     <image>
                                                         <Image url="@brown_card.png" />
                                                     </image>
                                                 </ImageView>
 
-                                                <ImageView fx:id="structure_0_17" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                                                <ImageView fx:id="structure_0_17" fitHeight="40.0" fitWidth="40.0" onMouseClicked="#zoomTopStructure" pickOnBounds="true" preserveRatio="true" visible="false" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
                                                     <image>
                                                         <Image url="@brown_card.png" />
                                                     </image>
@@ -1268,7 +1268,7 @@
                                                 <Insets />
                                             </GridPane.margin>
                                         </GridPane>
-                              <ImageView fitHeight="26.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true" />
+                              <ImageView fitHeight="26.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true" visible="false" />
                                     </children>
                                 </GridPane>
                                 <Button fx:id="diceGame" mnemonicParsing="false" onAction="#diceGamePopOver" text="elif zar" GridPane.valignment="TOP" />
@@ -1440,97 +1440,97 @@
                                                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                             </rowConstraints>
                                             <children>
-                                                <ImageView fx:id="structure_3_0" fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                                                <ImageView fx:id="structure_3_0" onMouseClicked="#zoomBottomStructure" fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                                                     <image>
                                                         <Image url="@brown_card.png" />
                                                     </image>
                                                 </ImageView>
-                                                <ImageView fx:id="structure_3_1" fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                                                <ImageView fx:id="structure_3_1"  onMouseClicked="#zoomBottomStructure" fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                                                     <image>
                                                         <Image url="@brown_card.png" />
                                                     </image>
                                                 </ImageView>
-                                                <ImageView fx:id="structure_3_2" fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                                                <ImageView fx:id="structure_3_2" onMouseClicked="#zoomBottomStructure"  fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                                                     <image>
                                                         <Image url="@brown_card.png" />
                                                     </image>
                                                 </ImageView>
-                                                <ImageView fx:id="structure_3_3" fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                                                <ImageView fx:id="structure_3_3" onMouseClicked="#zoomBottomStructure"  fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                                                     <image>
                                                         <Image url="@brown_card.png" />
                                                     </image>
                                                 </ImageView>
-                                                <ImageView fx:id="structure_3_4" fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
-                                                    <image>
-                                                        <Image url="@brown_card.png" />
-                                                    </image>
-                                                </ImageView>
-
-                                                <ImageView fx:id="structure_3_5" fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                                                <ImageView fx:id="structure_3_4" onMouseClicked="#zoomBottomStructure"  fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                                                     <image>
                                                         <Image url="@brown_card.png" />
                                                     </image>
                                                 </ImageView>
 
-                                                <ImageView fx:id="structure_3_6" fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
-                                                    <image>
-                                                        <Image url="@brown_card.png" />
-                                                    </image>
-                                                </ImageView>
-                                                <ImageView fx:id="structure_3_7" fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
-                                                    <image>
-                                                        <Image url="@brown_card.png" />
-                                                    </image>
-                                                </ImageView>
-                                                <ImageView fx:id="structure_3_8" fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
-                                                    <image>
-                                                        <Image url="@brown_card.png" />
-                                                    </image>
-                                                </ImageView>
-                                                <ImageView fx:id="structure_3_9" fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
-                                                    <image>
-                                                        <Image url="@brown_card.png" />
-                                                    </image>
-                                                </ImageView>
-                                                <ImageView fx:id="structure_3_10" fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                                                <ImageView fx:id="structure_3_5" onMouseClicked="#zoomBottomStructure"  fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                                                     <image>
                                                         <Image url="@brown_card.png" />
                                                     </image>
                                                 </ImageView>
 
-                                                <ImageView fx:id="structure_3_11" fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                                                <ImageView fx:id="structure_3_6" onMouseClicked="#zoomBottomStructure"  fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                                                    <image>
+                                                        <Image url="@brown_card.png" />
+                                                    </image>
+                                                </ImageView>
+                                                <ImageView fx:id="structure_3_7" onMouseClicked="#zoomBottomStructure"  fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                                                    <image>
+                                                        <Image url="@brown_card.png" />
+                                                    </image>
+                                                </ImageView>
+                                                <ImageView fx:id="structure_3_8" onMouseClicked="#zoomBottomStructure"  fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                                                    <image>
+                                                        <Image url="@brown_card.png" />
+                                                    </image>
+                                                </ImageView>
+                                                <ImageView fx:id="structure_3_9" onMouseClicked="#zoomBottomStructure"  fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                                                    <image>
+                                                        <Image url="@brown_card.png" />
+                                                    </image>
+                                                </ImageView>
+                                                <ImageView fx:id="structure_3_10" onMouseClicked="#zoomBottomStructure"  fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                                                     <image>
                                                         <Image url="@brown_card.png" />
                                                     </image>
                                                 </ImageView>
 
-                                                <ImageView fx:id="structure_3_12" fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
-                                                    <image>
-                                                        <Image url="@brown_card.png" />
-                                                    </image>
-                                                </ImageView>
-                                                <ImageView fx:id="structure_3_13" fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
-                                                    <image>
-                                                        <Image url="@brown_card.png" />
-                                                    </image>
-                                                </ImageView>
-                                                <ImageView fx:id="structure_3_14" fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
-                                                    <image>
-                                                        <Image url="@brown_card.png" />
-                                                    </image>
-                                                </ImageView>
-                                                <ImageView fx:id="structure_3_15" fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
-                                                    <image>
-                                                        <Image url="@brown_card.png" />
-                                                    </image>
-                                                </ImageView>
-                                                <ImageView fx:id="structure_3_16" fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                                                <ImageView fx:id="structure_3_11" onMouseClicked="#zoomBottomStructure"  fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                                                     <image>
                                                         <Image url="@brown_card.png" />
                                                     </image>
                                                 </ImageView>
 
-                                                <ImageView fx:id="structure_3_17" fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                                                <ImageView fx:id="structure_3_12" onMouseClicked="#zoomBottomStructure"  fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                                                    <image>
+                                                        <Image url="@brown_card.png" />
+                                                    </image>
+                                                </ImageView>
+                                                <ImageView fx:id="structure_3_13" onMouseClicked="#zoomBottomStructure"  fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                                                    <image>
+                                                        <Image url="@brown_card.png" />
+                                                    </image>
+                                                </ImageView>
+                                                <ImageView fx:id="structure_3_14" onMouseClicked="#zoomBottomStructure"  fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                                                    <image>
+                                                        <Image url="@brown_card.png" />
+                                                    </image>
+                                                </ImageView>
+                                                <ImageView fx:id="structure_3_15" onMouseClicked="#zoomBottomStructure"  fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                                                    <image>
+                                                        <Image url="@brown_card.png" />
+                                                    </image>
+                                                </ImageView>
+                                                <ImageView fx:id="structure_3_16" onMouseClicked="#zoomBottomStructure"  fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                                                    <image>
+                                                        <Image url="@brown_card.png" />
+                                                    </image>
+                                                </ImageView>
+
+                                                <ImageView fx:id="structure_3_17" onMouseClicked="#zoomBottomStructure"  fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
                                                     <image>
                                                         <Image url="@brown_card.png" />
                                                     </image>
@@ -1771,97 +1771,97 @@
                                                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                             </rowConstraints>
                                             <children>
-                                                <ImageView fx:id="structure_4_0" fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                                                <ImageView fx:id="structure_4_0"  onMouseClicked="#zoomBottomStructure" fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                                                     <image>
                                                         <Image url="@brown_card.png" />
                                                     </image>
                                                 </ImageView>
-                                                <ImageView fx:id="structure_4_1" fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                                                <ImageView fx:id="structure_4_1" onMouseClicked="#zoomBottomStructure"  fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                                                     <image>
                                                         <Image url="@brown_card.png" />
                                                     </image>
                                                 </ImageView>
-                                                <ImageView fx:id="structure_4_2" fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                                                <ImageView fx:id="structure_4_2" onMouseClicked="#zoomBottomStructure"  fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                                                     <image>
                                                         <Image url="@brown_card.png" />
                                                     </image>
                                                 </ImageView>
-                                                <ImageView fx:id="structure_4_3" fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                                                <ImageView fx:id="structure_4_3"  onMouseClicked="#zoomBottomStructure" fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                                                     <image>
                                                         <Image url="@brown_card.png" />
                                                     </image>
                                                 </ImageView>
-                                                <ImageView fx:id="structure_4_4" fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
-                                                    <image>
-                                                        <Image url="@brown_card.png" />
-                                                    </image>
-                                                </ImageView>
-
-                                                <ImageView fx:id="structure_4_5" fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                                                <ImageView fx:id="structure_4_4" onMouseClicked="#zoomBottomStructure"  fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                                                     <image>
                                                         <Image url="@brown_card.png" />
                                                     </image>
                                                 </ImageView>
 
-                                                <ImageView fx:id="structure_4_6" fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
-                                                    <image>
-                                                        <Image url="@brown_card.png" />
-                                                    </image>
-                                                </ImageView>
-                                                <ImageView fx:id="structure_4_7" fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
-                                                    <image>
-                                                        <Image url="@brown_card.png" />
-                                                    </image>
-                                                </ImageView>
-                                                <ImageView fx:id="structure_4_8" fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
-                                                    <image>
-                                                        <Image url="@brown_card.png" />
-                                                    </image>
-                                                </ImageView>
-                                                <ImageView fx:id="structure_4_9" fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
-                                                    <image>
-                                                        <Image url="@brown_card.png" />
-                                                    </image>
-                                                </ImageView>
-                                                <ImageView fx:id="structure_4_10" fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                                                <ImageView fx:id="structure_4_5" onMouseClicked="#zoomBottomStructure"  fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                                                     <image>
                                                         <Image url="@brown_card.png" />
                                                     </image>
                                                 </ImageView>
 
-                                                <ImageView fx:id="structure_4_11" fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                                                <ImageView fx:id="structure_4_6" onMouseClicked="#zoomBottomStructure"  fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                                                    <image>
+                                                        <Image url="@brown_card.png" />
+                                                    </image>
+                                                </ImageView>
+                                                <ImageView fx:id="structure_4_7" onMouseClicked="#zoomBottomStructure"  fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                                                    <image>
+                                                        <Image url="@brown_card.png" />
+                                                    </image>
+                                                </ImageView>
+                                                <ImageView fx:id="structure_4_8"  onMouseClicked="#zoomBottomStructure" fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                                                    <image>
+                                                        <Image url="@brown_card.png" />
+                                                    </image>
+                                                </ImageView>
+                                                <ImageView fx:id="structure_4_9" onMouseClicked="#zoomBottomStructure"  fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                                                    <image>
+                                                        <Image url="@brown_card.png" />
+                                                    </image>
+                                                </ImageView>
+                                                <ImageView fx:id="structure_4_10" onMouseClicked="#zoomBottomStructure"  fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                                                     <image>
                                                         <Image url="@brown_card.png" />
                                                     </image>
                                                 </ImageView>
 
-                                                <ImageView fx:id="structure_4_12" fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
-                                                    <image>
-                                                        <Image url="@brown_card.png" />
-                                                    </image>
-                                                </ImageView>
-                                                <ImageView fx:id="structure_4_13" fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
-                                                    <image>
-                                                        <Image url="@brown_card.png" />
-                                                    </image>
-                                                </ImageView>
-                                                <ImageView fx:id="structure_4_14" fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
-                                                    <image>
-                                                        <Image url="@brown_card.png" />
-                                                    </image>
-                                                </ImageView>
-                                                <ImageView fx:id="structure_4_15" fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
-                                                    <image>
-                                                        <Image url="@brown_card.png" />
-                                                    </image>
-                                                </ImageView>
-                                                <ImageView fx:id="structure_4_16" fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                                                <ImageView fx:id="structure_4_11" onMouseClicked="#zoomBottomStructure"  fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                                                     <image>
                                                         <Image url="@brown_card.png" />
                                                     </image>
                                                 </ImageView>
 
-                                                <ImageView fx:id="structure_4_17" fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                                                <ImageView fx:id="structure_4_12" onMouseClicked="#zoomBottomStructure"  fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                                                    <image>
+                                                        <Image url="@brown_card.png" />
+                                                    </image>
+                                                </ImageView>
+                                                <ImageView fx:id="structure_4_13" onMouseClicked="#zoomBottomStructure"  fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                                                    <image>
+                                                        <Image url="@brown_card.png" />
+                                                    </image>
+                                                </ImageView>
+                                                <ImageView fx:id="structure_4_14"  onMouseClicked="#zoomBottomStructure" fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                                                    <image>
+                                                        <Image url="@brown_card.png" />
+                                                    </image>
+                                                </ImageView>
+                                                <ImageView fx:id="structure_4_15" onMouseClicked="#zoomBottomStructure"  fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                                                    <image>
+                                                        <Image url="@brown_card.png" />
+                                                    </image>
+                                                </ImageView>
+                                                <ImageView fx:id="structure_4_16" onMouseClicked="#zoomBottomStructure"  fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                                                    <image>
+                                                        <Image url="@brown_card.png" />
+                                                    </image>
+                                                </ImageView>
+
+                                                <ImageView fx:id="structure_4_17" onMouseClicked="#zoomBottomStructure"  fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
                                                     <image>
                                                         <Image url="@brown_card.png" />
                                                     </image>
