@@ -923,6 +923,8 @@ public class in_game_controller implements Initializable  {
 
     }
 
+    @FXML
+    ImageView wonder_image;
     public void beginRefresh(HashMap<String,WonderBoard> a) throws Exception{
         //System.out.println("START POINTE GIRDIIIIIIIIIIIII!");
         /*int i = 0;
@@ -994,6 +996,8 @@ public class in_game_controller implements Initializable  {
             wonderStages2[j] = new Image(str3);
         }
 
+        System.out.println("/WONDERS/" + wonders2[0] + ".jpg");
+        wonder_image.setImage(new Image("/WONDERS/" + wonders2[0] + ".jpg"));
         my_wonder.setStyle(wonderImages[0]);
         my_wonder_name.setText(wonders2[0]);
         my_wonder_stage_0.setImage(wonderStages0[0]);
