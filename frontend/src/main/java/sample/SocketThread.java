@@ -120,6 +120,8 @@ public class SocketThread extends Task<Void> {
                                 }else if(messageString.equals("TABLE_START")){
                                     wait_contoller abo = (wait_contoller) Main.map.get("wait_controller");
                                     abo.refreshPressed();
+
+
                                 }
                             } catch (Exception e) {
 

@@ -1106,6 +1106,43 @@ public class in_game_controller implements Initializable  {
         GridPane pane2 = (GridPane) Main.map.get("/trade_popover.fxml"));
         popOver2.setContentNode(pane2);*/
 
+
+
+
+
+
+
+
+
+        Task<Void> task = new Task<Void>() {
+            @Override
+            protected Void call() throws Exception {
+                System.out.println("LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL");
+
+                    try {
+                        Thread.sleep(350);
+                        Platform.runLater(new Runnable() {
+                            public void run() {
+                                try {
+                                    refresh();
+                                } catch (Exception e) {
+
+                                }
+
+                            }
+                        });
+                    } catch (InterruptedException interrupted) {
+                        if (isCancelled()) {
+                            updateMessage("Cancelled");
+
+                        }
+                    }
+
+                return null;
+            }
+        };
+        Thread t = new Thread(task);
+        t.start();
     }
 
     static HashMap<Integer,Integer> handSort= new HashMap<Integer, Integer>();
