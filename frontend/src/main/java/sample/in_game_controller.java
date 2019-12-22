@@ -476,6 +476,27 @@ public class in_game_controller implements Initializable  {
         System.out.println(selectedCard + " ppppppppppppppppppppppppppppppppppppp");*/
     }
 
+    public void zoomTopStructure(MouseEvent event)throws Exception{
+        zoomStructure(event, PopOver.ArrowLocation.BOTTOM_CENTER);
+    }
+    public void zoomBottomStructure(MouseEvent event)throws Exception{
+        zoomStructure(event, PopOver.ArrowLocation.TOP_CENTER);
+    }
+
+    private void zoomStructure(MouseEvent event, PopOver.ArrowLocation loc)throws Exception{
+        PopOver popOver = new PopOver();
+        popOver.setArrowLocation(loc);
+        popOver.setAutoFix(true);
+        popOver.setAutoHide(true);
+        popOver.setHideOnEscape(true);
+        popOver.setDetachable(false);
+        GridPane pane =  (GridPane) Main.map.get("zoom");
+        popOver.setContentNode(pane);
+        ((ImageView)pane.lookup("#zoom_image")).setImage(((ImageView)event.getSource()).getImage());
+        popOver.show((ImageView)event.getSource());
+
+
+    }
     static PopOver popOver2;
     public void trade(MouseEvent event)throws Exception{
         PopOver popOver = new PopOver();
@@ -1239,6 +1260,7 @@ public class in_game_controller implements Initializable  {
             if(leeen.indexOf("i")>0)
                 leeen = leeen.substring(0,leeen.indexOf("i"))+ "I"+   leeen.substring(leeen.indexOf("i" ) +1);
             leeen = leeen.toUpperCase();
+            structureImagePlace.setVisible(true);
             structureImagePlace.setImage(images2.get(leeen));
             noOfImage++;
 

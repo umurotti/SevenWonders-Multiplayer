@@ -36,6 +36,7 @@ public class WonderBoard {
     private int defeatTokens;
     private int handNo;
     private String wonderName;
+
     public WonderBoard() {
         // militaryTokens[0]: 1st age military victories, militaryTokens[1]: 2nd, militaryTokens[2]: 3rd.
         militaryTokens = 0;
@@ -45,7 +46,7 @@ public class WonderBoard {
         
         //*
         this.sourcesToCalculate = new LinkedList<>();
-        sourcesToCalculate.add("aa");
+        sourcesToCalculate.add("");
         //*
         
         sources = new HashMap<String,Integer>()
@@ -67,14 +68,14 @@ public class WonderBoard {
         
         orSources = new HashMap<String, Boolean>()
         {{
-            put("woodORclay", Boolean.FALSE);
-            put("stoneORclay", Boolean.FALSE);
+            put("clayORwood", Boolean.FALSE);
+            put("clayORstone", Boolean.FALSE);
             put("clayORore", Boolean.FALSE);
             put("stoneORwood", Boolean.FALSE);
-            put("woodORore", Boolean.FALSE);
+            put("oreORwood", Boolean.FALSE);
             put("oreORstone", Boolean.FALSE);
-            put("loomORglassORpapyrus", Boolean.FALSE);
-            put("clayORstoneORoreORwood", Boolean.FALSE);
+            put("glassORloomORpapyrus", Boolean.FALSE);
+            put("clayORoreORstoneORwood", Boolean.FALSE);
         }};
         
         builtCards = new HashMap<String,Card>();
@@ -103,10 +104,11 @@ public class WonderBoard {
 
     public WonderBoard( String name, int handNo, String wonderName) {
         this.name = name;
+        this.wonderName = wonderName;
         // militaryTokens[0]: 1st age military victories, militaryTokens[1]: 2nd, militaryTokens[2]: 3rd.
         militaryTokens = 0;
         this.handNo = handNo;
-        wonderName = wonderName;
+        
         // stageCosts[0]: 1st stage cost, stageCosts[1]: 2nd, stageCosts[2]: 3rd.
         stageCosts = new Cost[3];
         HashMap<String, Integer> toAdd = new HashMap<>();
@@ -114,21 +116,21 @@ public class WonderBoard {
         Cost x = new Cost(toAdd);
         stageCosts[0] = x;
         sourcesToCalculate = new LinkedList<>();
-        sourcesToCalculate.add("ccccllssww");
+        sourcesToCalculate.add("abcglopst");
         
         sources = new HashMap<String,Integer>()
         {{
-            put("wood", 1);
-            put("stone", 3);
-            put("aclay", 2);
-            put("ore", 7);
-            put("loom",0);
-            put("papyrus", 0);
+            put("wood", 0);
+            put("stone", 1);
+            put("aclay", 1);
+            put("ore", 1);
+            put("loom",1);
+            put("papyrus", 1);
             put("glass", 1);
-            put("bcompass", 3);
-            put("tablet", 2);
-            put("gear", 7);
-            put("coin", 4);
+            put("bcompass", 1);
+            put("tablet", 1);
+            put("gear", 0);
+            put("coin", 1);
             put("zshield", 0);
             put("victory point", 0);
         }};
@@ -136,21 +138,21 @@ public class WonderBoard {
         
         orSources = new HashMap<String, Boolean>()
         {{
-            put("woodORclay", Boolean.FALSE);
-            put("stoneORclay", Boolean.FALSE);
+            put("clayORwood", Boolean.FALSE);
+            put("clayORstone", Boolean.FALSE);
             put("clayORore", Boolean.FALSE);
             put("stoneORwood", Boolean.FALSE);
-            put("woodORore", Boolean.FALSE);
+            put("oreORwood", Boolean.FALSE);
             put("oreORstone", Boolean.FALSE);
-            put("loomORglassORpapyrus", Boolean.FALSE);
-            put("clayORstoneORoreORwood", Boolean.FALSE);
+            put("glassORloomORpapyrus", Boolean.FALSE);
+            put("clayORoreORstoneORwood", Boolean.FALSE);
         }};
         
         
-        builtCards  = new HashMap<String,Card>()
-        {{
-            //put("altar", new Card(new Cost(new HashMap<String, Integer>()), "red", "altar", "", 3, sources));
-        }};
+        builtCards  = new HashMap<String,Card>();
+//        {{
+//            //put("altar", new Card(new Cost(new HashMap<String, Integer>()), "red", "altar", "", 3, sources));
+//        }};
 
         leftDiscount = new HashMap<String, Integer>()
         {{
@@ -201,7 +203,16 @@ public class WonderBoard {
         this.defeatTokens = defeatTokens;
     }
 
+    public String getWonderName() {
+        return wonderName;
+    }
+
+    public void setWonderName(String wonderName) {
+        this.wonderName = wonderName;
+    }
+
    
+    
     public String getLeftNeighbor() {
         return this.leftNeighbor;
     }
@@ -321,10 +332,6 @@ public class WonderBoard {
     public void setOrSources(HashMap<String, Boolean> orSources) {
         this.orSources = orSources;
     }
-    
-    
-
-
 
     public WonderBoard sources(HashMap<String,Integer> sources) {
         this.sources = sources;
@@ -400,14 +407,6 @@ public class WonderBoard {
     @Override
     public int hashCode() {
         return Objects.hash(leftNeighbor, rightNeighbor, sources, stageCosts, currentStage, diceValue, name, builtCards, lockedAction, leftDiscount, rightDiscount, militaryTokens, defeatTokens, handNo);
-    }
-
-    public String getWonderName() {
-        return wonderName;
-    }
-
-    public void setWonderName(String wonderName) {
-        this.wonderName = wonderName;
     }
 
     @Override
