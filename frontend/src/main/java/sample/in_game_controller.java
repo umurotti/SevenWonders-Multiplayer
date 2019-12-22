@@ -177,7 +177,6 @@ public class in_game_controller implements Initializable  {
         popOver.show(resources_grid_0, 1000, 1000);
 
 
-
             if(timeline!=null){
                 timeline.stop();
             }
@@ -922,7 +921,7 @@ public class in_game_controller implements Initializable  {
         System.out.println(wonderBoards.get(Main.wonderID).getCurrentStage());
 
 
-        wonderBoards.get("a").getCurrentStage();
+
         int i = 0;
         wonderBoards.get(Main.wonderID).getCurrentStage();
         int right =wonderBoards.get(wonderBoards.get(Main.wonderID).getRightNeighbor()).getCurrentStage();
@@ -1143,6 +1142,12 @@ public class in_game_controller implements Initializable  {
         };
         Thread t = new Thread(task);
         t.start();
+
+        System.out.println(dice.getScene());
+        System.out.println(wonder_image.getScene());
+        System.out.println(Main.map.get("home"));
+        Parent u = (Parent)Main.map.get("home");
+        parent.getScene();
     }
 
     static HashMap<Integer,Integer> handSort= new HashMap<Integer, Integer>();
@@ -1231,14 +1236,15 @@ public class in_game_controller implements Initializable  {
         timerProgress.setProgress(0);
         timerProgress.setStyle(" -fx-progress-color: #68ba86");
         //update
-        timeline.setCycleCount(60);
+        //timeline.setCycleCount(60);
+        timeline.setCycleCount(4);
         EventHandler eventHandler = new EventHandler() {
             public void handle(Event event) {
                 timeSeconds++;
                 timer.setText(timeSeconds.toString());
-                double d = (double)timeSeconds/60;
+                double d = (double)timeSeconds/4;
                 timerProgress.setProgress(d);
-                if(timeSeconds==60){
+                if(timeSeconds==4){
                     try{
                         if(played == false){
                             CardAction toSend = new CardAction(0,null,null,  handSort.get(0),Main.wonderID);
@@ -1248,9 +1254,9 @@ public class in_game_controller implements Initializable  {
                     }catch(Exception e){}
                     timeline.stop();
                 }
-                if(timeSeconds == 45){
+                if(timeSeconds == 2){
                     timerProgress.setStyle(" -fx-progress-color: #de7e2a");
-                }if(timeSeconds == 55){
+                }if(timeSeconds == 1){
                     timerProgress.setStyle(" -fx-progress-color: #db4332");
                 }
 
@@ -1465,6 +1471,36 @@ public class in_game_controller implements Initializable  {
 
         popOver.show(resources_grid_0);*/
         System.out.println("end AGE OVER");
+        Task<Void> task = new Task<Void>() {
+            @Override
+            protected Void call() throws Exception {
+                System.out.println("LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL");
+
+                try {
+                    Thread.sleep(5000);
+                    Platform.runLater(new Runnable() {
+                        public void run() {
+                            try {
+                                refresh();
+                            } catch (Exception e) {
+                            }
+                        }
+                    });
+                } catch (InterruptedException interrupted) {
+                    if (isCancelled()) {
+                        updateMessage("Cancelled");
+
+                    }
+                }
+
+                return null;
+            }
+        };
+        Thread t = new Thread(task);
+        t.start();
+
+
+
     }
     @FXML
     GridPane scores_grid;

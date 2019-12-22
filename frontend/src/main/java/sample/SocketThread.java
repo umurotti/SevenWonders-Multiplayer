@@ -116,12 +116,12 @@ public class SocketThread extends Task<Void> {
                                     System.out.println("ageovera girdiiiiiiiiiiiiiiiiiiiiiiiiiii");
                                     controller.ageOver(1);
                                 }else if(messageString.equals("DICE_ROLL")){
-
+                                    controller.diceGamePopOver(new ActionEvent());
                                 }else if(messageString.equals("TABLE_START")){
                                     wait_contoller abo = (wait_contoller) Main.map.get("wait_controller");
                                     abo.refreshPressed();
-
-
+                                }else if(messageString.equals("DICE_ROLL")){
+                                    controller.play_dice_game(new ActionEvent());
                                 }
                             } catch (Exception e) {
 
