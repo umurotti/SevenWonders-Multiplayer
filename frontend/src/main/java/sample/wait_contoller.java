@@ -25,5 +25,6 @@ public class wait_contoller {
         Thread thread = new Thread();
         thread.start();*/
         in_game_controller.beginRefresh(wonderboard);
+
     }
 }

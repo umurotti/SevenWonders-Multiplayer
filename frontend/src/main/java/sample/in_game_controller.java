@@ -48,7 +48,7 @@ public class in_game_controller implements Initializable  {
     String wonderID;
     WonderBoard sampleWonderBoard = new WonderBoard();
     @FXML
-    GridPane resources_grid_0;
+     GridPane resources_grid_0;
     @FXML
     GridPane structure_grid_0;
     @FXML
@@ -131,6 +131,8 @@ public class in_game_controller implements Initializable  {
     Image[] wonderStages0 = new Image[7];
     Image[] wonderStages1 = new Image[7];
     String [] wonderImages = new String[7];
+
+
 
     @FXML
     Label dice_time;
@@ -543,8 +545,8 @@ public class in_game_controller implements Initializable  {
         List<Card> hand = ServerConnection.cardss.getContainer().get(Main.wonderID);
 
         int index = Integer.parseInt(selectedCard.substring(4));
-        if(selection == 0)
-            trade = isPossible(hand.get(index).getCost());
+        if(selection != 0)
+            trade = isPossible(hand.get(handSort.get(index)).getCost());
         System.out.println("OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO " + selectedCard);
 
         if(trade){
@@ -917,9 +919,39 @@ public class in_game_controller implements Initializable  {
 
         refreshHand(handCards);
         timerHandle();
+        System.out.println(wonderBoards.get(Main.wonderID).getSources().get("victory point"));
+        System.out.println(wonderBoards.get(Main.wonderID).getCurrentStage());
 
+
+        wonderBoards.get("a").getCurrentStage();
+        int i = 0;
+        wonderBoards.get(Main.wonderID).getCurrentStage();
+        int right =wonderBoards.get(wonderBoards.get(Main.wonderID).getRightNeighbor()).getCurrentStage();
+        int left = wonderBoards.get(wonderBoards.get(Main.wonderID).getLeftNeighbor()).getCurrentStage();
+        int my = wonderBoards.get(Main.wonderID).getCurrentStage();
+        if(right > 0)
+            right_wonder_stage_0.setEffect(null);
+        if(left > 0)
+            left_wonder_stage_0.setEffect(null);
+        if(my > 0)
+            my_wonder_stage_0.setEffect(null);
+        if(right > 1)
+            right_wonder_stage_1.setEffect(null);
+        if(left > 1)
+            left_wonder_stage_1.setEffect(null);
+        if(my >1)
+            my_wonder_stage_1.setEffect(null);
+        if(right > 2)
+            right_wonder_stage_2.setEffect(null);
+        if(left > 2)
+            left_wonder_stage_2.setEffect(null);
+        if(my > 2)
+            my_wonder_stage_2.setEffect(null);
+       /* for(Map.Entry element: wonderBoards){
+
+        }*/
         //stage 1 i yaptım diyelim
-        my_wonder_stage_0.setEffect(null);
+        //my_wonder_stage_0.setEffect(null);
 
     }
 
@@ -976,7 +1008,6 @@ public class in_game_controller implements Initializable  {
             }
 
         }
-
 
 
 
@@ -1274,35 +1305,41 @@ public class in_game_controller implements Initializable  {
 
 
     public void ageOver(int ageNo) throws Exception{
-
+        System.out.println("ENTERED AGE OVER");
         final PopOver popOver = new PopOver();
         popOver.setArrowLocation(PopOver.ArrowLocation.BOTTOM_CENTER);
         popOver.setAutoFix(true);
         popOver.setAutoHide(true);
         popOver.setHideOnEscape(true);
         popOver.setDetachable(false);
+        System.out.println("ENTERED AGE OVER 1");
         GridPane pane = (GridPane) Main.map.get("age_over");
+        System.out.println("ENTERED AGE OVER 2");
+       // GridPane pane = (GridPane)FXMLLoader.load(getClass().getResource("/age_over.fxml"));
         popOver.setContentNode(pane);
-
-
+        System.out.println("ENTERED AGE OVER3");
         int i = 0;
         String str1;
         String militaryImagePath = "/militarytoken"+ageNo+".png";
         Image militaryImage = new Image(militaryImagePath);
         Image defeatImage = new Image("/defeattoken.png");
 
-        for(String wonderName: wonderBoards.keySet()){
+        System.out.println("ENTERED AGE OVER5");
 
+        for(String wonderName: wonderBoards.keySet()){
+            System.out.println("ENTERED AGE OVER10");
             ((Label)pane.lookup("#vs" +i)).setText("VS");
+            System.out.println("ENTERED AGE ooooooooooooo");
             ((Label)pane.lookup("#ageLabel")).setText("END OF THE AGE" + ageNo);
 
-
+            System.out.println("ENTERED AGE 77777777777777777");
                 str1 = "#w1_" + i + "_image";
                 String url = "/WONDERS/" + wonderBoards.get(wonderName).getWonderName() +".jpg";
                 Image image = new Image(url);
+            System.out.println("ENTERED AGE ppppppppppppppppppppppppppppp5");
                 ((ImageView)pane.lookup(str1)).setImage(image);
 
-
+            System.out.println("ENTERED AGE OVER11");
                 str1 = "#w2_" + i + "_image";
                 url = "/WONDERS/" + wonderBoards.get(wonderBoards.get(wonderName).getLeftNeighbor()).getWonderName() +".jpg";
                 ((ImageView)pane.lookup(str1)).setImage(new Image(url));
@@ -1318,18 +1355,19 @@ public class in_game_controller implements Initializable  {
                     ((ImageView)pane.lookup(str1)).setImage(militaryImage);
                     str1 = "#w2_" + i + "_token";
                     ((ImageView)pane.lookup(str1)).setImage(defeatImage);
-
                 }
-
+            System.out.println("ENTERED AGE OVER12");
             i++;
         }
+        System.out.println("ENTERED AGE OVER 6");
         for(int j = i--;j<7;j++){
             ((GridPane)pane.lookup("#g" + j)).setPrefHeight(0);
             ((GridPane)pane.lookup("#g" + j)).setVisible(false);
 
         }
+        System.out.println("ENTERED AGE OVER 7");
         popOver.show(resources_grid_0);
-
+        System.out.println("ENTERED AGE OVER8");
         /*final PopOver popOver = new PopOver();
         popOver.setArrowLocation(PopOver.ArrowLocation.BOTTOM_CENTER);
         popOver.setAutoFix(true);
@@ -1362,6 +1400,7 @@ public class in_game_controller implements Initializable  {
         }
 
         popOver.show(resources_grid_0);*/
+        System.out.println("end AGE OVER");
     }
     @FXML
     GridPane scores_grid;

@@ -58,14 +58,30 @@ public class Main extends Application {
         Object loaded;
         loaded = (GridPane)FXMLLoader.load(getClass().getResource("/dice_popover.fxml"));
         map.put("dicePopOver",loaded);
+
+
+
         loaded = (GridPane)FXMLLoader.load(getClass().getResource("/select_card_popover.fxml"));
         map.put("select_card_popover",loaded);
+
+
+
         loaded = (GridPane)FXMLLoader.load(getClass().getResource("/trade_popover.fxml"));
         map.put("trade_popover",loaded);
+
+
+
+//        FXMLLoader b = new FXMLLoader(getClass().getResource("/age_over.fxml"));
+        //final in_game_controller controllerAge= b.getController();
+        //loaded = (Parent)b.load();
         loaded = (GridPane)FXMLLoader.load(getClass().getResource("/age_over.fxml"));
         map.put("age_over",loaded);
+        //map.put("controllerAge",controllerAge);
+
+
         loaded = (GridPane)FXMLLoader.load(getClass().getResource("/card_zoom.fxml"));
         map.put("zoom",loaded);
+
 
         //loaded = (Parent)FXMLLoader.load(getClass().getResource("/in_game_screen.fxml"));
         FXMLLoader a = new FXMLLoader(getClass().getResource("/in_game_screen.fxml"));
@@ -77,10 +93,8 @@ public class Main extends Application {
         Task<HashMap> task = new Task<HashMap>() {
             @Override
             protected HashMap call() throws Exception {
-                System.out.println("LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL");
                 HashMap<String, Image> images2 = new HashMap<String, Image>();
                     try {
-                        System.out.println("LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLA");
                         int i = 0;
                         String workingDir = System.getProperty("user.dir");
                         workingDir += "/src/main/resources/Cards";

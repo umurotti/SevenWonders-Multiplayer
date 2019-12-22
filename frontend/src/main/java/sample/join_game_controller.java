@@ -56,7 +56,10 @@ public class join_game_controller implements Initializable  {
         TableID = selectedGame;
         Main.tableID = TableID;
         Scene scene1 = join_button.getScene();
-        root = FXMLLoader.load(getClass().getResource("/wait_screen.fxml"));
+      //  root = FXMLLoader.load(getClass().getResource("/wait_screen.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/wait_screen.fxml"));
+        root = loader.load();
+        Main.map.put("wait_controller", loader.getController());
         scene1.setRoot(root);
         SocketThread socket = new SocketThread();
         Thread thread = new Thread(socket);
