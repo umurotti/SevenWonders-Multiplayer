@@ -58,6 +58,9 @@ public class join_game_controller implements Initializable  {
         Scene scene1 = join_button.getScene();
         root = FXMLLoader.load(getClass().getResource("/wait_screen.fxml"));
         scene1.setRoot(root);
+        SocketThread socket = new SocketThread();
+        Thread thread = new Thread(socket);
+        thread.start();
     }
 
     public void back_button_action(ActionEvent event) throws Exception{

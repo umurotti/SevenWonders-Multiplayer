@@ -21,6 +21,9 @@ public class wait_contoller {
         Scene scene1 = wait_refresh.getScene();
         root = (Parent)Main.map.get("home");
         scene1.setRoot(root);
+       /* SocketThread socket = new SocketThread(in_game_controller);
+        Thread thread = new Thread();
+        thread.start();*/
         in_game_controller.beginRefresh(wonderboard);
     }
 }

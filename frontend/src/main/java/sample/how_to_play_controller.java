@@ -30,6 +30,8 @@ public class how_to_play_controller  {
         Scene scene1 = back_button.getScene();
         root = FXMLLoader.load(getClass().getResource("/sample.fxml"));
         scene1.setRoot(root);
+        in_game_controller a = (in_game_controller) Main.map.get("controller");
+
     }
 
     public void onPressget(ActionEvent event) throws Exception{

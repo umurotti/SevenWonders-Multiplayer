@@ -6,28 +6,57 @@ import javafx.application.Platform;
 import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 
+import java.net.Socket;
 import java.util.concurrent.TimeUnit;
 
 public class SocketThread extends Task<Void> {
 
-    in_game_controller game_controller;
-    public SocketThread(in_game_controller in_game_controller){
-        game_controller = in_game_controller;
+    public SocketThread(){
+        System.out.println("KKKKKK");
+
     }
 
     boolean socketThreadOpen= true;
    public void run() {
-        /*try{
-            while(socketThreadOpen){
-                TimeUnit.MILLISECONDS.sleep(5000);
-                System.out.println("aaa");
-                game_controller.refresh();
-                socketThreadOpen = true;
+        try {
+            while (true){
+                System.out.println("5555");
+            Socket socket = new Socket("192.168.1.32", 7008);
+            String userName = Main.wonderID;
+            String tableId = Main.tableID;
+            System.out.println("Thread is about to start 1");
+            socket.getOutputStream().write(userName.getBytes("utf-8").length);
+            socket.getOutputStream().write(userName.getBytes("utf-8"));
 
-            }
+            socket.getOutputStream().write(tableId.getBytes("utf-8").length);
+            socket.getOutputStream().write(tableId.getBytes("utf-8"));
+
+            System.out.println("Thread is about to start  2");
+            byte length = (byte) socket.getInputStream().read();
+            byte[] message = new byte[length];
+            socket.getInputStream().read(message);
+            final String messageString = new String(message, "utf-8");
+            System.out.println(new String(message, "utf-8"));
+            System.out.println("Thread is about to start  3 ");
+            final in_game_controller controller = (in_game_controller) Main.map.get("controller");
+            Platform.runLater(new Runnable() {
+                public void run() {
+                    try {
+                        if (messageString.equals("TURN_OVER")) {
+                            controller.refresh();
+                        } else if (messageString.equals("PLAYER_JOINED")) {
+                            System.out.println("player joinede girdi");
+                        }
+                    } catch (Exception e) {
+
+                    }
+
+                }
+            });
+        }
         }catch(Exception e){
 
-        }*/
+        }
 
     }
     public void closeThread(){
@@ -38,80 +67,55 @@ public class SocketThread extends Task<Void> {
         boolean temp = true;
         int temp1 = 0;
         int temp2 = 0;
-        boolean gate = false;
-        while(temp){
+        System.out.println("HEEEEEEEEEEEEEEEEEEEEEEEEE");
             final int count = temp1;
             try {
-                Thread.sleep(500);
-                temp2++;
-                if(temp2 == 10){
-                    gate= true;
-                    temp2 = 0;
-                }
+                while (true){
+                    System.out.println("5555");
+                    Socket socket = new Socket("192.168.1.32", 7008);
+                    String userName = Main.wonderID;
+                    String tableId = Main.tableID;
+                    System.out.println("Thread is about to start 1");
+                    socket.getOutputStream().write(userName.getBytes("utf-8").length);
+                    socket.getOutputStream().write(userName.getBytes("utf-8"));
 
-                if(gate)
-                Platform.runLater(new Runnable() {
-                    public void run() {
-                       /* try{
-                            if(count == 0)
-                                game_controller.diceGamePopOver(new ActionEvent());
-                            else if(count == 1)
-                                game_controller.playerEnteredDiceGame("TheColossusofRhodes");
-                            else if (count == 2)
-                                game_controller.refresh();
+                    socket.getOutputStream().write(tableId.getBytes("utf-8").length);
+                    socket.getOutputStream().write(tableId.getBytes("utf-8"));
 
-                        }catch (Exception e){
+                    System.out.println("Thread is about to start  2");
+                    byte length = (byte) socket.getInputStream().read();
+                    byte[] message = new byte[length];
+                    socket.getInputStream().read(message);
+                    final String messageString = new String(message, "utf-8");
+                    System.out.println(new String(message, "utf-8"));
+                    System.out.println("Thread is about to start  3 ");
+                    final in_game_controller controller = (in_game_controller) Main.map.get("controller");
+                    Platform.runLater(new Runnable() {
+                        public void run() {
+                            try {
+                                if (messageString.equals("TURN_OVER")) {
+                                    controller.refresh();
+                                } else if (messageString.equals("PLAYER_JOINED")) {
+                                    System.out.println("player joinede girdi");
+                                }else if(messageString.equals("AGE_OVER")){
+                                    controller.ageOver(1);
+                                }else if(messageString.equals("DICE_ROLL")){
 
-                        }*/
+                                }else if(messageString.equals("TABLE_CHANGE")){
 
-                        try{
-                            System.out.println("ddddd");
-                            if(count == 0){
-                                //game_controller.diceGamePopOver(new ActionEvent());
-                                System.out.println("aaaaaaaaaaaaaa");
-                                game_controller.refresh();
+                                }
+                            } catch (Exception e) {
 
                             }
-                            else if(count == 1){
-                                //game_controller.playerEnteredDiceGame("TheColossusofRhodes");
-                                game_controller.refresh();
-                                System.out.println("abbbaa");
-                           }
-                            else if (count == 2){
-                                game_controller.refresh();
-                                System.out.println("abccccbaa");
-                            }
-                        }catch (Exception e){
+
                         }
-                    }
-                });
-
-
-            } catch (InterruptedException interrupted) {
-                if (isCancelled()) {
-                    updateMessage("Cancelled");
-                    break;
+                    });
                 }
+            } catch (Exception interrupted) {
+
             }
-            /*if(game_controller == null){
-                temp = false;
-                System.out.println("stopped");
-            }*/
-            System.out.println("aaa");
-            if(temp1 == 2)
-                temp1 = 3;
-            else if(temp1 == 1)
-                temp1 = 2;
-            else if(temp1 == 0)
-            System.out.println(temp1);
-            if(temp1 == 1 &&gate)
-                temp1 = 2;
-            else if(temp1 == 0&&gate)
-                temp1 = 1;
-            else if(temp1 == 2&&gate)
-                temp1 = 3;
-            gate= false;
-        }
+
+
         return null;
     }
 }

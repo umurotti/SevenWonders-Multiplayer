@@ -70,7 +70,7 @@ public class in_game_controller implements Initializable  {
     static String selectedCard ;
     int Hand;
     int myStructureNo = 0;
-    Map<String,Image> images2 = new HashMap<String, Image>();
+    public HashMap<String,Image> images2 = new HashMap<String, Image>();
     FileInputStream inputstream[] = new FileInputStream[78] ;
     Image images[] = new Image[78];
     ServerConnection con = new ServerConnection();
@@ -519,9 +519,10 @@ public class in_game_controller implements Initializable  {
         boolean trade = true;
         // Map<String,Integer> source = wonderBoards.get(Main.wonderID).getSources();
         System.out.println(Main.wonderID);
-        List<Card> hand2 = ServerConnection.cardss.getContainer().get(Main.wonderID);
+        List<Card> hand = ServerConnection.cardss.getContainer().get(Main.wonderID);
         int index = Integer.parseInt(selectedCard.substring(4));
-        trade = isPossible(hand2.get(index).getCost());
+        if(selection == 0)
+            trade = isPossible(hand.get(index).getCost());
         System.out.println("OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO " + selectedCard);
 
         if(trade){
@@ -674,17 +675,16 @@ public class in_game_controller implements Initializable  {
         //refreshing OR sources
         // burayayanlış geliyor, eğer or lu birşey oynarsan yanlış geliyor
 
-        /*for( Map.Entry mapElement : ORsources.entrySet() ){
+        for( Map.Entry mapElement : ORsources.entrySet() ){
                 String key = (String) mapElement.getKey();
                 String nameOfImageView = "#s" + pane2.getId().substring(15,16) + key;
                 ImageView orSourceImageView = (ImageView)sceneOfTable.lookup(nameOfImageView);
-                System.out.println(nameOfImageView + "burrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr");
                 if(ORsources.get(key)){
                     orSourceImageView.setVisible(true);
                 }else{
                     orSourceImageView.setVisible(false);
                 }
-        }*/
+        }
 
         //this code refreshes disounts,  refreshdiscount
         HashMap<String, Integer> leftDiscount = wonderBoards.get(Main.wonderID).getLeftDiscount();
@@ -704,7 +704,6 @@ public class in_game_controller implements Initializable  {
             discountImageView = "dr";
             discountImageView = discountImageView + (String)entry.getKey();
             ImageView discountImage = (ImageView)dice.getScene().lookup("#" + discountImageView);
-            System.out.println(discountImageView + "kKKKKKKKKKKKKKKKKKKKKKKKKKK");
             if(rightDiscount.get((String)entry.getKey()) != 2){
                 discountImage.setVisible(true);
             }else{
@@ -715,13 +714,14 @@ public class in_game_controller implements Initializable  {
 
     public void onPress(ActionEvent event)throws Exception{
         System.out.println("asdasda");
-        HashMap<String,WonderBoard> wonders = (HashMap<String, WonderBoard>) con.ConvertJson(Main.tableID);
-        wonderBoards = wonders;
+
         System.out.println("refresh çağırılıyor");
         refresh();
     }
 
     public void refresh()throws Exception {
+        HashMap<String,WonderBoard> wonders = (HashMap<String, WonderBoard>) con.ConvertJson(Main.tableID);
+        wonderBoards = wonders;
 
         //HashMap<String,Integer> militaryPoint = con.getMilitaryPoint();
         //System.out.println(militaryPoint.toString());
@@ -901,6 +901,32 @@ public class in_game_controller implements Initializable  {
     }
 
     public void beginRefresh(HashMap<String,WonderBoard> a) throws Exception{
+        //System.out.println("START POINTE GIRDIIIIIIIIIIIII!");
+        /*int i = 0;
+        String workingDir = System.getProperty("user.dir");
+        workingDir += "/src/main/resources/Cards";
+        File dir = new File(workingDir);
+        File[] directoryListing = dir.listFiles();
+        if (directoryListing != null) {
+            for (File child : directoryListing) {
+                InputStream temp = new FileInputStream(child);
+                String name =child.getName();
+                if(name.indexOf(" ") >0){
+                    name = name.substring(0,name.indexOf(" "))+  name.substring(name.indexOf(" " ) +1);
+                }
+                name = name.toUpperCase();
+                images2.put(child.getName().substring(0,child.getName().length()-4), new Image(temp));
+                i++;
+            }
+        }*/
+        hand[0] = card0;
+        hand[1] = card1;
+        hand[2] = card2;
+        hand[3] = card3;
+        hand[4] = card4;
+        hand[5] = card5;
+        hand[6] = card6;
+
         wonderBoards = a;
         int temp = 3;
         String[] wonders2 = new String[7];
@@ -1359,7 +1385,7 @@ public class in_game_controller implements Initializable  {
 
     public void startPoint() throws Exception {
         System.out.println("START POINTE GIRDIIIIIIIIIIIII!");
-        int i = 0;
+    /*    int i = 0;
         String workingDir = System.getProperty("user.dir");
         workingDir += "/src/main/resources/Cards";
         File dir = new File(workingDir);
@@ -1382,7 +1408,7 @@ public class in_game_controller implements Initializable  {
         hand[3] = card3;
         hand[4] = card4;
         hand[5] = card5;
-        hand[6] = card6;
+        hand[6] = card6;*/
 
      /*   if(start_game_controller.TableID.equals("") )
             tableID=join_game_controller.TableID;

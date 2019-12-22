@@ -13,10 +13,16 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Accordion;
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.util.HashMap;
+import java.util.Map;
 
 public class main_menu_controller {
     @FXML
@@ -73,9 +79,40 @@ public class main_menu_controller {
         Scene scene1 = how_to_play_button.getScene();
         root =(Parent) Main.map.get("home");
         scene1.setRoot(root);
-        SocketThread socketThread = new SocketThread((in_game_controller) Main.map.get("controller"));
+        SocketThread socketThread = new SocketThread();
         Thread newT = new Thread(socketThread);
         newT.start();
+
+
+
+
+
+/*
+        Map<String,Image> images2 = new HashMap<String, Image>();
+        int i = 0;
+        String workingDir = System.getProperty("user.dir");
+        workingDir += "/src/main/resources/Cards";
+        File dir = new File(workingDir);
+        File[] directoryListing = dir.listFiles();
+        if (directoryListing != null) {
+            for (File child : directoryListing) {
+                InputStream temp = new FileInputStream(child);
+                String name =child.getName();
+                if(name.indexOf(" ") >0){
+                    name = name.substring(0,name.indexOf(" "))+  name.substring(name.indexOf(" " ) +1);
+                }
+                name = name.toUpperCase();
+                images2.put(child.getName().substring(0,child.getName().length()-4), new Image(temp));
+                i++;
+            }
+        }*/
+
+        SocketThread socket = new SocketThread();
+        Thread thread = new Thread(socket);
+        System.out.println("Thread is about to start");
+        thread.start();
+
+
     }
     public void onPressCreditsButton(ActionEvent event) throws Exception{
         SoundManager.play(SoundManager.MUSIC.BUTTON_CLICK);
