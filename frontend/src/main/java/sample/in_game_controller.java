@@ -541,6 +541,7 @@ public class in_game_controller implements Initializable  {
         // Map<String,Integer> source = wonderBoards.get(Main.wonderID).getSources();
         System.out.println(Main.wonderID);
         List<Card> hand = ServerConnection.cardss.getContainer().get(Main.wonderID);
+
         int index = Integer.parseInt(selectedCard.substring(4));
         if(selection == 0)
             trade = isPossible(hand.get(index).getCost());
@@ -548,7 +549,7 @@ public class in_game_controller implements Initializable  {
 
         if(trade){
             System.out.println("Action will be sended"); //hand.indexOf(selectedCard)
-            CardAction toSend = new CardAction(this.selection,null,null, Integer.parseInt(selectedCard.substring(4)),Main.wonderID);
+            CardAction toSend = new CardAction(this.selection,null,null, handSort.get(Integer.parseInt(selectedCard.substring(4))),Main.wonderID);
             System.out.println(Main.wonderID);
             System.out.println(toSend);
             String isSuccess = con.sendAction(toSend,Main.tableID);
@@ -678,7 +679,7 @@ public class in_game_controller implements Initializable  {
             }
         }
 
-        CardAction toSend = new CardAction(selection,leftTradeMap,rightTradeMap,  Integer.parseInt(selectedCard.substring(4)),Main.wonderID);
+        CardAction toSend = new CardAction(selection,leftTradeMap,rightTradeMap,  handSort.get(Integer.parseInt(selectedCard.substring(4))),Main.wonderID);
         con.sendAction(toSend, Main.tableID);
     }
 
@@ -700,6 +701,7 @@ public class in_game_controller implements Initializable  {
                 String key = (String) mapElement.getKey();
                 String nameOfImageView = "#s" + pane2.getId().substring(15,16) + key;
                 ImageView orSourceImageView = (ImageView)sceneOfTable.lookup(nameOfImageView);
+                System.out.println(nameOfImageView);
                 if(ORsources.get(key)){
                     orSourceImageView.setVisible(true);
                 }else{
@@ -1061,11 +1063,12 @@ public class in_game_controller implements Initializable  {
 
     }
 
-
+    static HashMap<Integer,Integer> handSort= new HashMap<Integer, Integer>();
     static boolean roundEnds = false;
     public void refreshHand(HandContainer handCards)throws Exception{
         ArrayList<String> temphand = new ArrayList<String>();
-        int round = 0;
+        int noOf1 = 0;
+        int noOf2 =0;
         Map<String,List<Card>> temp= handCards.getContainer();
         for(int i = 0; i < 7; i++){
             //hand[i].setEffect(null);
@@ -1085,12 +1088,14 @@ public class in_game_controller implements Initializable  {
                 if(leeen.indexOf("i")>0)
                     leeen = leeen.substring(0,leeen.indexOf("i"))+ "I"+   leeen.substring(leeen.indexOf("i" ) +1);
                 leeen = leeen.toUpperCase();
-
+                handSort.put(noOf2,noOf1);
                 temphand.add(leeen);
                 //hand[i].setImage(images2.get(leeen));
                 //handAnimation(hand[i]);
-                round++;
+                noOf1++;
+                noOf2++;
             }else{
+                noOf1++;
                 System.out.println("laaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
                 //hand[i].setVisible(false);
                 //hand[i].setDisable(false);
@@ -1098,11 +1103,7 @@ public class in_game_controller implements Initializable  {
             /**/
 
         }
-        if(round == 1){
-            ageOver(1);
 
-
-        }
 
         for(int i = 0; i<temphand.size(); i++){
             hand[i].setEffect(null);
@@ -1263,7 +1264,6 @@ public class in_game_controller implements Initializable  {
             structureImagePlace.setVisible(true);
             structureImagePlace.setImage(images2.get(leeen));
             noOfImage++;
-
         }
     }
 
