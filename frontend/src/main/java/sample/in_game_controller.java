@@ -45,14 +45,13 @@ import java.util.concurrent.TimeUnit;
 public class in_game_controller implements Initializable  {
 
     String tableID;
+    private boolean played = false;
     String wonderID;
     WonderBoard sampleWonderBoard = new WonderBoard();
     @FXML
     GridPane resources_grid_0;
     @FXML
     GridPane structure_grid_0;
-    @FXML
-    Accordion in_game_accordion;
 
     @FXML
             Button discard;
@@ -535,7 +534,6 @@ public class in_game_controller implements Initializable  {
 
     }
 
-
     public void buildCardClicked(MouseEvent event) throws Exception{
         boolean trade = true;
         // Map<String,Integer> source = wonderBoards.get(Main.wonderID).getSources();
@@ -554,6 +552,7 @@ public class in_game_controller implements Initializable  {
             System.out.println(toSend);
             String isSuccess = con.sendAction(toSend,Main.tableID);
             if(isSuccess.equals("başarılı")){
+                played = true;
                 DropShadow selectEffect = new DropShadow();
                 selectEffect.setHeight(40.0);
                 selectEffect.setWidth(40.0);
@@ -723,7 +722,7 @@ public class in_game_controller implements Initializable  {
                 discountImage.setVisible(false);
             }
         }*/
-        for(Map.Entry entry: rightDiscount.entrySet()){
+       /* for(Map.Entry entry: rightDiscount.entrySet()){
             discountImageView = "dr";
             discountImageView = discountImageView + (String)entry.getKey();
             ImageView discountImage = (ImageView)dice.getScene().lookup("#" + discountImageView);
@@ -732,7 +731,7 @@ public class in_game_controller implements Initializable  {
             }else{
                 discountImage.setVisible(false);
             }
-        }
+        }*/
     }
 
     public void onPress(ActionEvent event)throws Exception{
@@ -925,6 +924,14 @@ public class in_game_controller implements Initializable  {
 
     @FXML
     ImageView wonder_image;
+    @FXML
+    Accordion in_game_accordion;
+
+    @FXML
+    TitledPane firstPane;
+
+
+
     public void beginRefresh(HashMap<String,WonderBoard> a) throws Exception{
         //System.out.println("START POINTE GIRDIIIIIIIIIIIII!");
         /*int i = 0;
@@ -944,6 +951,9 @@ public class in_game_controller implements Initializable  {
                 i++;
             }
         }*/
+        in_game_accordion.setExpandedPane(firstPane);
+        System.out.println("expanded");
+
         hand[0] = card0;
         hand[1] = card1;
         hand[2] = card2;
@@ -1070,6 +1080,7 @@ public class in_game_controller implements Initializable  {
     static HashMap<Integer,Integer> handSort= new HashMap<Integer, Integer>();
     static boolean roundEnds = false;
     public void refreshHand(HandContainer handCards)throws Exception{
+        played = false;
         ArrayList<String> temphand = new ArrayList<String>();
         int noOf1 = 0;
         int noOf2 =0;
@@ -1141,7 +1152,7 @@ public class in_game_controller implements Initializable  {
 
     }
 
-    public void timerHandle(){
+    public void timerHandle() {
         if(timeline !=null){
             timeline.stop();
         }
@@ -1160,6 +1171,13 @@ public class in_game_controller implements Initializable  {
                 double d = (double)timeSeconds/60;
                 timerProgress.setProgress(d);
                 if(timeSeconds==60){
+                    try{
+                        if(played == false){
+                            CardAction toSend = new CardAction(0,null,null,  handSort.get(0),Main.wonderID);
+                            con.sendAction(toSend, Main.tableID);
+
+                        }
+                    }catch(Exception e){}
                     timeline.stop();
                 }
                 if(timeSeconds == 45){
@@ -1268,6 +1286,15 @@ public class in_game_controller implements Initializable  {
             structureImagePlace.setVisible(true);
             structureImagePlace.setImage(images2.get(leeen));
             noOfImage++;
+            if(gridName.getId().substring(15).equals("0")){
+                if(leeen.equals("EAST_TRADING_POST")){
+                    sceneOfWonder.lookup("#et_d_0").setVisible(true);
+                }else if(leeen.equals("WEST_TRADING_POST")){
+                    sceneOfWonder.lookup("#wt_d_0").setVisible(true);
+                }else if(leeen.equals("MARKETPLACE")){
+                    sceneOfWonder.lookup("#mp_d_0").setVisible(true);
+                }
+            }
         }
     }
 
