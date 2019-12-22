@@ -384,7 +384,7 @@ public class in_game_controller implements Initializable  {
     Integer timeseconds;
 
 
-
+/*
     @FXML
     GridPane my_wonder;
     @FXML
@@ -453,6 +453,7 @@ public class in_game_controller implements Initializable  {
     ImageView wonder_4_stage_1;
     @FXML
     ImageView wonder_4_stage_2;
+    */
 
 
 
@@ -750,7 +751,7 @@ public class in_game_controller implements Initializable  {
         //HashMap<String,Integer> militaryPoint = con.getMilitaryPoint();
         //System.out.println(militaryPoint.toString());
 
-        sceneOfTable = my_wonder.getScene();
+        //sceneOfTable = my_wonder.getScene();
         tableID = Main.tableID;
         wonderID = Main.wonderID;
 
@@ -921,8 +922,52 @@ public class in_game_controller implements Initializable  {
         System.out.println(wonderBoards.get(Main.wonderID).getSources().get("victory point"));
         System.out.println(wonderBoards.get(Main.wonderID).getCurrentStage());
 
+        int temp = 3;
+        String[] wonders2 = new String[7];
+        for(Map.Entry mapElement : wonderBoards.entrySet()){
+            String key = (String)mapElement.getKey();
+            System.out.println(key);
+            if(wonderBoards.get(Main.wonderID).getWonderName().equals(wonderBoards.get(key).getWonderName())){
+                wonders2[0] = wonderBoards.get(key).getWonderName();
+                System.out.println("birinci if " +  wonderBoards.get(key).getWonderName());
+            }else
+            if(wonderBoards.get(key).getWonderName().equals(wonderBoards.get(wonderBoards.get(Main.wonderID).getLeftNeighbor()).getWonderName())){
+                wonders2[1] = wonderBoards.get(key).getWonderName();
+                System.out.println("ikinci if " +  wonderBoards.get(key).getWonderName());
+            }else
+            if(wonderBoards.get(key).getWonderName().equals(wonderBoards.get(wonderBoards.get(Main.wonderID).getRightNeighbor()).getWonderName())){
+                wonders2[2] = wonderBoards.get(key).getWonderName();
+                System.out.println("üçüncü if " +  wonderBoards.get(key).getWonderName());
+            }else{
+                wonders2[temp] = wonderBoards.get(key).getWonderName();
+                System.out.println("dördün cü if " +  wonderBoards.get(key).getWonderName());
+                temp++;
+            }
 
-        wonderBoards.get("a").getCurrentStage();
+        }
+
+        for(int i = 0; i<temp;i++){
+            if(wonderBoards.get(wonders2[i]).getCurrentStage()==1){
+                dice.getScene().lookup("#wonder_" + i +"_stage_0").setEffect(null);
+
+            }else if(wonderBoards.get(wonders2[i]).getCurrentStage()==2){
+                dice.getScene().lookup("#wonder_" + i +"_stage_1").setEffect(null);
+
+            }else if(wonderBoards.get(wonders2[i]).getCurrentStage()==3){
+                dice.getScene().lookup("#wonder_" + i +"_stage_2").setEffect(null);
+
+            }
+
+
+
+
+        }
+
+
+
+
+
+        /*wonderBoards.get("a").getCurrentStage();
         int i = 0;
         wonderBoards.get(Main.wonderID).getCurrentStage();
         int right =wonderBoards.get(wonderBoards.get(Main.wonderID).getRightNeighbor()).getCurrentStage();
@@ -950,7 +995,7 @@ public class in_game_controller implements Initializable  {
 
         }*/
         //stage 1 i yaptım diyelim
-        //my_wonder_stage_0.setEffect(null);
+        //my_wonder_stage_0.setEffect(null);*/
 
     }
 
@@ -1039,6 +1084,22 @@ public class in_game_controller implements Initializable  {
 
         System.out.println("/WONDERS/" + wonders2[0] + ".jpg");
         wonder_image.setImage(new Image("/WONDERS/" + wonders2[0] + ".jpg"));
+        for(int i = 0; i<7;i++){
+            if(wonders2[i] == null){
+                wonder_image.getScene().lookup("#wonder_" + i).setVisible(false);
+            }else{
+                System.out.println(wonders2[i]);
+                System.out.println(wonder_image.getScene());
+                System.out.println(wonder_image.getScene().lookup("#wonder_" + i));
+                wonder_image.getScene().lookup("#wonder_" + i).setStyle(wonderImages[i]);
+                ((ImageView)dice.getScene().lookup("#wonder_" + i +"_stage_0")).setImage(wonderStages0[i]);
+                ((ImageView)dice.getScene().lookup("#wonder_" + i +"_stage_1")).setImage(wonderStages1[i]);
+                ((ImageView)dice.getScene().lookup("#wonder_" + i +"_stage_2")).setImage(wonderStages2[i]);
+            }
+
+            //if(wonders2[i].equals(""))
+        }
+        /*
         my_wonder.setStyle(wonderImages[0]);
         my_wonder_name.setText(wonders2[0]);
         my_wonder_stage_0.setImage(wonderStages0[0]);
@@ -1085,7 +1146,7 @@ public class in_game_controller implements Initializable  {
             wonder_4_stage_0.setImage(wonderStages0[6]);
             wonder_4_stage_1.setImage(wonderStages1[6]);
             wonder_4_stage_2.setImage(wonderStages2[6]);
-        }
+        }*/
 
 /*
         popOverCard = new PopOver();
@@ -1231,14 +1292,15 @@ public class in_game_controller implements Initializable  {
         timerProgress.setProgress(0);
         timerProgress.setStyle(" -fx-progress-color: #68ba86");
         //update
-        timeline.setCycleCount(60);
+        //timeline.setCycleCount(60);
+        timeline.setCycleCount(4);
         EventHandler eventHandler = new EventHandler() {
             public void handle(Event event) {
                 timeSeconds++;
                 timer.setText(timeSeconds.toString());
-                double d = (double)timeSeconds/60;
+                double d = (double)timeSeconds/4;
                 timerProgress.setProgress(d);
-                if(timeSeconds==60){
+                if(timeSeconds==3){
                     try{
                         if(played == false){
                             CardAction toSend = new CardAction(0,null,null,  handSort.get(0),Main.wonderID);
@@ -1248,9 +1310,9 @@ public class in_game_controller implements Initializable  {
                     }catch(Exception e){}
                     timeline.stop();
                 }
-                if(timeSeconds == 45){
+                if(timeSeconds == 2){
                     timerProgress.setStyle(" -fx-progress-color: #de7e2a");
-                }if(timeSeconds == 55){
+                }if(timeSeconds == 1){
                     timerProgress.setStyle(" -fx-progress-color: #db4332");
                 }
 
