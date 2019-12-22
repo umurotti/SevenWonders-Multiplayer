@@ -36,6 +36,8 @@ public class WonderBoard {
     private int defeatTokens;
     private int handNo;
     private String wonderName;
+    private boolean bribery; // Magic Card Effect #1
+    private boolean scientist; // Magic Card Effect #3
 
     public WonderBoard() {
         // militaryTokens[0]: 1st age military victories, militaryTokens[1]: 2nd, militaryTokens[2]: 3rd.
@@ -100,6 +102,8 @@ public class WonderBoard {
             put("papyrus", 2);
             put("glass", 2);
         }};
+        bribery = false;
+        scientist = false;
     }
 
     public WonderBoard( String name, int handNo, String wonderName) {
@@ -174,6 +178,8 @@ public class WonderBoard {
             put("papyrus", 2);
             put("glass", 2);
         }};
+        bribery = false;
+        scientist = false;
     }
 
     public List<String> getSourcesToCalculate() {
@@ -201,6 +207,22 @@ public class WonderBoard {
         this.rightDiscount = rightDiscount;
         this.militaryTokens = militaryTokens;
         this.defeatTokens = defeatTokens;
+    }
+
+    public Boolean getBribery(){
+        return bribery;
+    }
+
+    public void setBribery(boolean bribery) {
+        this.bribery = bribery;
+    }
+
+    public Boolean getScientist(){
+        return this.scientist;
+    }
+
+    public void setScientist(boolean scientist) {
+        this.scientist = scientist;
     }
 
     public String getWonderName() {
@@ -428,5 +450,6 @@ public class WonderBoard {
             ", handNo='" + getHandNo() + "'" +
             "}";
     }
+    
 
 }
