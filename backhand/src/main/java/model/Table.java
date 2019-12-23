@@ -12,7 +12,9 @@ import java.util.concurrent.LinkedBlockingQueue;
 //@Author:Akin_Parkan
 
 public class Table {
-    private final int MAGIC_CARD_NUMBER = 7;  
+    private final int MAGIC_CARD_NUMBER = 1;  
+    private final int DICE_ENTRY_PRICE = 3;
+    private final String DICE_RESULT_MAGIC_CARD_IDENTIFIER = "magic card";
     
     private String tableID;
     private int noOfPlayers;
@@ -27,7 +29,7 @@ public class Table {
     private ArrayList<String> wonderNames;
     private List<Card> discardedCards;
     private Card[][] hand;
-    private List<WonderBoard> diceRollers;
+    private List<WonderBoard> diceRollers = new LinkedList<>();
     private String diceRollWinner;
     private Card diceRollCard;
     private ScoreBoard scoreboard;
@@ -39,26 +41,30 @@ public class Table {
     private List<String> playerIDs;
     private HandContainer trans;
     private TableNotifier notifier;
-    Card[] playable1;
-    Card[] playable2;
-    Card[] playable3;
-    Card[] magicCards;
+    private Card[] playable1;
+    private Card[] playable2;
+    private Card[] playable3;
+    private Card[] magicCards;
+    private HashMap<String, WonderBoard> wonderboardObjects;
+    private int diceRollRequestNumber;
     //private DeckFactory deckFactory;
     //private TableNotifier notifier
 
-    public Table(String tableID, String owner, Deck age1Deck, Deck age2Deck , Deck age3Deck, Deck magicCardDeck) {
+    public Table(String tableID, String owner, Deck age1Deck, Deck age2Deck, Deck age3Deck, Deck magicCardDeck, HashMap<String, WonderBoard> wonderboardObjects) {
         wonderNames = new ArrayList<>();
-        wonderNames.add("TheTempleofArtemisinEphesus");
-        wonderNames.add("TheStatueofZeusinOlympia");
-        wonderNames.add("ThePyramidsofGiza");
-        wonderNames.add("TheMausoleumofHalicarnassus");
-        wonderNames.add("TheLighthouseofAlexandria");
-        wonderNames.add("TheHangingGardensofBabylon");
-        wonderNames.add("TheColossusofRhodes");
+        wonderNames.add("TheColossusOfRhodes");
+        wonderNames.add("TheLighthouseOfAlexandria");
+        wonderNames.add("TheTempleOfArtemisInEphesus");
+        wonderNames.add("TheHangingGardensOfBabylon");
+        wonderNames.add("TheStatueOfZeusInOlympia");
+        wonderNames.add("TheMausoleumOfHalicarnassus");
+        wonderNames.add("ThePyramidsOfGiza");
 
         this.tableID = tableID;
         this.noOfPlayers = 1;
         this.owner = owner;
+        this.wonderboardObjects = wonderboardObjects;
+        this.diceRollRequestNumber = 0;
         age = 1;
         playerIDs = new ArrayList<>();
         playerIDs.add(owner);
@@ -98,12 +104,12 @@ public class Table {
         playable2 = new Card[noOfPlayer *7];
         playable2 = decks[1].prepareCards(noOfPlayers);
         magicCards = new Card[MAGIC_CARD_NUMBER];
-        //magicCards = magicCardDeck.prepareCards(noOfPlayers);
+        magicCards = magicCardDeck.prepareCards(noOfPlayers);
         playable3 = new Card[noOfPlayer *7];
         playable3 = decks[2].prepareCards(noOfPlayers);
     }
 
-    public void startTable() {
+    public void startTable() throws CloneNotSupportedException {
         addWonder();
         //assign neighbours
         for (int a = 0; a < noOfPlayers - 1; a++) {
@@ -132,6 +138,9 @@ public class Table {
         List<Card> shuffleMagic = Arrays.asList(magicCards);
         
         Collections.shuffle(shuffle1);
+        Collections.shuffle(shuffle2);
+        Collections.shuffle(shuffle3);
+        
         shuffle1.toArray(playable1);
         shuffle2.toArray(playable2);
         shuffle3.toArray(playable3);
@@ -149,28 +158,105 @@ public class Table {
         for(Map.Entry<String, WonderBoard> entry : getWonders().entrySet()) {
             isActionLocked.put(entry.getKey(), Boolean.FALSE);
         }
-        
+        eventQueue.offer(Event.TABLE_START);
     }
-
+    
+    public boolean addToDiceRollers(String wonderID) {
+        WonderBoard wb = wonders.get(wonderID);
+        if(!diceRollers.contains(wb) && wb != null) {
+            diceRollers.add(wb);
+            diceRollRequestNumber++;
+            eventQueue.offer(Event.DICE_ROLL_PLAYER_JOINED);
+            
+            if(diceRollRequestNumber == noOfPlayers) {
+                rollDice();
+                eventQueue.offer(Event.DICE_ROLL_OVER);
+//                wonders.get(diceRollWinner).
+            }
+            
+            return true;
+        } else {
+            return false;
+        }
+    }
+//    public void rollDice(List<WonderBoard> diceRollers) {
+//        int highest = -1;
+//        List<WonderBoard> sameRolls = new ArrayList<WonderBoard>();
+//        for (WonderBoard wb : this.diceRollers){
+//            int roll = (int)(Math.random()*7) + (int)(Math.random()*7);
+//            wb.setDiceValue(roll);
+//            if (roll > highest) {
+//                highest = roll;
+//                sameRolls.clear();
+//                sameRolls.add(wb);
+//            }
+//            if (roll == highest) {
+//                sameRolls.add(wb);
+//            }
+//        }
+//        if (sameRolls.size() >1) {
+//            this.rollDice(sameRolls);
+//        }
+//        else {
+//            this.pickMagicCard(sameRolls.get(0));
+//            this.diceRollWinner = sameRolls.get(0).getName();
+//            //TODO notifyPlayers();
+//            eventQueue.offer(Event.DICE_ROLL_OVER);
+//        }
+//    }
+    
     public void rollDice() {
+
+        if(diceRollers != null) {
+            int hold = diceRollers.size();
+            if(hold > 0)
+            {
+                int winner =  (int)(Math.random()*((hold -0)))+0;
+                //this.pickMagicCard(diceRollers.get(winner));
+                this.diceRollWinner = diceRollers.get(winner).getName();
+            //TODO notifyPlayers();
+                eventQueue.offer(Event.DICE_ROLL_OVER);
+                diceRollers.clear();
+            }
+        }
     }
 
-    public void addWonder() {
+    public void addWonder() throws CloneNotSupportedException {
         //assign players to wonders
+        String randomWonderName;
+        WonderBoard toPut;
         for (int a = 0; a < noOfPlayers; a++) {
-
-            wonders.put(playerIDs.get(a), new WonderBoard(playerIDs.get(a), a, wonderNames.get(a)));
+            randomWonderName = wonderNames.remove(new Random().nextInt(wonderNames.size()));
+            //wonders.put(playerIDs.get(a), new WonderBoard(playerIDs.get(a), a, wonderNames.get(a)));
+            toPut = wonderboardObjects.get(randomWonderName).copy();
+            toPut.setName(playerIDs.get(a));
+            toPut.setHandNo(a);
+            
+            wonders.put(playerIDs.get(a), toPut);
         }
 
     }
 
-    public void pickMagicCard(String wonderID) {
+    public Card pickMagicCard() {
+        return magicCards[0];
     }
 
     public void changeHand() {
     }
 
-    public void diceRollRequest(String wonderID) {
+    public boolean diceRollRequest(String wonderID) {
+        if (diceRollers.contains(this.wonders.get(wonderID))){
+            return false;
+        }
+        WonderBoard wb = this.wonders.get(wonderID);
+        HashMap<String, Integer> sources = wb.getSources();
+        if (sources.get("coin") < this.DICE_ENTRY_PRICE){
+            return false;
+        }
+        sources.replace("coin",(wb.getSources().get("coin") - this.DICE_ENTRY_PRICE));
+        wb.setSources(sources);
+        this.diceRollers.add(this.wonders.get(wonderID));
+        return true;
     }
 
     public void notifyPlayers() {
@@ -259,13 +345,14 @@ public class Table {
                     }
                     hand[count][hold++] = playable3[a];
                 }
-              }
+//            }
             }
             //change deck
 
-            eventQueue.offer(Event.AGE_OVER);
+            
         }
-
+        eventQueue.offer(Event.AGE_OVER);
+    }
 
     public void lockAction(CardAction action) throws Exception {
         this.getWonders().get(action.getWonderID()).setLockedAction(action);
@@ -317,7 +404,7 @@ public class Table {
 
                             char tempArray[] = tmp.toCharArray();
                             Arrays.sort(tempArray);
-                            it.set(new String(tempArray));
+                            iter.set(new String(tempArray));
                         }
                     }
                 }
@@ -338,7 +425,7 @@ public class Table {
 
                             char tempArray[] = tmp.toCharArray();
                             Arrays.sort(tempArray);
-                            it.set(new String(tempArray));
+                            iter.set(new String(tempArray));
                         }
                     }
                 }
@@ -489,7 +576,7 @@ public class Table {
         for (Map.Entry<String, Boolean> entry : isActionLocked.entrySet()) {
             isActionLocked.replace(entry.getKey(), Boolean.FALSE);
         }
-
+        
         if (turn < 6) {
             Card[][] tmp = getHands();
             Card[] tmp2 = tmp[noOfPlayers - 1];
@@ -563,6 +650,11 @@ public class Table {
             playAge();
             
         }
+        
+        for(Map.Entry<String, WonderBoard> entry : this.wonders.entrySet()) {
+            entry.getValue().setDiceValue(0);
+        }
+        
         eventQueue.offer(Event.TURN_OVER);
     }
 
@@ -651,17 +743,10 @@ public class Table {
 
         // Build Wonder stage. For this iteration our stages only give +3 VP, 0 VP, +7 VP.
         if (choice == 2) {
-            int currentStage = wb.getCurrentStage() + 1;
-            wb.setCurrentStage(currentStage);
+            //int currentStage = wb.getCurrentStage() + 1;
+            //wb.setCurrentStage(currentStage);
             HashMap<String, Integer> wbSources = wb.getSources();
-            if (currentStage == 1) {
-                wbSources.put("victoryPoint", wbSources.get("victoryPoint") + 3);
-            }
-            if (currentStage == 2) {
-            }
-            if (currentStage == 3) {
-                wbSources.put("victoryPoint", wbSources.get("victoryPoint") + 7);
-            }
+            wb.buildStage(wb.getCurrentStage()+1);
             wb.setSources(wbSources);
         }
 
@@ -682,6 +767,53 @@ public class Table {
         this.hand = hand;
     }
 
+    public List<WonderBoard> getDiceRollers() {
+        return diceRollers;
+    }
+    
+    public HashMap<String, String> getDiceRollersMap() {
+        if(diceRollers != null) {
+            HashMap<String, String> result = new HashMap<>();
+            Iterator it = diceRollers.listIterator();
+            
+            while(it.hasNext()) {
+                WonderBoard tmp = (WonderBoard) it.next();
+                result.put(tmp.getName(), tmp.getWonderName());
+            }
+            return result;
+        } else {
+            return null;
+        }
+    }
+    
+    public HashMap<String, String> getDiceResultMap() {
+        HashMap<String, String> result = new HashMap<>();
+        
+//        if(diceRollers != null) {
+//            Iterator it = diceRollers.listIterator();
+//            while(it.hasNext()) {
+//                String tmpUserID = (String) it.next();
+//                result.put(wonders.get(tmpUserID).getName(), Integer.toString(wonders.get(tmpUserID).getDiceValue()));
+//            }
+//            
+//            result.put(DICE_RESULT_MAGIC_CARD_IDENTIFIER, "ahmet");
+//            return result;
+//        } else {
+//            return null;
+//        }
+
+        result.put("winner", this.diceRollWinner);
+        result.put("magicCard", pickMagicCard().toString());
+        
+        return result;
+    }
+    
+    public void setDiceRollers(List<WonderBoard> diceRollers) {
+        this.diceRollers = diceRollers;
+    }
+    
+    
+    
     public ScoreBoard getScoreboard() {
         return scoreboard;
     }

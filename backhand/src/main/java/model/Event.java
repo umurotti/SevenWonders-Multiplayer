@@ -16,9 +16,11 @@ import java.util.logging.Logger;
 public class Event {
     public static final Event TABLE_CHANGE = new Event("TABLE_CHANGE");
     public static final Event TURN_OVER = new Event("TURN_OVER");
-    public static final Event DICE_ROLL = new Event("DICE_ROLL");
+    public static final Event DICE_ROLL_OVER = new Event("DICE_ROLL_OVER");
+    public static final Event DICE_ROLL_PLAYER_JOINED = new Event("DICE_ROLL_PLAYER_JOINED");
     public static final Event AGE_OVER = new Event("AGE_OVER");
     public static final Event PLAYER_JOINED = new Event("PLAYER_JOINED");
+    public static final Event TABLE_START = new Event("TABLE_START");
     private byte length;
     private String content;
     //private Event alo;
