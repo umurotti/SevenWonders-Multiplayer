@@ -157,6 +157,9 @@ public class DeckGenerator {
             cardNameToType.put("Magistrates Guild", CARD_TYPE_CUMULATIVE_COIN);
             cardNameToType.put("Builders Guild", CARD_TYPE_CUMULATIVE_COIN);
             
+            ///MAGIC CARDS///
+            cardNameToType.put("Magic Johnson", CARD_TYPE_MAGIC);
+            
 	
 //SPY GUILD	    CumulativeCoinCard 
 //STRATEGY GUILD      CumulativeCoinCard 
@@ -219,7 +222,7 @@ public class DeckGenerator {
             } else if (cardNameToType.get(cardName).equals(CARD_TYPE_CUMULATIVE_COIN)) {
                  tmp = gson.fromJson(jArray.get(i), CumulativeCard.class);
             } else if (cardNameToType.get(cardName).equals(CARD_TYPE_MAGIC)) {
-                 tmp = gson.fromJson(jArray.get(i), SimpleCard.class);
+                 tmp = gson.fromJson(jArray.get(i), MagicCard.class);
             } else {
                 System.out.println("Unrecognized Card Type for the card: " + cardName);
             }

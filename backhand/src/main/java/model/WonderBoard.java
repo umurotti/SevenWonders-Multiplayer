@@ -5,23 +5,31 @@
  */
 package model;
 
-import java.util.*;
-
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.ListIterator;
+import java.util.Map;
+import java.util.Objects;
 
 /**
  * @author: OmerFarukKurklu
  * @version: 0.1
  */
 public class WonderBoard {
+
     private String leftNeighbor;
     private String rightNeighbor;
-    
-    private HashMap<String,Integer> sources; // String: Name of the resource, Integer: Amount of the resource
+
+    private HashMap<String, Integer> sources; // String: Name of the resource, Integer: Amount of the resource
     private HashMap<String, Boolean> orSources;
-    
+
     private Cost[] stageCosts;
     private List<String> sourcesToCalculate;
-    
+
     private int currentStage;
     private int diceValue;
     private String name;
@@ -33,83 +41,91 @@ public class WonderBoard {
     private int defeatTokens;
     private int handNo;
     private String wonderName;
+    
     private boolean bribery; // Magic Card Effect #1
     private boolean scientist; // Magic Card Effect #3
 
     public WonderBoard() {
         // militaryTokens[0]: 1st age military victories, militaryTokens[1]: 2nd, militaryTokens[2]: 3rd.
         militaryTokens = 0;
-        wonderName ="";
+        this.currentStage = 0;
+        wonderName = "";
         // stageCosts[0]: 1st stage cost, stageCosts[1]: 2nd, stageCosts[2]: 3rd.
         stageCosts = new Cost[3];
-        
+
         //*
         this.sourcesToCalculate = new LinkedList<>();
         sourcesToCalculate.add("");
         //*
-        
-        sources = new HashMap<String,Integer>()
-        {{
-            put("wood", 0);
-            put("stone", 0);
-            put("aclay", 0);
-            put("ore", 0);
-            put("loom",0);
-            put("papyrus", 0);
-            put("glass", 0);
-            put("bcompass", 0);
-            put("tablet", 0);
-            put("gear", 0);
-            put("coin", 0);
-            put("zshield", 0);
-            put("victory point", 0);
-        }};
-        
-        orSources = new HashMap<String, Boolean>()
-        {{
-            put("clayORwood", Boolean.FALSE);
-            put("clayORstone", Boolean.FALSE);
-            put("clayORore", Boolean.FALSE);
-            put("stoneORwood", Boolean.FALSE);
-            put("oreORwood", Boolean.FALSE);
-            put("oreORstone", Boolean.FALSE);
-            put("glassORloomORpapyrus", Boolean.FALSE);
-            put("clayORoreORstoneORwood", Boolean.FALSE);
-        }};
-        
-        builtCards = new HashMap<String,Card>();
 
-        leftDiscount = new HashMap<String, Integer>()
-        {{
-            put("wood", 2);
-            put("stone", 2);
-            put("aclay", 2);
-            put("ore", 2);
-            put("loom", 2);
-            put("papyrus", 2);
-            put("glass", 2);
-        }};
-        rightDiscount = new HashMap<String, Integer>()
-        {{
-            put("wood", 2);
-            put("stone", 2);
-            put("aclay", 2);
-            put("ore", 2);
-            put("loom", 2);
-            put("papyrus", 2);
-            put("glass", 2);
-        }};
+        sources = new HashMap<String, Integer>() {
+            {
+                put("wood", 0);
+                put("stone", 0);
+                put("aclay", 0);
+                put("ore", 0);
+                put("loom", 0);
+                put("papyrus", 0);
+                put("glass", 0);
+                put("bcompass", 0);
+                put("tablet", 0);
+                put("gear", 0);
+                put("coin", 0);
+                put("zshield", 0);
+                put("victory point", 0);
+            }
+        };
+
+        orSources = new HashMap<String, Boolean>() {
+            {
+                put("aclayORwood", Boolean.FALSE);
+                put("aclayORstone", Boolean.FALSE);
+                put("aclayORore", Boolean.FALSE);
+                put("stoneORwood", Boolean.FALSE);
+                put("oreORwood", Boolean.FALSE);
+                put("oreORstone", Boolean.FALSE);
+                put("glassORloomORpapyrus", Boolean.FALSE);
+                put("aclayORoreORstoneORwood", Boolean.FALSE);
+            }
+        };
+
+        builtCards = new HashMap<String, Card>();
+
+        leftDiscount = new HashMap<String, Integer>() {
+            {
+                put("wood", 2);
+                put("stone", 2);
+                put("aclay", 2);
+                put("ore", 2);
+                put("loom", 2);
+                put("papyrus", 2);
+                put("glass", 2);
+            }
+        };
+        rightDiscount = new HashMap<String, Integer>() {
+            {
+                put("wood", 2);
+                put("stone", 2);
+                put("aclay", 2);
+                put("ore", 2);
+                put("loom", 2);
+                put("papyrus", 2);
+                put("glass", 2);
+            }
+        };
+        
         bribery = false;
         scientist = false;
     }
 
-    public WonderBoard( String name, int handNo, String wonderName) {
+    public WonderBoard(String name, int handNo, String wonderName) {
         this.name = name;
         this.wonderName = wonderName;
+        this.currentStage = 0;
         // militaryTokens[0]: 1st age military victories, militaryTokens[1]: 2nd, militaryTokens[2]: 3rd.
         militaryTokens = 0;
         this.handNo = handNo;
-        
+
         // stageCosts[0]: 1st stage cost, stageCosts[1]: 2nd, stageCosts[2]: 3rd.
         stageCosts = new Cost[3];
         HashMap<String, Integer> toAdd = new HashMap<>();
@@ -117,68 +133,88 @@ public class WonderBoard {
         Cost x = new Cost(toAdd);
         stageCosts[0] = x;
         sourcesToCalculate = new LinkedList<>();
-        sourcesToCalculate.add("abcglopst");
-        
-        sources = new HashMap<String,Integer>()
-        {{
-            put("wood", 0);
-            put("stone", 1);
-            put("aclay", 1);
-            put("ore", 1);
-            put("loom",1);
-            put("papyrus", 1);
-            put("glass", 1);
-            put("bcompass", 1);
-            put("tablet", 1);
-            put("gear", 0);
-            put("coin", 1);
-            put("zshield", 0);
-            put("victory point", 0);
-        }};
-        
-        
-        orSources = new HashMap<String, Boolean>()
-        {{
-            put("clayORwood", Boolean.FALSE);
-            put("clayORstone", Boolean.FALSE);
-            put("clayORore", Boolean.FALSE);
-            put("stoneORwood", Boolean.FALSE);
-            put("oreORwood", Boolean.FALSE);
-            put("oreORstone", Boolean.FALSE);
-            put("glassORloomORpapyrus", Boolean.FALSE);
-            put("clayORoreORstoneORwood", Boolean.FALSE);
-        }};
-        
-        
-        builtCards  = new HashMap<String,Card>();
+        sourcesToCalculate.add("aabbccggllooppsstt");
+
+        sources = new HashMap<String, Integer>() {
+            {
+                put("wood", 0);
+                put("stone", 2);
+                put("aclay", 2);
+                put("ore", 2);
+                put("loom", 2);
+                put("papyrus", 2);
+                put("glass", 2);
+                put("bcompass", 2);
+                put("tablet", 2);
+                put("gear", 0);
+                put("coin", 2);
+                put("zshield", 0);
+                put("victory point", 0);
+            }
+        };
+
+        orSources = new HashMap<String, Boolean>() {
+            {
+                put("aclayORwood", Boolean.FALSE);
+                put("aclayORstone", Boolean.FALSE);
+                put("aclayORore", Boolean.FALSE);
+                put("stoneORwood", Boolean.FALSE);
+                put("oreORwood", Boolean.FALSE);
+                put("oreORstone", Boolean.FALSE);
+                put("glassORloomORpapyrus", Boolean.FALSE);
+                put("aclayORoreORstoneORwood", Boolean.FALSE);
+            }
+        };
+
+        builtCards = new HashMap<String, Card>();
 //        {{
 //            //put("altar", new Card(new Cost(new HashMap<String, Integer>()), "red", "altar", "", 3, sources));
 //        }};
 
-        leftDiscount = new HashMap<String, Integer>()
-        {{
-            put("wood", 2);
-            put("stone", 2);
-            put("aclay", 2);
-            put("ore", 2);
-            put("loom", 2);
-            put("papyrus", 2);
-            put("glass", 2);
-        }};
-        rightDiscount = new HashMap<String, Integer>()
-        {{
-            put("wood", 2);
-            put("stone", 2);
-            put("aclay", 2);
-            put("ore", 2);
-            put("loom", 2);
-            put("papyrus", 2);
-            put("glass", 2);
-        }};
+        leftDiscount = new HashMap<String, Integer>() {
+            {
+                put("wood", 2);
+                put("stone", 2);
+                put("aclay", 2);
+                put("ore", 2);
+                put("loom", 2);
+                put("papyrus", 2);
+                put("glass", 2);
+            }
+        };
+        rightDiscount = new HashMap<String, Integer>() {
+            {
+                put("wood", 2);
+                put("stone", 2);
+                put("aclay", 2);
+                put("ore", 2);
+                put("loom", 2);
+                put("papyrus", 2);
+                put("glass", 2);
+            }
+        };
+        
         bribery = false;
         scientist = false;
     }
+    
+    
+    public Boolean getBribery(){
+        return bribery;
+    }
 
+    public void setBribery(boolean bribery) {
+        this.bribery = bribery;
+    }
+    
+    public Boolean getScientist(){
+        return this.scientist;
+    }
+
+    public void setScientist(boolean scientist) {
+        this.scientist = scientist;
+    }
+    
     public List<String> getSourcesToCalculate() {
         return sourcesToCalculate;
     }
@@ -187,10 +223,10 @@ public class WonderBoard {
         this.sourcesToCalculate = sourcesToCalculate;
     }
 
-    public WonderBoard(String leftNeighbor, String rightNeighbor, HashMap<String,Integer> sources,
-                       Cost[] stageCosts, int currentStage, int diceValue, String name, HashMap<String,Card> builtCards,
-                       CardAction lockedAction, HashMap<String,Integer> leftDiscount, HashMap<String,Integer> rightDiscount,
-                       int militaryTokens, int defeatTokens) {
+    public WonderBoard(String leftNeighbor, String rightNeighbor, HashMap<String, Integer> sources,
+            Cost[] stageCosts, int currentStage, int diceValue, String name, HashMap<String, Card> builtCards,
+            CardAction lockedAction, HashMap<String, Integer> leftDiscount, HashMap<String, Integer> rightDiscount,
+            int militaryTokens, int defeatTokens) {
         this.leftNeighbor = leftNeighbor;
         this.rightNeighbor = rightNeighbor;
         this.sources = sources;
@@ -206,22 +242,6 @@ public class WonderBoard {
         this.defeatTokens = defeatTokens;
     }
 
-    public Boolean getBribery(){
-        return bribery;
-    }
-
-    public void setBribery(boolean bribery) {
-        this.bribery = bribery;
-    }
-
-    public Boolean getScientist(){
-        return this.scientist;
-    }
-
-    public void setScientist(boolean scientist) {
-        this.scientist = scientist;
-    }
-
     public String getWonderName() {
         return wonderName;
     }
@@ -230,8 +250,6 @@ public class WonderBoard {
         this.wonderName = wonderName;
     }
 
-   
-    
     public String getLeftNeighbor() {
         return this.leftNeighbor;
     }
@@ -248,11 +266,11 @@ public class WonderBoard {
         this.rightNeighbor = rightNeighbor;
     }
 
-    public HashMap<String,Integer> getSources() {
+    public HashMap<String, Integer> getSources() {
         return this.sources;
     }
 
-    public void setSources(HashMap<String,Integer> sources) {
+    public void setSources(HashMap<String, Integer> sources) {
         this.sources = sources;
     }
 
@@ -288,11 +306,11 @@ public class WonderBoard {
         this.name = name;
     }
 
-    public HashMap<String,Card> getBuiltCards() {
+    public HashMap<String, Card> getBuiltCards() {
         return this.builtCards;
     }
 
-    public void setBuiltCards(HashMap<String,Card> builtCards) {
+    public void setBuiltCards(HashMap<String, Card> builtCards) {
         this.builtCards = builtCards;
     }
 
@@ -304,19 +322,19 @@ public class WonderBoard {
         this.lockedAction = lockedAction;
     }
 
-    public HashMap<String,Integer> getLeftDiscount() {
+    public HashMap<String, Integer> getLeftDiscount() {
         return this.leftDiscount;
     }
 
-    public void setLeftDiscount(HashMap<String,Integer> leftDiscount) {
+    public void setLeftDiscount(HashMap<String, Integer> leftDiscount) {
         this.leftDiscount = leftDiscount;
     }
 
-    public HashMap<String,Integer> getRightDiscount() {
+    public HashMap<String, Integer> getRightDiscount() {
         return this.rightDiscount;
     }
 
-    public void setRightDiscount(HashMap<String,Integer> rightDiscount) {
+    public void setRightDiscount(HashMap<String, Integer> rightDiscount) {
         this.rightDiscount = rightDiscount;
     }
 
@@ -352,7 +370,7 @@ public class WonderBoard {
         this.orSources = orSources;
     }
 
-    public WonderBoard sources(HashMap<String,Integer> sources) {
+    public WonderBoard sources(HashMap<String, Integer> sources) {
         this.sources = sources;
         return this;
     }
@@ -377,7 +395,7 @@ public class WonderBoard {
         return this;
     }
 
-    public WonderBoard builtCards(HashMap<String,Card> builtCards) {
+    public WonderBoard builtCards(HashMap<String, Card> builtCards) {
         this.builtCards = builtCards;
         return this;
     }
@@ -387,12 +405,12 @@ public class WonderBoard {
         return this;
     }
 
-    public WonderBoard leftDiscount(HashMap<String,Integer> leftDiscount) {
+    public WonderBoard leftDiscount(HashMap<String, Integer> leftDiscount) {
         this.leftDiscount = leftDiscount;
         return this;
     }
 
-    public WonderBoard rightDiscount(HashMap<String,Integer> rightDiscount) {
+    public WonderBoard rightDiscount(HashMap<String, Integer> rightDiscount) {
         this.rightDiscount = rightDiscount;
         return this;
     }
@@ -414,8 +432,9 @@ public class WonderBoard {
 
     @Override
     public boolean equals(Object o) {
-        if (o == this)
+        if (o == this) {
             return true;
+        }
         if (!(o instanceof WonderBoard)) {
             return false;
         }
@@ -430,23 +449,398 @@ public class WonderBoard {
 
     @Override
     public String toString() {
-        return "{" +
-            " leftNeighbor='" + getLeftNeighbor() + "'" +
-            ", rightNeighbor='" + getRightNeighbor() + "'" +
-            ", sources='" + getSources() + "'" +
-            ", stageCosts='" + getStageCosts() + "'" +
-            ", currentStage='" + getCurrentStage() + "'" +
-            ", diceValue='" + getDiceValue() + "'" +
-            ", name='" + getName() + "'" +
-            ", builtCards='" + getBuiltCards() + "'" +
-            ", lockedAction='" + getLockedAction() + "'" +
-            ", leftDiscount='" + getLeftDiscount() + "'" +
-            ", rightDiscount='" + getRightDiscount() + "'" +
-            ", militaryTokens='" + getMilitaryTokens() + "'" +
-            ", defeatTokens='" + getDefeatTokens() + "'" +
-            ", handNo='" + getHandNo() + "'" +
-            "}";
+        return "{"
+                + " leftNeighbor='" + getLeftNeighbor() + "'"
+                + ", rightNeighbor='" + getRightNeighbor() + "'"
+                + ", sources='" + getSources() + "'"
+                + ", stageCosts='" + getStageCosts() + "'"
+                + ", currentStage='" + getCurrentStage() + "'"
+                + ", diceValue='" + getDiceValue() + "'"
+                + ", name='" + getName() + "'"
+                + ", builtCards='" + getBuiltCards() + "'"
+                + ", lockedAction='" + getLockedAction() + "'"
+                + ", leftDiscount='" + getLeftDiscount() + "'"
+                + ", rightDiscount='" + getRightDiscount() + "'"
+                + ", militaryTokens='" + getMilitaryTokens() + "'"
+                + ", defeatTokens='" + getDefeatTokens() + "'"
+                + ", handNo='" + getHandNo() + "'"
+                + "}";
     }
+
+    public void buildStage(int stageNo) {
+
+        if (this.getWonderName().equals("TheTempleofArtemisinEphesus")) {
+            if (stageNo == 1) {
+                ListIterator it = this.getSourcesToCalculate().listIterator();
+                while (it.hasNext()) {
+                    String next = (String) it.next();
+                    //for(Map.Entry<String, Integer> entry : getBenefits().entrySet()) {
+                    //if(entry.getValue() != 0) {
+                    next = addSource("victory point", 3, next);
+                    //}
+                    //}
+                    it.set(next);
+                }
+                addToNormalSource("victory point", 3, this);
+            }
+            if (stageNo == 2) {
+                ListIterator it = this.getSourcesToCalculate().listIterator();
+                while (it.hasNext()) {
+                    String next = (String) it.next();
+                    //for(Map.Entry<String, Integer> entry : getBenefits().entrySet()) {
+                    //if(entry.getValue() != 0) {
+                    next = addSource("coin", 9, next);
+                    //}
+                    //}
+                    it.set(next);
+                }
+                addToNormalSource("coin", 9, this);
+            }
+            if (stageNo == 3) {
+                ListIterator it = this.getSourcesToCalculate().listIterator();
+                while (it.hasNext()) {
+                    String next = (String) it.next();
+                    //for(Map.Entry<String, Integer> entry : getBenefits().entrySet()) {
+                    //if(entry.getValue() != 0) {
+                    next = addSource("victory point", 7, next);
+                    //}
+                    //}
+                    it.set(next);
+                }
+                addToNormalSource("victory point", 7, this);
+            }
+            this.setCurrentStage(stageNo);
+        }
+        if (this.getWonderName().equals("TheStatueofZeusinOlympia")) {
+            if (stageNo == 1) {
+                ListIterator it = this.getSourcesToCalculate().listIterator();
+                while (it.hasNext()) {
+                    String next = (String) it.next();
+                    //for(Map.Entry<String, Integer> entry : getBenefits().entrySet()) {
+                    //if(entry.getValue() != 0) {
+                    next = addSource("victory point", 3, next);
+                    //}
+                    //}
+                    it.set(next);
+                }
+                addToNormalSource("victory point", 3, this);
+            }
+            if (stageNo == 2) {
+                ListIterator it = this.getSourcesToCalculate().listIterator();
+                while (it.hasNext()) {
+                    String next = (String) it.next();
+                    //for(Map.Entry<String, Integer> entry : getBenefits().entrySet()) {
+                    //if(entry.getValue() != 0) {
+                    next = addSource("victory point", 5, next);
+                    //}
+                    //}
+                    it.set(next);
+                }
+                addToNormalSource("victory point", 5, this);
+            }
+            if (stageNo == 3) {
+                ListIterator it = this.getSourcesToCalculate().listIterator();
+                while (it.hasNext()) {
+                    String next = (String) it.next();
+                    //for(Map.Entry<String, Integer> entry : getBenefits().entrySet()) {
+                    //if(entry.getValue() != 0) {
+                    next = addSource("victory point", 7, next);
+                    //}
+                    //}
+                    it.set(next);
+                }
+                addToNormalSource("victory point", 7, this);
+            }
+            this.setCurrentStage(stageNo);
+        }
+        if (this.getWonderName().equals("ThePyramidsofGiza")) {
+            if (stageNo == 1) {
+                ListIterator it = this.getSourcesToCalculate().listIterator();
+                while (it.hasNext()) {
+                    String next = (String) it.next();
+                    //for(Map.Entry<String, Integer> entry : getBenefits().entrySet()) {
+                    //if(entry.getValue() != 0) {
+                    next = addSource("victory point", 3, next);
+                    //}
+                    //}
+                    it.set(next);
+                }
+                addToNormalSource("victory point", 3, this);
+            }
+            if (stageNo == 2) {
+                ListIterator it = this.getSourcesToCalculate().listIterator();
+                while (it.hasNext()) {
+                    String next = (String) it.next();
+                    //for(Map.Entry<String, Integer> entry : getBenefits().entrySet()) {
+                    //if(entry.getValue() != 0) {
+                    next = addSource("victory point", 5, next);
+                    //}
+                    //}
+                    it.set(next);
+                }
+                addToNormalSource("victory point", 5, this);
+            }
+            if (stageNo == 3) {
+                ListIterator it = this.getSourcesToCalculate().listIterator();
+                while (it.hasNext()) {
+                    String next = (String) it.next();
+                    //for(Map.Entry<String, Integer> entry : getBenefits().entrySet()) {
+                    //if(entry.getValue() != 0) {
+                    next = addSource("victory point", 7, next);
+                    //}
+                    //}
+                    it.set(next);
+                }
+                addToNormalSource("victory point", 7, this);
+            }
+            this.setCurrentStage(stageNo);
+        }
+        if (this.getWonderName().equals("TheMausoleumofHalicarnassus")) {
+            if (stageNo == 1) {
+                ListIterator it = this.getSourcesToCalculate().listIterator();
+                while (it.hasNext()) {
+                    String next = (String) it.next();
+                    //for(Map.Entry<String, Integer> entry : getBenefits().entrySet()) {
+                    //if(entry.getValue() != 0) {
+                    next = addSource("victory point", 3, next);
+                    //}
+                    //}
+                    it.set(next);
+                }
+                addToNormalSource("victory point", 3, this);
+            }
+            if (stageNo == 2) {
+                ListIterator it = this.getSourcesToCalculate().listIterator();
+                while (it.hasNext()) {
+                    String next = (String) it.next();
+                    //for(Map.Entry<String, Integer> entry : getBenefits().entrySet()) {
+                    //if(entry.getValue() != 0) {
+                    next = addSource("victory point", 5, next);
+                    //}
+                    //}
+                    it.set(next);
+                }
+                addToNormalSource("victory point", 5, this);
+            }
+            if (stageNo == 3) {
+                ListIterator it = this.getSourcesToCalculate().listIterator();
+                while (it.hasNext()) {
+                    String next = (String) it.next();
+                    //for(Map.Entry<String, Integer> entry : getBenefits().entrySet()) {
+                    //if(entry.getValue() != 0) {
+                    next = addSource("victory point", 7, next);
+                    //}
+                    //}
+                    it.set(next);
+                }
+                addToNormalSource("victory point", 7, this);
+            }
+            this.setCurrentStage(stageNo);
+        }
+        if (this.getWonderName().equals("TheLighthouseofAlexandria")) {
+            if (stageNo == 1) {
+                ListIterator it = this.getSourcesToCalculate().listIterator();
+                while (it.hasNext()) {
+                    String next = (String) it.next();
+                    //for(Map.Entry<String, Integer> entry : getBenefits().entrySet()) {
+                    //if(entry.getValue() != 0) {
+                    next = addSource("victory point", 3, next);
+                    //}
+                    //}
+                    it.set(next);
+                }
+                addToNormalSource("victory point", 3, this);
+            }
+            if (stageNo == 2) {
+                ListIterator it = this.getSourcesToCalculate().listIterator();
+                while (it.hasNext()) {
+                    String next = (String) it.next();
+                    //for(Map.Entry<String, Integer> entry : getBenefits().entrySet()) {
+                    //if(entry.getValue() != 0) {
+                    next = addSource("victory point", 5, next);
+                    //}
+                    //}
+                    it.set(next);
+                }
+                addToNormalSource("victory point", 5, this);
+            }
+            if (stageNo == 3) {
+                ListIterator it = this.getSourcesToCalculate().listIterator();
+                while (it.hasNext()) {
+                    String next = (String) it.next();
+                    //for(Map.Entry<String, Integer> entry : getBenefits().entrySet()) {
+                    //if(entry.getValue() != 0) {
+                    next = addSource("victory point", 7, next);
+                    //}
+                    //}
+                    it.set(next);
+                }
+                addToNormalSource("victory point", 7, this);
+            }
+            this.setCurrentStage(stageNo);
+        }
+        if (this.getWonderName().equals("TheHangingGardensofBabylon")) {
+            if (stageNo == 1) {
+                ListIterator it = this.getSourcesToCalculate().listIterator();
+                while (it.hasNext()) {
+                    String next = (String) it.next();
+                    //for(Map.Entry<String, Integer> entry : getBenefits().entrySet()) {
+                    //if(entry.getValue() != 0) {
+                    next = addSource("victory point", 3, next);
+                    //}
+                    //}
+                    it.set(next);
+                }
+                addToNormalSource("victory point", 3, this);
+            }
+            if (stageNo == 2) {
+                ListIterator it = this.getSourcesToCalculate().listIterator();
+                while (it.hasNext()) {
+                    String next = (String) it.next();
+                    //for(Map.Entry<String, Integer> entry : getBenefits().entrySet()) {
+                    //if(entry.getValue() != 0) {
+                    next = addSource("victory point", 5, next);
+                    //}
+                    //}
+                    it.set(next);
+                }
+                addToNormalSource("victory point", 5, this);
+            }
+            if (stageNo == 3) {
+                ListIterator it = this.getSourcesToCalculate().listIterator();
+                while (it.hasNext()) {
+                    String next = (String) it.next();
+                    //for(Map.Entry<String, Integer> entry : getBenefits().entrySet()) {
+                    //if(entry.getValue() != 0) {
+                    next = addSource("victory point", 7, next);
+                    //}
+                    //}
+                    it.set(next);
+                }
+                addToNormalSource("victory point", 7, this);
+            }
+            this.setCurrentStage(stageNo);
+        }
+        if (this.getWonderName().equals("TheColossusofRhodes")) {
+            if (stageNo == 1) {
+//                List<String> sourcesToCalculate = this.getSourcesToCalculate();
+                ListIterator it = this.getSourcesToCalculate().listIterator();
+                while (it.hasNext()) {
+                    String next = (String) it.next();
+                    //for(Map.Entry<String, Integer> entry : getBenefits().entrySet()) {
+                    //if(entry.getValue() != 0) {
+                    next = addSource("victory point", 3, next);
+                    //}
+                    //}
+                    it.set(next);
+                }
+                addToNormalSource("victory point", 3, this);
+
+            }
+            if (stageNo == 2) {
+                ListIterator it = this.getSourcesToCalculate().listIterator();
+                while (it.hasNext()) {
+                    String next = (String) it.next();
+                    //for(Map.Entry<String, Integer> entry : getBenefits().entrySet()) {
+                    //if(entry.getValue() != 0) {
+                    next = addSource("zshield", 2, next);
+                    //}
+                    //}
+                    it.set(next);
+                }
+                addToNormalSource("zshield", 2, this);
+            }
+            if (stageNo == 3) {
+                ListIterator it = this.getSourcesToCalculate().listIterator();
+                while (it.hasNext()) {
+                    String next = (String) it.next();
+                    //for(Map.Entry<String, Integer> entry : getBenefits().entrySet()) {
+                    //if(entry.getValue() != 0) {
+                    next = addSource("victory point", 7, next);
+                    //}
+                    //}
+                    it.set(next);
+                }
+                addToNormalSource("victory point", 7, this);
+            }
+            this.setCurrentStage(stageNo);
+        }
+
+    }
+
+    private String addSource(String sourceType, int amount, String sourceToAdd) {
+        for (int i = 0; i < amount; i++) {
+            sourceToAdd += sourceType.charAt(0);
+        }
+        char tempArray[] = sourceToAdd.toCharArray();
+        Arrays.sort(tempArray);
+        return new String(tempArray);
+    }
+
+    private void addToNormalSource(String source, int value, WonderBoard wb) {
+        //for (Map.Entry<String, Integer> entry : getBenefits().entrySet()) {
+        //if (entry.getValue() != 0) {
+        wb.getSources().put(source, wb.getSources().get(source) + value);
+        //}
+        //}
+    }
+
+    private HashMap<String, Integer> deepCopyMap(HashMap<String, Integer> toCopy) {
+        HashMap<String, Integer> result = new HashMap<String, Integer>();
+        for (Map.Entry<String, Integer> object : toCopy.entrySet()) {
+            result.put(object.getKey(), object.getValue());
+        }
+        return result;
+    }
+
+    private HashMap<String, Boolean> deepCopyMapBoolean(HashMap<String, Boolean> toCopy) {
+        HashMap<String, Boolean> result = new HashMap<String, Boolean>();
+        for (Map.Entry<String, Boolean> object : toCopy.entrySet()) {
+            result.put(object.getKey(), object.getValue());
+        }
+        return result;
+    }
+
+    private List<String> deepCopyList(List<String> toCopy) {
+        List<String> result = new LinkedList<String>();
+        Iterator it = toCopy.listIterator();
+
+        while (it.hasNext()) {
+            result.add((String) it.next());
+        }
+        return result;
+    }
+
+    private Cost[] deepCopyCostArray(Cost[] toCopy) throws CloneNotSupportedException {
+        if (toCopy != null) {
+            Cost[] result = new Cost[toCopy.length];
+            for (int i = 0; i < result.length; i++) {
+                result[i] = toCopy[i].clone();
+            }
+
+            return result;
+        } else {
+            return null;
+        }
+    }
+
+    public WonderBoard copy() throws CloneNotSupportedException {
+        WonderBoard wb = new WonderBoard(this.name, this.handNo, this.wonderName);
+        wb.setLeftDiscount(deepCopyMap(leftDiscount));
+        wb.setRightDiscount(deepCopyMap(rightDiscount));
+        wb.setOrSources(deepCopyMapBoolean(orSources));
+        wb.setSources(deepCopyMap(sources));
+        wb.setStageCosts(deepCopyCostArray(stageCosts));
+        wb.setSourcesToCalculate(deepCopyList(sourcesToCalculate));
+        wb.setCurrentStage(currentStage);
+        wb.setDiceValue(diceValue);
+        wb.setDefeatTokens(defeatTokens);
+        wb.setMilitaryTokens(militaryTokens);
+        wb.setHandNo(handNo);
+
+        return wb;
+    }
+    
     public void refactorStrings()
     {
         String norm ="";

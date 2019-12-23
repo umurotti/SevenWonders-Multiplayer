@@ -43,7 +43,7 @@ public class SWhouseServices {
     //@Produces("application/json")
     @Produces("text/plain")
     @Path("startTableService")
-    public String startTableService(@QueryParam("tableID") String tableID ) throws IOException {
+    public String startTableService(@QueryParam("tableID") String tableID ) throws IOException, CloneNotSupportedException {
         if (House.getInstance().startTable(tableID) ) {
             return "başarılı";
         } else {

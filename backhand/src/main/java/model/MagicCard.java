@@ -1,11 +1,20 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package model;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ *
+ * @author umur
+ */
 public class MagicCard extends Card {
-    private final int effect; //
+        private int effect; //
 
     public MagicCard(String name, String color, Cost cost, int minNoOfPlayers, List<String> freeBuildings, int effect) {
         super(name, color, cost, minNoOfPlayers, freeBuildings);
@@ -13,7 +22,7 @@ public class MagicCard extends Card {
     }
 
     @Override
-    void play(WonderBoard wb) {
+    void play(WonderBoard wb, String selection, HashMap<String, WonderBoard> wonderboards ) {
         // TODO
         switch(effect){
             case 1:                 // Corrupt neighbor armies. Win every fight, pay the difference in shield as coins.
@@ -82,7 +91,7 @@ public class MagicCard extends Card {
                 break;
             case 7:                 // en yukse, en dusuk
             //find biggest
-                String sourceName1; 
+                String sourceName1 = ""; 
                 Integer max = -1;
 
                 Integer min =wb.getSources().get("aclay");
@@ -106,11 +115,11 @@ public class MagicCard extends Card {
                 {
                         if(entry.getKey().equals(sourceName1) )
                         {
-                            entry.replace(sourceName1,min);
+                            hold.replace(sourceName1,min);
                         }    
                         if(entry.getKey().equals(sourceName2))
                         {
-                            entry.replace(sourceName2,max);    
+                            hold.replace(sourceName2,max);    
                         }
                 }
                 wb.setSources(hold);
@@ -149,4 +158,10 @@ public class MagicCard extends Card {
     public String toString() {
         return "MagicCard [effect=" + effect + "]";
     }
+
+    public void setEffect(int effect) {
+        this.effect = effect;
+    }
+    
+    
 }

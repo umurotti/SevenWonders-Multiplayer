@@ -10,6 +10,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import io.swagger.annotations.Api;
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.List;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
@@ -88,6 +89,40 @@ public class SWtableServices {
 
     }
 
+    @GET
+    @Produces("text/plain")
+    @Path("addToRollDiceService")
+    public String addToRollDiceService(@QueryParam("tableID") String tableID, @QueryParam("playerID") String playerID) throws IOException {
+        if(House.getInstance().getTables().get(tableID).addToDiceRollers(playerID))
+            return "başarılı";
+        return "başarısız";
+        
+    }
+    
+    @GET
+    @Produces("text/plain")
+    @Path("getRollDiceMap")
+    public String getRollDiceMap(@QueryParam("tableID") String tableID) throws IOException {
+        HashMap<String, String> result = House.getInstance().getTables().get(tableID).getDiceRollersMap();
+        if(result != null) {
+            return parseObjectToJSON(result);
+        } else {
+            return "rollDiceEmpty";
+        }
+    }
+    
+    @GET
+    @Produces("text/plain")
+    @Path("getRollDiceResult")
+    public String getRollDiceResult(@QueryParam("tableID") String tableID) throws IOException {
+        List<WonderBoard> tmpRollers = House.getInstance().getTables().get(tableID).getDiceRollers();
+        if(tmpRollers != null) {
+            return parseObjectToJSON(House.getInstance().getTables().get(tableID).getDiceResultMap());
+        } else {
+            return "başarısız, rollDiceListNull";
+        }
+    }
+    
     private String parseObjectToJSON(Object toParse) throws JsonProcessingException {
         ObjectMapper mapper = new ObjectMapper();
         return mapper.writeValueAsString(toParse);

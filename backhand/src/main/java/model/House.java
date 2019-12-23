@@ -30,7 +30,7 @@ class ConnectionAccepter implements Runnable {
 public class House {
     private final String AGE_ONE = "Age1Cards";
     private final String AGE_TWO = "Age2Cards";
-    private final String AGE_THREE = "AGE_THREE";
+    private final String AGE_THREE = "Age3Cards";
     private final String MAGIC_CARD = "MagicCards";
     
     private static House obj = null;
@@ -40,8 +40,11 @@ public class House {
     private Map<String, Table> waitingTables;
     private Map<String, Table> inplayTables;
     private Map<String, Deck> decks;
-    
+    //
+    private HashMap<String, WonderBoard> wonderboardObjects;
+    //
     private DeckGenerator deckFactory;
+    private WonderBoardGenerator wonderboardFactory;
     
     private House() throws IOException {
         tables = new HashMap<>();
@@ -49,11 +52,14 @@ public class House {
         inplayTables = new HashMap<>();
         decks = new HashMap<>();
         deckFactory = new DeckGenerator();
+        wonderboardFactory = new WonderBoardGenerator();
         
         decks.put(AGE_ONE, deckFactory.generateDeck(AGE_ONE));
         decks.put(AGE_TWO, deckFactory.generateDeck(AGE_TWO));
-//        decks.put(AGE_THREE, deckFactory.generateDeck(AGE_THREE));
-
+        decks.put(AGE_THREE, deckFactory.generateDeck(AGE_THREE));
+        decks.put(MAGIC_CARD, deckFactory.generateDeck(MAGIC_CARD));
+        
+        wonderboardObjects = wonderboardFactory.generateWonderBoards();
 //        SimpleCard x = new SimpleCard(true);
 //        DiscountCard y = new DiscountCard("asdf", "", null, 0, null, "", "");
 //        CumulativeCard z = new CumulativeCard("", "", null, 0, null, "", null, 0, 0);
@@ -66,6 +72,8 @@ public class House {
 //        
 //        System.out.println("CumulativeCard:");
 //        System.out.println(parseJSON(z));
+        
+        
         
         
         Thread acceptor = new Thread(new ConnectionAccepter());
@@ -93,7 +101,7 @@ public class House {
     
     public boolean createTable(String ownerID, String tableID) {
         if(!tables.containsKey(tableID)) {
-            Table table = new Table(tableID, ownerID, decks.get(AGE_ONE), decks.get(AGE_TWO), decks.get(AGE_THREE), decks.get(MAGIC_CARD) );
+            Table table = new Table(tableID, ownerID, decks.get(AGE_ONE), decks.get(AGE_TWO), decks.get(AGE_THREE), decks.get(MAGIC_CARD), wonderboardObjects );
             tables.put(tableID, table);
             waitingTables.put(tableID, table);
             return true;
@@ -112,7 +120,7 @@ public class House {
         return true;
     }
     
-    public boolean startTable(String tableID) {
+    public boolean startTable(String tableID) throws CloneNotSupportedException {
         tables.get(tableID).startTable();
         inplayTables.put(tableID, tables.get(tableID));
         waitingTables.remove(tableID);

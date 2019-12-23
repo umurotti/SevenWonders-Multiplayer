@@ -5,8 +5,10 @@
  */
 package model;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
+import java.util.ListIterator;
 import java.util.Set;
 import java.util.function.IntBinaryOperator;
 
@@ -32,6 +34,9 @@ public class CumulativeCard extends Card {
 
     @Override
     void play(WonderBoard wb, String selection, HashMap<String, WonderBoard> wonderboards) {
+        if(selection.equals("0")) {
+            addThreeCoins(wb);
+        } else {
         int amount = 0;
         for (String dependency : dependencies) {
             if (dependency.equals("stage")) {
@@ -111,11 +116,31 @@ public class CumulativeCard extends Card {
             //return true;
         }
         sources.replace("coin", sources.get("coin") + (amount * coin));
-        sources.replace("victoryPoint", sources.get("victoryPoint") + (amount * vPoint));
+        sources.replace("victory point", sources.get("victory point") + (amount * vPoint));
         wb.setSources(sources);
         //return true;
+        }
     }
-
+    
+    private void addThreeCoins(WonderBoard wb) {
+        List<String> sourcesToCalculate = wb.getSourcesToCalculate();
+        ListIterator it = wb.getSourcesToCalculate().listIterator();
+        while (it.hasNext()) {
+            String next = (String) it.next();
+            next = addSource("coin", 3, next);
+            it.set(next);
+        }
+    }
+    
+    private String addSource(String sourceType, int amount, String sourceToAdd) {
+        for(int i = 0; i < amount; i++) {
+            sourceToAdd += sourceType.charAt(0);
+        }
+        char tempArray[] = sourceToAdd.toCharArray();
+        Arrays.sort(tempArray);
+        return new String(tempArray);
+    }
+    
     private WonderBoard getLeftNeighbor(WonderBoard wb, HashMap<String, WonderBoard> wonderboards) {
         return wonderboards.get(wb.getLeftNeighbor());
     }

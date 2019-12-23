@@ -16,7 +16,7 @@ public class HandContainer {
         if(hands != null) {
             for(int a =0; a< noOfPlayers; a++)
             {
-                List<Card> hold  = Arrays.asList(hands[a]);
+                List<Card> hold = Arrays.asList(hands[a]);
                 container.put(names.get(a),hold);
             }
         }

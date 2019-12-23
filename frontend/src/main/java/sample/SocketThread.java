@@ -69,12 +69,11 @@ public class SocketThread extends Task<Void> {
         final in_game_controller controller = (in_game_controller) Main.map.get("controller");
         int temp2 = 0;
         System.out.println("HEEEEEEEEEEEEEEEEEEEEEEEEE");
-        Socket socket = new Socket("192.168.1.32", 7008);
             final int count = temp1;
             try {
                 while (true){
                     System.out.println("5555");
-                    //Socket socket = new Socket("192.168.1.32", 7008);
+                    Socket socket = new Socket("192.168.1.32", 7008);
                     String userName = Main.wonderID;
                     String tableId = Main.tableID;
                     System.out.println("Thread is about to start 1");
@@ -116,8 +115,8 @@ public class SocketThread extends Task<Void> {
                                 }else if(messageString.equals("AGE_OVER")){
                                     System.out.println("ageovera girdiiiiiiiiiiiiiiiiiiiiiiiiiii");
                                     controller.ageOver(1);
-                                }else if(messageString.equals("DICE_ROLL_OVER")){
-                                    controller.diceGameEnds();
+                                }else if(messageString.equals("DICE_ROLL")){
+
                                 }else if(messageString.equals("TABLE_START")){
                                     wait_contoller abo = (wait_contoller) Main.map.get("wait_controller");
                                     abo.refreshPressed();

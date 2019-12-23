@@ -6,12 +6,13 @@
 package model;
 
 import java.util.HashMap;
+import java.util.Map;
 
 /**
  *
  * @author umur
  */
-public class Cost {
+public class Cost implements Cloneable {
         private HashMap<String,Integer> cost;
 
     public Cost(HashMap<String, Integer> cost) {
@@ -33,5 +34,18 @@ public class Cost {
     public String toString() {
         return "Cost{" + "cost=" + cost + '}';
     }
+
+    @Override
+    protected Cost clone() throws CloneNotSupportedException {
+        Cost copy = new Cost();
+        HashMap<String, Integer> toPut = new HashMap<>();
+        for(Map.Entry<String, Integer> entry : this.cost.entrySet()) {
+            toPut.put(entry.getKey(), entry.getValue());
+        }
+        copy.setCost(cost);
+        return copy;
+    }
+    
+    
 
 }
