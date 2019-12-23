@@ -946,7 +946,7 @@ public class in_game_controller implements Initializable  {
 
         }
 
-        /*for(int i = 0; i<temp;i++){
+        for(int i = 0; i<temp;i++){
             if(wonderBoards.get(wonders2[i]).getCurrentStage()==1){
                 dice.getScene().lookup("#wonder_" + i +"_stage_0").setEffect(null);
 
@@ -961,7 +961,7 @@ public class in_game_controller implements Initializable  {
 
 
 
-        }/*
+        }
 
 
 
