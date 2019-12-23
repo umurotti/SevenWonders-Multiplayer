@@ -1,0 +1,109 @@
+.progress-indicator .percentage {
+    -fx-fill:null;
+}
+.progress-indicator  {
+    -fx-padding: 0 0 -16 0;
+}
+#sample_grid{
+    -fx-background-image: url("/backgrounds/main_background.jpg");
+    -fx-background-size: cover;
+}
+#credits_grid{
+    -fx-background-image: url("/backgrounds/main_background.jpg");
+    -fx-background-size: cover;
+}
+#how_to_play_grid{
+    -fx-background-image: url("/backgrounds/main_background.jpg");
+    -fx-background-size: cover;
+}
+#dice{
+    -fx-image: url("/dice.jpg");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+}
+#settings_screen_grid{
+    -fx-background-image: url("/backgrounds/main_background.jpg");
+    -fx-background-size: cover;
+}
+#my_wonder{
+    -fx-background-size: contain;
+}
+#left{
+    -fx-background-size: cover;
+}
+#right{
+    -fx-background-size: cover;
+}
+#wonder1{
+    -fx-background-size: cover;
+}
+#wonder2{
+    -fx-background-size: cover;
+}
+#wonder3{
+    -fx-background-size: cover;
+}
+#wonder4{
+    -fx-background-size: cover;
+}
+
+#start_game_grid{
+    -fx-background-image: url("/backgrounds/main_background.jpg");
+    -fx-background-size: cover;
+
+}
+#player_id_grid{
+    -fx-background-image: url("/backgrounds/main_background.jpg");
+    -fx-background-size: cover;
+
+}
+#play_game_grid{
+    -fx-background-image: url("/backgrounds/main_background.jpg");
+    -fx-background-size: cover;
+
+}
+#join_game_grid{
+    -fx-background-image: url("/backgrounds/main_background.jpg");
+    -fx-background-size: cover;
+
+}
+
+#creator_wait_grid{
+    -fx-background-image: url("/backgrounds/wait_screen_background.jpg");
+    -fx-background-size: cover;
+}
+#wait_grid{
+    -fx-background-image: url("/backgrounds/wait_screen_background.jpg");
+    -fx-background-size: cover;
+}
+
+#in_game_accordion{
+    -fx-background-image: url("/backgrounds/main_background.jpg");
+    -fx-background-size: cover;
+}
+#my_wonder_grid{
+    -fx-background-color: #DECDBE ;
+}
+#enemies_grid{
+    -fx-background-color: #DECDBE ;
+}
+
+
+.button {
+    -fx-background-radius: 50px 50px;
+    -fx-background-clip: padding-box;
+    -fx-background-color: #ffe1d1;
+}
+#light_theme_button {
+    -fx-text-fill: #008100;
+}
+#dark_theme_button {
+    -fx-text-fill: #008200;
+}
+#music_on_button {
+    -fx-text-fill: #008300;
+}
+#music_off_button{
+    -fx-text-fill: #008400;
+}
+
