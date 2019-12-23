@@ -33,11 +33,12 @@ public class creator_wait_controller {
         in_game_controller in_game_controller= (in_game_controller) Main.map.get("controller");
         HashMap<String,WonderBoard> wonderboard =  (HashMap<String, WonderBoard>) con.ConvertJson(Main.tableID);
         root =(Parent) Main.map.get("home");
-        in_game_controller.beginRefresh(wonderboard);
-       /* SocketThread socket = new SocketThread(in_game_controller);
+
+      /*  SocketThread socket = new SocketThread(in_game_controller);
         Thread thread = new Thread();
         thread.start();*/
         scene1.setRoot(root);
+        in_game_controller.beginRefresh(wonderboard,root);
 
     }
 }

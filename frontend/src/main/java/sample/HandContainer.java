@@ -24,4 +24,7 @@ public class HandContainer {
     public void setContainer(Map<String, List<Card>> container) {
         this.container = container;
     }
+    public String toString(){
+        return container.toString();
+    }
 }

@@ -1,7 +1,7 @@
 package sample;
 
 import com.sun.javafx.scene.traversal.ParentTraversalEngine;
-import com.sun.security.ntlm.Server;
+
 import javafx.animation.FadeTransition;
 import javafx.animation.RotateTransition;
 import javafx.animation.TranslateTransition;
@@ -88,7 +88,7 @@ public class Main extends Application {
         loaded = (Parent)a.load();
         final in_game_controller temp = a.getController();
         map.put("home", loaded);
-
+        map.put("loader", a);
 
         Task<HashMap> task = new Task<HashMap>() {
             @Override
