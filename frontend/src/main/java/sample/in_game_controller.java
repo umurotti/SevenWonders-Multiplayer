@@ -327,7 +327,9 @@ public class in_game_controller implements Initializable  {
 
     }
     public void playerEnteredDiceGame() throws Exception{
+        System.out.println("BURASI playerentereddicegame3" );
         HashMap<String,String> playersInGame = con.getRollDiceMap();
+        System.out.println("BURASI playerentereddicegame4" );
         dicePopOverRefresh(playersInGame);
     }
 
@@ -336,14 +338,16 @@ public class in_game_controller implements Initializable  {
         if(playersjoined == null){
             String wonderName = "#" + wonderBoards.get(Main.wonderID).getWonderName();
             ImageView wonderImage = (ImageView) (roll_dice.getScene().lookup(wonderName));
+            System.out.println("BURASI DICE POPOVER REFRESh NULL" + wonderName);
             wonderImage.setEffect(null);
+
         }else{
             for (Map.Entry<String, String> element : playersjoined.entrySet()) {
                 //String wonderName = wonderBoards.get(element.getKey()).getWonderName();
                 String wonderName = element.getValue();
                 wonderName = "#" + wonderName;
                 ImageView wonderImage = (ImageView) (roll_dice.getScene().lookup(wonderName));
-                //Effect colorAdjust = new ColorAdjust();
+                System.out.println("BURASI DICE POPOVER REFRESh" + wonderName);
                 wonderImage.setEffect(null);
             }
         }
@@ -368,7 +372,7 @@ public class in_game_controller implements Initializable  {
         Task<Void> task = new Task<Void>() {
             @Override
             protected Void call() throws Exception {
-                System.out.println("LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL");
+                System.out.println("PPPPPPPPPPPPPPPPPPPPPPPPPPPPPP");
 
                 try {
                     Thread.sleep(3000);
@@ -530,8 +534,6 @@ public class in_game_controller implements Initializable  {
         popOver.setContentNode(pane);
         ((ImageView)pane.lookup("#zoom_image")).setImage(((ImageView)event.getSource()).getImage());
         popOver.show((ImageView)event.getSource());
-
-
     }
     static PopOver popOver2;
     public void trade(MouseEvent event)throws Exception{
@@ -1497,15 +1499,15 @@ public class in_game_controller implements Initializable  {
         timerProgress.setProgress(0);
         timerProgress.setStyle(" -fx-progress-color: #68ba86");
         //update
-        timeline.setCycleCount(3);
+        timeline.setCycleCount(60);
         //timeline.setCycleCount(4);
         EventHandler eventHandler = new EventHandler() {
             public void handle(Event event) {
                 timeSeconds++;
                 timer.setText(timeSeconds.toString());
-                double d = (double)timeSeconds/3;
+                double d = (double)timeSeconds/60;
                 timerProgress.setProgress(d);
-                if(timeSeconds==3){
+                if(timeSeconds==60){
                     try{
                         if(played == false){
                             CardAction toSend = new CardAction(0,null,null,  handSort.get(0),Main.wonderID);
@@ -1515,9 +1517,9 @@ public class in_game_controller implements Initializable  {
                     }catch(Exception e){}
                     timeline.stop();
                 }
-                if(timeSeconds == 2){
+                if(timeSeconds == 45){
                     timerProgress.setStyle(" -fx-progress-color: #de7e2a");
-                }if(timeSeconds == 1){
+                }if(timeSeconds == 55){
                     timerProgress.setStyle(" -fx-progress-color: #db4332");
                 }
 
@@ -1598,7 +1600,7 @@ public class in_game_controller implements Initializable  {
             System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAA" + gridName.getId().substring(15));
         int noOfImage = 0;
         while(cardIterator.hasNext()){
-            System.out.println("LLLLLLLLLLLLLLLLLLLLLLLLLLLL" + gridName.getId().substring(15));
+            System.out.println("BBBBBBBBBBBBBBBBBBBBBBBB" + gridName.getId().substring(15));
             String nameOfImageView = "#structure_" + gridName.getId().substring(15) + "_" + noOfImage; //15 çünkü structure_0 derken 11 den başlarsan 0 ı alırsın
             Map.Entry mapElement = (Map.Entry)cardIterator.next();
             Card marks = ((Card)mapElement.getValue());
@@ -1735,7 +1737,7 @@ public class in_game_controller implements Initializable  {
         Task<Void> task = new Task<Void>() {
             @Override
             protected Void call() throws Exception {
-                System.out.println("LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL");
+                System.out.println("CCCCCCCCCCCCCCCCCCCCCCCC");
 
                 try {
                     Thread.sleep(5000);

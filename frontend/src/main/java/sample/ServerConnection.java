@@ -6,7 +6,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.*;
 import org.json.JSONObject;
 
-import javax.xml.stream.Location;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.lang.reflect.Array;
@@ -65,7 +64,7 @@ public class ServerConnection {
     }
     public HashMap<String, String> getRollDiceResult() throws Exception{
        // String url = "http://139.179.103.139:8080/cs319deneme3/7wonders/SWtableServices/getRollDiceResult?tableID=";
-         String url = "http://192.168.1.32:8080/cs319deneme3/7wonders/SWtableServices/getHandsService?tableID=";
+         String url = "http://192.168.1.32:8080/cs319deneme3/7wonders/SWtableServices/getRollDiceResult?tableID=";
         //String url = "http://ec2-54-93-112-68.eu-central-1.compute.amazonaws.com:8080/cs319deneme3-1.0-SNAPSHOT/7wonders/SWtableServices/getHandsService?tableID=";
         url = url + Main.tableID;
         URL obj = new URL(url);
@@ -102,7 +101,7 @@ public class ServerConnection {
 
     public HashMap<String, String> getRollDiceMap() throws Exception{
         //String url = "http://139.179.103.139:8080/cs319deneme3/7wonders/SWtableServices/getRollDiceMap?tableID=";
-         String url = "http://192.168.1.32:8080/cs319deneme3/7wonders/SWtableServices/getHandsService?tableID=";
+         String url = "http://192.168.1.32:8080/cs319deneme3/7wonders/SWtableServices/getRollDiceMap?tableID=";
         //String url = "http://ec2-54-93-112-68.eu-central-1.compute.amazonaws.com:8080/cs319deneme3-1.0-SNAPSHOT/7wonders/SWtableServices/getHandsService?tableID=";
         url = url + Main.tableID;
         URL obj = new URL(url);
@@ -138,7 +137,7 @@ public class ServerConnection {
     }
     public HashMap<String,String> addToRollDiceService() throws Exception{
         //String url = "http://139.179.103.139:8080/cs319deneme3/7wonders/SWtableServices/addToRollDiceService?tableID=";
-        String url = "http://192.168.1.32:8080/cs319deneme3/7wonders/SWtableServices/getHandsService?tableID=";
+        String url = "http://192.168.1.32:8080/cs319deneme3/7wonders/SWtableServices/addToRollDiceService?tableID=";
         //String url = "http://ec2-54-93-112-68.eu-central-1.compute.amazonaws.com:8080/cs319deneme3-1.0-SNAPSHOT/7wonders/SWtableServices/getHandsService?tableID=";
         url = url + Main.tableID;
         url = url + "&playerID=" + Main.wonderID;
@@ -165,13 +164,7 @@ public class ServerConnection {
         System.out.println(response.toString());
         //Read JSON response and print
         HashMap<String, String> mapToSend = new HashMap<String, String>();
-        JSONObject myResponse = new JSONObject(  response.toString() );
-        Map<String,Object> o= myResponse.toMap();
-        for (Map.Entry<String, Object> entry : o.entrySet()) {
-            if(entry.getValue() instanceof String){
-                mapToSend.put(entry.getKey(), (String) entry.getValue());
-            }
-        }
+
         return mapToSend;
 
     }

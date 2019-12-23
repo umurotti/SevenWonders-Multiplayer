@@ -123,7 +123,9 @@ public class SocketThread extends Task<Void> {
                                     abo.refreshPressed();
 
                                 }else if(messageString.equals("DICE_ROLL_PLAYER_JOINED")){
+                                    System.out.println("BURASI playerentereddicegame1" );
                                     controller.playerEnteredDiceGame();
+                                    System.out.println("BURASI playerentereddicegame2" );
                                 }
                             } catch (Exception e) {
 
