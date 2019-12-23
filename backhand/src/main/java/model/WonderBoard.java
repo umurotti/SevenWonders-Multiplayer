@@ -5,7 +5,10 @@
  */
 package model;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Objects;
 
 
 /**
@@ -447,154 +450,6 @@ public class WonderBoard {
             ", handNo='" + getHandNo() + "'" +
             "}";
     }
-    public void refactorStrings()
-    {
-        String norm ="";
-        for(HashMap.Entry<String,Integer> entry: this.sources.entrySet())
-        {
-            int a = 0;
-            while(a < entry.getValue() )
-            {
-                norm += entry.getKey().charAt(0);
-                a++;
-            }
-        }
-        List<String> temp = new ArrayList<String>();
-        temp.add(norm);
-        //look if it has or
-        List<String> temp2;
-        for(HashMap.Entry<String,Boolean> entry: this.orSources.entrySet())
-        {
-
-            if(entry.getValue() == Boolean.TRUE)
-            {
-                temp2 = new ArrayList<String>();
-                if(entry.getKey().equals("clayORwood"))
-                {
-                    //add a and w to all of the strings in
-                    for( int a= 0; a < temp.size(); a++)
-                    {
-                       String res = temp.get(a);
-                       String res2 = temp.get(a);
-                       res2 = "w" + res2;
-                       res = "a" + res;
-                       temp2.add(res);
-                       temp2.add(res2);
-                    }
-                }
-                if(entry.getKey().equals("clayORstone"))
-                {
-                    for( int a= 0; a < temp.size(); a++)
-                    {
-                        String res = temp.get(a);
-                        String res2 = temp.get(a);
-                        res2 = "s" + res2;
-                        res = "a" + res;
-                        temp2.add(res);
-                        temp2.add(res2);
-                    }
-                }
-                if(entry.getKey().equals("clayORore"))
-                {
-                    for( int a= 0; a < temp.size(); a++)
-                    {
-                        String res = temp.get(a);
-                        String res2 = temp.get(a);
-                        res2 = "o" + res2;
-                        res = "a" + res;
-                        temp2.add(res);
-                        temp2.add(res2);
-                    }
-                }
-                if(entry.getKey().equals("stoneORwood"))
-                {
-                    for( int a= 0; a < temp.size(); a++)
-                    {
-                        String res = temp.get(a);
-                        String res2 = temp.get(a);
-                        res2 = "w" + res2;
-                        res = "s" + res;
-                        temp2.add(res);
-                        temp2.add(res2);
-                    }
-                }
-                if(entry.getKey().equals("oreORwood"))
-                {
-                    for( int a= 0; a < temp.size(); a++)
-                    {
-                        String res = temp.get(a);
-                        String res2 = temp.get(a);
-                        res2 = "w" + res2;
-                        res = "o" + res;
-                        temp2.add(res);
-                        temp2.add(res2);
-                    }
-                }
-                if(entry.getKey().equals("oreORstone"))
-                {
-                    for( int a= 0; a < temp.size(); a++)
-                    {
-                        String res = temp.get(a);
-                        String res2 = temp.get(a);
-                        res2 = "o" + res2;
-                        res = "s" + res;
-                        temp2.add(res);
-                        temp2.add(res2);
-                    }
-                }
-                if(entry.getKey().equals("glassORloomORpapyrus"))
-                {
-                    for( int a= 0; a < temp.size(); a++)
-                    {
-                        String res = temp.get(a);
-                        String res2 = temp.get(a);
-                        String res3 = temp.get(a);
-                        res2 = "l" + res2;
-                        res = "p" + res;
-                        res3 = "g" + res3;
-                        temp2.add(res);
-                        temp2.add(res2);
-                        temp2.add(res3);
-                    }
-                }
-                if(entry.getKey().equals("clayORoreORstoneORwood"))
-                {
-                    for( int a= 0; a < temp.size(); a++)
-                    {
-                        String res = temp.get(a);
-                        String res2 = temp.get(a);
-                        String res3 = temp.get(a);
-                        String res4 = temp.get(a);
-                        res2 = "a" + res2;
-                        res = "o" + res;
-                        res3 = "s" + res3;
-                        res4 = "w" + res4;
-                        temp2.add(res);
-                        temp2.add(res2);
-                        temp2.add(res3);
-                        temp2.add(res4);
-                    }
-                }
-                //delete the things in temp
-                //put temp 2 to temp
-                for(int a = 0; a < temp2.size(); a++)
-                {
-                    char tempAr[] = temp2.get(a).toCharArray();
-                    Arrays.sort(tempAr);
-                    String str = new String((tempAr));
-                    temp2.set(a,str);
-                }
-                temp.clear();;
-                for(int a = 0; a < temp2.size();a++)
-                {
-                    temp.add(a,temp2.get(a));
-                }
-
-            }
-        }
-
-        this.setSourcesToCalculate(temp);
-
-    }
+    
 
 }

@@ -9,15 +9,15 @@ public class Card implements Serializable {
     private Cost cost;
     private String color;
     private String name;
-    private List<String> freeBuildings;
+    private String freeBuildings;
     private int minPlayerNo;
 
 
-    public Card(Cost cost, String color, String name, List<String> freeBuildings, int minNoOfPlayer, HashMap<String, Integer> benefits) {
+    public Card(Cost cost, String color, String name, String freeBuildings, int minNoOfPlayer, HashMap<String, Integer> benefits) {
         this.cost = cost;
         this.color = color;
         this.name = name;
-        this.freeBuildings = freeBuildings;
+        this.freeBuildings = "";
         this.minPlayerNo = minNoOfPlayer;
     }
 
@@ -66,10 +66,10 @@ public class Card implements Serializable {
         this.name = name;
     }
 
-    public List<String> getFreeBuildings() {
+    public String getFreeBuildings() {
         return freeBuildings;
     }
-    public void setFreeBuildings(List<String> freeBuildings) {
+    public void setFreeBuildings(String freeBuildings) {
         this.freeBuildings = freeBuildings;
     }
 

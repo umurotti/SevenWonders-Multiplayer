@@ -1,5 +1,3 @@
-package model;
-
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -35,13 +33,12 @@ public class MagicCard extends Card {
                     sources3.replace("bcompass",0);
                     wb.setScientist(true);
                 }
-                if (random == 2) {           // bcompass
+                if (radom == 2) {           // bcompass
                     sources3.replace("gear",0);
                     sources3.replace("tablet",0);
                     wb.setScientist(true);
                 }
                 wb.setSources(sources3);
-                wb.refactorStrings();
                 break;
 
             case 4:                 // Lose a stage
@@ -63,7 +60,6 @@ public class MagicCard extends Card {
                     sources5.replace("coin",0);
                 }
                 wb.setSources(sources5);
-                wb.refactorStrings();
                 break;
             
             case 6:                 // double the manifactured materials, cut the raw materials in half.
@@ -78,21 +74,20 @@ public class MagicCard extends Card {
                 sources6.replace("aclay", sources6.get("clay")/2);
 
                 wb.setSources(sources6);
-                wb.refactorStrings();
                 break;
             case 7:                 // en yukse, en dusuk
             //find biggest
                 String sourceName1; 
-                Integer max = -1;
+                int max = -1;
 
-                Integer min =wb.getSources().get("aclay");
+                int min =wb.getSources().get("aclay");
                 String sourceName2 = "aclay";
                 for(Map.Entry<String,Integer> entry: wb.getSources().entrySet())
                     {
                     if(entry.getValue()> max )
                     {
                         max = entry.getValue();
-                        sourceName1 = entry.getKey();
+                        sourceName = entry.getKey();
                     }    
                     if(entry.getValue()< min)
                     {
@@ -102,7 +97,7 @@ public class MagicCard extends Card {
                 }     
                 //change sources
                 HashMap<String,Integer> hold = wb.getSources();
-                for(HashMap.Entry<String,Integer> entry: hold.entrySet())
+                for(Map.Entry<String,Integer> entry: hold.entrySet())
                 {
                         if(entry.getKey().equals(sourceName1) )
                         {
@@ -114,8 +109,7 @@ public class MagicCard extends Card {
                         }
                 }
                 wb.setSources(hold);
-                wb.refactorStrings();
-                break;
+ 
                 }
     }
 
