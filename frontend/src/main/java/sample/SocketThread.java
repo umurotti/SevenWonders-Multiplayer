@@ -74,7 +74,11 @@ public class SocketThread extends Task<Void> {
             try {
                 while (true){
                     System.out.println("5555");
+<<<<<<< HEAD
                    // Socket socket = new Socket("192.168.1.32", 7008);
+=======
+                    //Socket socket = new Socket("192.168.1.32", 7008);
+>>>>>>> a383175d2713f6b056f707b4466b214b2ecad5f4
                     String userName = Main.wonderID;
                     String tableId = Main.tableID;
                     System.out.println("Thread is about to start 1");
@@ -116,13 +120,14 @@ public class SocketThread extends Task<Void> {
                                 }else if(messageString.equals("AGE_OVER")){
                                     System.out.println("ageovera girdiiiiiiiiiiiiiiiiiiiiiiiiiii");
                                     controller.ageOver(1);
-                                }else if(messageString.equals("DICE_ROLL")){
-
+                                }else if(messageString.equals("DICE_ROLL_OVER")){
+                                    controller.diceGameEnds();
                                 }else if(messageString.equals("TABLE_START")){
                                     wait_contoller abo = (wait_contoller) Main.map.get("wait_controller");
                                     abo.refreshPressed();
 
-
+                                }else if(messageString.equals("DICE_ROLL_PLAYER_JOINED")){
+                                    controller.playerEnteredDiceGame();
                                 }
                             } catch (Exception e) {
 
