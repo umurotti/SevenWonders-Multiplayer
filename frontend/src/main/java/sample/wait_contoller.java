@@ -24,7 +24,7 @@ public class wait_contoller {
        /* SocketThread socket = new SocketThread(in_game_controller);
         Thread thread = new Thread();
         thread.start();*/
-        //in_game_controller.beginRefresh(wonderboard);
+        in_game_controller.beginRefresh(wonderboard);
 
     }
 }
