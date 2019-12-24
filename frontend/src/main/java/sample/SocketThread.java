@@ -69,7 +69,7 @@ public class SocketThread extends Task<Void> {
         final in_game_controller controller = (in_game_controller) Main.map.get("controller");
         int temp2 = 0;
         System.out.println("HEEEEEEEEEEEEEEEEEEEEEEEEE");
-        Socket socket = new Socket("192.168.1.32", 7008);
+        Socket socket = new Socket("54.93.112.68", 7008);
             final int count = temp1;
             try {
                 while (true){
@@ -95,7 +95,7 @@ public class SocketThread extends Task<Void> {
                     System.out.println("Thread is about to start  4 ");
 
                     if(socket.isClosed()){
-                        socket = new Socket("192.168.1.32", 7008);
+                        socket = new Socket("54.93.112.68", 7008);
 
                         System.out.println("Thread is about to start 1");
                         socket.getOutputStream().write(userName.getBytes("utf-8").length);

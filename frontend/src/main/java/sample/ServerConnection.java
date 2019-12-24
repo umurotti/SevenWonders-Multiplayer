@@ -33,8 +33,8 @@ public class ServerConnection {
     public JSONObject getWonder(String tableId)throws Exception{
 
         //String url = "http://139.179.103.139:8080/cs319deneme3/7wonders/SWtableServices/getWondersService?tableID=";
-        String url = "http://192.168.1.32:8080/cs319deneme3/7wonders/SWtableServices/getWondersService?tableID=";
-        //String url = "http://ec2-54-93-112-68.eu-central-1.compute.amazonaws.com:8080/cs319deneme3-1.0-SNAPSHOT/7wonders/SWtableServices/getWondersService?tableID=";
+        //String url = "http://192.168.1.32:8080/cs319deneme3/7wonders/SWtableServices/getWondersService?tableID=";
+        String url = "http://ec2-54-93-112-68.eu-central-1.compute.amazonaws.com:8080/cs319deneme3-1.0-SNAPSHOT/7wonders/SWtableServices/getWondersService?tableID=";
         url = url + tableId;
         URL obj = new URL(url);
         HttpURLConnection con = (HttpURLConnection) obj.openConnection();
@@ -64,8 +64,8 @@ public class ServerConnection {
     }
     public HashMap<String, String> getRollDiceResult() throws Exception{
        // String url = "http://139.179.103.139:8080/cs319deneme3/7wonders/SWtableServices/getRollDiceResult?tableID=";
-         String url = "http://192.168.1.32:8080/cs319deneme3/7wonders/SWtableServices/getRollDiceResult?tableID=";
-        //String url = "http://ec2-54-93-112-68.eu-central-1.compute.amazonaws.com:8080/cs319deneme3-1.0-SNAPSHOT/7wonders/SWtableServices/getHandsService?tableID=";
+         //String url = "http://192.168.1.32:8080/cs319deneme3/7wonders/SWtableServices/getRollDiceResult?tableID=";
+        String url = "http://ec2-54-93-112-68.eu-central-1.compute.amazonaws.com:8080/cs319deneme3-1.0-SNAPSHOT/7wonders/SWtableServices/getRollDiceResult?tableID=";
         url = url + Main.tableID;
         URL obj = new URL(url);
         HttpURLConnection con = (HttpURLConnection) obj.openConnection();
@@ -86,23 +86,25 @@ public class ServerConnection {
         }
         in.close();
         //print in String
-        System.out.println(response.toString());
+        System.out.println(response.toString() + "   U");
         //Read JSON response and print
         HashMap<String, String> mapToSend = new HashMap<String, String>();
         JSONObject myResponse = new JSONObject(  response.toString() );
         Map<String,Object> o = myResponse.toMap();
+        System.out.println("SERVER CONNECTION DONUS NOKTASI1");
         for (Map.Entry<String, Object> entry : o.entrySet()) {
             if(entry.getValue() instanceof String){
                 mapToSend.put(entry.getKey(), (String) entry.getValue());
             }
         }
+        System.out.println("SERVER CONNECTION DONUS NOKTASI2");
         return mapToSend;
     }
 
     public HashMap<String, String> getRollDiceMap() throws Exception{
         //String url = "http://139.179.103.139:8080/cs319deneme3/7wonders/SWtableServices/getRollDiceMap?tableID=";
-         String url = "http://192.168.1.32:8080/cs319deneme3/7wonders/SWtableServices/getRollDiceMap?tableID=";
-        //String url = "http://ec2-54-93-112-68.eu-central-1.compute.amazonaws.com:8080/cs319deneme3-1.0-SNAPSHOT/7wonders/SWtableServices/getHandsService?tableID=";
+         //String url = "http://192.168.1.32:8080/cs319deneme3/7wonders/SWtableServices/getRollDiceMap?tableID=";
+        String url = "http://ec2-54-93-112-68.eu-central-1.compute.amazonaws.com:8080/cs319deneme3-1.0-SNAPSHOT/7wonders/SWtableServices/getRollDiceMap?tableID=";
         url = url + Main.tableID;
         URL obj = new URL(url);
         HttpURLConnection con = (HttpURLConnection) obj.openConnection();
@@ -137,8 +139,8 @@ public class ServerConnection {
     }
     public HashMap<String,String> addToRollDiceService() throws Exception{
         //String url = "http://139.179.103.139:8080/cs319deneme3/7wonders/SWtableServices/addToRollDiceService?tableID=";
-        String url = "http://192.168.1.32:8080/cs319deneme3/7wonders/SWtableServices/addToRollDiceService?tableID=";
-        //String url = "http://ec2-54-93-112-68.eu-central-1.compute.amazonaws.com:8080/cs319deneme3-1.0-SNAPSHOT/7wonders/SWtableServices/getHandsService?tableID=";
+        //String url = "http://192.168.1.32:8080/cs319deneme3/7wonders/SWtableServices/addToRollDiceService?tableID=";
+        String url = "http://ec2-54-93-112-68.eu-central-1.compute.amazonaws.com:8080/cs319deneme3-1.0-SNAPSHOT/7wonders/SWtableServices/addToRollDiceService?tableID=";
         url = url + Main.tableID;
         url = url + "&playerID=" + Main.wonderID;
         System.out.println("ADD TO ROLL DICE SERVICE " + url);
@@ -172,8 +174,8 @@ public class ServerConnection {
     public JSONObject getHand(String tableID)throws Exception{
 
         //String url = "http://139.179.103.139:8080/cs319deneme3/7wonders/SWtableServices/getHandsService?tableID=";
-        String url = "http://192.168.1.32:8080/cs319deneme3/7wonders/SWtableServices/getHandsService?tableID=";
-        //String url = "http://ec2-54-93-112-68.eu-central-1.compute.amazonaws.com:8080/cs319deneme3-1.0-SNAPSHOT/7wonders/SWtableServices/getHandsService?tableID=";
+        //String url = "http://192.168.1.32:8080/cs319deneme3/7wonders/SWtableServices/getHandsService?tableID=";
+        String url = "http://ec2-54-93-112-68.eu-central-1.compute.amazonaws.com:8080/cs319deneme3-1.0-SNAPSHOT/7wonders/SWtableServices/getHandsService?tableID=";
         url = url + Main.tableID;
         URL obj = new URL(url);
         HttpURLConnection con = (HttpURLConnection) obj.openConnection();
@@ -206,10 +208,10 @@ public class ServerConnection {
 
 
     public String sendRequestChoice(String actionJson,String tableID)throws Exception{
-        String url = "http://192.168.1.32:8080/cs319deneme3/7wonders/SWtableServices/playActionService?tableID=";
+        //String url = "http://192.168.1.32:8080/cs319deneme3/7wonders/SWtableServices/playActionService?tableID=";
        // String url = "http://139.179.103.139:8080/cs319deneme3/7wonders/SWtableServices/playActionService?tableID=";
 
-        //String url ="http://ec2-54-93-112-68.eu-central-1.compute.amazonaws.com:8080/cs319deneme3-1.0-SNAPSHOT/7wonders/SWtableServices/playActionService?tableID=";
+        String url ="http://ec2-54-93-112-68.eu-central-1.compute.amazonaws.com:8080/cs319deneme3-1.0-SNAPSHOT/7wonders/SWtableServices/playActionService?tableID=";
         url = url + Main.tableID  + "&action=";
     //    url = url +  actionJson;
         //url ye parametre ekleme, çalışmıyor UTF8 formatına çevirmeye çalıştım
@@ -245,8 +247,8 @@ public class ServerConnection {
 
 
     public void sendRequestCreate(String ownerID, String tableID) throws Exception{
-        String url = "http://192.168.1.32:8080/cs319deneme3/7wonders/SWhouseServices/createTableService?ownerID=";
-       //String url = "http://ec2-54-93-112-68.eu-central-1.compute.amazonaws.com:8080/cs319deneme3-1.0-SNAPSHOT/7wonders/SWhouseServices/createTableService?ownerID=";
+       // String url = "http://192.168.1.32:8080/cs319deneme3/7wonders/SWhouseServices/createTableService?ownerID=";
+       String url = "http://ec2-54-93-112-68.eu-central-1.compute.amazonaws.com:8080/cs319deneme3-1.0-SNAPSHOT/7wonders/SWhouseServices/createTableService?ownerID=";
 
         //String url = "http://139.179.103.139:8080/cs319deneme3/7wonders/SWhouseServices/createTableService?ownerID=";
         url += ownerID + "&tableID=";
@@ -272,8 +274,8 @@ public class ServerConnection {
         System.out.println(response.toString());
     }
     public void sendRequestJoin(String tableID, String playerID) throws Exception{
-        String url = "http://192.168.1.32:8080/cs319deneme3/7wonders/SWtableServices/joinPlayerService?tableID=";
-        //String url = "http://ec2-54-93-112-68.eu-central-1.compute.amazonaws.com:8080/cs319deneme3-1.0-SNAPSHOT/7wonders/SWtableServices/joinPlayerService?tableID=";
+        //String url = "http://192.168.1.32:8080/cs319deneme3/7wonders/SWtableServices/joinPlayerService?tableID=";
+        String url = "http://ec2-54-93-112-68.eu-central-1.compute.amazonaws.com:8080/cs319deneme3-1.0-SNAPSHOT/7wonders/SWtableServices/joinPlayerService?tableID=";
         //String url = "http://139.179.103.139:8080/cs319deneme3/7wonders/SWtableServices/joinPlayerService?tableID=";
 
 
@@ -301,9 +303,9 @@ public class ServerConnection {
     }
 
     public void sendRequestStartTable(String tableID)throws Exception{
-        String url = "http://192.168.1.32:8080/cs319deneme3/7wonders/SWhouseServices/startTableService?tableID=";
+        //String url = "http://192.168.1.32:8080/cs319deneme3/7wonders/SWhouseServices/startTableService?tableID=";
         //String url = "http://139.179.103.139:8080/cs319deneme3/7wonders/SWhouseServices/startTableService?tableID=";
-        //String url = "http://ec2-54-93-112-68.eu-central-1.compute.amazonaws.com:8080/cs319deneme3-1.0-SNAPSHOT/7wonders/SWhouseServices/startTableService?tableID=";
+        String url = "http://ec2-54-93-112-68.eu-central-1.compute.amazonaws.com:8080/cs319deneme3-1.0-SNAPSHOT/7wonders/SWhouseServices/startTableService?tableID=";
         url = url + tableID;
         URL obj = new URL(url);
         HttpURLConnection con = (HttpURLConnection) obj.openConnection();
@@ -327,8 +329,8 @@ public class ServerConnection {
     }
 
     public HashMap<String,Integer> getMilitaryPoint()throws Exception{
-        String url = "http://192.168.1.32:8080/cs319deneme3/7wonders/SWtableServices/getMilitaryPointsService?tableID=";
-       // String url = "http://ec2-54-93-112-68.eu-central-1.compute.amazonaws.com:8080/cs319deneme3-1.0-SNAPSHOT/7wonders/SWtableServices/getMilitaryPointsService?tableID=";
+       // String url = "http://192.168.1.32:8080/cs319deneme3/7wonders/SWtableServices/getMilitaryPointsService?tableID=";
+        String url = "http://ec2-54-93-112-68.eu-central-1.compute.amazonaws.com:8080/cs319deneme3-1.0-SNAPSHOT/7wonders/SWtableServices/getMilitaryPointsService?tableID=";
        // String url = "http://139.179.103.139:8080/cs319deneme3/7wonders/SWtableServices/getMilitaryPointsService?tableID=";
         url = url + Main.tableID;
         URL obj = new URL(url);
@@ -364,8 +366,8 @@ public class ServerConnection {
     }
 
     public HashMap<String,Integer> getTableList() throws Exception{
-        String url = "http://192.168.1.32:8080/cs319deneme3/7wonders/SWhouseServices/listWaitingTableService";
-        //String url = "http://ec2-54-93-112-68.eu-central-1.compute.amazonaws.com:8080/cs319deneme3-1.0-SNAPSHOT/7wonders/SWhouseServices/listWaitingTableService";
+        //String url = "http://192.168.1.32:8080/cs319deneme3/7wonders/SWhouseServices/listWaitingTableService";
+        String url = "http://ec2-54-93-112-68.eu-central-1.compute.amazonaws.com:8080/cs319deneme3-1.0-SNAPSHOT/7wonders/SWhouseServices/listWaitingTableService";
        // String url = "http://139.179.103.139:8080/cs319deneme3/7wonders/SWhouseServices/listWaitingTableService";
         URL obj = new URL(url);
         HttpURLConnection con = (HttpURLConnection) obj.openConnection();
@@ -438,6 +440,7 @@ public class ServerConnection {
         Gson gson = new Gson();
         //Type typeOfT = new TypeToken<List<Location .class>>(){}.getType();
         JSONObject hold = getHand(table);
+
         JsonParser parser = new JsonParser();
         JsonElement jo = (JsonObject) parser.parse(hold.toString());
         //JsonElement ja = jo.getAsJsonArray("memberName");

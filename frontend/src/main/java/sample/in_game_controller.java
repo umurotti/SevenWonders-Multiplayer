@@ -60,7 +60,20 @@ public class in_game_controller implements Initializable  {
     @FXML
     Button build_card;
 
-
+    @FXML
+    ImageView TheLighthouseOfAlexandria;
+    @FXML
+    ImageView TheColossusOfRhodes;
+    @FXML
+    ImageView TheHangingGardensOfBabylon;
+    @FXML
+    ImageView TheTempleOfArtemisInEphesus;
+    @FXML
+    ImageView TheStatueOfZeusinOlympia;
+    @FXML
+    ImageView ThePyramidsOfGiza;
+    @FXML
+    ImageView TheMausoleumOfHalicarnassus;
 
     Map<String,String> myStructuresBuilded = new HashMap<String,String>();
     Map<String,String> leftStructuresBuilded = new HashMap<String,String>();
@@ -117,7 +130,7 @@ public class in_game_controller implements Initializable  {
     //dice popover attributes
     Scene sceneOfDicePopOver;
     @FXML
-    Button roll_dice;
+     Button roll_dice;
     ArrayList<String> diceGamePlayer = new ArrayList<String>();;
     boolean diceGameOn = false;
 
@@ -164,7 +177,9 @@ public class in_game_controller implements Initializable  {
     Timeline diceTimeLine;
     Integer diceTime;
 
+    boolean diceGameEnded;
     public void diceGamePopOver(ActionEvent event) throws Exception{
+        diceGameEnded = false;
         final PopOver popOver = new PopOver();
         popOver.setArrowLocation(PopOver.ArrowLocation.BOTTOM_CENTER);
         popOver.setAutoFix(true);
@@ -176,7 +191,6 @@ public class in_game_controller implements Initializable  {
         popOver.setContentNode(pane);
         popOver.show(resources_grid_0, 1000, 1000);
 
-
             if(timeline!=null){
                 timeline.stop();
             }
@@ -185,12 +199,15 @@ public class in_game_controller implements Initializable  {
             ((Label)pane.lookup("#dice_time")).setText(diceTime.toString());
             //dice_time.setText(diceTime.toString());
             //update
-            diceTimeLine.setCycleCount(10);
+            diceTimeLine.setCycleCount(20);
             EventHandler eventHandler2 = new EventHandler() {
                 public void handle(Event event) {
                     diceTime--;
                     ((Label)pane.lookup("#dice_time")).setText(diceTime.toString());
-                    if(diceTime==0){
+                    if(diceGameEnded && diceTime > 3)
+                        diceTime = 3;
+                    System.out.println(" Here the dice time "+diceTime);
+                    if(diceTime==0 ){
                         diceTimeLine.stop();
                         popOver.hide();
 
@@ -328,13 +345,15 @@ public class in_game_controller implements Initializable  {
     }
     public void playerEnteredDiceGame() throws Exception{
         System.out.println("BURASI playerentereddicegame3" );
-        HashMap<String,String> playersInGame = con.getRollDiceMap();
+        HashMap<String,String> playersInGame = new HashMap<String, String>();
+                playersInGame = con.getRollDiceMap();
         System.out.println("BURASI playerentereddicegame4" );
-        dicePopOverRefresh(playersInGame);
+        dicePopOverRefresh(playersInGame, null);
     }
 
 
-    public void dicePopOverRefresh(HashMap<String,String> playersjoined) {
+    public void dicePopOverRefresh(HashMap<String,String> playersjoined, ActionEvent event) {
+        System.out.println("ASDADDADADSDADSADASAD");
         if(playersjoined == null){
             String wonderName = "#" + wonderBoards.get(Main.wonderID).getWonderName();
             ImageView wonderImage = (ImageView) (roll_dice.getScene().lookup(wonderName));
@@ -342,33 +361,74 @@ public class in_game_controller implements Initializable  {
             wonderImage.setEffect(null);
 
         }else{
-            for (Map.Entry<String, String> element : playersjoined.entrySet()) {
-                //String wonderName = wonderBoards.get(element.getKey()).getWonderName();
-                String wonderName = element.getValue();
-                wonderName = "#" + wonderName;
-                ImageView wonderImage = (ImageView) (roll_dice.getScene().lookup(wonderName));
-                System.out.println("BURASI DICE POPOVER REFRESh" + wonderName);
-                wonderImage.setEffect(null);
+            for(String element: playersjoined.keySet()){
+                if(playersjoined.get(element).equals("TheTempleOfArtemisInEphesus")){
+                    System.out.println("TheTempleOfArtemisInEphesus");
+                    TheTempleOfArtemisInEphesus.setEffect(null);
+                }
+                if(playersjoined.get(element).equals("TheHangingGardensOfBabylon")){
+                    System.out.println("TheTempleOfArtemisInEphesus2");
+                    TheHangingGardensOfBabylon.setEffect(null);
+                }
+                if(playersjoined.get(element).equals("TheLighthouseOfAlexandria")){
+                    System.out.println("TheTempleOfArtemisInEphesus3");
+                    TheLighthouseOfAlexandria.setEffect(null);
+                }
+                if(playersjoined.get(element).equals("TheColossusOfRhodes")){
+                    System.out.println("TheTempleOfArtemisInEphesus4");
+                    TheColossusOfRhodes.setEffect(null);
+                }
+                if(playersjoined.get(element).equals("ThePyramidsOfGiza")){
+                    System.out.println("TheTempleOfArtemisInEphesus5");
+                    ThePyramidsOfGiza.setEffect(null);
+                }
+                if(playersjoined.get(element).equals("TheMausoleumOfHalicarnassus")){
+                    System.out.println("TheTempleOfArtemisInEphesus6");
+                    TheMausoleumOfHalicarnassus.setEffect(null);
+                }
+                if(playersjoined.get(element).equals("TheStatueOfZeusinOlympia")){
+                    System.out.println("TheTempleOfArtemisInEphesus7");
+                    TheStatueOfZeusinOlympia.setEffect(null);
+                }
             }
+
         }
 
     }
-    public void diceGameEnds(){
+    public void diceGameEnds()throws Exception{
+        diceGameEnded = true;
         String winner = "";
         String winnerCard = "";
-        Map<String,Integer> noOfDices = new HashMap<String, Integer>();
-            for(Map.Entry mapElement : noOfDices.entrySet()) {
+        HashMap<String,String> noOfDices = new HashMap<String, String>();
+        noOfDices = con.getRollDiceResult();
+          /*  for(Map.Entry mapElement : noOfDices.entrySet()) {
                 String key = (String) mapElement.getKey();
                 String nameOfLabel = "#L" + key;
                 Label diceNoLabel = (Label)(roll_dice.getScene().lookup(key));
                 String diceNo = noOfDices.get(key) + "";
                 diceNoLabel.setText(diceNo);
+            }*/
+           // ImageView winnersCardImage = (ImageView)(roll_dice.getScene().lookup("#winnersCard"));
+          //  winnersCardImage.setImage(images2.get(winnerCard));
+           // winnersCardImage.setVisible(true);
+        System.out.println("Before for");
+        System.out.println(noOfDices.toString());
+        for(Map.Entry mapElement : noOfDices.entrySet()) {
+            String key = (String) mapElement.getKey();
+            if(key.equals("winner")){
+                System.out.println("PPPPPPPPPPPPPPPPPPPPPPPPPPPPP");
+                String nameOfVictorySymbol = "#" + wonderBoards.get(noOfDices.get(key)).getWonderName() + "W";
+                ImageView diceNoLabel = (ImageView) (roll_dice.getScene().lookup(nameOfVictorySymbol));
+                diceNoLabel.setVisible(true);
             }
-            ImageView winnersCardImage = (ImageView)(roll_dice.getScene().lookup("#winnersCard"));
-            winnersCardImage.setImage(images2.get(winnerCard));
+            if(key.equals("magicCard")){
+               // System.out.println("PPPPPPPPPPPPPPPPPPPPPPPPPPPPP");
+                //String nameOfVictorySymbol = "#" + wonderBoards.get(noOfDices.get(key)).getWonderName() + "W";
+                ImageView diceNoLabel = (ImageView) (roll_dice.getScene().lookup("#winnerCard"));
+                diceNoLabel.setVisible(true);
+            }
 
-
-
+        }
         Task<Void> task = new Task<Void>() {
             @Override
             protected Void call() throws Exception {
@@ -404,7 +464,7 @@ public class in_game_controller implements Initializable  {
 
     public void play_dice_game(ActionEvent event) throws Exception{
         con.addToRollDiceService();
-        dicePopOverRefresh(null);
+        dicePopOverRefresh(null , event);
     }
 
 
@@ -1390,8 +1450,8 @@ public class in_game_controller implements Initializable  {
                         Platform.runLater(new Runnable() {
                             public void run() {
                                 try {
-                                    refresh();
-                                    //diceGamePopOver(new ActionEvent());
+                                    //refresh();
+                                    diceGamePopOver(new ActionEvent());
                                     System.out.println("AAAAAAAAAAAAAAAAAAAA THREAD in begin refresh");
                                 } catch (Exception e) {
                                 }
@@ -1813,6 +1873,8 @@ public class in_game_controller implements Initializable  {
 
     public void startPoint() throws Exception {
         System.out.println("START POINTE GIRDIIIIIIIIIIIII!");
+
+
     /*    int i = 0;
         String workingDir = System.getProperty("user.dir");
         workingDir += "/src/main/resources/Cards";

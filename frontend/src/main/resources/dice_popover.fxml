@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<GridPane cache="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.in_game_controller">
+<GridPane cache="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1">
   <columnConstraints>
       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="70.0" prefWidth="100.0" />
     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="30.0" prefWidth="100.0" />
@@ -140,37 +140,37 @@
                  </font></Label>
 
 
-            <ImageView fitHeight="70.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="0" GridPane.valignment="CENTER">
+            <ImageView fx:id="TheTempleOfArtemisInEphesusW" visible="false" fitHeight="70.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="0" GridPane.valignment="CENTER">
                <image>
                   <Image url="@winner.jpg" />
                </image>
             </ImageView>
-             <ImageView fitHeight="70.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+             <ImageView fx:id="TheHangingGardensOfBabylonW" visible="false" fitHeight="70.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                  <image>
                      <Image url="@winner.jpg" />
                  </image>
              </ImageView>
-             <ImageView fitHeight="70.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+             <ImageView fx:id="TheLighthouseOfAlexandriaW" visible="false" fitHeight="70.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="2" GridPane.valignment="CENTER">
                  <image>
                      <Image url="@winner.jpg" />
                  </image>
              </ImageView>
-             <ImageView fitHeight="70.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+             <ImageView fx:id="TheColossusOfRhodesW" visible="false" fitHeight="70.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="3" GridPane.valignment="CENTER">
                  <image>
                      <Image url="@winner.jpg" />
                  </image>
              </ImageView>
-             <ImageView fitHeight="70.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="4" GridPane.valignment="CENTER">
+             <ImageView fx:id="ThePyramidsOfGizaW" visible="false" fitHeight="70.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="4" GridPane.valignment="CENTER">
                  <image>
                      <Image url="@winner.jpg" />
                  </image>
              </ImageView>
-             <ImageView fitHeight="70.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="5" GridPane.valignment="CENTER">
+             <ImageView fx:id="TheMausoleumOfHalicarnassusW" visible="false" fitHeight="70.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="5" GridPane.valignment="CENTER">
                  <image>
                      <Image url="@winner.jpg" />
                  </image>
              </ImageView>
-             <ImageView fitHeight="70.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="6" GridPane.valignment="CENTER">
+             <ImageView fx:id="TheStatueOfZeusinOlympiaW" visible="false" fitHeight="70.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="6" GridPane.valignment="CENTER">
                  <image>
                      <Image url="@winner.jpg" />
                  </image>
@@ -192,12 +192,15 @@
           <RowConstraints minHeight="10.0" percentHeight="50.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-             <ImageView fitHeight="150.0" fitWidth="300.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.rowIndex="0" GridPane.valignment="CENTER">
+             <ImageView fitHeight="80.0" fitWidth="172.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.rowIndex="0" GridPane.valignment="CENTER">
                <image>
                   <Image url="@dice.jpg" />
                </image></ImageView>
             <Button fx:id="roll_dice" mnemonicParsing="false" onAction="#play_dice_game" text="ROLL DICE" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
-            <ImageView fx:id="winnerCard" fitHeight="210.0" fitWidth="135.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
+            <ImageView fx:id="winnerCard" visible="false" fitHeight="210.0" fitWidth="135.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+               <image>
+                  <Image url="@Cards/ALTAR.png" />
+               </image></ImageView>
             <Label fx:id="dice_time" text="5" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
                <font>
                   <Font size="67.0" />

@@ -19,6 +19,7 @@ import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import org.controlsfx.control.spreadsheet.Grid;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -51,13 +52,62 @@ public class Main extends Application {
         File lightcss = new File(workingDir2);
         Main.scene.getStylesheets().add(lightcss.toURI().toURL().toExternalForm());
         primaryStage.setScene(scene);
-        primaryStage.setFullScreen(true);
+        primaryStage.setFullScreen(false);
         primaryStage.show();
 
 
+
+
         Object loaded;
-        loaded = (GridPane)FXMLLoader.load(getClass().getResource("/dice_popover.fxml"));
-        map.put("dicePopOver",loaded);
+        //loaded = (Parent)FXMLLoader.load(getClass().getResource("/in_game_screen.fxml"));
+        FXMLLoader a = new FXMLLoader(getClass().getResource("/in_game_screen.fxml"));
+        loaded = (Parent)a.load();
+        final in_game_controller temp = a.getController();
+        map.put("home", loaded);
+        map.put("loader", a);
+
+        Task<HashMap> task = new Task<HashMap>() {
+            @Override
+            protected HashMap call() throws Exception {
+                HashMap<String, Image> images2 = new HashMap<String, Image>();
+                try {
+                    int i = 0;
+                    String workingDir = System.getProperty("user.dir");
+                    workingDir += "/src/main/resources/Cards";
+                    File dir = new File(workingDir);
+                    File[] directoryListing = dir.listFiles();
+                    if (directoryListing != null) {
+                        for (File child : directoryListing) {
+                            InputStream temp = new FileInputStream(child);
+                            String name =child.getName();
+                            if(name.indexOf(" ") >0){
+                                name = name.substring(0,name.indexOf(" "))+  name.substring(name.indexOf(" " ) +1);
+                            }
+                            name = name.toUpperCase();
+                            images2.put(child.getName().substring(0,child.getName().length()-4), new Image(temp));
+                            i++;
+                        }
+                    }
+                    temp.images2 = images2;
+                } catch (Exception interrupted) {
+
+                }
+
+                return images2;
+            }
+
+
+        };
+        Thread t = new Thread(task);
+        t.start();
+
+        map.put("controller",temp);
+
+        FXMLLoader b = new FXMLLoader(getClass().getResource("/dice_popover.fxml"));
+        b.setController((in_game_controller)map.get("controller"));
+        Parent loaded1 = (GridPane)b.load();
+        map.put("dicePopOver",loaded1);
+
 
 
 
@@ -83,49 +133,7 @@ public class Main extends Application {
         map.put("zoom",loaded);
 
 
-        //loaded = (Parent)FXMLLoader.load(getClass().getResource("/in_game_screen.fxml"));
-        FXMLLoader a = new FXMLLoader(getClass().getResource("/in_game_screen.fxml"));
-        loaded = (Parent)a.load();
-        final in_game_controller temp = a.getController();
-        map.put("home", loaded);
-        map.put("loader", a);
 
-        Task<HashMap> task = new Task<HashMap>() {
-            @Override
-            protected HashMap call() throws Exception {
-                HashMap<String, Image> images2 = new HashMap<String, Image>();
-                    try {
-                        int i = 0;
-                        String workingDir = System.getProperty("user.dir");
-                        workingDir += "/src/main/resources/Cards";
-                        File dir = new File(workingDir);
-                        File[] directoryListing = dir.listFiles();
-                        if (directoryListing != null) {
-                            for (File child : directoryListing) {
-                                InputStream temp = new FileInputStream(child);
-                                String name =child.getName();
-                                if(name.indexOf(" ") >0){
-                                    name = name.substring(0,name.indexOf(" "))+  name.substring(name.indexOf(" " ) +1);
-                                }
-                                name = name.toUpperCase();
-                                images2.put(child.getName().substring(0,child.getName().length()-4), new Image(temp));
-                                i++;
-                            }
-                        }
-                        temp.images2 = images2;
-                    } catch (Exception interrupted) {
-
-                    }
-
-                return images2;
-            }
-
-
-        };
-        Thread t = new Thread(task);
-        t.start();
-
-        map.put("controller",temp);
 
 /*
         Task<Void> task = new Task<Void>() {
