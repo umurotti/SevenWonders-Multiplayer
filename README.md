@@ -1,4 +1,4 @@
-# CS319-3F-SW
+# OOP Project
 This project is conducting as term project for CS-319 course in Bilkent University.
 
 We are group of 5  students from Computer Science Department:
